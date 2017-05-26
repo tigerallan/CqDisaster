@@ -97,7 +97,7 @@ public class PlaySurfaceView extends SurfaceView implements Callback {
         NET_DVR_PREVIEWINFO previewInfo = new NET_DVR_PREVIEWINFO();
         previewInfo.lChannel = iChan;
         previewInfo.dwStreamType = 1; // substream
-        previewInfo.bBlocked = 1;
+        previewInfo.bBlocked = 0;
         previewInfo.hHwnd = m_hHolder;
         // HCNetSDK start preview
         m_iPreviewHandle = HCNetSDK.getInstance().NET_DVR_RealPlay_V40(iUserID,
