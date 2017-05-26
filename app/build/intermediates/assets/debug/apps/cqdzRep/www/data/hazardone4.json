@@ -1,0 +1,8 @@
+{"meta": {"success":true,"message":"ok"},
+	"data":[
+		{"text":"特大","price":"2"},
+		{"text":"大型","price":"4"},
+		{"text":"中型","price":"6"},
+		{"text":"小型","price":"8"}
+	]
+}

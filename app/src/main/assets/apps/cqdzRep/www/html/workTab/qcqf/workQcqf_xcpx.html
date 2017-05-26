@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>宣传培训</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.picker.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.poppicker.css"/>
+		<style type="text/css">
+			body,html{
+				background-color: #EFEFF4;
+			}
+			.mui-table-view-cell .mui-active{background:#fff;}
+			.mui-bar-tab .mui-tab-item.mui-active{
+				color: #fff !important;
+			    background-color: #007aff;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">宣传培训</h1>
+		</header>
+		<nav id="nav" class="mui-bar mui-bar-tab" >
+	    	<a id="imgTab" class="mui-tab-item mui-active">
+	    		<span class="iconfont icon-dongtai"></span>
+				<div class="mui-tab-label">图片</div>
+			</a>
+			<a id="vioedTab" class="mui-tab-item">
+				<span class="iconfont icon-tongji"></span>
+				<div class="mui-tab-label">视频</div>
+			</a>
+			<a id="workTab" class="mui-tab-item">
+				<span class="iconfont icon-tongji"></span>
+				<div class="mui-tab-label">文档</div>
+			</a>
+		</nav>
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/h.js"></script>
+	<script src="../../../js/mui.picker.js"></script>
+	<script src="../../../js/mui.poppicker.js"></script>
+	<script type="text/javascript">
+		mui.init({
+		    subpages : [
+		        {
+		            url : 'imgTab.html',
+		            id  : 'imgTab.html',
+		            styles : {
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        },
+		        {
+		            url : 'vioedTab.html',
+		            id  : 'vioedTab.html',
+		            styles : {
+		                left   : '100%',
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        },
+		        {
+		            url : 'workTab.html',
+		            id  : 'workTab.html',
+		            styles : {
+		                left   : '100%',
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        }
+		    ]
+		});
+		mui.plusReady(function(){
+			h('#imgTab').tap(function(){
+				changSub(1);
+				h('#title').html(h('#imgTab').find("div").html());
+			});
+			h('#vioedTab').tap(function(){
+				changSub(2);
+				h('#title').html(h('#vioedTab').find("div").html());
+			});
+			h('#workTab').tap(function(){
+				changSub(3);
+				h('#title').html(h('#workTab').find("div").html());
+			});
+		});
+
+		function changSub(index){
+		    var sub1 = plus.webview.getWebviewById('imgTab.html');
+		    var sub2 = plus.webview.getWebviewById('vioedTab.html');
+		    var sub3 = plus.webview.getWebviewById('workTab.html');
+		    sub1.setStyle({left: (index - 1) * 100 + "%"});
+		    sub2.setStyle({left: (2 - index) * 100 + "%"});
+		    sub3.setStyle({left: (3 - index) * 100 + "%"});
+		}
+	</script>
+	</body>
+</html>

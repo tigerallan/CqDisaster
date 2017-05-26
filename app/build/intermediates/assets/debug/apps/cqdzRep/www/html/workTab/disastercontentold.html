@@ -1,0 +1,99 @@
+ol<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>地灾点</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link href="../../css/mui.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="../../css/hazardPoint.css"/>
+	</head>
+
+	<body>
+	<!--主界面部分-->
+	<header class="mui-bar mui-bar-nav" >
+		<a class="mui-action-back mui-icon mui-icon-back"></a>
+		<h1 id="title" class="mui-title">灾害点信息</h1>
+	</header>
+	<!--底部选项卡-->
+    <nav id="nav" class="mui-bar mui-bar-tab" >
+    	<a id="defaultTab" class="mui-tab-item  mui-active" href="#" >
+			<div class="mui-tab-label">基本信息</div>
+		</a>
+		<a id="secondTab" class="mui-tab-item" href="#">
+			<div class="mui-tab-label">两卡管理</div>
+		</a>
+		<a id="thirdTab" class="mui-tab-item" href="#">
+			<div class="mui-tab-label">预案管理</div>
+		</a>
+		<a id="fourthTab" class="mui-tab-item" href="#">
+			<div class="mui-tab-label">监测数据</div>
+		</a>
+	</nav>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/h.js"></script>
+	<script type="text/javascript">
+	mui.init({
+	    subpages : [
+	        {
+	            url : 'disasterone.html',
+	            id  : 'disasterone.html',
+	            styles : {
+	                top    : '62px',
+	                bottom : '52px',
+	                width  : "100%"
+	            }
+	        },
+	        {
+	            url : 'disastertwo.html',
+	            id  : 'disastertwo.html',
+	            styles : {
+	                left   : '100%',
+	                top    : '62px',
+	                bottom : '52px',
+	                width  : "100%"
+	            }
+	        },
+	        {
+	            url : 'disasterthree.html',
+	            id  : 'disasterthree.html',
+	            styles : {
+	                left   : '200%',
+	                top    : '62px',
+	                bottom : '52px',
+	                width  : "100%"
+	            }
+	        },
+	        {
+	            url : 'disasterfour.html',
+	            id  : 'disasterfour.html',
+	            styles : {
+	                left   : '300%',
+	                top    : '62px',
+	                bottom : '52px',
+	                width  : "100%"
+	            }
+	        }
+	    ]
+	});
+		mui.plusReady(function(){
+			h('#defaultTab').tap(function(){changSub(1);h('#title').html(h('#defaultTab').find("div").html());});
+			h('#secondTab').tap(function(){changSub(2);h('#title').html(h('#secondTab').find("div").html());});
+			h('#thirdTab').tap(function(){changSub(3);h('#title').html(h('#thirdTab').find("div").html());});
+			h('#fourthTab').tap(function(){changSub(4);h('#title').html(h('#fourthTab').find("div").html());
+			});
+		});
+		
+		function changSub(index){
+		    var sub1 = plus.webview.getWebviewById('disasterone.html');
+		    var sub2 = plus.webview.getWebviewById('disastertwo.html');
+		    var sub3 = plus.webview.getWebviewById('disasterthree.html');
+		    var sub4 = plus.webview.getWebviewById('disasterfour.html');
+		    sub1.setStyle({left: (index - 1) * 100 + "%"});
+		    sub2.setStyle({left: (2 - index) * 100 + "%"});
+		    sub3.setStyle({left: (3 - index) * 100 + "%"});
+		    sub4.setStyle({left: (4 - index) * 100 + "%"});
+		}
+	</script>

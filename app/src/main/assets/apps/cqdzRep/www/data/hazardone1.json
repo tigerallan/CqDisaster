@@ -1,0 +1,12 @@
+{"meta": {"success":true,"message":"ok"},
+	"data":[
+		{"text":"滑坡","price":"12305"},
+		{"text":"泥石流","price":"105"},
+		{"text":"危岩","price":"2037"},
+		{"text":"不稳定滑坡","price":"1482"},
+		{"text":"地面塌陷","price":"219"},
+		{"text":"地裂缝","price":"57"},
+		{"text":"库岸","price":"185"},
+		{"text":"其他","price":"22"}
+	]
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>工作管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body>
+		<!--子页面内容-->
+		<div id="bottom-icon3" class="mui-content">
+			<div class="boxflex">
+	     		<a id="dizaipoint" class="pointmun mui-card" open-type="common" style="background: #ddd;">
+			     	<dl class="workmanage">
+			     		<dt><img src="img/2_1.png"/></dt>
+			     		<dd>灾害点管理</dd>
+			     	</dl>
+	     		</a>
+	     		<a id="qcqf" class="pointmun mui-card" href="javascript:void(0);" style="background: #ddd;">
+			     	<dl class="workmanage">
+			     		<dt><img src="img/2_11.png"/></dt>
+			     		<dd>群测群防</dd>
+			     	</dl>
+		     	</a>
+			</div>
+			<div class="boxflex">
+	     		<a class="pointmun mui-card" href="javascript:void(0);" style="background: #ddd;">
+			     	<dl class="workmanage">
+			     		<dt><img src="img/2_13.png"/></dt>
+			     		<dd>专业监测</dd>
+			     	</dl>
+		     	</a>
+	     		<a class="pointmun mui-card" href="javascript:void(0);" style="background: #ddd;">
+			     	<dl class="workmanage">
+			     		<dt><img src="img/2_2.png"/></dt>
+			     		<dd>项目管理</dd>
+			     	</dl>
+		     	</a>
+			</div>
+			<div class="boxflex">
+		     	<a class="pointmun mui-card" href="javascript:void(0);" style="background: #ddd;">
+			     	<dl class="workmanage">
+			     		<dt><img src="img/2_8.png"/></dt>
+			     		<dd>预警发布</dd>
+			     	</dl>
+		     	</a>
+		     	<a class="pointmun mui-card" href="javascript:void(0);" style="background: #ddd;">
+			     	<dl class="workmanage">
+			     		<dt><img src="img/2_3.png"/></dt>
+			     		<dd>四重网格化人员</dd>
+			     	</dl>
+		     	</a>
+			</div>
+			<div class="boxflex">
+	     		<a class="pointmun mui-card" href="javascript:void(0);" style="margin-right: 10px;background: #ddd;">
+			     	<dl class="workmanage">
+			     		<dt><img src="img/2_9.png"/></dt>
+			     		<dd>气象信息</dd>
+			     	</dl>
+		     	</a>
+			</div>
+		</div>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init({
+				swipeBack: false,
+		});
+		
+//		var _self, _prev, index, timer;
+//		mui.plusReady(function(){
+//		    _self = plus.webview.currentWebview();
+//		    _prev = plus.webview.getWebviewById('contingency.html');
+////		    index = plus.webview.getLaunchWebview();
+//			index = plus.webview.getWebviewById("index.html");
+//		    _self.drag(
+//		        {
+//		            direction : "right",
+//		            moveMode  :　"followFinger"
+//		        },
+//		        {
+//		            view　              :　_prev,
+//		            moveMode  : "follow"
+//		        },
+//		        function(e){
+//		            if(timer != null){clearTimeout(timer); }
+//		            timer = setTimeout(function(){
+//		                index.evalJS("h('#nav').find('a').removeClass('mui-active');h('#thirdTab').addClass('mui-active');h('#title').html(h('#thirdTab').find('div').html())");
+//		            }, 100);
+//		        }
+//		    );
+//		});
+		
+		
+		//地灾点跳转页面
+//		document.getElementById("dizaipoint").addEventListener("tap",function(){
+//			mui.openWindow({
+//				url:"html/workTab/disastercontent.html",
+//				id:"disastercontent.html"
+//			});
+//		});
+		
+		//群测群防跳转页面
+//		document.getElementById("qcqf").addEventListener("tap",function(){
+//			mui.openWindow({
+//				url:"html/workTab/qcqf/workQcqf.html",
+//				id:"workQcqf.html"
+//			});
+//		});
+		//		点击跳转子页面
+		var fishref = document.getElementsByClassName('pointmun');
+		var count=fishref.length;
+		for(i=0;i<count;i++){
+			fishref[i].addEventListener('tap', function() {
+			  mui.openWindow({
+			    url: 'construction.html', 
+			    id:'construction.html'
+			  });
+			});
+		}
+	</script>
+	</body>
+</html>

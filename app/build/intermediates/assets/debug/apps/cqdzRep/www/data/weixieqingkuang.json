@@ -1,0 +1,9 @@
+{"meta": {"success":true,"message":"ok"},
+	"data":[
+		{"name":"威胁户数","centent":"50"},
+		{"name":"威胁人数(个)","centent":"70"},
+		{"name":"威胁房间(间)","centent":"252"},
+		{"name":"威胁面积(万m2)","centent":"5290"},
+		{"name":"威胁财产","centent":"500"}
+	]
+}

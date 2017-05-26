@@ -1,0 +1,375 @@
+html,
+body {
+	background-color: #efeff4;
+}
+
+.mui-off-canvas-left {
+	color: #fff;
+}
+
+.mui-bar-nav {
+	padding-top: 18px;
+	height: 62px;
+	/*-webkit-box-shadow: 0 1px 6px #007AFF;
+    box-shadow: 0 1px 6px #007AFF;*/
+	background-color: #337AB7;
+}
+
+header>#title,
+a {
+	color: #fff;
+}
+
+
+/*底部导航*/
+
+#nav {
+	background-color: #f2f2f2;
+	border: 1px solid #d9d9d9;
+}
+
+
+/*底部图标点击后的颜色*/
+
+.mui-bar-tab .mui-tab-item.mui-active {
+	background-color: #337AB7;
+	color: #fff;
+}
+
+
+/*底部图标未点击时的颜色*/
+
+.mui-bar-tab .mui-tab-item {
+	color: #000000;
+}
+
+
+/*主体内容*/
+
+.mui-tab-label {
+	font-size: 16px;
+}
+
+.icon1-centent,
+.icon1-centent-text {
+	margin: 15px;
+}
+
+.icon1-centent {
+	height: 35px;
+	text-align: center;
+}
+
+.icon1-centent>div>input {
+	background: #fff;
+}
+
+.icon1-centent-text::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.icon1-centent-left,
+.icon2-centent-left,
+.icon3-centent-left,
+.icon4-centent-left {
+	float: left;
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
+.icon1-centent-left {
+	width: 56%;
+}
+
+.icon2-centent-left,
+.icon3-centent-left,
+.icon4-centent-left {
+	width: 40%;
+	font-size: 14px;
+}
+
+.icon1-centent-right1 {
+	width: 44%;
+	float: right;
+	margin-bottom: 10px;
+}
+
+.icon1-centent-right2,
+.icon1-centent-right3,
+.icon1-centent-right4 {
+	width: 60%;
+	float: right;
+	height: 84px;
+	margin-bottom: 10px;
+}
+
+.icon1-centent-text>p {
+	font-size: 18px;
+	font-weight: 500;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.icon1-centent-text>b {
+	display: block;
+	width: calc(100%-25%);
+	margin-bottom: 8px;
+	border-bottom: 1px solid #E4E3E6;
+}
+
+.icon1-centent-text>div {
+	padding-left: 10px;
+}
+
+.icon1-centent-text i {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	margin-right: 5px;
+}
+
+.i1 {
+	background-color: #d9ebb1;
+}
+
+.i2 {
+	background-color: #b7ddc8;
+}
+
+.i3 {
+	background-color: #95d0de;
+}
+
+.i4 {
+	background-color: #99ce7e;
+}
+
+.i5 {
+	background-color: #61bba1;
+}
+
+.i6 {
+	background-color: #5dbbc5;
+}
+
+.i7 {
+	background-color: #5796cc;
+}
+
+.i8 {
+	background-color: #33CC66;
+}
+
+.icon1-select {
+	float: left;
+	width: 30%;
+	margin-bottom: 10px;
+	height: 100%;
+	padding: 5px;
+	font-size: 16px;
+	border: 1px solid #c1c1c1 !important;
+	border-radius: 0;
+}
+
+.icon1-centent>input {
+	height: 100%;
+	margin-top: 1px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+}
+
+.icon1-centent>span:nth-last-child(1) {
+	position: absolute;
+	right: 15px;
+	line-height: 35px;
+}
+
+.icon1-centent-tb {
+	position: absolute;
+	left: 26%;
+	font-size: 14px;
+	line-height: 35px;
+}
+
+.icon2-centent {
+	height: 37px;
+	margin: 15px;
+}
+
+.icon2-centent>.mui-search {
+	width: 80%;
+	float: left;
+}
+
+.icon2-centent>.mui-search>input {
+	background: #fff;
+}
+
+.mui-table-view:before {
+	height: 0;
+}
+
+.mui-table-view:after {
+	height: 0;
+}
+
+.icon2-centent-tb {
+	position: absolute;
+	left: 25%;
+	font-size: 14px;
+	line-height: 35px;
+}
+
+.icon2-ditu {
+	float: right;
+	height: 28px;
+}
+
+
+/*列表*/
+
+.icon2-ul-mc {
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.icon2-ul-sj {
+	position: absolute;
+	right: 0px;
+	/*top: 23px;*/
+	font-size: 12px;
+}
+
+.icon2-ul-bh {
+	padding-top: 5px;
+	font-size: 16px;
+}
+
+.icon2-ul-fonta {
+	color: red;
+}
+
+.icon2-ul-fontb {
+	color: #F5CD19;
+}
+
+.icon2-ul-fontc {
+	color: #c8c8c8;
+}
+
+.mui-navigate-right:after,
+.mui-push-right:after {
+	right: 5px;
+	top: 21px;
+}
+
+#bottom-icon3>p {
+	margin: 10px;
+	color: #333;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+#bottom-icon3>ul {
+	padding-right: 10px;
+}
+
+#bottom-icon3 h5 {
+	color: #000;
+	font-size: 16px;
+}
+
+#bottom-icon3 b {
+	color: red;
+}
+
+
+/*动态告警*/
+
+.mui-ios .mui-table-view-cell {
+	font-size: 13px;
+}
+
+
+/*工作管理-地灾点分析*/
+
+#title {
+	font-weight: bold;
+}
+
+#wordpoint {
+	margin-top: 62px;
+}
+
+#wordpoint span {
+	color: #0f7df3;
+}
+
+#wordpoint .mui-card {
+	border-radius: 5px;
+}
+
+#wordpoint .mui-card-header {
+	font-weight: bold;
+	background: #d3def3;
+}
+
+#wordpoint .mui-card-content-inner {
+	color: gray;
+	font-size: 16px;
+}
+
+#wordpoint td {
+	padding: 5px 10px;
+}
+
+
+/*工作管理-筛选页面*/
+
+.titleqx {
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	background: #fff;
+	border-bottom: 1px solid #ddd;
+	padding: 0 15px;
+}
+
+#workone .mui-table-view-cell:after {
+	background: transparent;
+}
+
+#workone .mui-table-view-cell:nth-child(1):after {
+	background: #C8C7CC;
+}
+
+#workone .mui-table-view-cell.mui-active {
+	background: #fff;
+}
+
+#workone .mui-table-view {
+	display: none;
+}
+
+#workone .mui-table-view.mui-active {
+	display: block;
+}
+
+#workone {
+	margin-top: 97px;
+	margin-bottom: 52px;
+	background-color: #fff;
+}
+
+.citychoose {
+	float: right;
+	color: red;
+}
+
+.citychoose>span {
+	font-size: 20px;
+}

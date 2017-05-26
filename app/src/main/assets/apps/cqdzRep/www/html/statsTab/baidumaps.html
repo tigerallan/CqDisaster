@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<title>地灾气象预警预报</title>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<style>
+			html,
+			body,
+			#viewDiv {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+			}
+			body {
+				opacity: 0;
+				font-family: "微软雅黑" !important;
+			}
+			
+			.claro .mui-content {
+				padding-top: 44px;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.mui-bar-nav {
+				-webkit-box-shadow: 0 1px 6px #337AB7;
+				box-shadow: 0 1px 6px #337AB7;
+			}
+			
+			.mui-bar-nav,
+			.mui-active {
+				background-color: #337AB7;
+				color: white!important;
+			}
+			
+			.mui-bar-nav .mui-icon,
+			.mui-bar-nav .mui-title {
+				color: white;
+			}
+			
+			.mui-bar-nav .mui-title {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body class="claro">
+
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon iconfont icon-back"></a>
+			<h1 class="mui-title">地灾气象预警预报</h1>
+		</header>
+
+		<div class="mui-content">
+			<div id="viewDiv"></div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<script type="text/javascript">
+			mui.init();
+
+			var immersed = 0;
+			var ms = (/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi)
+				.exec(navigator.userAgent);
+			if(ms && ms.length >= 3) { // 当前环境为沉浸式状态栏模式
+				immersed = parseFloat(ms[2]); // 获取状态栏的高度
+			}
+			mui.ready(function() {
+				h('body').animate({
+					opacity: 1
+				}, 100);
+
+				var t = document.getElementById('header'),
+					tHeight = t.offsetHeight;
+				t && (t.style.paddingTop = immersed + 'px',
+					t.style.height = tHeight + immersed + 'px',
+					h('.mui-content').css({
+						paddingTop: parseInt(getComputedStyle(h('.mui-content').dom[0], null)
+							.paddingTop) + immersed + 1 + 'px'
+					})
+				);
+
+				mui.plusReady(function() {
+					var pcenter = new plus.maps.Point(106.775902, 29.808362); //106.636991, 29.723702
+					var map = new plus.maps.Map("viewDiv");
+					map.centerAndZoom(pcenter, 12);
+					//map.setMapType(plus.maps.MapType.MAPTYPE_SATELLITE);
+
+					marker1 = new plus.maps.Marker(new plus.maps.Point(106.7105343, 29.8352143));
+					marker1.setIcon("../../img/mapsIcon.png");
+					marker1.setLabel("隐患点滑坡");
+					var bubble1 = new plus.maps.Bubble("重庆XX区XX滑坡！");
+					marker1.setBubble(bubble1);
+					map.addOverlay(marker1);
+					
+					marker2 = new plus.maps.Marker(new plus.maps.Point(106.7105673, 29.8352233));
+					marker2.setIcon("../../img/mapsIcon.png");
+					marker2.setLabel("隐患点滑坡");
+					var bubble2 = new plus.maps.Bubble("重庆XX区XX滑坡！");
+					marker2.setBubble(bubble2);
+					map.addOverlay(marker2);
+					
+					marker3 = new plus.maps.Marker(new plus.maps.Point(106.7105113, 29.8352613));
+					marker3.setIcon("../../img/mapsIcon.png");
+					marker3.setLabel("隐患点滑坡");
+					var bubble3 = new plus.maps.Bubble("重庆XX区XX滑坡！");
+					marker3.setBubble(bubble3);
+					map.addOverlay(marker3);
+					
+					marker4 = new plus.maps.Marker(new plus.maps.Point(106.7105883, 29.8352423));
+					marker4.setIcon("../../img/mapsIcon.png");
+					marker4.setLabel("隐患点滑坡");
+					var bubble4 = new plus.maps.Bubble("重庆XX区XX滑坡！");
+					marker4.setBubble(bubble4);
+					map.addOverlay(marker4);
+					
+					marker5 = new plus.maps.Marker(new plus.maps.Point(106.7105273, 29.8352183));
+					marker5.setIcon("../../img/mapsIcon.png");
+					marker5.setLabel("隐患点滑坡");
+					var bubble5 = new plus.maps.Bubble("重庆XX区XX滑坡！");
+					marker5.setBubble(bubble5);
+					map.addOverlay(marker5);
+					
+					marker6 = new plus.maps.Marker(new plus.maps.Point(106.7105913, 29.8352253));
+					marker6.setIcon("../../img/mapsIcon.png");
+					marker6.setLabel("隐患点滑坡");
+					var bubble6 = new plus.maps.Bubble("重庆XX区XX滑坡！");
+					marker6.setBubble(bubble6);
+					map.addOverlay(marker6);
+				});
+			});
+		</script>
+	</body>
+
+</html>

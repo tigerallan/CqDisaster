@@ -1,0 +1,1075 @@
+{
+	"login.html": {
+		"resources": [
+			"img/logo.gif",
+			"css/login.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jquery-1.11.3.js",
+			"index.html"
+		],
+		"refer": [
+			"index.html"
+		]
+	},
+	"index.html": {
+		"resources": [
+			"css/index.css",
+			"fonts/iconfont.css",
+			"fonts/iconfont.ttf",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"dynamic.html",
+			"js/index.js",
+			"js/h.js",
+			"js/jquery-1.11.3.js",
+			"js/immersed.js",
+			"js/update.js",
+			"contingency.html"
+		],
+		"refer": [
+			"contingency.html",
+			"stats.html",
+			"dynamic.html",
+			"work.html",
+			"person.html",
+			"infocontent.html"
+		]
+	},
+	"dynamic.html": {
+		"resources": [
+			"css/index.css",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"img/banner2.jpg",
+			"img/banner1.png",
+			"img/banner3.jpg",
+			"img/u56.png",
+			"img/new_u58.gif",
+			"html/cityBureauPress.html",
+			"js/index.js",
+			"js/h.js",
+			"img/tq.png",
+			"img/bg.jpg",
+			"js/jquery-1.11.3.js",
+			"data/dynamic_qx.json",
+			"data/dynamic_sj.json",
+			"data/dynamic_xwlb.json"
+		],
+		"refer": [
+			"html/cityBureauPress.html",
+			"html/countyPress.html",
+			"html/newscon.html",
+			"html/newscon2.html",
+			"html/dynamicTab/cityBureauPress.html",
+			"html/dynamicTab/countyPress.html",
+			"html/dynamicTab/newscon.html",
+			"html/dynamicTab/newscon2.html"
+		]
+	},
+	"contingency.html": {
+		"resources": [
+			"js/mui.min.js",
+			"img/yjgl3.png",
+			"img/yjgl2.png",
+			"img/yjgl1.png",
+			"css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/h.js",
+			"img/zhinanzhen.png",
+			"img/jisuanji.png",
+			"img/rli.png"
+		],
+		"refer": [
+			"html/contingencyTab/wannianliTwo.html",
+			"html/contingencyTab/wannianli.html",
+			"html/contingencyTab/wannianliOne.html",
+			"html/contingencyTab/wannianliThree.html",
+			"html/contingencyTab/wannianli/wannianli.html",
+			"html/contingencyTab/orientation_compass.html",
+			"html/contingencyTab/calculator.html",
+			"html/contingencyTab/zddq_sssp.html",
+			"html/contingencyTab/uav-video.html"
+		]
+	},
+	"work.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/index.css",
+			"css/mui.min.css",
+			"img/gzgl6.png",
+			"img/gzgl3.png",
+			"img/gzgl7.png",
+			"img/gzgl8.png",
+			"img/gzgl5.png",
+			"img/gzgl1.png",
+			"img/gzgl2.png",
+			"img/gzgl4.png",
+			"js/h.js",
+			"img/2_1.png",
+			"img/2_11.png",
+			"img/2_13.png",
+			"img/2_3.png",
+			"img/2_2.png",
+			"img/2_16.png",
+			"img/2_8.png",
+			"img/2_9.png"
+		],
+		"refer": [
+			"html/hazardPoint.html",
+			"html/workpoint.html",
+			"html/workTab/workpoint.html",
+			"html/workTab/hazardPoint.html",
+			"html/workTab/disastercontent13.html",
+			"html/workTab/disastercontent.html",
+			"html/workTab/qcqf/workQcqf.html",
+			"construction.html"
+		]
+	},
+	"stats.html": {
+		"resources": [
+			"css/index.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"js/mui.poppicker.js",
+			"img/zhtj2.png",
+			"img/gj1.png",
+			"img/gj2.png",
+			"img/zhtj1.png",
+			"img/gzgl2.png",
+			"img/gzgl4.png",
+			"img/gzgl1.png",
+			"js/h.js",
+			"img/1_1.png",
+			"img/1_10.png",
+			"img/1_11.png",
+			"img/1-3.png",
+			"img/1_12.png",
+			"img/2_11.png",
+			"img/2_12.png",
+			"img/2_10.png",
+			"img/2_1.png",
+			"js/jquery-1.11.3.js",
+			"img/1_9.png",
+			"img/1_5.png",
+			"img/1_8.png"
+		],
+		"refer": [
+			"html/statsTab/rzgjsl_xq.html",
+			"html/statsTab/baidumaps.html",
+			"html/statsTab/zsrysb_xq.html",
+			"html/statsTab/pqzgysb_xq.html",
+			"html/statsTab/qcqfsb_xq.html",
+			"html/statsTab/zhdsl_xq.html",
+			"html/statsTab/gczl_xq.html",
+			"construction.html",
+			"html/statsTab/zyjcsb_xq.html"
+		]
+	},
+	"html/cityBureauPress.html": {
+		"resources": [
+			"css/index.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/new_u58.gif",
+			"img/u56.png",
+			"js/h.js"
+		],
+		"refer": []
+	},
+	"html/countyPress.html": {
+		"resources": [
+			"js/h.js",
+			"css/index.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/new_u58.gif",
+			"img/u56.png"
+		],
+		"refer": []
+	},
+	"html/hazardPoint.html": {
+		"resources": [
+			"html/hazardone.html",
+			"fonts/mui.ttf",
+			"css/hazardPoint.css",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/h.js"
+		],
+		"refer": [
+			"html/hazardone.html",
+			"html/hazardtwo.html"
+		]
+	},
+	"html/hazardtwo.html": {
+		"resources": [
+			"img/mapicon.png",
+			"html/disastercontent.html",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/hazardPoint.css",
+			"img/1_9.png",
+			"img/1_8.png",
+			"img/1-2.png"
+		],
+		"refer": [
+			"html/disastercontent.html",
+			"html/ditu.html"
+		]
+	},
+	"html/newscon.html": {
+		"resources": [
+			"js/h.js",
+			"img/banner2.jpg",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"img/banner1.png",
+			"css/mui.min.css",
+			"img/banner3.jpg"
+		],
+		"refer": []
+	},
+	"html/disastercontent.html": {
+		"resources": [
+			"js/mui.min.js",
+			"html/disasterone.html",
+			"css/hazardPoint.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/h.js"
+		],
+		"refer": [
+			"html/disasterone.html",
+			"html/disastertwo.html",
+			"html/disasterthree.html",
+			"html/disasterfour.html"
+		]
+	},
+	"html/disastertwo.html": {
+		"resources": [
+			"css/disastercontent.css",
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"html/disasterthree.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/disastercontent.css",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"infocontent.html": {
+		"resources": [
+			"js/h.js",
+			"css/index.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/new_u58.gif",
+			"js/jquery-1.11.3.js",
+			"data/infocontent.json",
+			"js/mui.picker.js",
+			"js/mui.poppicker.js",
+			"js/quxian.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css"
+		],
+		"refer": [
+			"html/dynamicTab/infocontent_xq.html"
+		]
+	},
+	"person.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/index.css",
+			"js/update.js"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"html/hazardone.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"js/highcharts.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/hazardPoint.css"
+		],
+		"refer": []
+	},
+	"html/newscon2.html": {
+		"resources": [
+			"js/h.js",
+			"img/banner2.jpg",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"img/banner1.png",
+			"css/mui.min.css",
+			"img/banner3.jpg"
+		],
+		"refer": []
+	},
+	"html/disasterone.html": {
+		"resources": [
+			"css/disastercontent.css",
+			"css/mui.min.css",
+			"js/mui.min.js"
+		],
+		"refer": []
+	},
+	"html/disasterfour.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/disastercontent.css",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"html/ditu.html": {
+		"resources": [
+			"4.0/dijit/themes/claro/claro.css",
+			"4.0/esri/css/main.css",
+			"4.0/init.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"4.0/esri/views/MapView.js",
+			"4.0/dojo/nls/dojo_zh-cn.js",
+			"4.0/esri/fonts/avenir-next/Avenir_Next_W00_400.woff2",
+			"4.0/dojo/resources/blank.gif"
+		],
+		"refer": []
+	},
+	"html/workpoint.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/hazardPoint.css"
+		],
+		"refer": [
+			"html/workone.html"
+		]
+	},
+	"html/workone.html": {
+		"resources": [
+			"js/mui.picker.js",
+			"js/mui.poppicker.js",
+			"js/city.data.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"js/h.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/hazardPoint.css"
+		],
+		"refer": [
+			"html/workpoint.html",
+			"html/worklist.html"
+		]
+	},
+	"html/worklist.html": {
+		"resources": [
+			"js/mui.min.js",
+			"img/mapicon.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/hazardPoint.css",
+			"img/1_9.png",
+			"img/1_8.png",
+			"img/1-2.png"
+		],
+		"refer": [
+			"html/workcontent.html"
+		]
+	},
+	"html/workcontent.html": {
+		"resources": [
+			"html/worklistone.html"
+		],
+		"refer": [
+			"html/worklistone.html"
+		]
+	},
+	"html/worklistone.html": {
+		"resources": [
+			"css/disastercontent.css"
+		],
+		"refer": []
+	},
+	"html/dynamicTab/cityBureauPress.html": {
+		"resources": [
+			"js/h.js",
+			"css/index.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/new_u58.gif",
+			"img/u56.png",
+			"js/jquery-1.11.3.js",
+			"data/cityBureauPress.json"
+		],
+		"refer": [
+			"html/dynamicTab/newscon.html"
+		]
+	},
+	"html/dynamicTab/countyPress.html": {
+		"resources": [
+			"js/h.js",
+			"css/index.css",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"js/mui.poppicker.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/quxian.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"img/new_u58.gif",
+			"img/u56.png",
+			"data/countyPress.json",
+			"js/jquery-1.11.3.js"
+		],
+		"refer": [
+			"html/dynamicTab/newscon2.html"
+		]
+	},
+	"html/workTab/workpoint.html": {
+		"resources": [
+			"img/filter.png",
+			"css/hazardPoint.css",
+			"fonts/mui.ttf",
+			"js/h.js",
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/workTab/workone.html"
+		]
+	},
+	"html/workTab/workone.html": {
+		"resources": [
+			"img/choo.png",
+			"js/city.data.js",
+			"js/h.js",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"js/mui.poppicker.js",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"css/hazardPoint.css",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"html/workTab/worklist.html"
+		]
+	},
+	"html/workTab/worklist.html": {
+		"resources": [
+			"img/1_9.png",
+			"img/1_8.png",
+			"img/1-2.png",
+			"js/mui.min.js",
+			"img/mapicon.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/hazardPoint.css"
+		],
+		"refer": [
+			"html/workTab/workcontent.html",
+			"html/workTab/ditu.html"
+		]
+	},
+	"html/workTab/worklistone.html": {
+		"resources": [
+			"css/disastercontent.css",
+			"img/xq.png",
+			"js/h.js"
+		],
+		"refer": []
+	},
+	"html/workTab/workcontent.html": {
+		"resources": [
+			"html/workTab/worklistone.html",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/hazardPoint.css"
+		],
+		"refer": [
+			"html/workTab/worklistone.html"
+		]
+	},
+	"html/workTab/hazardtwo.html": {
+		"resources": [
+			"img/mapicon.png",
+			"img/1_8.png",
+			"img/1-2.png",
+			"img/1_9.png"
+		],
+		"refer": [
+			"html/workTab/disastercontent.html",
+			"html/workTab/ditu.html"
+		]
+	},
+	"html/workTab/hazardone.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"js/highcharts.js",
+			"data/hazardone3.json",
+			"data/hazardone2.json",
+			"data/hazardone1.json"
+		],
+		"refer": []
+	},
+	"html/workTab/hazardPoint.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"html/workTab/hazardone.html",
+			"css/hazardPoint.css"
+		],
+		"refer": [
+			"html/workTab/hazardtwo.html",
+			"html/workTab/hazardone.html"
+		]
+	},
+	"html/workTab/disasterone.html": {
+		"resources": [
+			"css/disastercontent.css",
+			"img/xq.png"
+		],
+		"refer": []
+	},
+	"html/workTab/disastercontent.html": {
+		"resources": [
+			"html/workTab/disasterone.html",
+			"img/1_9.png",
+			"img/1_8.png",
+			"js/city.data.js",
+			"img/1-2.png",
+			"img/filter.png",
+			"css/hazardPoint.css",
+			"js/h.js",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"js/mui.poppicker.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"img/choo.png"
+		],
+		"refer": [
+			"html/workTab/disasterone.html",
+			"html/workTab/disasterthree.html",
+			"html/workTab/disastertwo.html",
+			"html/workTab/disasterfour.html",
+			"html/workTab/zhcontent1.html",
+			"html/workTab/zhpic.html",
+			"html/workTab/zhreport.html",
+			"html/workTab/zhrecord.html"
+		]
+	},
+	"html/workTab/disastercontent13.html": {
+		"resources": [
+			"img/1_9.png",
+			"fonts/mui.ttf",
+			"img/1_8.png",
+			"img/1-2.png",
+			"img/filter.png",
+			"css/hazardPoint.css",
+			"js/h.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"js/mui.picker.js",
+			"js/mui.poppicker.js",
+			"js/city.data.js"
+		],
+		"refer": []
+	},
+	"html/workTab/zhcontent1.html": {
+		"resources": [
+			"css/disastercontent.css",
+			"img/xq.png"
+		],
+		"refer": []
+	},
+	"html/workTab/zhpic.html": {
+		"resources": [
+			"js/mui.picker.js",
+			"fonts/mui.ttf",
+			"img/banner3.jpg",
+			"css/mui.picker.css",
+			"img/u56.png",
+			"css/hazardPoint.css",
+			"js/h.js",
+			"img/banner2.jpg",
+			"js/mui.min.js",
+			"js/mui.poppicker.js",
+			"img/banner1.png",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"js/city.data.js",
+			"img/defaults.jpg"
+		],
+		"refer": []
+	},
+	"html/workTab/zhreport.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/xq.png",
+			"css/hazardPoint.css"
+		],
+		"refer": []
+	},
+	"html/workTab/zhrecord.html": {
+		"resources": [
+			"js/h.js",
+			"img/1_9.png",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/hazardPoint.css"
+		],
+		"refer": []
+	},
+	"html/workTab/qcqf/workQcqf.html": {
+		"resources": [
+			"css/index.css",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"js/mui.poppicker.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"img/dl3.png",
+			"img/dl4.png",
+			"img/dl5.png",
+			"img/dl.png",
+			"img/dl6.png",
+			"img/dl2.png",
+			"img/1.png",
+			"img/timg.jpg",
+			"img/8.png",
+			"js/jquery-1.11.3.js"
+		],
+		"refer": [
+			"html/workTab/qcqf/workQcqf_content.html",
+			"html/workTab/qcqf/workQcqf_fxList.html",
+			"html/workTab/qcqf/workQcqf_hiddenList.html",
+			"html/workTab/qcqf/workQcqf_yhdFx.html"
+		]
+	},
+	"html/workTab/qcqf/workQcqf_content.html": {
+		"resources": [
+			"js/h.js",
+			"html/workTab/qcqf/workQcqf_hazard.html"
+		],
+		"refer": [
+			"html/workTab/qcqf/workQcqf_plan.html",
+			"html/workTab/qcqf/workQcqf_hazard.html",
+			"html/workTab/qcqf/workQcqf_twoCards.html"
+		]
+	},
+	"html/workTab/qcqf/workQcqf_hazard.html": {
+		"resources": [
+			"img/1_9.png",
+			"img/filter1.png",
+			"img/1_8.png",
+			"js/city.data.js",
+			"img/1-2.png"
+		],
+		"refer": [
+			"html/workTab/qcqf/hazard_list.html"
+		]
+	},
+	"html/workTab/qcqf/hazard_list.html": {
+		"resources": [
+			"data/xiangxixinxi.json",
+			"js/jquery-1.11.3.js",
+			"css/disastercontent.css",
+			"data/jibenxinxi.json",
+			"data/weixieqingkuang.json",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"html/workTab/qcqf/workQcqf_fxList.html": {
+		"refer": [
+			"html/workTab/qcqf/workQcqf_yhdFx.html"
+		],
+		"resources": []
+	},
+	"html/workTab/qcqf/workQcqf_yhdFx.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"img/filter1.png",
+			"js/highcharts.js",
+			"js/city.data.js",
+			"img/choo.png",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"js/mui.poppicker.js",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css"
+		],
+		"refer": []
+	},
+	"html/workTab/qcqf/workQcqf_hiddenList.html": {
+		"resources": [
+			"img/1_9.png",
+			"img/filter1.png",
+			"img/1_8.png",
+			"js/city.data.js",
+			"img/1-2.png"
+		],
+		"refer": [
+			"html/workTab/qcqf/workQcqf_hidden.html"
+		]
+	},
+	"html/workTab/qcqf/workQcqf_hidden.html": {
+		"resources": [
+			"js/h.js",
+			"html/workTab/qcqf/workQcqf_hiddenOne.html"
+		],
+		"refer": [
+			"html/workTab/qcqf/workQcqf_hiddenOne.html",
+			"html/workTab/qcqf/workQcqf_hiddenTwo.html"
+		]
+	},
+	"html/workTab/qcqf/workQcqf_hiddenOne.html": {
+		"resources": [
+			"js/jquery-1.11.3.js"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/wannianliTwo.html": {
+		"resources": [
+			"html/contingencyTab/css/wnl.css",
+			"html/contingencyTab/js/183.js",
+			"html/contingencyTab/js/wnl.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/wannianli.html": {
+		"resources": [
+			"js/jquery-1.11.3.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/wannianliOne.html": {
+		"resources": [
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/wannianliThree.html": {
+		"resources": [
+			"img/fanhui.png"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/wannianli/wannianli.html": {
+		"resources": [
+			"html/contingencyTab/wannianli/js/swiper-3.3.1.min.js",
+			"html/contingencyTab/wannianli/css/common.css",
+			"html/contingencyTab/wannianli/css/normalize.css",
+			"html/contingencyTab/wannianli/css/htmleaf-demo.css",
+			"html/contingencyTab/wannianli/css/swiper-3.3.1.min.css",
+			"html/contingencyTab/wannianli/js/jquery-1.11.0.min.js",
+			"html/contingencyTab/wannianli/css/index.css",
+			"html/contingencyTab/wannianli/images/calendar_bottom.png",
+			"html/contingencyTab/wannianli/js/common.js",
+			"html/contingencyTab/wannianli/images/BACK.png",
+			"js/mui.min.js"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/orientation_compass.html": {
+		"resources": [
+			"img/orientationbg.png",
+			"js/common.js",
+			"img/orientationa.png",
+			"css/common.css",
+			"img/orientationc.png",
+			"js/immersed.js",
+			"img/fanhui.png"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/calculator.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/zddq_sssp.html": {
+		"resources": [
+			"html/contingencyTab/shipin.html",
+			"img/banner2.jpg",
+			"css/index.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"img/banner1.png",
+			"css/mui.min.css",
+			"img/banner3.jpg",
+			"img/video4.jpg",
+			"img/video2.png",
+			"img/video3.png",
+			"img/video1.png"
+		],
+		"refer": [
+			"html/contingencyTab/shipin.html"
+		]
+	},
+	"html/contingencyTab/shipin.html": {
+		"resources": [
+			"images/sintel.mp4",
+			"html/contingencyTab/zddq_sssp.html"
+		],
+		"refer": [
+			"html/contingencyTab/zddq_sssp.html"
+		]
+	},
+	"html/statsTab/rzgjsl_xq.html": {
+		"resources": [
+			"data/qcqfsb.json",
+			"js/quxian.js",
+			"js/h.js",
+			"js/mui.picker.min.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"js/mui.poppicker.js",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.min.css",
+			"data/rzgjsl_zq.json",
+			"data/rzgjsl_xq.json"
+		],
+		"refer": []
+	},
+	"html/contingencyTab/uav-video.html": {
+		"resources": [
+			"img/test.jpg",
+			"img/guotu.jpg",
+			"css/index.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"img/timg.jpeg"
+		],
+		"refer": [
+			"html/contingencyTab/uav-video-test.html",
+			"html/contingencyTab/uav-video-guotu.html"
+		]
+	},
+	"html/contingencyTab/uav-video-test.html": {
+		"resources": [
+			"css/index.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"html/statsTab/baidumaps.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/iconfont.css"
+		]
+	},
+	"html/dynamicTab/newscon.html": {
+		"resources": [
+			"js/h.js",
+			"data/newscon.json",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"css/mui.min.css"
+		]
+	},
+	"html/dynamicTab/newscon2.html": {
+		"resources": [
+			"js/h.js",
+			"data/newscon2.json",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"css/mui.min.css"
+		]
+	},
+	"html/statsTab/zsrysb_xq.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.picker.js",
+			"data/qcqfsb.json",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"js/mui.poppicker.js",
+			"css/mui.min.css",
+			"js/quxian.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"data/zsrysb_xq.json"
+		]
+	},
+	"html/contingencyTab/uav-video-guotu.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css"
+		]
+	},
+	"html/dynamicTab/infocontent_xq.html": {
+		"resources": [
+			"data/infocontent_xq.json",
+			"js/h.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"css/mui.min.css"
+		]
+	},
+	"html/statsTab/pqzgysb_xq.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"js/mui.poppicker.js",
+			"css/mui.min.css",
+			"data/pqzgysb.json",
+			"js/quxian.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css"
+		]
+	},
+	"html/statsTab/qcqfsb_xq.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.picker.js",
+			"data/qcqfsb.json",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"js/mui.poppicker.js",
+			"css/mui.min.css",
+			"js/quxian.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css"
+		]
+	},
+	"html/statsTab/zhdsl_xq.html": {
+		"resources": [
+			"data/hazardone3.json",
+			"data/hazardone2.json",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"css/mui.min.css",
+			"js/highcharts.js",
+			"data/hazardone1.json",
+			"css/hazardPoint.css"
+		],
+		"refer": [
+			"html/statsTab/baidumaps.html"
+		]
+	},
+	"html/statsTab/gczl_xq.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"js/mui.poppicker.js",
+			"img/filter1.png",
+			"css/mui.min.css",
+			"js/quxian.js",
+			"css/mui.poppicker.css",
+			"data/gczl_xq.json",
+			"css/mui.picker.css",
+			"html/statsTab/itemDetails.html"
+		],
+		"refer": [
+			"html/statsTab/itemDetails.html"
+		]
+	},
+	"construction.html": {
+		"resources": [
+			"js/h.js",
+			"js/mui.min.js",
+			"img/uc.png",
+			"css/mui.min.css",
+			"js/header.js"
+		]
+	},
+	"html/statsTab/itemDetails.html": {
+		"resources": [
+			"html/statsTab/gczl_xq.html",
+			"js/h.js",
+			"js/mui.picker.js",
+			"js/mui.min.js",
+			"img/timg.jpg",
+			"js/mui.poppicker.js",
+			"js/jquery-1.11.3.js",
+			"css/mui.min.css",
+			"data/itemDetails.json",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css"
+		],
+		"refer": [
+			"html/statsTab/gczl_xq.html"
+		]
+	},
+	"html/statsTab/zyjcsb_xq.html": {
+		"resources": [
+			"data/zyjcsb.json",
+			"js/mui.min.js",
+			"js/jquery-1.11.3.js",
+			"css/mui.min.css",
+			"js/highcharts.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"css/hazardPoint.css"
+		]
+	}
+}

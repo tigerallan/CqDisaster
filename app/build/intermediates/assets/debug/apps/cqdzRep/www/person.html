@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>设置</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<style>
+		body {
+			opacity: 0;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">个人设置</h1>
+		</header>
+		<div class="mui-scroll-wrapper" style="margin-top: 62px;background:#efeff4;">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="javascript:;">姓名
+							<span id="username" class="mui-pull-right"></span></a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="javascript:;">账号
+							<span id="loginname" class="mui-pull-right"></span></a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="javascript:;">职务
+							<span id="work" class="mui-pull-right"></span></a>
+					</li>
+				</ul>
+				<ul class="mui-table-view" style="margin-top: 30px;">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" id="update" href="javascript:;">检查更新</a>
+					</li>
+				</ul>
+				<ul class="mui-table-view" style="margin-top:30px;">
+					<li class="mui-table-view-cell" style="text-align: center;">
+						<a id="quit">退出登录</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/h.js"></script>
+	<script src="js/update.js"></script>
+	<script type="text/javascript">
+		mui.init();
+
+		mui.ready(function() {
+			mui('.mui-scroll-wrapper').scroll({
+				scrollY: true, //是否竖向滚动
+				scrollX: false, //是否横向滚动
+				startX: 0, //初始化时滚动至x
+				startY: 0, //初始化时滚动至y
+				indicators: true, //是否显示滚动条
+				deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+				bounce: true //是否启用回弹
+			});
+
+			setTimeout(function() {
+				h('body').animate({
+					opacity: '1'
+				});
+			}, 50);
+		});
+
+		document.getElementById('quit').addEventListener('tap', function() {
+
+			var btnArray = ['否', '是'];
+			mui.confirm('确定退出？', '账号退出', btnArray, function(e) {
+				if(e.index == 1) {
+					setTimeout(function() {
+						plus.webview.close(plus.webview.currentWebview().indexID);
+					}, 300);
+					plus.storage.clear();
+					mui.openWindow({
+						url: 'login.html',
+						id: 'login',
+						extras: {
+							personID: plus.webview.currentWebview().id
+						}
+					});
+				}
+			})
+		});
+
+		mui.plusReady(function() {
+			var info = JSON.parse(plus.storage.getItem("personal-information"));
+			h('#username').html(info[0].user_name);
+			h('#loginname').html(info[0].phone);
+			h('#work').html(info[0].job);
+
+			document.getElementById("update").addEventListener('tap', function() {
+				initUpdate();
+			});
+		});
+	</script>
+
+</html>

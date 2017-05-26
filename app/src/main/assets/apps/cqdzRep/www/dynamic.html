@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>地灾动态</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+	<style type="text/css">
+		.weather {
+			width: 100%;
+			height: 60px;
+			background-size: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 100;
+			background-color: rgba(0, 0, 0, .3);
+		}
+		
+		.mui-slider .mui-slider-group .mui-slider-item img {
+			height: 220px;
+		}
+		/*.weather{
+			height: 100px;
+			background:url('img/bg.jpg') no-repeat 100% 100%;
+			background-size: 100%;
+		}*/
+		
+		.weather>div {
+			position: relative;
+		}
+		
+		.weather>div:first-child {
+			float: left;
+			width: 40%;
+			height: 100%;
+			text-align: center;
+			display: table;
+		}
+		
+		.weathertext>img {
+			height: 50px;
+		}
+		
+		.weathertext>span {
+			/*display: inline-block;
+			line-height: 50px;*/
+		}
+		
+		.weather>div:last-child {
+			float: right;
+			width: 60%;
+			height: 100%;
+			display: table;
+		}
+		
+		.weathertext {
+			color: #fff;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+		
+		.weathertext>div:nth-of-type(1) {
+			width: 50%;
+			height: 40px;
+			line-height: 40px;
+			text-align: right;
+			padding-right: 8px;
+			float: left;
+		}
+		
+		.weathertext>div:nth-of-type(2) {
+			float: right;
+			width: 50%;
+			height: 40px;
+			line-height: 40px;
+			text-align: left;
+		}
+		
+		.mui-slider-title {
+			color: #fff;
+		}
+		
+		.mui-slider-title span {
+			display: block;
+			max-width: 60%;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		
+		.mui-slider-indicator .mui-active.mui-indicator {
+			background: #337AB7;
+		}
+		
+		.mui-slider-indicator .mui-indicator {
+			background: #fff;
+		}
+		
+		.place {
+			padding-top: 10px;
+			padding-right: 10px;
+		}
+	</style>
+
+	<body>
+		<!--子页面内容-->
+
+		<div id="bottom-icon1" class="mui-content">
+			<div class="mui-scroll">
+				<!--当日天气情况-->
+				<div class="weather">
+					<div>
+						<div class="weathertext">
+							<img src="img/tq.png" />
+							<span>26°C</span>
+						</div>
+					</div>
+					<div>
+						<div class="weathertext">
+							<div style="font-size:18px;">重庆</div>
+							<div style="font-size:12px;">多云转晴</div>
+							<div id="pDate" style="font-size:12px;"></div>
+						</div>
+					</div>
+				</div>
+				<!--新闻轮播-->
+				<div class="mui-slider">
+					<div id="xwlb" class="mui-slider-group mui-slider-loop">
+
+					</div>
+					<div class="mui-slider-indicator mui-text-right">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>
+				</div>
+				<!--市局-->
+				<div class=" mui-text-center">
+					<i class="rule-lf"></i><span>市&nbsp;&nbsp;&nbsp;局</span><i class="rule-rg"></i>
+					<span id="rule_sj" class="rule_gd">更多&gt;&gt;</span>
+				</div>
+				<ul id="dynamic_sj" class="main mui-table-view">
+					<!--<li class="mui-table-view-cell mui-media">
+						<a class="fishref" href="javascript:;">
+							<img class="mui-media-object mui-pull-right" src="img/u56.png">
+							<div class="mui-media-body">
+								<div class='mui-ellipsis'>重庆渝北区地震已造成经济损失228.5万元</div>
+							</div>
+							<div class="place">
+								<span>市局</span>
+								<span>刚刚</span>
+								<img src="img/new_u58.gif"/>
+							</div>
+						</a>
+					</li><li class="mui-table-view-cell mui-media">
+						<a class="fishref" href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="img/u56.png">
+							<div class="mui-media-body">
+								<div class='mui-ellipsis'>重庆渝北区地震已造成经济损失228.5万元</div>
+							</div>
+							<div class="place"  style="float:right;">
+								<span>市局</span>
+								<span>刚刚</span>
+								<img src="img/new_u58.gif"/>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a class="fishref" href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="img/u56.png">
+							<div class="mui-media-body">
+								<div class='mui-ellipsis'>重庆渝北区地震已造成经济损失228.5万元</div>
+							</div>
+							<div class="place">
+								<span>市局</span>
+								<span>刚刚</span>
+								<img src="img/new_u58.gif"/>
+							</div>
+						</a>
+					</li>-->
+				</ul>
+				<!-- 区县-->
+				<div class="mui-text-center">
+					<i class="rule-lf"></i>区&nbsp;&nbsp;&nbsp;县<i class="rule-rg"></i>
+					<span id="rule_qx" class="rule_gd">更多&gt;&gt;</span>
+				</div>
+				<ul id="dynamic_qx" class="county mui-table-view">
+					<!--<li class="mui-table-view-cell mui-media">
+							<a class="fisnew" href="javascript:;">
+								<img class="mui-media-object mui-pull-right" src="img/u56.png">
+								<div class="mui-media-body">
+									<div class='mui-ellipsis'>重庆万州区危岩已造成经济损失385.5万元</div>
+								</div>
+								<div class="place">
+									<span>万州区</span>
+									<span>刚刚</span>
+									<img src="img/new_u58.gif"/>
+								</div>
+							</a>
+						</li>-->
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false
+			});
+//			var _self, _next, timer;
+//			mui.plusReady(function() {
+//				_self = plus.webview.currentWebview();
+//				_next = plus.webview.getWebviewById('stats.html');
+//				//获取应用首页
+//				//		    index = plus.webview.getLaunchWebview();
+//				index = plus.webview.getWebviewById("index.html");
+//				_self.drag({
+//						direction: "left",
+//						moveMode: 　 "followFinger"
+//					}, {
+//						view　: 　_next,
+//						moveMode: "follow"
+//					},
+//					function(e) {
+//						if(timer != null) {
+//							clearTimeout(timer);
+//						}
+//						timer = setTimeout(function() {
+//							index.evalJS("h('#nav').find('a').removeClass('mui-active'); h('#secondTab').addClass('mui-active');h('#title').html(h('#secondTab').find('div').html());");
+//						}, 100);
+//					}
+//				);
+//			});
+
+			//		点击更多进入市局,区县新闻列表
+			document.getElementById('rule_sj').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'html/dynamicTab/cityBureauPress.html',
+					id: 'cityBureauPress.html'
+				});
+			});
+			document.getElementById('rule_qx').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'html/dynamicTab/countyPress.html',
+					id: 'countyPress.html'
+				});
+			});
+			//新闻图片轮播请求		
+			var contentThree = "";
+			$.ajax({
+				url: "data/dynamic_xwlb.json",
+				async: false, //同步请求	
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json.data;
+					contentThree +=
+						'<div class="mui-slider-item mui-slider-item-duplicate">' +
+						'<a class="fishref" href="javascript:void(0);" data-id="' + data[5].id + '">' +
+						'<img src="' + data[5]['img'] + '">' +
+						'<p class="mui-slider-title"><span>' + data[5]['text'] + '</span></p>' +
+						'</a></div>';
+					for(var i = 0; i < data.length; i++) {
+						contentThree +=
+							'<div class="mui-slider-item">' +
+							'<a class="fishref" href="javascript:void(0);" data-id="' + data[i].id + '">' +
+							'<img src="' + data[i]['img'] + '">' +
+							'<p class="mui-slider-title"><span>' + data[i]['text'] + '</span></p>' +
+							'</a></div>';
+					}
+					contentThree +=
+						'<div class="mui-slider-item mui-slider-item-duplicate">' +
+						'<a class="fishref" href="javascript:void(0); data-id="' + data[0].id + '"">' +
+						'<img src="' + data[0]['img'] + '">' +
+						'<p class="mui-slider-title"><span>' + data[0]['text'] + '</span></p>' +
+						'</a></div>';
+
+					$('#xwlb').html(contentThree);
+
+					var gallery = mui(".mui-slider");
+					gallery.slider({
+						interval: 5000
+					});
+				}
+			});
+			//市局新闻请求	
+			var contentOne = "";
+			$.ajax({
+				url: "data/dynamic_sj.json",
+				async: false, //同步请求	
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json.data;
+					for(var i = 0; i < data.length; i++) {
+						if(i % 2 != 0) {
+							contentOne +=
+								'<li class="mui-table-view-cell mui-media">' +
+								'<a class="fishref" href="javascript:;" data-id="' + data[i].id + '">' +
+								'<img class="mui-media-object mui-pull-left" src="' + data[i].imgOne + '">' +
+								'<div class="mui-media-body">' +
+								'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+								'</div>' +
+								'<div class="place" style="float:right;">' +
+								'<span>' + data[i].region + '</span>' +
+								'<span>' + data[i].time + '</span>'
+							if(data[i].imgTwo != null) {
+								contentOne +=
+									'<img src="' + data[i].imgTwo + '" />'
+							} +
+							'</div></a>' +
+							'</li>';
+						} else {
+							contentOne +=
+								'<li class="mui-table-view-cell mui-media">' +
+								'<a class="fishref" href="javascript:;" data-id="' + data[i].id + '">' +
+								'<img class="mui-media-object mui-pull-right" src="' + data[i].imgOne + '">' +
+								'<div class="mui-media-body">' +
+								'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+								'</div>' +
+								'<div class="place" >' +
+								'<span>' + data[i].region + '</span>' +
+								'<span>' + data[i].time + '</span>'
+							if(data[i].imgTwo != null) {
+								contentOne +=
+									'<img src="' + data[i].imgTwo + '" />'
+							} +
+							'</div></a>' +
+							'</li>';
+						}
+					}
+					$('#dynamic_sj').html(contentOne);
+				}
+			});
+			//区县新闻请求		
+			var contentTwo = "";
+			$.ajax({
+				url: "data/dynamic_qx.json",
+				async: false, //同步请求	
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json.data;
+					for(var i = 0; i < data.length; i++) {
+						if(i % 2 != 0) {
+							contentTwo +=
+								'<li class="mui-table-view-cell mui-media">' +
+								'<a class="fisnew" href="javascript:;" data-id="' + data[i].id + '">' +
+								'<img class="mui-media-object mui-pull-left" src="' + data[i].imgOne + '">' +
+								'<div class="mui-media-body">' +
+								'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+								'</div>' +
+								'<div class="place" style="float:right;">' +
+								'<span>' + data[i].region + '</span>' +
+								'<span>' + data[i].time + '</span>'
+							if(data[i].imgTwo != null) {
+								contentTwo +=
+									'<img src="' + data[i].imgTwo + '" />'
+							} +
+							'</div></a>' +
+							'</li>';
+						} else {
+							contentTwo +=
+								'<li class="mui-table-view-cell mui-media">' +
+								'<a class="fisnew" href="javascript:;" data-id="' + data[i].id + '">' +
+								'<img class="mui-media-object mui-pull-right" src="' + data[i].imgOne + '">' +
+								'<div class="mui-media-body">' +
+								'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+								'</div>' +
+								'<div class="place" >' +
+								'<span>' + data[i].region + '</span>' +
+								'<span>' + data[i].time + '</span>'
+							if(data[i].imgTwo != null) {
+								contentTwo +=
+									'<img src="' + data[i].imgTwo + '" />'
+							} +
+							'</div></a>' +
+							'</li>';
+						}
+					}
+					$('#dynamic_qx').html(contentTwo);
+				}
+			});
+			//
+
+			//		点击每条滑动新闻,市局新闻
+			var fishref = document.getElementsByClassName('fishref');
+			var count = fishref.length;
+			for(i = 0; i < count; i++) {
+				fishref[i].addEventListener('tap', function() {
+					var id = this.getAttribute("data-id");
+					mui.openWindow({
+						url: 'html/dynamicTab/newscon.html?id=' + id,
+						id: 'newscon.html'
+					});
+				});
+			}
+
+			//		点击每条区县新闻
+			var fishref = document.getElementsByClassName('fisnew');
+			var count = fishref.length;
+			for(i = 0; i < count; i++) {
+				fishref[i].addEventListener('tap', function() {
+					var id = this.getAttribute("data-id");
+					mui.openWindow({
+						url: 'html/dynamicTab/newscon2.html?id=' + id,
+						id: 'newscon2.html'
+					});
+				});
+			}
+		</script>
+		<script type="text/javascript">
+			var sWeek = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+			var dNow = new Date();
+			var CalendarData = new Array(100);
+			var madd = new Array(12);
+			var tgString = "甲乙丙丁戊己庚辛壬癸";
+			var dzString = "子丑寅卯辰巳午未申酉戌亥";
+			var numString = "一二三四五六七八九十";
+			var monString = "正二三四五六七八九十冬腊";
+			var weekString = "日一二三四五六";
+			var sx = "鼠牛虎兔龙蛇马羊猴鸡狗猪";
+			var cYear, cMonth, cDay, TheDate;
+			CalendarData = new Array(0xA4B, 0x5164B, 0x6A5, 0x6D4, 0x415B5, 0x2B6, 0x957, 0x2092F, 0x497, 0x60C96, 0xD4A, 0xEA5, 0x50DA9, 0x5AD, 0x2B6, 0x3126E, 0x92E, 0x7192D, 0xC95, 0xD4A, 0x61B4A, 0xB55, 0x56A, 0x4155B, 0x25D, 0x92D, 0x2192B, 0xA95, 0x71695, 0x6CA, 0xB55, 0x50AB5, 0x4DA, 0xA5B, 0x30A57, 0x52B, 0x8152A, 0xE95, 0x6AA, 0x615AA, 0xAB5, 0x4B6, 0x414AE, 0xA57, 0x526, 0x31D26, 0xD95, 0x70B55, 0x56A, 0x96D, 0x5095D, 0x4AD, 0xA4D, 0x41A4D, 0xD25, 0x81AA5, 0xB54, 0xB6A, 0x612DA, 0x95B,
+				0x49B, 0x41497, 0xA4B, 0xA164B, 0x6A5, 0x6D4, 0x615B4, 0xAB6, 0x957, 0x5092F,
+				0x497, 0x64B, 0x30D4A, 0xEA5, 0x80D65, 0x5AC, 0xAB6, 0x5126D, 0x92E, 0xC96, 0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95);
+			madd[0] = 0;
+			madd[1] = 31;
+			madd[2] = 59;
+			madd[3] = 90;
+			madd[4] = 120;
+			madd[5] = 151;
+			madd[6] = 181;
+			madd[7] = 212;
+			madd[8] = 243;
+			madd[9] = 273;
+			madd[10] = 304;
+			madd[11] = 334;
+
+			function GetBit(m, n) {
+				return(m >> n) & 1;
+			}
+
+			function e2c() {
+				TheDate = (arguments.length != 3) ? new Date() : new Date(arguments[0], arguments[1], arguments[2]);
+				var total, m, n, k;
+				var isEnd = false;
+				var tmp = TheDate.getFullYear();
+				total = (tmp - 1921) * 365 + Math.floor((tmp - 1921) / 4) + madd[TheDate.getMonth()] + TheDate.getDate() - 38;
+				if(TheDate.getYear() % 4 == 0 && TheDate.getMonth() > 1) {
+					total++;
+				}
+				for(m = 0;; m++) {
+					k = (CalendarData[m] < 0xfff) ? 11 : 12;
+					for(n = k; n >= 0; n--) {
+						if(total <= 29 + GetBit(CalendarData[m], n)) {
+							isEnd = true;
+							break;
+						}
+						total = total - 29 - GetBit(CalendarData[m], n);
+					}
+					if(isEnd) break;
+				}
+				cYear = 1921 + m;
+				cMonth = k - n + 1;
+				cDay = total;
+				if(k == 12) {
+					if(cMonth == Math.floor(CalendarData[m] / 0x10000) + 1) {
+						cMonth = 1 - cMonth;
+					}
+					if(cMonth > Math.floor(CalendarData[m] / 0x10000) + 1) {
+						cMonth--;
+					}
+				}
+			}
+
+			function GetcDateString() {
+				var tmp = "";
+				tmp += tgString.charAt((cYear - 4) % 10);
+				tmp += dzString.charAt((cYear - 4) % 12);
+				tmp += "年 ";
+				if(cMonth < 1) {
+					tmp += "(闰)";
+					tmp += monString.charAt(-cMonth - 1);
+				} else {
+					tmp += monString.charAt(cMonth - 1);
+				}
+				tmp += "月";
+				tmp += (cDay < 11) ? "初" : ((cDay < 20) ? "十" : ((cDay < 30) ? "廿" : "三十"));
+				if(cDay % 10 != 0 || cDay == 10) {
+					tmp += numString.charAt((cDay - 1) % 10);
+				}
+				return tmp;
+			}
+
+			function GetLunarDay(solarYear, solarMonth, solarDay) {
+				if(solarYear < 1921 || solarYear > 2020) {
+					return "";
+				} else {
+					solarMonth = (parseInt(solarMonth) > 0) ? (solarMonth - 1) : 11;
+					e2c(solarYear, solarMonth, solarDay);
+					return GetcDateString();
+				}
+			}
+			var D = new Date();
+			var yy = D.getFullYear();
+			var mm = D.getMonth() + 1;
+			var dd = D.getDate();
+			var ww = D.getDay();
+			var ss = parseInt(D.getTime() / 1000);
+
+			function getFullYear(d) { // 修正firefox下year错误
+				yr = d.getYear();
+				if(yr < 1000)
+					yr += 1900;
+				return yr;
+			}
+
+			function showDate() {
+				var sValue = (dNow.getMonth() + 1) + "月" + dNow.getDate() + "日" + " " + sWeek[dNow.getDay()] + " ";
+				sValue += GetLunarDay(yy, mm, dd);
+				document.getElementById("pDate").innerHTML = sValue;
+			};
+			window.onload = showDate;
+		</script>
+	</body>
+
+</html>

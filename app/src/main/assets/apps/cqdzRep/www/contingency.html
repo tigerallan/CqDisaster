@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>应急管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<style type="text/css">
+			.mui-table-view-cell>a {
+				background-color: #eee;
+			}
+			
+			.mui_xgj {
+				height: 140px;
+			}
+			
+			.mui_xgj dt img {
+				width: 40px;
+			}
+			
+			.mui-collapse-content {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--子页面内容-->
+		<div id="bottom-icon4" class="mui-content">
+			<ul class="mui-table-view">
+				<!--<li class="mui-table-view-cell mui-collapse">应急调查</li>
+            <li class="mui-table-view-cell mui-collapse mui-active">
+                <a class="mui-navigate-right" href="#">日常管理</a>
+                <div  class="mui-collapse-content">
+                    <div style="display: flex;">
+                        <a class="dailymanage" href="#">应急预案管理</a>
+                        <a class="dailymanage" href="#">救援人员管理</a>
+                    </div>
+                    <div style="display: flex;">
+                        <a class="dailymanage" href="#">应急设备管理</a>
+                        <a class="dailymanage" href="#">应急物资管理</a>
+                    </div>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse">统计分析</li>-->
+				<li class="mui-table-view-cell">
+					<a href="javascript:void(0);">实时指挥</a>
+					<div class="mui-collapse-content mui-row">
+						<a id="zddq_sssp" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                            <img src="img/yjgl2.png"/>
+                        </dt>
+								<dd>
+									重点地区<br/>实时视频
+								</dd>
+							</dl>
+						</a>
+						<a id="uav-video" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                        <img src="img/yjgl3.png"/>
+                    </dt>
+								<dd>
+									应急无人机<br/>实时视频
+								</dd>
+							</dl>
+						</a>
+						<a id="spth" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                        <img src="img/yjgl1.png"/>
+                    </dt>
+								<dd>
+									远程<br/>视频通话
+								</dd>
+							</dl>
+						</a>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui_xgj">
+					<a href="javascript:void(0);">实用小工具</a>
+					<div class="mui-collapse-content mui-row">
+						<a id="wannianli" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                            <img src="img/rli.png"/>
+                        </dt>
+								<dd>日历</dd>
+							</dl>
+						</a>
+						<a id="jisuanji" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                        <img src="img/jisuanji.png"/>
+                    </dt>
+								<dd>计算器</dd>
+							</dl>
+						</a>
+						<a id="zhinanzhen" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                        <img src="img/zhinanzhen.png"/>
+                    </dt>
+								<dd>指南针</dd>
+							</dl>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false,
+			});
+			var _self, _prev, index, timer, info;
+			//			mui.plusReady(function() {
+			//				_self = plus.webview.currentWebview();
+			//				_prev = plus.webview.getWebviewById('stats.html');
+			//				_next = plus.webview.getWebviewById('work.html');
+			//				//		    index = plus.webview.getLaunchWebview();
+			//				index = plus.webview.getWebviewById("index.html");
+			//				_self.drag({
+			//						direction: "right",
+			//						moveMode: 　 "followFinger"
+			//					}, {
+			//						view　: 　_prev,
+			//						moveMode: "follow"
+			//					},
+			//					function(e) {
+			//						if(timer != null) {
+			//							clearTimeout(timer);
+			//						}
+			//						timer = setTimeout(function() {
+			//							index.evalJS("h('#nav').find('a').removeClass('mui-active'); h('#secondTab').addClass('mui-active');h('#title').html(h('#secondTab').find('div').html());");
+			//						}, 100);
+			//					}
+			//				);
+			//				_self.drag({
+			//						direction: "left",
+			//						moveMode: 　 "followFinger"
+			//					}, {
+			//						view　: 　_next,
+			//						moveMode: "follow"
+			//					},
+			//					function(e) {
+			//						if(timer != null) {
+			//							clearTimeout(timer);
+			//						}
+			//						timer = setTimeout(function() {
+			//							index.evalJS("h('#nav').find('a').removeClass('mui-active'); h('#fourthTab').addClass('mui-active');h('#title').html(h('#fourthTab').find('div').html());");
+			//						}, 100);
+			//					}
+			//				);
+			//			});
+			document.getElementById("zddq_sssp").addEventListener("tap", function() {
+				mui.openWindow({
+					url: "html/contingencyTab/zddq_sssp.html",
+					id: "zddq_sssp.html"
+				});
+
+			});
+
+			//无人机视频
+			document.getElementById("uav-video").addEventListener("tap", function() {
+				mui.openWindow({
+					url: "html/contingencyTab/uav-video.html",
+					id: "zddq_sssp.html"
+				});
+
+			});
+
+			document.getElementById("wannianli").addEventListener("tap", function() {
+				mui.openWindow({
+					url: "html/contingencyTab/wannianli/wannianli.html",
+					id: "wannianli.html"
+				});
+			});
+			document.getElementById("jisuanji").addEventListener("tap", function() {
+				mui.openWindow({
+					url: "html/contingencyTab/calculator.html",
+					id: "calculator.html"
+				});
+			});
+			document.getElementById("zhinanzhen").addEventListener("tap", function() {
+				mui.openWindow({
+					url: "html/contingencyTab/orientation_compass.html",
+					id: "orientation_compass.html"
+				});
+			});
+			mui.plusReady(function() {
+				info = JSON.parse(plus.storage.getItem("personal-information"));
+			});
+
+			document.getElementById("spth").addEventListener("tap", function() {
+
+				var activity = plus.android.runtimeMainActivity();
+				var Intent = plus.android.importClass("android.content.Intent");
+				var intent = new Intent();
+				intent.setClassName(activity, "com.nandi.cqdisaster.AnyChat.activity.LoginActivity");
+				intent.putExtra("NAME", info[0].user_name);
+				activity.startActivity(intent);
+			});
+		</script>
+	</body>
+
+</html>

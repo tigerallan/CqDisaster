@@ -1,0 +1,8 @@
+{"meta": {"success":true,"message":"ok"},
+	"data":[
+		{"text":"稳定","price":"1701"},
+		{"text":"基本稳定","price":"6539"},
+		{"text":"不稳定","price":"1398"},
+		{"text":"欠稳定","price":"6519"}
+	]
+}

@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>上报专报</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			body {
+				opacity: 0;
+			}
+			
+			.mui-bar-nav {
+				-webkit-box-shadow: 0 1px 6px #337AB7;
+				box-shadow: 0 1px 6px #337AB7;
+				background-color: #337AB7;
+				color: white!important;
+			}
+			
+			.mui-bar-nav .mui-icon,
+			.mui-bar-nav .mui-title {
+				color: white;
+			}
+			
+			.mui-bar-nav .mui-title {
+				font-weight: bold;
+			}
+			
+			.mui-content {
+				position: relative;
+				padding: 55px 15px 15px !important;
+				background-color: #fff;
+			}
+			
+			.mui-content::before {
+				content: " ";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 1px;
+				border-top: 1px solid #e5e5e5;
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+				top: auto;
+				bottom: -2px;
+			}
+			
+			.mui-content .new-title {
+				margin: 0 0 10px 0;
+				line-height: 1.4;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			
+			.mui-content .news-info {
+				margin: 0 0 18px 0;
+				line-height: 20px;
+				font-size: 0;
+			}
+			
+			.mui-content .news-em {
+				color: #8c8c8c;
+				font-style: normal;
+				display: inline-block;
+				font-size: 16px;
+				margin-bottom: 10px;
+				margin-right: 12px;
+				vertical-align: middle;
+			}
+			
+			.mui-content .news-nickname {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				max-width: 9em;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 8px;
+				margin-bottom: 10px;
+				font-size: 16px;
+				color: #18b4ed;
+				text-decoration: none;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
+			
+			.mui-content .news-img {
+				width: 100%;
+				margin-bottom: 6px;
+			}
+			
+			.mui-content .news-img img.imgnews {
+				height: auto !important;
+				max-width: 100%;
+			}
+			
+			.mui-content .news-content {
+				overflow: hidden;
+			}
+			
+			.mui-content .news-content * {
+				max-width: 100% !important;
+				box-sizing: border-box !important;
+				-webkit-box-sizing: border-box !important;
+				word-wrap: break-word !important;
+			}
+			
+			.mui-content .news-content p {
+				clear: both;
+				min-height: 1em;
+				white-space: pre-wrap;
+				margin-bottom: 20px;
+				text-indent: 2rem;
+				color: #3e3e3e !important;
+				font-size: 16px !important;
+			}
+			
+			.mui-content .news-content img {
+				height: auto !important;
+				max-width: 100%;
+				display: block;
+			}
+			
+			#newscon span {
+				font-size: 18px;
+				display: block;
+				margin: 5px 0;
+				color: #337AB7;
+			}
+			
+			p {
+				text-indent: 28px;
+				line-height: 24px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav" style="padding-top: 18px;height: 62px;">
+			<a class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 class="mui-title">上报专报</h1>
+		</header>
+
+		<div class="mui-scroll-wrapper" style="margin-top:14px;">
+			<div class="mui-scroll">
+				<div id="newscon" class="mui-content">
+					<!--<span>基本情况</span>
+        	<p>滑坡堆积体有位移变形,仍未稳定，变形有所增大；滑坡后缘残体有微弱的水平和沉降变形，变形在持续发展。</p>
+        	<span>已开展工作</span>
+	    		<p>一、施工情况：累计清除松动块体38m3 。施工队伍严格按照爆破方案施工。投入劈岩机2套，5.5m3空压机1台，3.5m3空压机2台，抽水泵3套，焊机1台，探照灯5套，皮卡2辆（待命设备336挖机1台，50T吊车1台）。</p>
+	    		<p>二、监测情况：107地质队24小时不间断监测，后缘监测点累计水平位移变化量在0.0mm至0.2mm之间,累计沉降位移在0.0mm至-0.2mm之间。</p>
+					<p>三、监理情况：投入监理人员4人。对残体清除作业、施工便道整修进行巡视检查；开展安全巡查，暂未发现施工安全隐患。</p>
+        	<span>下步安排</span>
+        	<p>按照既定方案继续施工活动</p>
+        	<span>填报审核</span>
+        	<div style="margin-left: 28px;">
+        		<input type="text" style="width: 30%;"/>
+        		<input type="text" style="width: 30%;"/>
+        	</div>-->
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.ready(function() {
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: true //是否启用回弹
+				});
+
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 100);
+			});
+
+			function Request(strName) {
+				var strHref = location.href;
+				var intPos = strHref.indexOf("?");
+				var strRight = strHref.substr(intPos + 1);
+				var arrTmp = strRight.split("&");
+				for(var i = 0; i < arrTmp.length; i++) {
+					var arrTemp = arrTmp[i].split("=");
+					if(arrTemp[0].toUpperCase() == strName.toUpperCase())
+						return arrTemp[1];
+				}
+				return "";
+			}
+			var id = Request('id');
+			var contentThree = "";
+			$.ajax({
+				url: "../../data/infocontent_xq.json",
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json.data;
+					contentThree +=
+						'<span>项目名称</span>' +
+						'<p>' + data[id].mc + '</p>' +
+						'<span>基本情况</span>' +
+						'<p>' + data[id].information1 + '</p>' +
+						(data[id].information2 != null ? ('<p>' + data[id].information2 + '</p>') : '');
+					contentThree += '<span>已开展工作</span>' +
+						'<p>' + data[id].completed1 + '</p>' +
+						(data[id].completed2 != null ? ('<p>' + data[id].completed2 + '</p>') : '') +
+						(data[id].completed3 != null ? ('<p>' + data[id].completed3 + '</p>') : '') +
+						(data[id].completed4 != null ? ('<p>' + data[id].completed4 + '</p>') : '') +
+						(data[id].completed5 != null ? ('<p>' + data[id].completed5 + '</p>') : '') +
+						(data[id].completed6 != null ? ('<p>' + data[id].completed6 + '</p>') : '');
+					contentThree += '<span>下步安排</span>' +
+						'<p>' + data[id].arrange1 + '</p>' +
+						(data[id].arrange2 != null ? ('<p>' + data[id].arrange2 + '</p>') : '') +
+						(data[id].arrange3 != null ? ('<p>' + data[id].arrange3 + '</p>') : '');
+					contentThree += '<span>填报审核</span>' +
+						'<div style="margin-left: 28px;">' +
+						'<input type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;" value="' + data[id].reported + '"/>' +
+						'<input type="text" style="width: 30%;color: #777;text-align: center;" value="' + data[id].audit + '"/>' +
+						'</div>';
+					$('#newscon').append(contentThree);
+				}
+			});
+		</script>
+	</body>
+
+</html>

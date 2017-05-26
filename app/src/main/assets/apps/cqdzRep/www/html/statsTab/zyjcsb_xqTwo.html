@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>专业监测设备</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../../css/index.css"/>-->
+		<link rel="stylesheet" type="text/css" href="../../css/hazardPoint.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
+		<style type="text/css">
+			body,
+			html {
+				background-color: #fff;
+			}
+			
+			.icon1_price {
+				float: right;
+				display: inline-block;
+			}
+			
+			.icon1_div {
+				width: 100%;
+				border-bottom: 1px dashed #DEDEE0;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			.mui-content {
+				margin-top: 20px;
+				background-color: #fff;
+			}
+			
+			.map_tb {
+				float: right;
+				margin: 15px;
+				color: #007AFF;
+			}
+			
+			.map_tb a {
+				color: #007AFF;
+			}
+			
+			.icon1-centent-left {
+				width: 100%;
+				margin-top: 30px;
+			}
+			
+			.icon1-centent-right1 {
+				width: 38%;
+			}
+			
+			.ibox {
+				padding: 5px 10px;
+				/*box-shadow: 0 0 5px #e3e1e1;
+				background: rgba(227,205,205,0.1);*/
+				border-bottom: 1px dashed #DEDEE0;
+			}
+			
+			#container {
+				width: 100%;
+				height: 170px;
+				margin: 0 auto;
+			}
+			
+			.icon1-centent-text>div {
+				padding-left: 0;
+			}
+			
+			.i1 {
+				background-color: #7CB5EC;
+			}
+			
+			.i2 {
+				background-color: #434348;
+			}
+			
+			.i3 {
+				background-color: #90ED7D;
+			}
+			
+			.i4 {
+				background-color: #F7A35C;
+			}
+			
+			.i5 {
+				background-color: #007AB7;
+			}
+			
+			.i6 {
+				background-color: #94EED4;
+			}
+			
+			.i7 {
+				background-color: #01999A;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">专业监测设备</h1>
+		</header>
+
+		<div class="mui-content">
+			<div id="map_tb" class="map_tb">
+				<a href="javascript:void(0);">
+					<span class="mui-icon mui-icon-map"></span>
+				</a>
+			</div>
+			<div class="icon1-centent-text">
+				<p>专业监测设备</p>
+				<b></b>
+				<div id="container"></div>
+				<div class="icon1-centent-left">
+					<!--<div class="ibox"><i class="i1"></i><span class="icon1_text">1日告警数量</span>：<span class="icon1_price">104</span></div>
+					<div class="ibox"><i class="i2"></i><span class="icon1_text">2日告警数量</span>：<span class="icon1_price">35</span></div>
+					<div class="ibox"><i class="i3"></i><span class="icon1_text">3日告警数量</span>：<span class="icon1_price">22</span></div>
+					<div class="ibox"><i class="i4"></i><span class="icon1_text">4日及以上告警</span>：<span class="icon1_price">99</span></div>
+					<div class="ibox"><i class="i5"></i><span class="icon1_text">专业监测在线率</span>：<span class="icon1_price">80%</span></div>
+					<div class="ibox"><i class="i6"></i><span class="icon1_text">掉线设备数量</span>：<span class="icon1_price">68</span></div>
+					<div class="ibox"><i class="i7"></i><span class="icon1_text">专业监测掉线率</span>：<span class="icon1_price">5%</span></div>-->
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script src="../../js/highcharts.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			//  	var colors = Highcharts.getOptions().colors,
+			var colors = ['#007ab7', '#01999A', '#9CFEFF', '#FEFF97', '#61bba1', '#5dbbc5', '#5796cc'],
+				categories = ['专业监测在线率', '专业监测掉线率'],
+				data = [{
+					y: 55.11,
+					color: colors[i],
+					drilldown: {
+						name: '专业监测在线率',
+						categories: ['1日告警', '2日告警', '3日告警', '4日及以上告警'],
+						data: [10, 30, 70, 100],
+						color: colors[i]
+					}
+				}, {
+					y: 21.63,
+					color: colors[4],
+					drilldown: {
+						name: '专业监测掉线率',
+						categories: ['掉线设备数量'],
+						data: [100],
+						color: colors[4]
+					}
+				}],
+				browserData = [],
+				versionsData = [],
+				i,
+				j,
+				dataLen = data.length,
+				drillDataLen,
+				brightness;
+			// 构建数据数组
+			for(i = 0; i < dataLen; i += 1) {
+				// 添加在线率数据
+
+				browserData.push({
+					name: categories[i],
+					y: data[i].y,
+					//          color: data[i].color
+					color: colors[i]
+				});
+				// 添加掉线率数据
+				drillDataLen = data[i].drilldown.data.length;
+				for(j = 0; j < drillDataLen; j += 1) {
+					brightness = 0.2 - (j / drillDataLen) / 5;
+					versionsData.push({
+						name: data[i].drilldown.categories[j],
+						y: data[i].drilldown.data[j],
+						color: Highcharts.Color(data[i].color).brighten(brightness).get()
+					});
+				}
+			}
+			var contentThree = '';
+			var p = 1;
+			var stais = {
+				chart: {
+					type: 'pie'
+				},
+				legend: {
+					enabled: false
+				},
+				title: {
+					text: null
+				},
+				credits: {
+					enabled: false
+				},
+				subtitle: {
+					text: null
+				},
+				yAxis: {
+					title: {
+						text: null
+					}
+				},
+				plotOptions: {
+					pie: {
+						//显不显示字
+						allowPointSelect: false,
+						//				cursor: 'pointer',
+						dataLabels: {
+							//					enabled: false
+							color: '#559aef'
+						},
+						//				showInLegend: true,
+
+						shadow: false,
+						center: ['50%', '50%']
+					}
+				},
+				tooltip: {
+					pointFormat: null
+				},
+				series: [{
+					name: '在线率',
+					data: browserData,
+					size: '30%'
+				}, {
+					name: '掉线率',
+					data: versionsData,
+					size: '90%',
+					innerSize: '60%'
+				}]
+			}
+			//			var data = new Array();
+			$.ajax({
+				url: "../../data/zyjcsb.json",
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					$.each(json.data, function(key, value) {
+						contentThree +=
+							'<div class="icon1_div">' + '<i class="i' + p++ + '"></i><span class="icon1_text">' + value['text'] + '</span>：<span class="icon1_price">' + value['price'] + '</span></div>'
+						//						data.push(value['price']);
+					});
+					$('.icon1-centent-left').html(contentThree);
+					$('#container').highcharts(stais);
+				}
+			});
+
+			var map_tb = document.getElementById('map_tb');
+			slideopen(map_tb, "baidumaps.html");
+
+			function slideopen(arr, wz) {
+				arr.addEventListener('tap', function() {
+					mui.openWindow({
+						url: wz,
+						id: wz
+					});
+				});
+			}
+		</script>
+	</body>
+
+</html>

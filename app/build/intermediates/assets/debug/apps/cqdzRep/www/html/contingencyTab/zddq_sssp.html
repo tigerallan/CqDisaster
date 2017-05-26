@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>重点地区实时视频</title>
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link href="../../css/mui.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+<style type="text/css">
+.list_video {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.video_left {
+	float: left;
+	width: 50%;
+	/*height: 150px;*/
+	margin: 0px;
+	/*border: 1px solid #000000;*/
+}
+
+.list_video img {
+	width: 90%;
+	margin: 5% 5% 0px;
+	max-height: 100px;
+}
+
+.video_right {
+	float: right;
+	width: 50%;
+	/*height: 150px;*/
+	margin: 0px;
+	/*border: 1px solid #000000;*/
+}
+
+span {
+	display: inline-block;
+	font-size: 14px;
+	max-width: 80%;
+	color: #000000;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a href="#" class="mui-action-back"> <span
+			class="mui-icon mui-icon-arrowleft"></span>
+		</a>
+		<h1 id="title" class="mui-title">重点地区实时视频</h1>
+	</header>
+	<div class="mui-content">
+		<div class="list_video">
+			<div class="video_left">
+				<a id="wushan"> <img src="../../img/video2.png" alt="" /> <span>巫山县-神女峰箭川洞</span>
+				</a>
+			</div>
+			<div class="video_right">
+				<a id="wulongyangjiao"> <img src="../../img/video4.jpg" alt="" />
+					<span>武隆区-羊角镇危岩</span>
+				</a>
+			</div>
+		</div>
+		<div class="list_video">
+			<div class="video_left">
+				<a id="guanyin"> <img src="../../img/video3.png" alt="" />
+					<span>渝北区-观音公园危岩</span>
+				</a>
+			</div>
+			<div class="video_right">
+				<a id="dabaishu"> <img src="../../img/video1.png" alt="" />
+					<span>渝北区-大柏树滑坡</span>
+				</a>
+			</div>
+		</div>
+		
+
+	</div>
+</body>
+<script src="../../js/mui.min.js"></script>
+<script type="text/javascript">
+	document.getElementById("wushan").addEventListener("tap",function(){
+		var activity = plus.android.runtimeMainActivity();
+		var Intent = plus.android.importClass("android.content.Intent");
+		var intent = new Intent();
+		intent.setClassName(activity, "com.nandi.cqdisaster.HCVideo.HcActivity");
+		intent.putExtra("IP","183.230.124.174");
+		intent.putExtra("PORT",8000);
+		intent.putExtra("USER","admin");
+		intent.putExtra("PASSWORD","ycmcwin2000");
+		activity.startActivity(intent);
+	});
+	document.getElementById("wulongyangjiao").addEventListener("tap",function(){
+		var activity = plus.android.runtimeMainActivity();
+		var Intent = plus.android.importClass("android.content.Intent");
+		var intent = new Intent();
+		intent.setClassName(activity, "com.nandi.cqdisaster.HCVideo.HcActivity");
+		intent.putExtra("IP","218.201.50.197");
+		intent.putExtra("PORT",38000);
+		intent.putExtra("USER","admin");
+		intent.putExtra("PASSWORD","ycmcwin2000");
+		activity.startActivity(intent);
+	});
+	document.getElementById("guanyin").addEventListener("tap",function(){
+		var activity = plus.android.runtimeMainActivity();
+		var Intent = plus.android.importClass("android.content.Intent");
+		var intent = new Intent();
+		intent.setClassName(activity, "com.nandi.cqdisaster.HCVideo.HcActivity");
+		intent.putExtra("IP","183.230.146.166");
+		intent.putExtra("PORT",8000);
+		intent.putExtra("USER","admin");
+		intent.putExtra("PASSWORD","ycmcwin2000");
+		activity.startActivity(intent);
+	});
+	document.getElementById("dabaishu").addEventListener("tap",function(){
+		var activity = plus.android.runtimeMainActivity();
+		var Intent = plus.android.importClass("android.content.Intent");
+		var intent = new Intent();
+		intent.setClassName(activity, "com.nandi.cqdisaster.HCVideo.HcActivity");
+		intent.putExtra("IP","183.230.146.173");
+		intent.putExtra("PORT",8000);
+		intent.putExtra("USER","admin");
+		intent.putExtra("PASSWORD","ycmcwin2000");
+		activity.startActivity(intent);
+	});
+	</script>
+</html>

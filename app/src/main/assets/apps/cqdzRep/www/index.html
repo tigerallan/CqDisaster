@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>主页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+		<link rel="stylesheet" href="fonts/iconfont.css" />
+	</head>
+
+	<body>
+		<!--头部导航-->
+		<header class="mui-bar mui-bar-nav">
+			<a id="person" href="javascript:void(0);">
+				<span class="mui-icon mui-icon-contact"></span>
+			</a>
+			<h1 id="title" class="mui-title">地灾动态</h1>
+			<button id="newcontent" class="mui-btn mui-btn-link mui-pull-right" style="color:white;">专报</button>
+			<!--<a id="newcontent" href="javascript:void(0);">
+				<span class="mui-icon mui-icon-chatbubble mui-pull-right">
+				<span class="mui-badge">3</span>
+				</span>
+			</a>-->
+		</header>
+		<!--底部导航3个按键-->
+		<nav id="nav" class="mui-bar mui-bar-tab">
+			<a id="defaultTab" class="mui-tab-item mui-active">
+				<span class="iconfont icon-dongtai"></span>
+				<div class="mui-tab-label">地灾动态</div>
+			</a>
+			<a id="secondTab" class="mui-tab-item">
+				<span class="iconfont icon-tongji"></span>
+				<div class="mui-tab-label">综合统计</div>
+			</a>
+			<a id="thirdTab" class="mui-tab-item">
+				<span class="iconfont icon-yingjiyuan"></span>
+				<div class="mui-tab-label">应急管理</div>
+			</a>
+			<a id="fourthTab" class="mui-tab-item">
+				<span class="iconfont icon-gongzuoguanli"></span>
+				<div class="mui-tab-label">工作管理</div>
+			</a>
+		</nav>
+		<script src="js/mui.min.js"></script>
+		<script src="js/h.js"></script>
+		<script src="js/update.js"></script>
+		<!--<script src="js/immersed.js"></script>-->
+	</body>
+	<script type="text/javascript">
+		mui.init({
+			subpages: [{
+					url: 'dynamic.html',
+					id: 'dynamic.html',
+					styles: {
+						top: '62px',
+						bottom: '52px',
+						width: "100%"
+					}
+				},
+				{
+					url: 'stats.html',
+					id: 'stats.html',
+					styles: {
+						left: '100%',
+						top: '62px',
+						bottom: '52px',
+						width: "100%"
+					}
+				},
+				{
+					url: 'work.html',
+					id: 'work.html',
+					styles: {
+						left: '300%',
+						top: '62px',
+						bottom: '52px',
+						width: "100%"
+					}
+				},
+				{
+					url: 'contingency.html',
+					id: 'contingency.html',
+					styles: {
+						left: '200%',
+						top: '62px',
+						bottom: '52px',
+						width: "100%"
+					}
+				}
+			]
+		});
+		mui.plusReady(function() {
+			initUpdate();
+			setTimeout(function() {
+				plus.webview.close(plus.webview.currentWebview().loginID);
+			}, 300);
+			h('#defaultTab').tap(function() {
+				changSub(1);
+				h('#title').html(h('#defaultTab').find("div").html());
+			});
+			h('#secondTab').tap(function() {
+				changSub(2);
+				h('#title').html(h('#secondTab').find("div").html());
+			});
+			h('#thirdTab').tap(function() {
+				changSub(3);
+				h('#title').html(h('#thirdTab').find("div").html());
+			});
+			h('#fourthTab').tap(function() {
+				changSub(4);
+				h('#title').html(h('#fourthTab').find("div").html());
+			});
+
+			var backButtonPress = 0;
+
+			mui.back = function(event) {
+				backButtonPress++;
+				if(backButtonPress > 1) {
+					plus.runtime.quit();
+				} else {
+					plus.nativeUI.toast('再按一次退出应用');
+				}
+				setTimeout(function() {
+					backButtonPress = 0;
+				}, 1000);
+				return false;
+			};
+		});
+
+		function changSub(index) {
+			var sub1 = plus.webview.getWebviewById('dynamic.html');
+			var sub2 = plus.webview.getWebviewById('stats.html');
+			var sub4 = plus.webview.getWebviewById('work.html');
+			var sub3 = plus.webview.getWebviewById('contingency.html');
+			sub1.setStyle({
+				left: (index - 1) * 100 + "%"
+			});
+			sub2.setStyle({
+				left: (2 - index) * 100 + "%"
+			});
+			sub3.setStyle({
+				left: (3 - index) * 100 + "%"
+			});
+			sub4.setStyle({
+				left: (4 - index) * 100 + "%"
+			});
+		}
+
+		//消息推送页面打开
+		document.getElementById('newcontent').addEventListener('tap', function() {
+			mui.openWindow({
+				url: 'infocontent.html',
+				id: 'infocontent.html',
+				show: {
+					autoShow: true, //页面loaded事件发生后自动显示，默认为true
+					aniShow: 'slide-in-bottom'
+				}
+			});
+		});
+
+		//个人设置页面打开
+		document.getElementById('person').addEventListener('tap', function() {
+			mui.openWindow({
+				url: 'person.html',
+				id: 'person.html',
+				show: {
+					autoShow: true,
+					aniShow: 'slide-in-bottom'
+				},
+				extras: {
+					indexID: plus.webview.currentWebview().id
+				}
+			});
+		});
+	</script>
+
+</html>

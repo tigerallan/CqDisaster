@@ -1,0 +1,19 @@
+{"meta": {"success":true,"message":"ok"},
+	"data":[
+		{"name":"灾害点标号","centent":"5002321070240101"},
+		{"name":"灾害点名称","centent":"羊角镇滑坡"},
+		{"name":"灾害类型","centent":"1"},
+		{"name":"经度","centent":"107.6059417"},
+		{"name":"纬度","centent":"29.39141944"},
+		{"name":"入库时间","centent":"2013-09-01"},
+		{"name":"是否销号","centent":"否"},
+		{"name":"销号时间","centent":"无"},
+		{"name":"区县","centent":"武隆镇"},
+		{"name":"片所","centent":"羊角镇"},
+		{"name":"乡镇","centent":"羊角镇"},
+		{"name":"监测人员","centent":"张一山"},
+		{"name":"告警号码","centent":"15702312704"},
+		{"name":"是否配备终端","centent":"是"},
+		{"name":"灾害点地址","centent":"重庆市武隆县羊角乡朝阳村"}
+	]
+}

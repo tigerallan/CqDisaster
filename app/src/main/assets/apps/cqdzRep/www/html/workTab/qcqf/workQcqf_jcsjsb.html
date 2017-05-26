@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>监测数据上报统计</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/disastercontent.css"/>
+		<style type="text/css">
+			body,html{
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				background-image: url(../../../img/timg.jpg);
+			}
+			.mui-table-view-cell .mui-active{background:#fff;}
+			#nav{
+				background-color: #f2f2f2;
+				border-top: 1px solid #d9d9d9;
+			}
+			.mui-bar-nav{
+				padding-top: 18px;
+			    height: 62px;
+				-webkit-box-shadow: 0 1px 6px #007AFF;
+			    box-shadow: 0 1px 6px #007AFF;
+			    background-color: #007AFF;
+			}
+			#title{
+				color: #fff;
+				font-weight: bold;
+			}
+			header span{
+				color: #fff;
+			}
+			.mui-content{
+				background: rgba(0,0,0,.3);
+				margin-top: 20px;
+			}
+			.content_text{
+				width: 100%;
+			    text-align: center;
+			    display: inline-block;
+			    color: #007aff;
+			    font-size: 18px;
+			}
+			.plan_a::after{
+				display: none;
+			}
+			.ck{
+				color: #007aff;
+				margin-left: 10px;
+			}
+			.mui-popover{
+				min-height: 275px;
+				width: 300px;
+			}
+			#middlePopover{
+				top: 250px !important;
+				left: 30px !important;
+			}
+			.mui-popover-arrow{
+				display: none;
+			}
+			.mui-content-padded{
+				margin: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">监测数据上报情况统计</h1>
+		</header>
+		<div class="mui-content">
+			 <ul class="mui-table-view" style="margin: 15px 10px;"> 
+		        <li class="mui-table-view-cell mui-collapse mui-active">
+		           <a class="mui-navigate-right plan_a" href="#">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12 content_text">
+								监测数据上报情况统计
+							</div>
+						</div>
+					</a>
+					<div class="mui-collapse-content">
+		                <ul id="plan" class="mui-table-view">
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">区县</span>
+						    	<span class="mui-pull-right">万州区</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">片所</span>
+						    	<span class="mui-pull-right">武陵所</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">乡镇</span>
+						    	<span class="mui-pull-right">武陵镇</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">灾害点总数</span>
+						    	<span class="mui-pull-right">26</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">监测点总数</span>
+						    	<span class="mui-pull-right">14</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">合法数据总数</span>
+						    	<span class="mui-pull-right">0<a class="ck" href="#middlePopover">查看</a></span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">不合法数据总数</span>
+						    	<span class="mui-pull-right">281<a class="ck">查看</a></span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">合法率</span>
+						    	<span class="mui-pull-right">0%</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">定量监测实际上报总数</span>
+						    	<span class="mui-pull-right">99<a class="ck">查看</a></span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">定量监测应上报总数</span>
+						    	<span class="mui-pull-right">56</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">定量监测上报率</span>
+						    	<span class="mui-pull-right">100.00%</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">宏观查询实际上报总数</span>
+						    	<span class="mui-pull-right">182<a class="ck">查看</a></span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">宏观查询应上报总数</span>
+						    	<span class="mui-pull-right">104</span>
+						    </li>
+						    <li class="mui-table-view-cell">
+						    	<span class="mui-pull-left">宏观巡查上报率</span>
+						    	<span class="mui-pull-right">100.00%</span>
+						    </li>
+						</ul>
+		            </div>
+		        </li>
+		    </ul>
+		</div>	
+		<!--弹出内容-->
+				<div id="middlePopover" class="mui-popover">
+					<div class="mui-popover-arrow"></div>
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+							    	<span class="mui-pull-left">名称</span>
+							    	<span class="mui-pull-right">坠基石滑坡</span>
+							    </li>
+							    <li class="mui-table-view-cell">
+							    	<span class="mui-pull-left">经度</span>
+							    	<span class="mui-pull-right">108.9538889</span>
+							    </li>
+							    <li class="mui-table-view-cell">
+							    	<span class="mui-pull-left">纬度</span>
+							    	<span class="mui-pull-right">30.72888889</span>
+							    </li>
+							    <li class="mui-table-view-cell">
+							    	<span class="mui-pull-left">上报时间</span>
+							    	<span class="mui-pull-right">2017-03-02 08:59:47</span>
+							    </li>
+							    <li class="mui-table-view-cell">
+							    	<span class="mui-pull-left">监测人姓名</span>
+							    	<span class="mui-pull-right">周大平</span>
+							    </li>
+							    <li class="mui-table-view-cell">
+							    	<span class="mui-pull-left">监测人手机</span>
+							    	<span class="mui-pull-right">15702311573</span>
+							    </li>
+							</ul>
+						</div>
+					</div>
+				</div>	
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init({
+				swipeBack: false,
+		});
+		var _self, _next, timer;
+		mui.plusReady(function(){
+		    _self = plus.webview.currentWebview();
+		    _next = plus.webview.getWebviewById('disastertwo.html');
+		    //获取应用首页
+		    index = plus.webview.getWebviewById("list_new");
+		    _self.drag(
+		        {
+		            direction : "left",
+		            moveMode  :　"followFinger"
+		        },
+		        {
+		            view　              :　_next,
+		            moveMode  : "follow"
+		        },
+		        function(e){
+		            if(timer != null){clearTimeout(timer); }
+		            timer = setTimeout(function(){
+		                index.evalJS("h('#nav').find('a').removeClass('mui-active'); h('#secondTab').addClass('mui-active');"+
+		                "h('#title').html(h('#secondTab').find('div').html());");
+		            }, 100);
+		        }
+		    );
+		});
+		mui('.mui-scroll-wrapper').scroll();
+		mui('body').on('shown', '.mui-popover', function(e) {
+			//console.log('shown', e.detail.id);//detail为当前popover元素
+		});
+		mui('body').on('hidden', '.mui-popover', function(e) {
+			//console.log('hidden', e.detail.id);//detail为当前popover元素
+		});
+	</script>	
+	</body>
+</html>
+

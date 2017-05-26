@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5f01b85bc740bb0e06e2250b34ec36b6fda18536\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\my-nineoldandroids-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa202f70b9e42e2ad90e0cb9cdc573e701c254ac">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\my-nineoldandroids-2.4.0_75f7836efca1440b898daff6100cd8aa94886d34\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\contacts.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eda3bca550ba73788130eebacb9b3f7074695f26">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\contacts_bfd941f2a51eab198c7b5127382ab654f1eecea5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\jna.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da30ee416e73782a7475668715c12b4f1b00f317">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\jna_7207adc4704c57818d80244bd541d0ca42d98d61\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\map-baidu.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="28b4164078dac6c383a2d757256e0ad1ae824380">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\map-baidu_9d22e30b5e75175f5c4f22c6569b988d97b3c366\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3c4b1af9cf65a45408e285422704f8d4e36f33f6">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_ea3335c83aca5cff5b3246ecf33ef385f286732b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\nineoldandroids-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a43cf9e271b5bc564e880a0a4be63ab9c69c97f8">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\nineoldandroids-2.4.0_d4972315b160e28e02d4865157dd19b6eab8a760\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\nopermission.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5dfd56f68f7eaf417d8d04601da80c27a9babde9">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\nopermission_198160ebfdfe48db07805586b730ebc7858c7f23\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\geolocation.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c145e90485fd89caabeabf43da29be6c12c2642b">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\geolocation_4f0506303b8bf57b596af4fe3569d19824975309\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\MapApiLocation_1.3.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="71e7604372d8a66689ff8df047e9a748e19a5169">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\MapApiLocation_1.3.3_c15b9161e2264c8a955af1cf7468b3e8ce901ff7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\BaiduLBS_Android.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9cc5fb6c6a98c9ba56e774cb20fa9b48bc6f75f3">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\BaiduLBS_Android_48eb6595a70c8eaf209a37bc2563dcb48e93a890\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\HCNetSDK.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8a67ce6bf0bd0f7804f3111f8ea5dd6465c3f7aa">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\HCNetSDK_c8451059f44bdc2abfa7f6b81d0dc4417526e50e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\camera.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c57591cf51f444673ff1693fc882d83675292cc8">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\camera_1815d7a797d2eea51f13ff66b399187e83957e54\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\file.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6612680f2385e8b556fba69e6285adb5527d0cee">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\file_7269a60175b0b9fe601280c6414b8e8296041fe1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\nativeui.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bc2ffabbb1a977ef45aaedd619a5b474eb3dc4e1">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\nativeui_4f31a203c4f45b6b5078756d557ca48601490e41\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\geolocation-baidu.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e46e15eecf8bd8a007d51d21398a13381c421528">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\geolocation-baidu_75b28457638abb1d72887e136989c74c85b86143\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\nativeObj.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b6f5892cea38e7fabd937f4fa44882be14ac9b25">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\nativeObj_4f39e422a1c4bcf9e260debf2c7cd89dc7f94587\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\PlayerSDK.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5ae800c07289f7e21f0d794705b4069c447cd0a6">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\PlayerSDK_cd953fb6a746156d1db7b68dc3fed4a3d1a05a2e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\AudioEngineSDK.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f1da3669c3599707a2df62d85cf099aa3b5d385b">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\AudioEngineSDK_5001844ea752c08d96f50c3491709fd758b20d27\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\pdr.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb74289a867258ac31ea8c1ce79865fe1659096">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\pdr_585407be2588d6bf0cb0c8207a9b07a3940b5bc6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\gallery.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e85cf2cfc11b5897560aa9b0e30e52dda98b0575">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\gallery_f4fc64211b4e1679c2c2f4bb5960286c58c2d0b6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\ui.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e3e75af2446dbe58111e0657ab11c98c39dfb4ea">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\ui_75cba3d5b867df07067a2daffabbe1ec71e0c2f4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\my-imageloader.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e0d3251f3d10893c82ced22f2c225ea442a69c7b">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\my-imageloader_7942d23ac29e76d4e778c7f3930b45ff7579c8a8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\invocation.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b5518209980e8bd42a2682c9a153cdd87f7f33b">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\invocation_cc1bc583f75b4e0bf84dad794f3d1d253bf7c984\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\work\studioWorkspace\CqDisaster\app\libs\xhr.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4954ac6b381b752f5ab66207372e9ead2031a40a">
+        <dex dex="D:\work\studioWorkspace\CqDisaster\app\build\intermediates\transforms\dex\debug\folders\1000\2\xhr_a2ce4b4026b39f31819726cd9980be60c1a03274\classes.dex" />
+    </item>
+
+</items>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>群测群防</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.picker.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.poppicker.css"/>
+		<style type="text/css">
+			body,html{
+				background-color: #EFEFF4;
+			}
+			.mui-bar-tab .mui-tab-item.mui-active{
+				color: #fff !important;
+			    background-color: #007aff;
+			}
+			.mui-table-view-cell .mui-active{background:#fff;}
+		</style>
+	</head>
+	<body>
+		<nav id="nav" class="mui-bar mui-bar-tab" >
+	    	<a id="defaultTab" class="mui-tab-item mui-active">
+	    		<span class="iconfont icon-dongtai"></span>
+				<div class="mui-tab-label">防灾明白卡信息</div>
+			</a>
+			<a id="secondTab" class="mui-tab-item">
+				<span class="iconfont icon-tongji"></span>
+				<div class="mui-tab-label">避险明白卡信息</div>
+			</a>
+		</nav>
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/h.js"></script>
+	<script src="../../../js/mui.picker.js"></script>
+	<script src="../../../js/mui.poppicker.js"></script>
+	<script type="text/javascript">
+		mui.init({
+		    subpages : [
+		        {
+		            url : 'twoCards_listOne.html',
+		            id  : 'twoCards_listOne.html',
+		            styles : {
+		                top    : '0px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        },
+		        {
+		            url : 'twoCards_listTwo.html',
+		            id  : 'twoCards_listTwo.html',
+		            styles : {
+		                left   : '100%',
+		                top    : '0px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        }
+		    ]
+		});
+		mui.plusReady(function(){
+			h('#defaultTab').tap(function(){
+				changSub(1);
+				h('#title').html(h('#defaultTab').find("div").html());
+			});
+			h('#secondTab').tap(function(){
+				changSub(2);
+				h('#title').html(h('#secondTab').find("div").html());
+			});
+		});
+
+		function changSub(index){
+		    var sub1 = plus.webview.getWebviewById('twoCards_listOne.html');
+		    var sub2 = plus.webview.getWebviewById('twoCards_listTwo.html');
+		    sub1.setStyle({left: (index - 1) * 100 + "%"});
+		    sub2.setStyle({left: (2 - index) * 100 + "%"});
+		}
+	</script>
+	</body>
+</html>

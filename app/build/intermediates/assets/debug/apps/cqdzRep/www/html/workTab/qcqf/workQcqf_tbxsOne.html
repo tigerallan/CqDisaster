@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>规模等级分析</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/disastercontent.css"/>
+		<style type="text/css">
+			body,html{
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				background-image: url(../../../img/timg.jpg);
+			}
+			.mui-table-view-cell .mui-active{background:#fff;}
+			#nav{
+				background-color: #f2f2f2;
+				border-top: 1px solid #d9d9d9;
+			}
+			.mui-bar-nav{
+				padding-top: 18px;
+			    height: 62px;
+				-webkit-box-shadow: 0 1px 6px #007AFF;
+			    box-shadow: 0 1px 6px #007AFF;
+			    background-color: #007AFF;
+			}
+			#title{
+				color: #fff;
+				font-weight: bold;
+			}
+			header span{
+				color: #fff;
+			}
+			.mui-content{
+				background: rgba(0,0,0,.3);
+				padding-top: 20px;
+			}
+			.content_text{
+				width: 100%;
+			    text-align: center;
+			    display: inline-block;
+			    color: #007aff;
+			    font-size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			 <div id="container" style="min-width:100%"></div>
+		</div>	
+			
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/jquery-1.11.3.js"></script>
+	<script src="../../../js/highcharts.js"></script>
+	<script type="text/javascript">
+		mui.init({
+				swipeBack: false,
+		});
+		
+		$(function () {
+			    $('#container').highcharts({
+			        chart: {
+			            type: 'column'
+			        },
+			        title: {
+			            text: '规模等级分析'
+			        },
+			        xAxis: {
+			            categories: [
+			                '滑坡',
+			                '泥石流',
+			                '危岩',
+			                '不稳定斜坡',
+			                '地面塌陷',
+			                '地裂缝',
+			                '库岸'
+			            ],
+			            crosshair: true
+			        },
+			        yAxis: {
+			            min: 0,
+			            title: {
+			                text: '数量(K)'
+			            }
+			        },
+			        credits : {
+						enabled: false
+					},
+			        tooltip: {
+			            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+			            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+			            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+			            footerFormat: '</table>',
+			            shared: true,
+			            useHTML: true
+			        },
+			        plotOptions: {
+			            column: {
+			                pointPadding: 0.2,
+			                borderWidth: 0
+			            }
+			        },
+			        series: [{
+			            name: '特大型',
+			            color: '#4572A7',
+			            data: [779, 605, 1196, 6148, 3222, 6148, 3222]
+			        }, {
+			            name: '大型',
+			            color: '#AA4643',
+			            data: [782, 636, 1313, 6310, 3303, 6148, 3222]
+			        }, {
+			            name: '中型',
+			            color: '#89A54E',
+			            data: [3, 31, 117, 162, 81, 162, 81]
+			        }, {
+			            name: '小型',
+			            color: '#80699B',
+			            data: [3, 31, 117, 162, 81, 162, 81]
+			        }]
+			    });
+			});	
+
+	</script>	
+	</body>
+</html>
+

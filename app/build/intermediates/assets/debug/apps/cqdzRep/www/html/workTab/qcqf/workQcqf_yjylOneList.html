@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>应急演练</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.picker.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.poppicker.css"/>
+		<style type="text/css">
+			body,html{
+				background-color: #EFEFF4;
+			}
+			.mui-table-view-cell .mui-active{background:#fff;}
+			.mui-bar-tab .mui-tab-item.mui-active{
+				color: #fff !important;
+			    background-color: #007aff;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">综合演练</h1>
+		</header>
+		<nav id="nav" class="mui-bar mui-bar-tab" >
+	    	<a id="textTab" class="mui-tab-item mui-active">
+				<div class="mui-tab-label">内容展示</div>
+			</a>
+			<a id="imgTab" class="mui-tab-item">
+				<div class="mui-tab-label">图片展示</div>
+			</a>
+			<a id="videoTab" class="mui-tab-item">
+				<div class="mui-tab-label">视频展示</div>
+			</a>
+			<a id="fileTab" class="mui-tab-item">
+				<div class="mui-tab-label">文件展示</div>
+			</a>
+		</nav>
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/h.js"></script>
+	<script src="../../../js/mui.picker.js"></script>
+	<script src="../../../js/mui.poppicker.js"></script>
+	<script type="text/javascript">
+		mui.init({
+		    subpages : [
+		        {
+		            url : 'workQcqf_yjylOnetext.html',
+		            id  : 'workQcqf_yjylOnetext.html',
+		            styles : {
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        },
+		        {
+		            url : 'workQcqf_yjylOneimg.html',
+		            id  : 'workQcqf_yjylOneimg.html',
+		            styles : {
+		                left   : '100%',
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        },
+		        {
+		            url : 'workQcqf_yjylOnevideo.html',
+		            id  : 'workQcqf_yjylOnevideo.html',
+		            styles : {
+		                left   : '100%',
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        },
+		        {
+		            url : 'workQcqf_yjylOnefile.html',
+		            id  : 'workQcqf_yjylOnefile.html',
+		            styles : {
+		                left   : '100%',
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        }
+		    ]
+		});
+		mui.plusReady(function(){
+			h('#textTab').tap(function(){
+				changSub(1);
+			});
+			h('#imgTab').tap(function(){
+				changSub(2);
+			});
+			h('#videoTab').tap(function(){
+				changSub(3);
+			});
+			h('#fileTab').tap(function(){
+				changSub(4);
+			});
+		});
+
+		function changSub(index){
+		    var sub1 = plus.webview.getWebviewById('workQcqf_yjylOnetext.html');
+		    var sub2 = plus.webview.getWebviewById('workQcqf_yjylOneimg.html');
+		    var sub3 = plus.webview.getWebviewById('workQcqf_yjylOnevideo.html');
+		    var sub4 = plus.webview.getWebviewById('workQcqf_yjylOnefile.html');
+		    sub1.setStyle({left: (index - 1) * 100 + "%"});
+		    sub2.setStyle({left: (2 - index) * 100 + "%"});
+		    sub3.setStyle({left: (3 - index) * 100 + "%"});
+		    sub4.setStyle({left: (4 - index) * 100 + "%"});
+		}
+	</script>
+	</body>
+</html>

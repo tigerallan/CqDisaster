@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>隐患点数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.picker.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.poppicker.css"/>
+		<style>
+			.mui-bar-popover {
+				width: 40%;
+			}
+			.mui-bar-tab .mui-tab-item.mui-active{
+				color: #fff !important;
+			    background-color: #007aff;
+			}
+			.mui-table-view-cell .mui-active{background:#fff;}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" >
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">隐患点数据</h1>
+		</header>
+		<nav id="nav" class="mui-bar mui-bar-tab" >
+	    	<a id="defaultTab" class="mui-tab-item mui-active">
+				<div class="mui-tab-label">定量监测数据</div>
+			</a>
+			<a id="secondTab" class="mui-tab-item">
+				<div class="mui-tab-label">宏观监测数据</div>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<p style="text-indent: 22px;"></p>
+			</div>
+		</div>
+		
+	</body>
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/h.js"></script>
+	<script src="../../../js/mui.picker.js"></script>
+	<script src="../../../js/mui.poppicker.js"></script>
+	<script type="text/javascript">
+		mui.init({
+		    subpages : [
+		        {
+		            url : 'workQcqf_hiddenOne.html',
+		            id  : 'workQcqf_hiddenOne.html',
+		            styles : {
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        },
+		        {
+		            url : 'workQcqf_hiddenTwo.html',
+		            id  : 'workQcqf_hiddenTwo.html',
+		            styles : {
+		                left   : '100%',
+		                top    : '62px',
+		                bottom : '52px',
+		                width  : "100%"
+		            }
+		        }
+		    ]
+		});
+		mui.plusReady(function(){
+			h('#defaultTab').tap(function(){
+				changSub(1);
+				h('#title').html(h('#defaultTab').find("div").html());
+			});
+			h('#secondTab').tap(function(){
+				changSub(2);
+				h('#title').html(h('#secondTab').find("div").html());
+			});
+		});
+
+		function changSub(index){
+		    var sub1 = plus.webview.getWebviewById('workQcqf_hiddenOne.html');
+		    var sub2 = plus.webview.getWebviewById('workQcqf_hiddenTwo.html');
+		    sub1.setStyle({left: (index - 1) * 100 + "%"});
+		    sub2.setStyle({left: (2 - index) * 100 + "%"});
+		}
+	</script>
+</html>
