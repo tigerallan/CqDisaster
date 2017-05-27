@@ -82,6 +82,21 @@
 						</a>
 					</div>
 				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:void(0);">专题预警</a>
+					<div class="mui-collapse-content mui-row">
+						<a id="rzgjsl_xq" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                            <img src="img/gj2.png"/>
+                        </dt>
+								<dd>
+									区县日报<br/>上报率
+								</dd>
+							</dl>
+						</a>
+					</div>
+				</li>
 				<li class="mui-table-view-cell mui_xgj">
 					<a href="javascript:void(0);">实用小工具</a>
 					<div class="mui-collapse-content mui-row">
@@ -206,6 +221,27 @@
 				intent.putExtra("NAME", info[0].user_name);
 				activity.startActivity(intent);
 			});
+
+			var rzgjsl_xq = document.getElementById('rzgjsl_xq');
+			slideopen(rzgjsl_xq, "html/statsTab/rzgjsl_xq.html");
+
+			function slideopen(arr, wz) {
+				arr.addEventListener('tap', function() {
+					mui.openWindow({
+						url: wz,
+						id: wz,
+						show: {
+							autoShow: true,
+							aniShow: 'slide-in-bottom',
+							duration: 300
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+						}
+					});
+				});
+			}
 		</script>
 	</body>
 

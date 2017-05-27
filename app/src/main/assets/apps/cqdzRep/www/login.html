@@ -110,6 +110,9 @@
 									default:
 										break;
 								}
+							},
+							error: function() {
+								plus.nativeUI.toast('网络连接失败，请检查网络问题！');
 							}
 						});
 					}
