@@ -112,7 +112,7 @@
 					</a>
 				</div>
 				<div class="video_right">
-					<a id="dawanbei"> <img src="../../img/video3.png" alt="" />
+					<a id="jihedi"> <img src="../../img/wulong_jihedi.jpg" alt="" />
 						<span>武隆区-集合地(无法操控)</span>
 					</a>
 				</div>
@@ -230,6 +230,17 @@
 			intent.putExtra("PORT", 8001);
 			intent.putExtra("USER", "admin");
 			intent.putExtra("PASSWORD", "admin1234");
+			activity.startActivity(intent);
+		});
+		document.getElementById("jihedi").addEventListener("tap", function() {
+			var activity = plus.android.runtimeMainActivity();
+			var Intent = plus.android.importClass("android.content.Intent");
+			var intent = new Intent();
+			intent.setClassName(activity, "com.nandi.cqdisaster.HCVideo.HcActivity");
+			intent.putExtra("IP", "218.201.50.59");
+			intent.putExtra("PORT", 8001);
+			intent.putExtra("USER", "admin");
+			intent.putExtra("PASSWORD", "ycmcwin2000");
 			activity.startActivity(intent);
 		});
 	</script>
