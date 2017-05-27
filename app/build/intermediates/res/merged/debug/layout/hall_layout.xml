@@ -22,9 +22,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:horizontalSpacing="10dip"
-        android:numColumns="auto_fit"
-        android:columnWidth="300px"
-        android:stretchMode="columnWidth"
+        android:numColumns="2"
         android:verticalSpacing="10dip" >
     </GridView>
 

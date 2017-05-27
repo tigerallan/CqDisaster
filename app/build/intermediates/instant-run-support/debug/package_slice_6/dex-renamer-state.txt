@@ -1,4 +1,4 @@
-#Sat May 20 23:40:16 GMT+08:00 2017
+#Sat May 27 14:43:18 GMT+08:00 2017
 base.0=D\:\\work\\studioWorkspace\\CqDisaster\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_6
 renamed.0=classes.dex
 file.0=D\:\\work\\studioWorkspace\\CqDisaster\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_6\\classes.dex

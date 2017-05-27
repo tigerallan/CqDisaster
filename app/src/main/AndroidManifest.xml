@@ -31,7 +31,9 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="NqWbzKHHOBmYjNTaWyUnGlsm0hUxcIfy" />
-
+        <meta-data
+            android:name="immersed.status.bar"
+            android:value="true"/>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

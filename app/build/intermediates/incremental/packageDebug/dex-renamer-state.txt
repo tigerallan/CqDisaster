@@ -1,4 +1,4 @@
-#Fri May 26 11:41:45 GMT+08:00 2017
+#Sat May 27 15:00:26 GMT+08:00 2017
 base.0=D\:\\work\\studioWorkspace\\CqDisaster\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_5f01b85bc740bb0e06e2250b34ec36b6fda18536
 renamed.1=classes2.dex
 renamed.0=classes.dex

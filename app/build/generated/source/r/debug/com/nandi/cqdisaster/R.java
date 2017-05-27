@@ -2940,6 +2940,13 @@ containing a value of this type.
         public static final int AlertDialog_AppCompat_Light=0x7f08008d;
         public static final int Animation_AppCompat_Dialog=0x7f08008e;
         public static final int Animation_AppCompat_DropDownUp=0x7f08008f;
+        /** 
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+
+        
+         */
         public static final int AppBaseTheme=0x7f080090;
         public static final int AppTheme=0x7f080091;
         public static final int Base_AlertDialog_AppCompat=0x7f080092;
@@ -3286,6 +3293,8 @@ containing a value of this type.
         public static final int featureLossDialog=0x7f08015d;
         public static final int streamDelete19Dialog=0x7f08015e;
         public static final int title_bg=0x7f08015f;
+        /**  All customizations that are NOT specific to a particular API-level can go here. 
+         */
         public static final int titlestyle=0x7f080160;
     }
     public static final class styleable {
