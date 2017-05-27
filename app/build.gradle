@@ -61,4 +61,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/sensor.jar')
     compile files('libs/device.jar')
+    compile files('libs/downloader.jar')
 }
