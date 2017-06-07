@@ -74,7 +74,59 @@
 			<div class="mui-scroll">
 				<ul id="infocontent" class="main mui-table-view">
 					<!--<li class="mui-table-view-cell mui-media">
-						<a href="javascript:;">
+						<a class="fishref" href="javascript:void(0);" data-ng="0" data-id="0">
+							<div class="mui-media-body">
+								<div class='mui-ellipsis'>北碚区水土镇山体滑坡应急救援抢险工作续报</div>
+							</div>
+							<div class="place">
+								<span>北碚区</span>
+								<span>2017-05-15 15:47:00</span>
+								<span>未处理</span>
+								<span>正常上报</span>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a class="fishref" href="javascript:void(0);" data-ng="0" data-id="0">
+							<div class="mui-media-body">
+								<div class='mui-ellipsis'>北碚区水土镇山体滑坡应急救援抢险工作续报</div>
+							</div>
+							<div class="place">
+								<span>北碚区</span>
+								<span>2017-05-15 15:47:00</span>
+								<span>未处理</span>
+								<span>正常上报</span>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a class="fishref" href="javascript:void(0);" data-ng="0" data-id="0">
+							<div class="mui-media-body">
+								<div class='mui-ellipsis'>北碚区水土镇山体滑坡应急救援抢险工作续报</div>
+							</div>
+							<div class="place">
+								<span>北碚区</span>
+								<span>2017-05-15 15:47:00</span>
+								<span>未处理</span>
+								<span>正常上报</span>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a class="fishref" href="javascript:void(0);" data-ng="1" data-id="0">
+							<div class="mui-media-body">
+								<div class='mui-ellipsis'>北碚区水土镇山体滑坡应急救援抢险工作续报</div>
+							</div>
+							<div class="place">
+								<span>北碚区</span>
+								<span>2017-05-15 15:47:00</span>
+								<span>未处理</span>
+								<span>正常上报</span>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a class="fishref" href="javascript:void(0);" data-ng="1" data-id="0">
 							<div class="mui-media-body">
 								<div class='mui-ellipsis'>北碚区水土镇山体滑坡应急救援抢险工作续报</div>
 							</div>
@@ -135,6 +187,8 @@
 				});
 			})
 
+			
+
 			//区县专报请求		
 			var content = "";
 			$.ajax({
@@ -147,7 +201,7 @@
 					for(var i = 0; i < data.length; i++) {
 						content +=
 							'<li class="mui-table-view-cell mui-media">' +
-							'<a class="fishref" href="javascript:void(0);" data-id="' + data[i].id + '">' +
+							'<a class="fishref" href="javascript:void(0);" data-ng="' + data[i].ng + '" data-id="' + data[i].id + '">' +
 							'<div class="mui-media-body">' +
 							'<div class="mui-ellipsis">' + data[i].title + '</div>' +
 							'</div>' +
@@ -161,6 +215,16 @@
 					}
 					$('#infocontent').html(content);
 				}
+				
+			});
+			var y = document.getElementsByClassName('fishref');
+			$(y).each(function(){
+				var ng = $(this).attr('data-ng');
+				if(ng==0){
+					$(this).css('background-color','rgba(221,221,221,.3)');
+				} else{
+					$(this).css('background-color','#fff');
+				}
 			});
 
 			//点击每条跳转到详情页
@@ -168,6 +232,8 @@
 			var count = fishref.length;
 			for(i = 0; i < count; i++) {
 				fishref[i].addEventListener('tap', function() {
+					$(this).attr("data-ng","1");
+					$(this).css('background-color','#fff');
 					var id = this.getAttribute("data-id");
 					mui.openWindow({
 						url: 'html/dynamicTab/infocontent_xq.html?id=' + id,
