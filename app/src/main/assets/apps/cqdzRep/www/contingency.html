@@ -95,6 +95,16 @@
 								</dd>
 							</dl>
 						</a>
+						<!--<a id="jcyj" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                            <img src="img/1_8.png"/>
+                        </dt>
+								<dd>
+									监测<br />预警
+								</dd>
+							</dl>
+						</a>-->
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui_xgj">
@@ -173,58 +183,25 @@
 			//					}
 			//				);
 			//			});
-			document.getElementById("zddq_sssp").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/zddq_sssp.html",
-					id: "zddq_sssp.html"
-				});
 
-			});
-
-			//无人机视频
-			document.getElementById("uav-video").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/uav-video.html",
-					id: "zddq_sssp.html"
-				});
-
-			});
-
-			document.getElementById("wannianli").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/wannianli/wannianli.html",
-					id: "wannianli.html"
-				});
-			});
-			document.getElementById("jisuanji").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/calculator.html",
-					id: "calculator.html"
-				});
-			});
-			document.getElementById("zhinanzhen").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/orientation_compass.html",
-					id: "orientation_compass.html"
-				});
-			});
-			mui.plusReady(function() {
-				info = JSON.parse(plus.storage.getItem("personal-information"));
-			});
-
-			document.getElementById("spth").addEventListener("tap", function() {
-
-				var activity = plus.android.runtimeMainActivity();
-				var Intent = plus.android.importClass("android.content.Intent");
-				var intent = new Intent();
-				intent.setClassName(activity, "com.nandi.cqdisaster.AnyChat.activity.LoginActivity");
-				intent.putExtra("NAME", info[0].user_name);
-				activity.startActivity(intent);
-			});
-
+			
+			
+			var zhdsl_xq = document.getElementById('zddq_sssp');
+			slideopen(zddq_sssp, "html/contingencyTab/zddq_sssp.html");
+			var uav_video = document.getElementById('uav-video');
+			slideopen(uav_video, "html/contingencyTab/uav-video.html");
+			var wannianli = document.getElementById('wannianli');
+			slideopen(wannianli, "html/contingencyTab/wannianli/wannianli.html");
+			var calculator = document.getElementById('jisuanji');
+			slideopen(calculator, "html/contingencyTab/calculator.html");
+			var orientation_compass = document.getElementById('zhinanzhen');
+			slideopen(orientation_compass, "html/contingencyTab/orientation_compass.html");
 			var rzgjsl_xq = document.getElementById('rzgjsl_xq');
 			slideopen(rzgjsl_xq, "html/statsTab/rzgjsl_xq.html");
-
+			var jcyj = document.getElementById('jcyj');
+			slideopen(jcyj, "html/contingencyTab/jcyj.html");
+			
+			
 			function slideopen(arr, wz) {
 				arr.addEventListener('tap', function() {
 					mui.openWindow({
@@ -242,6 +219,22 @@
 					});
 				});
 			}
+			
+			
+			mui.plusReady(function() {
+				info = JSON.parse(plus.storage.getItem("personal-information"));
+			});
+
+			document.getElementById("spth").addEventListener("tap", function() {
+
+				var activity = plus.android.runtimeMainActivity();
+				var Intent = plus.android.importClass("android.content.Intent");
+				var intent = new Intent();
+				intent.setClassName(activity, "com.nandi.cqdisaster.AnyChat.activity.LoginActivity");
+				intent.putExtra("NAME", info[0].user_name);
+				activity.startActivity(intent);
+			});
+
 		</script>
 	</body>
 

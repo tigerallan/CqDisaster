@@ -91,6 +91,7 @@ header span{
 }
 .place{
 	font-size: 12px;
+	margin-top: 16px;
 }
 .place>span:first-child{
 	margin-right:10%;
