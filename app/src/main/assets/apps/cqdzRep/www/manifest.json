@@ -1,1749 +1,252 @@
 {
-  "@platforms": [
-    "android",
-    "iPhone",
-    "iPad"
-  ],
-  "id": "cqdzRep",
-  /*应用的标识，创建应用时自动生成，勿手动修改*/
-  "name": "重庆地灾",
-  /*应用名称，程序桌面图标名称*/
-  "version": {
-    "name": "1.2.0",
-    /*应用版本名称*/
-    "code": "83"
-  },
-  "description": "",
-  /*应用描述信息*/
-  "icons": {
-    "72": "icon.png"
-  },
-  "launch_path": "login.html",
-  /*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
-  "developer": {
-    "name": "",
-    /*开发者名称*/
-    "email": "",
-    /*开发者邮箱地址*/
-    "url": "http://www.dcloud.io"
-  },
-  "permissions": {
-    "Audio": {},
-    "Cache": {
-      "description": "管理应用缓存"
-    },
-    "Camera": {},
-    "Console": {
-      "description": "跟踪调试输出日志"
-    },
-    "Device": {},
-    "Events": {
-      "description": "应用扩展事件"
-    },
-    "File": {},
-    "Invocation": {},
-    "Storage": {},
-    "Runtime": {},
-    "XMLHttpRequest": {},
-    "Webview": {},
-    "NativeUI": {},
-    "Navigator": {},
-    "NativeObj": {},
-    "Maps": {},
-    "Orientation": {},
-    "Zip": {},
-    
-    "Speech": {},
-    
-    "Barcode": {},
-    "Gallery": {},
-    "Uploader": {},
-    "Contacts": {},
-    "Proximity": {},
-    "Messaging": {},
-    "Downloader": {},
-    "Geolocation": {},
-    "Accelerometer": {}
-  },
-  "plus": {
-    "splashscreen": {
-      "autoclose": true,
-      /*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
-      "waiting": false,
-      "delay": "2000"
-    },
-    "runmode": "liberate",
-    /*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
-    "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",
-    /*可选，保留给应用签名，暂不使用*/
-    "distribute": {
-      "plugins": {
-        "maps": {
-          "baidu": {
-            "appkey_ios": "3NuwT7ByxvD4z8VZlqCFYL1xmaH7hslQ",
-            "appkey_android": "4r7q3HtPU6Bgxbg4Z7bIIiASFGoquYPW",
-            "appkey": "",
-            "description": "百度地图"
-          }
-        }
-      },
-      "apple": {
-        "appid": "",
-        /*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
-        "mobileprovision": "",
-        /*iOS应用打包配置文件*/
-        "password": "",
-        /*iOS应用打包个人证书导入密码*/
-        "p12": "",
-        /*iOS应用打包个人证书，打包配置文件关联的个人证书*/
-        "UIReserveStatusbarOffset": false,
-        /*iOS应用设置沉浸式状态栏*/
-        "devices": "universal",
-        /*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
-        "frameworks": []
-      },
-      "google": {
-        "packagename": "",
-        /*Android应用包名，如io.dcloud.HelloH5*/
-        "keystore": "",
-        /*Android应用打包使用的密钥库文件*/
-        "password": "",
-        /*Android应用打包使用密钥库中证书的密码*/
-        "aliasname": "",
-        /*Android应用打包使用密钥库中证书的别名*/
-        "ImmersedStatusbar": true,
-        /*Android应用设置沉浸式状态栏*/
-        "permissions": [
-          "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
-          "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
-          "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
-          "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
-          "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
-          "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
-          "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
-          "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
-          "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
-          "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
-          "<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>",
-          "<uses-permission android:name=\"android.permission.CAMERA\"/>",
-          "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
-          "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
-          "<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>",
-          "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
-          "<uses-permission android:name=\"android.permission.SEND_SMS\"/>",
-          "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
-          "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
-          "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
-          "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
-          "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
-          "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
-          "<uses-feature android:name=\"android.hardware.camera\"/>",
-          "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
-          "<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>",
-          "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
-          "<uses-permission android:name=\"android.permission.WRITE_SMS\"/>",
-          "<uses-permission android:name=\"android.permission.READ_SMS\"/>"
-        ]
-      },
-      "orientation": ["portrait-primary"],
-      /*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
-      "icons": {
-        "ios": {
-          "prerendered": true,
-          /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
-          "auto": "",
-          /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
-          "iphone": {
-            "normal": "unpackage/res/icons/57x57.png",
-            /*iPhone普通屏幕程序图标，分辨率：57x57*/
-            "retina": "unpackage/res/icons/114x114.png",
-            /*iPhone高分屏程序图标，分辨率：114x114*/
-            "retina7": "unpackage/res/icons/120x120.png",
-            /*iPhone iOS7高分屏程序图标，分辨率：120x120*/
-            "spotlight-normal": "unpackage/res/icons/29x29.png",
-            /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
-            "spotlight-retina": "unpackage/res/icons/58x58.png",
-            /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
-            "spotlight-retina7": "unpackage/res/icons/80x80.png",
-            /*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-            "settings-normal": "unpackage/res/icons/29x29.png",
-            /*iPhone设置页面程序图标，分辨率：29x29*/
-            "settings-retina": "unpackage/res/icons/58x58.png",
-            "retina8": "unpackage/res/icons/180x180.png",
-            "settings-retina8": "unpackage/res/icons/87x87.png"
-          },
-          "ipad": {
-            "normal": "unpackage/res/icons/72x72.png",
-            /*iPad普通屏幕程序图标，分辨率：72x72*/
-            "retina": "unpackage/res/icons/144x144.png",
-            /*iPad高分屏程序图标，分辨率：144x144*/
-            "normal7": "unpackage/res/icons/76x76.png",
-            /*iPad iOS7程序图标，分辨率：76x76*/
-            "retina7": "unpackage/res/icons/152x152.png",
-            /*iPad iOS7高分屏程序图标，分辨率：152x152*/
-            "spotlight-normal": "unpackage/res/icons/50x50.png",
-            /*iPad Spotlight搜索程序图标，分辨率：50x50*/
-            "spotlight-retina": "unpackage/res/icons/100x100.png",
-            /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
-            "spotlight-normal7": "unpackage/res/icons/40x40.png",
-            /*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
-            "spotlight-retina7": "unpackage/res/icons/80x80.png",
-            /*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-            "settings-normal": "unpackage/res/icons/29x29.png",
-            /*iPad设置页面程序图标，分辨率：29x29*/
-            "settings-retina": "unpackage/res/icons/58x58.png"
-          }
-        },
-        "android": {
-          "mdpi": "unpackage/res/icons/48x48.png",
-          /*普通屏程序图标，分辨率：48x48*/
-          "ldpi": "unpackage/res/icons/48x48.png",
-          /*大屏程序图标，分辨率：48x48*/
-          "hdpi": "unpackage/res/icons/72x72.png",
-          /*高分屏程序图标，分辨率：72x72*/
-          "xhdpi": "unpackage/res/icons/96x96.png",
-          /*720P高分屏程序图标，分辨率：96x96*/
-          "xxhdpi": "unpackage/res/icons/144x144.png"
-        }
-      },
-      "splashscreen": {
-        "ios": {
-          "iphone": {
-            "default": "",
-            /*iPhone3启动图片选，分辨率：320x480*/
-            "retina35": "",
-            /*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-            "retina40": ""
-          },
-          "ipad": {
-            "portrait": "",
-            /*iPad竖屏启动图片，分辨率：768x1004*/
-            "portrait-retina": "",
-            /*iPad高分屏竖屏图片，分辨率：1536x2008*/
-            "landscape": "",
-            /*iPad横屏启动图片，分辨率：1024x748*/
-            "landscape-retina": "",
-            /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-            "portrait7": "",
-            /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-            "portrait-retina7": "",
-            /*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-            "landscape7": "",
-            /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-            "landscape-retina7": ""
-          }
-        },
-        "android": {
-          "mdpi": "C:/Users/Administrator/Desktop/ndl1.png",
-          /*普通屏启动图片，分辨率：240x282*/
-          "ldpi": "C:/Users/Administrator/Desktop/ndl2.png",
-          /*大屏启动图片，分辨率：320x442*/
-          "hdpi": "C:/Users/Administrator/Desktop/ndl3.png",
-          /*高分屏启动图片，分辨率：480x762*/
-          "xhdpi": "/Users/allanzdl/Downloads/引导页-资源局2.png",
-          /*720P高分屏启动图片，分辨率：720x1242*/
-          "xxhdpi": "/Users/allanzdl/Downloads/引导页-资源局3.png"
-        }
-      }
-    }
-  },
-  "dependencies": {
-		"pages": {
-			"plus/geolocation.html": {
-				"href": "plus/geolocation.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css"
-				],
-				"priority": 0
-			},
-			"plus/camera_image.html": {
-				"href": "plus/camera_image.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css"
-				],
-				"priority": 1
-			},
-			"plus/camera_video.html": {
-				"href": "plus/camera_video.html",
-				"resources": [
-					"js/common.js",
-					"css/common.css"
-				],
-				"priority": 2
-			},
-			"plus/camera.html": {
-				"href": "plus/camera.html",
-				"resources": [
-					"js/immersed.js",
-					"js/common.js",
-					"css/common.css"
-				],
-				"refer": [
-					"plus/camera_image.html",
-					"plus/camera_video.html"
-				],
-				"priority": 1
-			},
-			"index.html": {
-				"href": "index.html",
-				"resources": [
-					"js/mui.min.js",
-					"js/update.js",
-					"js/immersed.js",
-					"js/shortcut.js",
-					"js/mui.view.js",
-					"css/mui.min.css",
-					"fonts/mui.ttf",
-					"css/index.css",
-					"img/u5.png",
-					"img/u66.png",
-					"img/u3.png",
-					"img/u6.png",
-					"img/u2.png",
-					"js/circles.js",
-					"img/u4.png",
-					"js/index.js",
-					"plugins/binzhuang/css/default.css",
-					"img/u1.png",
-					"hazardPoint.html",
-					"login.html",
-					"img/4.jpg",
-					"img/5.jpg",
-					"img/2.jpg",
-					"js/common.js",
-					"img/1.jpg",
-					"css/iconfont.css",
-					"img/6.jpg",
-					"fonts/iconfont.ttf",
-					"img/3.jpg",
-					"js/jquery-1.11.3.js",
-					"statistics/hazardPoint.html",
-					"js/touchsroll.js",
-					"list.html",
-					"fonts/iconfont.css",
-					"html/dynamic.html",
-					"html/contingency.html",
-					"dynamic.html",
-					"js/h.js",
-					"contingency.html"
-				],
-				"refer": [
-					"plus/geolocation.html",
-					"plus/camera.html",
-					"html/work.html",
-					"html/stats.html",
-					"stats.html",
-					"work.html",
-					"person.html",
-					"infocontent.html"
-				],
-				"priority": 0
-			},
-			"login.html": {
-				"resources": [
-					"img/logo.gif",
-					"img/password.png",
-					"img/account.png",
-					"css/login.css",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"index.html",
-					"js/jquery-1.11.3.js",
-					"fonts/mui.ttf",
-					"html/dynamic.html"
-				],
-				"refer": [
-					"html/work.html",
-					"html/contingency.html",
-					"html/stats.html"
-				],
-				"priority": 0
-			},
-			"hazardPoint.html": {
-				"resources": [
-					"img/ditu.png",
-					"js/hazardPoint.js",
-					"img/sous.png",
-					"css/hazardPoint.css",
-					"arcGis.html",
-					"index.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"arcGis.html": {
-				"resources": [
-					"css/alarm.css",
-					"hazardPointBack.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"statistics/hazardPoint.html": {
-				"resources": [
-					"index.html",
-					"img/ditu.png",
-					"img/sous.png",
-					"css/hazardPoint.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"js/touchsroll.js",
-					"statistics/alarm.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"statistics/alarm.html": {
-				"resources": [
-					"statistics/alarm1.html",
-					"css/alarm.css",
-					"statistics/hazardPoint.html",
-					"statistics/alarm2.html",
-					"statistics/alarm3.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"statistics/alarm1.html": {
-				"resources": [
-					"statistics/alarm.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"statistics/alarm3.html": {
-				"resources": [
-					"statistics/alarm.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"statistics/alarm2.html": {
-				"resources": [
-					"statistics/alarm.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"list.html": {
-				"resources": [
-					"img/gj1.png",
-					"img/gj2.png",
-					"img/gzgl1.png",
-					"img/gzgl3.png",
-					"img/gzgl7.png",
-					"img/yjgl2.png",
-					"img/gzgl8.png",
-					"img/yjgl1.png",
-					"img/banner3.jpg",
-					"img/gzgl2.png",
-					"img/u56.png",
-					"img/new_u58.gif",
-					"img/gzgl4.png",
-					"img/zhtj2.png",
-					"img/banner2.jpg",
-					"fonts/iconfont.css",
-					"js/common.js",
-					"img/gzgl6.png",
-					"img/zhtj1.png",
-					"img/yjgl3.png",
-					"img/banner1.png",
-					"js/touchsroll.js",
-					"img/gzgl5.png",
-					"js/jquery-1.11.3.js",
-					"css/index.css",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"fonts/mui.ttf"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/work.html": {
-				"resources": [
-					"img/gzgl6.png",
-					"img/gzgl3.png",
-					"img/gzgl7.png",
-					"img/gzgl8.png",
-					"img/gzgl5.png",
-					"js/mui.min.js",
-					"css/index.css",
-					"img/gzgl1.png",
-					"css/mui.min.css",
-					"img/gzgl2.png",
-					"img/gzgl4.png",
-					"html/main/hazardPoint.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/dynamic.html": {
-				"resources": [
-					"img/banner2.jpg",
-					"img/banner1.png",
-					"img/banner3.jpg",
-					"img/new_u58.gif",
-					"img/u56.png",
-					"css/index.css",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"js/index.js",
-					"fonts/mui.ttf",
-					"js/sub.js",
-					"html/main/cityBureauPress.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingency.html": {
-				"resources": [
-					"img/yjgl3.png",
-					"img/yjgl2.png",
-					"img/yjgl1.png",
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"js/touchsroll.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/stats.html": {
-				"resources": [
-					"img/zhtj2.png",
-					"img/gj1.png",
-					"img/gj2.png",
-					"img/zhtj1.png",
-					"img/gzgl1.png",
-					"js/touchsroll.js",
-					"img/gzgl2.png",
-					"img/gzgl4.png",
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"html/main/hazardPoint.html",
-					"js/mui.picker.js",
-					"js/mui.poppicker.js",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/main/hazardPoint.html": {
-				"resources": [
-					"html/main/classtats.html",
-					"css/hazardPoint.css",
-					"index.html",
-					"html/main/hazardone.html",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css"
-				],
-				"refer": [
-					"html/main/pointinfo.html",
-					"html/main/hazardtwo.html"
-				],
-				"priority": 0
-			},
-			"html/main/pointinfo.html": {
-				"resources": [
-					"img/mapicon.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/main/classtats.html": {
-				"resources": [
-					"js/touchsroll.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/hazardPoint.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/main/hazardtwo.html": {
-				"resources": [
-					"img/mapicon.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/main/disasterone.html": {
-				"resources": [
-					"css/disastercontent.css",
-					"js/touchsroll.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/main/disastercontent.html": {
-				"resources": [
-					"html/main/disasterone.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/main/cityBureauPress.html": {
-				"resources": [
-					"js/touchsroll.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"dynamic.html": {
-				"resources": [
-					"css/index.css",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"img/banner2.jpg",
-					"img/banner1.png",
-					"img/banner3.jpg",
-					"img/u56.png",
-					"img/new_u58.gif",
-					"html/cityBureauPress.html",
-					"js/index.js",
-					"js/h.js",
-					"img/tq.png",
-					"img/bg.jpg",
-					"js/jquery-1.11.3.js",
-					"data/dynamic_qx.json",
-					"data/dynamic_sj.json",
-					"data/dynamic_xwlb.json"
-				],
-				"refer": [
-					"html/countyPress.html",
-					"html/newscon.html",
-					"html/newscon2.html",
-					"html/dynamicTab/cityBureauPress.html",
-					"html/dynamicTab/countyPress.html",
-					"html/dynamicTab/newscon.html",
-					"html/dynamicTab/newscon2.html"
-				],
-				"priority": 0
-			},
-			"contingency.html": {
-				"resources": [
-					"js/mui.min.js",
-					"img/yjgl3.png",
-					"img/yjgl2.png",
-					"img/yjgl1.png",
-					"css/index.css",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"js/h.js",
-					"img/zhinanzhen.png",
-					"img/jisuanji.png",
-					"img/rli.png"
-				],
-				"refer": [
-					"html/contingencyTab/wannianliTwo.html",
-					"html/contingencyTab/wannianli.html",
-					"html/contingencyTab/wannianliOne.html",
-					"html/contingencyTab/wannianliThree.html",
-					"html/contingencyTab/wannianli/wannianli.html",
-					"html/contingencyTab/orientation_compass.html",
-					"html/contingencyTab/calculator.html",
-					"html/contingencyTab/zddq_sssp.html",
-					"html/contingencyTab/uav-video.html"
-				],
-				"priority": 0
-			},
-			"work.html": {
-				"resources": [
-					"js/mui.min.js",
-					"css/index.css",
-					"css/mui.min.css",
-					"img/gzgl6.png",
-					"img/gzgl3.png",
-					"img/gzgl7.png",
-					"img/gzgl8.png",
-					"img/gzgl5.png",
-					"img/gzgl1.png",
-					"img/gzgl2.png",
-					"img/gzgl4.png",
-					"js/h.js",
-					"img/2_1.png",
-					"img/2_11.png",
-					"img/2_13.png",
-					"img/2_3.png",
-					"img/2_2.png",
-					"img/2_16.png",
-					"img/2_8.png",
-					"img/2_9.png"
-				],
-				"refer": [
-					"html/hazardPoint.html",
-					"html/workpoint.html",
-					"html/workTab/workpoint.html",
-					"html/workTab/hazardPoint.html",
-					"html/workTab/disastercontent13.html",
-					"html/workTab/disastercontent.html",
-					"html/workTab/qcqf/workQcqf.html",
-					"construction.html"
-				],
-				"priority": 0
-			},
-			"stats.html": {
-				"resources": [
-					"css/index.css",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"js/mui.poppicker.js",
-					"img/zhtj2.png",
-					"img/gj1.png",
-					"img/gj2.png",
-					"img/zhtj1.png",
-					"img/gzgl2.png",
-					"img/gzgl4.png",
-					"img/gzgl1.png",
-					"js/h.js",
-					"img/1_1.png",
-					"img/1_10.png",
-					"img/1_11.png",
-					"img/1-3.png",
-					"img/1_12.png",
-					"img/2_11.png",
-					"img/2_12.png",
-					"img/2_10.png",
-					"img/2_1.png",
-					"js/jquery-1.11.3.js",
-					"img/1_9.png",
-					"img/1_5.png",
-					"img/1_8.png"
-				],
-				"refer": [
-					"html/statsTab/rzgjsl_xq.html",
-					"html/statsTab/baidumaps.html",
-					"html/statsTab/zsrysb_xq.html",
-					"html/statsTab/pqzgysb_xq.html",
-					"html/statsTab/qcqfsb_xq.html",
-					"html/statsTab/zhdsl_xq.html",
-					"html/statsTab/gczl_xq.html",
-					"construction.html",
-					"html/statsTab/zyjcsb_xq.html"
-				],
-				"priority": 0
-			},
-			"html/cityBureauPress.html": {
-				"resources": [
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"img/new_u58.gif",
-					"img/u56.png",
-					"js/h.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/countyPress.html": {
-				"resources": [
-					"js/h.js",
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"img/new_u58.gif",
-					"img/u56.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/hazardPoint.html": {
-				"resources": [
-					"html/hazardone.html",
-					"fonts/mui.ttf",
-					"css/hazardPoint.css",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"js/h.js"
-				],
-				"refer": [
-					"html/hazardtwo.html"
-				],
-				"priority": 0
-			},
-			"html/hazardtwo.html": {
-				"resources": [
-					"img/mapicon.png",
-					"html/disastercontent.html",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/hazardPoint.css",
-					"img/1_9.png",
-					"img/1_8.png",
-					"img/1-2.png"
-				],
-				"refer": [
-					"html/ditu.html"
-				],
-				"priority": 0
-			},
-			"html/newscon.html": {
-				"resources": [
-					"js/h.js",
-					"img/banner2.jpg",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"img/banner1.png",
-					"css/mui.min.css",
-					"img/banner3.jpg"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/disastercontent.html": {
-				"resources": [
-					"js/mui.min.js",
-					"html/disasterone.html",
-					"css/hazardPoint.css",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"js/h.js"
-				],
-				"refer": [
-					"html/disastertwo.html",
-					"html/disasterthree.html",
-					"html/disasterfour.html"
-				],
-				"priority": 0
-			},
-			"html/disastertwo.html": {
-				"resources": [
-					"css/disastercontent.css",
-					"js/mui.min.js",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/disasterthree.html": {
-				"resources": [
-					"js/mui.min.js",
-					"css/disastercontent.css",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"infocontent.html": {
-				"resources": [
-					"js/h.js",
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"img/new_u58.gif",
-					"js/jquery-1.11.3.js",
-					"data/infocontent.json",
-					"js/mui.picker.js",
-					"js/mui.poppicker.js",
-					"js/quxian.js",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css"
-				],
-				"refer": [
-					"html/dynamicTab/infocontent_xq.html"
-				],
-				"priority": 0
-			},
-			"person.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/index.css",
-					"js/update.js"
-				],
-				"refer": [
-					"login.html"
-				],
-				"priority": 0
-			},
-			"html/hazardone.html": {
-				"resources": [
-					"js/jquery-1.11.3.js",
-					"fonts/mui.ttf",
-					"js/highcharts.js",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"css/hazardPoint.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/newscon2.html": {
-				"resources": [
-					"js/h.js",
-					"img/banner2.jpg",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"img/banner1.png",
-					"css/mui.min.css",
-					"img/banner3.jpg"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/disasterone.html": {
-				"resources": [
-					"css/disastercontent.css",
-					"css/mui.min.css",
-					"js/mui.min.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/disasterfour.html": {
-				"resources": [
-					"js/mui.min.js",
-					"css/disastercontent.css",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/ditu.html": {
-				"resources": [
-					"4.0/dijit/themes/claro/claro.css",
-					"4.0/esri/css/main.css",
-					"4.0/init.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"4.0/esri/views/MapView.js",
-					"4.0/dojo/nls/dojo_zh-cn.js",
-					"4.0/esri/fonts/avenir-next/Avenir_Next_W00_400.woff2",
-					"4.0/dojo/resources/blank.gif"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workpoint.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/hazardPoint.css"
-				],
-				"refer": [
-					"html/workone.html"
-				],
-				"priority": 0
-			},
-			"html/workone.html": {
-				"resources": [
-					"js/mui.picker.js",
-					"js/mui.poppicker.js",
-					"js/city.data.js",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"js/h.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/hazardPoint.css"
-				],
-				"refer": [
-					"html/workpoint.html",
-					"html/worklist.html"
-				],
-				"priority": 0
-			},
-			"html/worklist.html": {
-				"resources": [
-					"js/mui.min.js",
-					"img/mapicon.png",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/hazardPoint.css",
-					"img/1_9.png",
-					"img/1_8.png",
-					"img/1-2.png"
-				],
-				"refer": [
-					"html/workcontent.html"
-				],
-				"priority": 0
-			},
-			"html/workcontent.html": {
-				"resources": [
-					"html/worklistone.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/worklistone.html": {
-				"resources": [
-					"css/disastercontent.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/dynamicTab/cityBureauPress.html": {
-				"resources": [
-					"js/h.js",
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"img/new_u58.gif",
-					"img/u56.png",
-					"js/jquery-1.11.3.js",
-					"data/cityBureauPress.json"
-				],
-				"refer": [
-					"html/dynamicTab/newscon.html"
-				],
-				"priority": 0
-			},
-			"html/dynamicTab/countyPress.html": {
-				"resources": [
-					"js/h.js",
-					"css/index.css",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"js/mui.poppicker.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"js/quxian.js",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"img/new_u58.gif",
-					"img/u56.png",
-					"data/countyPress.json",
-					"js/jquery-1.11.3.js"
-				],
-				"refer": [
-					"html/dynamicTab/newscon2.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/workpoint.html": {
-				"resources": [
-					"img/filter.png",
-					"css/hazardPoint.css",
-					"fonts/mui.ttf",
-					"js/h.js",
-					"js/mui.min.js",
-					"css/mui.min.css"
-				],
-				"refer": [
-					"html/workTab/workone.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/workone.html": {
-				"resources": [
-					"img/choo.png",
-					"js/city.data.js",
-					"js/h.js",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"js/mui.poppicker.js",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"css/hazardPoint.css",
-					"fonts/mui.ttf"
-				],
-				"refer": [
-					"html/workTab/worklist.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/worklist.html": {
-				"resources": [
-					"img/1_9.png",
-					"img/1_8.png",
-					"img/1-2.png",
-					"js/mui.min.js",
-					"img/mapicon.png",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/hazardPoint.css"
-				],
-				"refer": [
-					"html/workTab/workcontent.html",
-					"html/workTab/ditu.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/worklistone.html": {
-				"resources": [
-					"css/disastercontent.css",
-					"img/xq.png",
-					"js/h.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/workcontent.html": {
-				"resources": [
-					"html/workTab/worklistone.html",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/hazardPoint.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/hazardtwo.html": {
-				"resources": [
-					"img/mapicon.png",
-					"img/1_8.png",
-					"img/1-2.png",
-					"img/1_9.png"
-				],
-				"refer": [
-					"html/workTab/disastercontent.html",
-					"html/workTab/ditu.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/hazardone.html": {
-				"resources": [
-					"js/jquery-1.11.3.js",
-					"js/highcharts.js",
-					"data/hazardone3.json",
-					"data/hazardone2.json",
-					"data/hazardone1.json"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/hazardPoint.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"html/workTab/hazardone.html",
-					"css/hazardPoint.css"
-				],
-				"refer": [
-					"html/workTab/hazardtwo.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/disasterone.html": {
-				"resources": [
-					"css/disastercontent.css",
-					"img/xq.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/disastercontent.html": {
-				"resources": [
-					"html/workTab/disasterone.html",
-					"img/1_9.png",
-					"img/1_8.png",
-					"js/city.data.js",
-					"img/1-2.png",
-					"img/filter.png",
-					"css/hazardPoint.css",
-					"js/h.js",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"js/mui.poppicker.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"img/choo.png"
-				],
-				"refer": [
-					"html/workTab/disasterthree.html",
-					"html/workTab/disastertwo.html",
-					"html/workTab/disasterfour.html",
-					"html/workTab/zhcontent1.html",
-					"html/workTab/zhpic.html",
-					"html/workTab/zhreport.html",
-					"html/workTab/zhrecord.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/disastercontent13.html": {
-				"resources": [
-					"img/1_9.png",
-					"fonts/mui.ttf",
-					"img/1_8.png",
-					"img/1-2.png",
-					"img/filter.png",
-					"css/hazardPoint.css",
-					"js/h.js",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"js/mui.picker.js",
-					"js/mui.poppicker.js",
-					"js/city.data.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/zhcontent1.html": {
-				"resources": [
-					"css/disastercontent.css",
-					"img/xq.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/zhpic.html": {
-				"resources": [
-					"js/mui.picker.js",
-					"fonts/mui.ttf",
-					"img/banner3.jpg",
-					"css/mui.picker.css",
-					"img/u56.png",
-					"css/hazardPoint.css",
-					"js/h.js",
-					"img/banner2.jpg",
-					"js/mui.min.js",
-					"js/mui.poppicker.js",
-					"img/banner1.png",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"js/city.data.js",
-					"img/defaults.jpg"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/zhreport.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"img/xq.png",
-					"css/hazardPoint.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/zhrecord.html": {
-				"resources": [
-					"js/h.js",
-					"img/1_9.png",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/hazardPoint.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/qcqf/workQcqf.html": {
-				"resources": [
-					"css/index.css",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"js/mui.poppicker.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"img/dl3.png",
-					"img/dl4.png",
-					"img/dl5.png",
-					"img/dl.png",
-					"img/dl6.png",
-					"img/dl2.png",
-					"img/1.png",
-					"img/timg.jpg",
-					"img/8.png",
-					"js/jquery-1.11.3.js"
-				],
-				"refer": [
-					"html/workTab/qcqf/workQcqf_content.html",
-					"html/workTab/qcqf/workQcqf_fxList.html",
-					"html/workTab/qcqf/workQcqf_hiddenList.html",
-					"html/workTab/qcqf/workQcqf_yhdFx.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/qcqf/workQcqf_content.html": {
-				"resources": [
-					"js/h.js",
-					"html/workTab/qcqf/workQcqf_hazard.html"
-				],
-				"refer": [
-					"html/workTab/qcqf/workQcqf_plan.html",
-					"html/workTab/qcqf/workQcqf_twoCards.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/qcqf/workQcqf_hazard.html": {
-				"resources": [
-					"img/1_9.png",
-					"img/filter1.png",
-					"img/1_8.png",
-					"js/city.data.js",
-					"img/1-2.png"
-				],
-				"refer": [
-					"html/workTab/qcqf/hazard_list.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/qcqf/hazard_list.html": {
-				"resources": [
-					"data/xiangxixinxi.json",
-					"js/jquery-1.11.3.js",
-					"css/disastercontent.css",
-					"data/jibenxinxi.json",
-					"data/weixieqingkuang.json",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/qcqf/workQcqf_fxList.html": {
-				"resources": [],
-				"refer": [
-					"html/workTab/qcqf/workQcqf_yhdFx.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/qcqf/workQcqf_yhdFx.html": {
-				"resources": [
-					"js/jquery-1.11.3.js",
-					"img/filter1.png",
-					"js/highcharts.js",
-					"js/city.data.js",
-					"img/choo.png",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"js/mui.poppicker.js",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/workTab/qcqf/workQcqf_hiddenList.html": {
-				"resources": [
-					"img/1_9.png",
-					"img/filter1.png",
-					"img/1_8.png",
-					"js/city.data.js",
-					"img/1-2.png"
-				],
-				"refer": [
-					"html/workTab/qcqf/workQcqf_hidden.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/qcqf/workQcqf_hidden.html": {
-				"resources": [
-					"js/h.js",
-					"html/workTab/qcqf/workQcqf_hiddenOne.html"
-				],
-				"refer": [
-					"html/workTab/qcqf/workQcqf_hiddenTwo.html"
-				],
-				"priority": 0
-			},
-			"html/workTab/qcqf/workQcqf_hiddenOne.html": {
-				"resources": [
-					"js/jquery-1.11.3.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/wannianliTwo.html": {
-				"resources": [
-					"html/contingencyTab/css/wnl.css",
-					"html/contingencyTab/js/183.js",
-					"html/contingencyTab/js/wnl.js",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"fonts/mui.ttf"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/wannianli.html": {
-				"resources": [
-					"js/jquery-1.11.3.js",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"fonts/mui.ttf"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/wannianliOne.html": {
-				"resources": [
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/wannianliThree.html": {
-				"resources": [
-					"img/fanhui.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/wannianli/wannianli.html": {
-				"resources": [
-					"html/contingencyTab/wannianli/js/swiper-3.3.1.min.js",
-					"html/contingencyTab/wannianli/css/common.css",
-					"html/contingencyTab/wannianli/css/normalize.css",
-					"html/contingencyTab/wannianli/css/htmleaf-demo.css",
-					"html/contingencyTab/wannianli/css/swiper-3.3.1.min.css",
-					"html/contingencyTab/wannianli/js/jquery-1.11.0.min.js",
-					"html/contingencyTab/wannianli/css/index.css",
-					"html/contingencyTab/wannianli/images/calendar_bottom.png",
-					"html/contingencyTab/wannianli/js/common.js",
-					"html/contingencyTab/wannianli/images/BACK.png",
-					"js/mui.min.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/orientation_compass.html": {
-				"resources": [
-					"img/orientationbg.png",
-					"js/common.js",
-					"img/orientationa.png",
-					"css/common.css",
-					"img/orientationc.png",
-					"js/immersed.js",
-					"img/fanhui.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/calculator.html": {
-				"resources": [
-					"js/mui.min.js",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/zddq_sssp.html": {
-				"resources": [
-					"html/contingencyTab/shipin.html",
-					"img/banner2.jpg",
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"img/banner1.png",
-					"css/mui.min.css",
-					"img/banner3.jpg",
-					"img/video4.jpg",
-					"img/video2.png",
-					"img/video3.png",
-					"img/video1.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/shipin.html": {
-				"resources": [
-					"images/sintel.mp4",
-					"html/contingencyTab/zddq_sssp.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/statsTab/rzgjsl_xq.html": {
-				"resources": [
-					"data/qcqfsb.json",
-					"js/quxian.js",
-					"js/h.js",
-					"js/mui.picker.min.js",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"js/mui.poppicker.js",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"css/mui.picker.min.css",
-					"data/rzgjsl_zq.json",
-					"data/rzgjsl_xq.json"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/uav-video.html": {
-				"resources": [
-					"img/test.jpg",
-					"img/guotu.jpg",
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"img/timg.jpeg"
-				],
-				"refer": [
-					"html/contingencyTab/uav-video-test.html",
-					"html/contingencyTab/uav-video-guotu.html"
-				],
-				"priority": 0
-			},
-			"html/contingencyTab/uav-video-test.html": {
-				"resources": [
-					"css/index.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/statsTab/baidumaps.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"css/iconfont.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/dynamicTab/newscon.html": {
-				"resources": [
-					"js/h.js",
-					"data/newscon.json",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/dynamicTab/newscon2.html": {
-				"resources": [
-					"js/h.js",
-					"data/newscon2.json",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/statsTab/zsrysb_xq.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.picker.js",
-					"data/qcqfsb.json",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"js/mui.poppicker.js",
-					"css/mui.min.css",
-					"js/quxian.js",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"data/zsrysb_xq.json"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/contingencyTab/uav-video-guotu.html": {
-				"resources": [
-					"js/mui.min.js",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/dynamicTab/infocontent_xq.html": {
-				"resources": [
-					"data/infocontent_xq.json",
-					"js/h.js",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"css/mui.min.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/statsTab/pqzgysb_xq.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"js/mui.poppicker.js",
-					"css/mui.min.css",
-					"data/pqzgysb.json",
-					"js/quxian.js",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/statsTab/qcqfsb_xq.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.picker.js",
-					"data/qcqfsb.json",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"js/mui.poppicker.js",
-					"css/mui.min.css",
-					"js/quxian.js",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/statsTab/zhdsl_xq.html": {
-				"resources": [
-					"data/hazardone3.json",
-					"data/hazardone2.json",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"css/mui.min.css",
-					"js/highcharts.js",
-					"data/hazardone1.json",
-					"css/hazardPoint.css"
-				],
-				"refer": [
-					"html/statsTab/baidumaps.html"
-				],
-				"priority": 0
-			},
-			"html/statsTab/gczl_xq.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"js/mui.poppicker.js",
-					"img/filter1.png",
-					"css/mui.min.css",
-					"js/quxian.js",
-					"css/mui.poppicker.css",
-					"data/gczl_xq.json",
-					"css/mui.picker.css",
-					"html/statsTab/itemDetails.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"construction.html": {
-				"resources": [
-					"js/h.js",
-					"js/mui.min.js",
-					"img/uc.png",
-					"css/mui.min.css",
-					"js/header.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/statsTab/itemDetails.html": {
-				"resources": [
-					"html/statsTab/gczl_xq.html",
-					"js/h.js",
-					"js/mui.picker.js",
-					"js/mui.min.js",
-					"img/timg.jpg",
-					"js/mui.poppicker.js",
-					"js/jquery-1.11.3.js",
-					"css/mui.min.css",
-					"data/itemDetails.json",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"html/statsTab/zyjcsb_xq.html": {
-				"resources": [
-					"data/zyjcsb.json",
-					"js/mui.min.js",
-					"js/jquery-1.11.3.js",
-					"css/mui.min.css",
-					"js/highcharts.js",
-					"css/mui.poppicker.css",
-					"css/mui.picker.css",
-					"css/hazardPoint.css"
-				],
-				"refer": [],
-				"priority": 0
-			}
-		},
-		"idle": {
-			"resources": [
-				"css/feedback.css",
-				"js/update.json",
-				"img/shake/4.jpg",
-				"img/waiting.png",
-				"index2.html",
-				"img/orientationb.png",
-				"img/shake/3.jpg",
-				"img/astop.png",
-				"img/add.png",
-				"plus/camera\u0026uploader.html",
-				"img/pull_arrow.png",
-				"img/arecord.png",
-				"img/fup.png",
-				"img/h5p.jpg",
-				"img/ffile.png",
-				"img/home.png",
-				"js/mui.js",
-				"img/fdir.png",
-				"img/shake/2.jpg",
-				"img/pull_fresh.png",
-				"img/shake/1.jpg",
-				"img/shakedown.png",
-				"img/shakeup.png",
-				"offcanvas-drag-right.html",
-				"img/fdisk.png",
-				"plus/uploader.html",
-				"css/mui.css",
-				"img/barcode.png",
-				"img/orientationl.png",
-				"img/helloh5.jpg",
-				"css/app.css",
-				"img/qr.png",
-				"index3.html",
-				"js/feedback.js",
-				"img/ui.png"
-			]
-		}
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "cqdzRep",
+	/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "重庆地灾",
+	/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "1.2.0",
+		/*应用版本名称*/
+		"code": "83"
 	},
-  "fullscreen": false,
-  "unpackage": [
-    "css/mui.css",
-    "img/5.jpg",
-    "js/mui.js"
-  ]
+	"description": "",
+	/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "login.html",
+	/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",
+		/*开发者名称*/
+		"email": "",
+		/*开发者邮箱地址*/
+		"url": "http://www.dcloud.io"
+	},
+	"permissions": {
+		"Audio": {},
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+		"Camera": {},
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+		"Device": {},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {},
+		"Invocation": {},
+		"Storage": {},
+		"Runtime": {},
+		"XMLHttpRequest": {},
+		"Webview": {},
+		"NativeUI": {},
+		"Navigator": {},
+		"NativeObj": {},
+		"Maps": {},
+		"Orientation": {},
+		"Zip": {},
+
+		"Speech": {},
+
+		"Barcode": {},
+		"Gallery": {},
+		"Uploader": {},
+		"Contacts": {},
+		"Proximity": {},
+		"Messaging": {},
+		"Downloader": {},
+		"Geolocation": {},
+		"Accelerometer": {}
+	},
+	"plus": {
+		"splashscreen": {
+			"autoclose": true,
+			/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": false,
+			"delay": "2000"
+		},
+		"runmode": "liberate",
+		/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",
+		/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"plugins": {
+				"maps": {
+					"baidu": {
+						"appkey_ios": "3NuwT7ByxvD4z8VZlqCFYL1xmaH7hslQ",
+						"appkey_android": "4r7q3HtPU6Bgxbg4Z7bIIiASFGoquYPW",
+						"appkey": "",
+						"description": "百度地图"
+					}
+				}
+			},
+			"apple": {
+				"appid": "",
+				/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+				"mobileprovision": "",
+				/*iOS应用打包配置文件*/
+				"password": "",
+				/*iOS应用打包个人证书导入密码*/
+				"p12": "",
+				/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"UIReserveStatusbarOffset": false,
+				/*iOS应用设置沉浸式状态栏*/
+				"devices": "universal",
+				/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "",
+				/*Android应用包名，如io.dcloud.HelloH5*/
+				"keystore": "",
+				/*Android应用打包使用的密钥库文件*/
+				"password": "",
+				/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "",
+				/*Android应用打包使用密钥库中证书的别名*/
+				"ImmersedStatusbar": true,
+				/*Android应用设置沉浸式状态栏*/
+				"permissions": [
+					"<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+					"<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+					"<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+					"<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.CAMERA\"/>",
+					"<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+					"<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+					"<uses-permission android:name=\"android.permission.SEND_SMS\"/>",
+					"<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+					"<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+					"<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+					"<uses-feature android:name=\"android.hardware.camera\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_SMS\"/>",
+					"<uses-permission android:name=\"android.permission.READ_SMS\"/>"
+				]
+			},
+			"orientation": [
+				"portrait-primary"
+			],
+			/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true,
+					/*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					"auto": "",
+					/*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"normal": "",
+						/*iPhone普通屏幕程序图标，分辨率：57x57*/
+						"retina": "",
+						/*iPhone高分屏程序图标，分辨率：114x114*/
+						"retina7": "",
+						/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+						"spotlight-normal": "",
+						/*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "",
+						/*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+						"spotlight-retina7": "",
+						/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "",
+						/*iPhone设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "",
+						"retina8": "",
+						"settings-retina8": ""
+					},
+					"ipad": {
+						"normal": "",
+						/*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "",
+						/*iPad高分屏程序图标，分辨率：144x144*/
+						"normal7": "",
+						/*iPad iOS7程序图标，分辨率：76x76*/
+						"retina7": "",
+						/*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "",
+						/*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "",
+						/*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						"spotlight-normal7": "",
+						/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						"spotlight-retina7": "",
+						/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "",
+						/*iPad设置页面程序图标，分辨率：29x29*/
+						"settings-retina": ""
+					}
+				},
+				"android": {
+					"mdpi": "",
+					/*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "",
+					/*大屏程序图标，分辨率：48x48*/
+					"hdpi": "",
+					/*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "",
+					/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": ""
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "",
+						/*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "",
+						/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": ""
+					},
+					"ipad": {
+						"portrait": "",
+						/*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "",
+						/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "",
+						/*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "",
+						/*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "",
+						/*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "",
+						/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "",
+						/*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": ""
+					}
+				},
+				"android": {
+					"mdpi": "",
+					/*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "",
+					/*大屏启动图片，分辨率：320x442*/
+					"hdpi": "",
+					/*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "",
+					/*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": ""
+				}
+			}
+		}
+	}
 }
