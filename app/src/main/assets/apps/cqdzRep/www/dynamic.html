@@ -212,6 +212,7 @@
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/ip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: false
@@ -255,35 +256,53 @@
 				});
 			});
 			//新闻图片轮播请求		
+			
 			var contentThree = "";
 			$.ajax({
-				url: "data/dynamic_xwlb.json",
+//				url: "data/dynamic_xwlb.json",
+				url: ip+"getJList.do",
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
 				success: function(json) {
-					var data = json.data;
+					var data = json;
 					contentThree +=
 						'<div class="mui-slider-item mui-slider-item-duplicate">' +
 						'<a class="fishref" href="javascript:void(0);" data-id="' + data[4].id + '">' +
-						'<img src="' + data[4]['img'] + '">' +
-						'<p class="mui-slider-title"><span>' + data[4]['text'] + '</span></p>' +
-						'</a></div>';
-					for(var i = 0; i < data.length; i++) {
-						contentThree +=
-							'<div class="mui-slider-item">' +
-							'<a class="fishref" href="javascript:void(0);" data-id="' + data[i].id + '">' +
-							'<img src="' + data[i]['img'] + '">' +
-							'<p class="mui-slider-title"><span>' + data[i]['text'] + '</span></p>' +
-							'</a></div>';
-					}
-					contentThree +=
+						'<img src="http://' + data[4]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + data[4]['title'] + '</span></p>' +
+						'</a></div>'+
+						'<div class="mui-slider-item">' +
+						'<a class="fishref" href="javascript:void(0);" data-id="' + data[0].id + '">' +
+						'<img src="http://' + data[0]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + data[0]['title'] + '</span></p>' +
+						'</a></div>'+
+						'<div class="mui-slider-item">' +
+						'<a class="fishref" href="javascript:void(0);" data-id="' + data[1].id + '">' +
+						'<img src="http://' + data[1]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + data[1]['title'] + '</span></p>' +
+						'</a></div>'+
+						'<div class="mui-slider-item">' +
+						'<a class="fishref" href="javascript:void(0);" data-id="' + data[2].id + '">' +
+						'<img src="http://' + data[2]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + data[2]['title'] + '</span></p>' +
+						'</a></div>'+
+						'<div class="mui-slider-item">' +
+						'<a class="fishref" href="javascript:void(0);" data-id="' + data[3].id + '">' +
+						'<img src="http://' + data[3]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + data[3]['title'] + '</span></p>' +
+						'</a></div>'+
+						'<div class="mui-slider-item">' +
+						'<a class="fishref" href="javascript:void(0);" data-id="' + data[4].id + '">' +
+						'<img src="http://' + data[4]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + data[4]['title'] + '</span></p>' +
+						'</a></div>'+
 						'<div class="mui-slider-item mui-slider-item-duplicate">' +
 						'<a class="fishref" href="javascript:void(0); data-id="' + data[0].id + '"">' +
-						'<img src="' + data[0]['img'] + '">' +
-						'<p class="mui-slider-title"><span>' + data[0]['text'] + '</span></p>' +
+						'<img src="http://' + data[0]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + data[0]['title'] + '</span></p>' +
 						'</a></div>';
-
+						
 					$('#xwlb').html(contentThree);
 
 					var gallery = mui(".mui-slider");
@@ -295,102 +314,109 @@
 			//市局新闻请求	
 			var contentOne = "";
 			$.ajax({
-				url: "data/dynamic_sj.json",
+//				url: "data/dynamic_sj.json",
+				url: ip+"getJList.do",
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
 				success: function(json) {
-					var data = json.data;
-					for(var i = 0; i < data.length; i++) {
-						if(i % 2 != 0) {
+					var data = json;
+					var str0 = data[0]['update_time'];
+					str0 = str0.substring(0, 10);
+					var str1 = data[1]['update_time'];
+					str1 = str1.substring(0, 10);
+					var str2 = data[2]['update_time'];
+					str2 = str2.substring(0, 10);
 							contentOne +=
 								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:;" data-id="' + data[i].id + '">' +
-								'<img class="mui-media-object mui-pull-left" src="' + data[i].imgOne + '">' +
+								'<a class="fishref" href="javascript:;" data-id="' + data[0]['id'] + '">' +
+								'<img class="mui-media-object mui-pull-right" src="http://' + data[0]['pic'][0] + '">' +
 								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+								'<div class="mui-ellipsis">' + data[0]['title'] + '</div>' +
+								'</div>' +
+								'<div class="place" style="float:left;">' +
+								'<span>' + data[0]['unit_name'] + '</span>' +
+								'<span>' + str0 + '</span>'+
+								'</div></a>' +
+								'</li>'+
+								'<li class="mui-table-view-cell mui-media">' +
+								'<a class="fishref" href="javascript:;" data-id="' + data[1]['id'] + '">' +
+								'<img class="mui-media-object mui-pull-left" src="http://' + data[1]['pic'][0] + '">' +
+								'<div class="mui-media-body">' +
+								'<div class="mui-ellipsis">' + data[1]['title'] + '</div>' +
 								'</div>' +
 								'<div class="place" style="float:right;">' +
-								'<span>' + data[i].region + '</span>' +
-								'<span>' + data[i].time + '</span>'
-							if(data[i].imgTwo != null) {
-								contentOne +=
-									'<img src="' + data[i].imgTwo + '" />'
-							} +
-							'</div></a>' +
-							'</li>';
-						} else {
-							contentOne +=
+								'<span>' + data[1]['unit_name'] + '</span>' +
+								'<span>' + str1 + '</span>'+
+								'</div></a>' +
+								'</li>'+
 								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:;" data-id="' + data[i].id + '">' +
-								'<img class="mui-media-object mui-pull-right" src="' + data[i].imgOne + '">' +
+								'<a class="fishref" href="javascript:;" data-id="' + data[2]['id'] + '">' +
+								'<img class="mui-media-object mui-pull-right" src="http://' + data[2]['pic'][0] + '">' +
 								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+								'<div class="mui-ellipsis">' + data[2]['title'] + '</div>' +
 								'</div>' +
-								'<div class="place" >' +
-								'<span>' + data[i].region + '</span>' +
-								'<span>' + data[i].time + '</span>'
-							if(data[i].imgTwo != null) {
-								contentOne +=
-									'<img src="' + data[i].imgTwo + '" />'
-							} +
-							'</div></a>' +
-							'</li>';
-						}
-					}
+								'<div class="place" style="float:left;">' +
+								'<span>' + data[2]['unit_name'] + '</span>' +
+								'<span>' + str2 + '</span>'+
+								'</div></a>' +
+								'</li>';
 					$('#dynamic_sj').html(contentOne);
 				}
 			});
 			//区县新闻请求		
 			var contentTwo = "";
 			$.ajax({
-				url: "data/dynamic_qx.json",
+//				url: "data/dynamic_qx.json",
+				url: ip+"getAreaJList.do",
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
 				success: function(json) {
-					var data = json.data;
-					for(var i = 0; i < data.length; i++) {
-						if(i % 2 != 0) {
+					var data = json;
+					var str0 = data[0]['update_time'];
+					str0 = str0.substring(0, 10);
+					var str1 = data[1]['update_time'];
+					str1 = str1.substring(0, 10);
+					var str2 = data[2]['update_time'];
+					str2 = str2.substring(0, 10);
 							contentTwo +=
 								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fisnew" href="javascript:;" data-id="' + data[i].id + '">' +
-								'<img class="mui-media-object mui-pull-left" src="' + data[i].imgOne + '">' +
+								'<a class="fishref" href="javascript:;" data-id="' + data[0]['id'] + '">' +
+								'<img class="mui-media-object mui-pull-right" src="http://' + data[0]['pic'][0] + '">' +
 								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+								'<div class="mui-ellipsis">' + data[0]['title'] + '</div>' +
+								'</div>' +
+								'<div class="place" style="float:left;">' +
+								'<span>' + data[0]['unit_name'] + '</span>' +
+								'<span>' + str0 + '</span>'+
+								'</div></a>' +
+								'</li>'+
+								'<li class="mui-table-view-cell mui-media">' +
+								'<a class="fishref" href="javascript:;" data-id="' + data[1]['id'] + '">' +
+								'<img class="mui-media-object mui-pull-left" src="http://' + data[1]['pic'][0] + '">' +
+								'<div class="mui-media-body">' +
+								'<div class="mui-ellipsis">' + data[1]['title'] + '</div>' +
 								'</div>' +
 								'<div class="place" style="float:right;">' +
-								'<span>' + data[i].region + '</span>' +
-								'<span>' + data[i].time + '</span>'
-							if(data[i].imgTwo != null) {
-								contentTwo +=
-									'<img src="' + data[i].imgTwo + '" />'
-							} +
-							'</div></a>' +
-							'</li>';
-						} else {
-							contentTwo +=
+								'<span>' + data[1]['unit_name'] + '</span>' +
+								'<span>' + str1 + '</span>'+
+								'</div></a>' +
+								'</li>'+
 								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fisnew" href="javascript:;" data-id="' + data[i].id + '">' +
-								'<img class="mui-media-object mui-pull-right" src="' + data[i].imgOne + '">' +
+								'<a class="fishref" href="javascript:;" data-id="' + data[2]['id'] + '">' +
+								'<img class="mui-media-object mui-pull-right" src="http://' + data[2]['pic'][0] + '">' +
 								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+								'<div class="mui-ellipsis">' + data[2]['title'] + '</div>' +
 								'</div>' +
-								'<div class="place" >' +
-								'<span>' + data[i].region + '</span>' +
-								'<span>' + data[i].time + '</span>'
-							if(data[i].imgTwo != null) {
-								contentTwo +=
-									'<img src="' + data[i].imgTwo + '" />'
-							} +
-							'</div></a>' +
-							'</li>';
-						}
-					}
+								'<div class="place" style="float:left;">' +
+								'<span>' + data[2]['unit_name'] + '</span>' +
+								'<span>' + str2 + '</span>'+
+								'</div></a>' +
+								'</li>';
 					$('#dynamic_qx').html(contentTwo);
 				}
 			});
-			//
 
 			//		点击每条滑动新闻,市局新闻
 			var fishref = document.getElementsByClassName('fishref');
@@ -531,6 +557,7 @@
 				document.getElementById("pDate").innerHTML = sValue;
 			};
 			window.onload = showDate;
+			
 		</script>
 	</body>
 

@@ -164,6 +164,7 @@
     <script src="../../js/mui.min.js"></script>
     <script src="../../js/h.js"></script>
     <script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
       mui.init();
       mui.ready(function() {
@@ -197,35 +198,57 @@
 		var id=Request('id');	
 		var contentThree = "";
 		$.ajax({
-			url: "../../data/newscon.json",
+//			url: "../../data/newscon.json",
+			url: ip+"getOneList.do",
 			async: false,//同步请求	
+			data: {id:id},
 			type: "get",
 			dataType: "json",
 			success: function(json) {
-				var data = json.data;
+				var data = json;
+				var context = data[0]['context'];
+				var msg = context.split("#*#");
+				var time = data[0]['update_time'];
+				time = time.substring(0, 10);
 				contentThree +=
-					'<h2 class="new-title">' + data[id].title + '</h2>'
-					+'<div class="news-info"><span class="news-em">' + data[id].time+ '</span>'
-					+'<em class="news-em">' + data[id].day + '</em>'
-					+'<a class="news-nickname" href="javascript:void(0);">' + data[id].source + '</a></div>'
-					+'<div class="news-img"><img class="imgnews" src="' + data[id].img1 + '" /> </div>'
+					'<h2 class="new-title">' + data[0]['title'] + '</h2>'
+					+'<div class="news-info"><span class="news-em">最新消息</span>'
+					+'<em class="news-em">' + time + '</em>'
+					+'<a class="news-nickname" href="javascript:void(0);">' + data[0]['unit_name'] + '</a></div>'
+					+'<div class="news-img"><img class="imgnews" src="http://' + data[0]['pic'][0] + '" /> </div>'
 					+'<div class="news-content">'
-					+'<p>' + data[id].text1 + '</p>'
-					if(data[id].img2!=null){
+					+'<p>' + msg[0] + '</p>'
+					if(data[0]['pic'][1]!=null){
 							contentThree +=
-						'<p><img src="' + data[id].img2 + '" /></p>'
+						'<p><img src="http://' + data[0]['pic'][1] + '" /></p>'
 					}
-					if(data[id].text2!=null){
+					if(msg[1]!=null){
 							contentThree +=
-						'<p>' + data[id].text2 + '</p>'
+						'<p>' + msg[1] + '</p>'
 					}
-					if(data[id].text3!=null){
+					if(data[0]['pic'][2]!=null){
 							contentThree +=
-						'<p>' + data[id].text3 + '</p>'
+						'<p><img src="http://' + data[0]['pic'][2] + '" /></p>'
 					}
-					if(data[id].text4!=null){
+					if(msg[2]!=null){
 							contentThree +=
-						'<p>' + data[id].text4 + '</p>'
+						'<p>' + msg[2] + '</p>'
+					}
+					if(data[0]['pic'][3]!=null){
+							contentThree +=
+						'<p><img src="http://' + data[0]['pic'][3] + '" /></p>'
+					}
+					if(msg[3]!=null){
+							contentThree +=
+						'<p>' + msg[3] + '</p>'
+					}
+					if(data[0]['pic'][4]!=null){
+							contentThree +=
+						'<p><img src="http://' + data[0]['pic'][4] + '" /></p>'
+					}
+					if(msg[4]!=null){
+							contentThree +=
+						'<p>' + msg[4] + '</p>'
 					}
 					+'</div>';
 				$('#newscon').html(contentThree);
