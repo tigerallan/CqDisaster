@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>区县新闻</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
-		<link rel="stylesheet" href="../../css/mui.picker.css"/>
-		<link rel="stylesheet" href="../../css/mui.poppicker.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
 		<style type="text/css">
-			.citychoose{
+			.citychoose {
 				float: right;
 				color: red;
 			}
-			.citychoose>span{
-			    font-size:20px;
+			
+			.citychoose>span {
+				font-size: 20px;
 			}
-			.title_xz{
+			
+			.title_xz {
 				width: 100%;
 				height: 35px;
 				line-height: 35px;
@@ -29,17 +32,21 @@
 				z-index: 990;
 				border-bottom: 1px solid #E0E0E0;
 			}
-			#qx_news{
+			
+			#qx_news {
 				margin-top: 95px;
 			}
-			.mui-bar-nav~.mui-content{
+			
+			.mui-bar-nav~.mui-content {
 				padding-top: 0px;
 			}
-			#choose_one{
+			
+			#choose_one {
 				margin-right: 20px;
 			}
 		</style>
 	</head>
+
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back">
@@ -153,23 +160,24 @@
 				</li>-->
 			</ul>
 		</div>
-		
-	<script src="../../js/mui.min.js"></script>
-	<script src="../../js/h.js"></script>
-	<script src="../../js/quxian.js"></script>
-	<script src="../../js/mui.picker.js"></script>
-	<script src="../../js/mui.poppicker.js"></script>
-	<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		mui.init({
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<!--<script src="../../js/quxian.js"></script>-->
+		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init({
 				swipeBack: false,
 				pullRefresh: {
 					container: '#qx_news',
-					down:{
-						height:50,
-						auto:true,
-						contentdown:"下拉刷新",
-						callback :function() {
+					down: {
+						height: 50,
+						auto: true,
+						contentdown: "下拉刷新",
+						callback: function() {
 							setTimeout(function() {
 								mui('#qx_news').pullRefresh().endPulldownToRefresh();
 							}, 1000);
@@ -177,95 +185,140 @@
 					},
 					up: {
 						contentrefresh: '正在加载...',
-//						callback: pullupRefresh
+						//						callback: pullupRefresh
 					}
 				}
 			});
-			
-		var contentThree = "";
-		$.ajax({
-			url: "../../data/countyPress.json",
-			async: false,//同步请求	
-			type: "get",
-			dataType: "json",
-			success: function(json) {
-				var data = json.data;
-				for (var i=0;i<data.length;i++){
-					if (i%2!=0) {
-						contentThree +=
-						'<li class="mui-table-view-cell mui-media">'
-						+'<a class="fisnew" href="javascript:void(0);" data-id="'+data[i].id+'">'
-						+'<img class="mui-media-object mui-pull-right" src="' + data[i].img1 + '">'
-						+'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i].title + '</div></div>'
-						+'<div class="place">'
-						+'<span>' + data[i].qx + '</span>'
-						+'<span>' + data[i].day + '</span>'
-						+'</div></a></li>';
-					} else{
-						contentThree +=
-						'<li class="mui-table-view-cell mui-media">'
-						+'<a class="fisnew" href="javascript:void(0);" data-id="'+data[i].id+'">'
-						+'<img class="mui-media-object mui-pull-left" src="' + data[i].img1 + '">'
-						+'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i].title + '</div></div>'
-						+'<div class="place" style="float:right;">'
-						+'<span>' + data[i].qx + '</span>'
-						+'<span>' + data[i].day + '</span>'
-						+'</div></a></li>';
+
+			var contentThree = "";
+			$.ajax({
+				//			url: "../../data/countyPress.json",
+				url: ip+"getAreaJList.do",
+				async: false, //同步请求	
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json;
+					for(var i = 0; i < data.length; i++) {
+						var str = data[i]['update_time'];
+						str = str.substring(0, 10);
+						if(i % 2 != 0) {
+							contentThree +=
+								'<li class="mui-table-view-cell mui-media">' +
+								'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+								'<img class="mui-media-object mui-pull-right" src="http://' + data[i]['pic'][0] + '">' +
+								'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+								'<div class="place">' +
+								'<span>' + data[i]['unit_name'] + '</span>' +
+								'<span>' + str + '</span>' +
+								'</div></a></li>';
+						} else {
+							contentThree +=
+								'<li class="mui-table-view-cell mui-media">' +
+								'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+								'<img class="mui-media-object mui-pull-left" src="http://' + data[i]['pic'][0] + '">' +
+								'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+								'<div class="place" style="float:right;">' +
+								'<span>' + data[i]['unit_name'] + '</span>' +
+								'<span>' + str + '</span>' +
+								'</div></a></li>';
+						}
+
 					}
-					
+					$('#dynamic_qx').html(contentThree);
 				}
-				$('#dynamic_qx').html(contentThree);
-			}
-		});	
-		//		点击每条区县新闻
-		var fishref = document.getElementsByClassName('fisnew');
-		var count=fishref.length;
-		for(i=0;i<count;i++){
-			fishref[i].addEventListener('tap', function() {
-			var id=this.getAttribute("data-id");
-			  mui.openWindow({
-			    url: 'newscon2.html?id='+id, 
-			    id:'newscon2.html'
-			  });
 			});
-		}
-//		var count = 0;
-//		/** * 上拉加载 灾害点 */
-//		function pullupRefresh() {
-//			setTimeout(function() {
-//				mui('#qx_news').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-//				var table = document.body.querySelector('.main');
-//				var cells = document.body.querySelectorAll('.mui-table-view-cell');
-//				for (var i = cells.length, len = i + 3; i < len; i++) {
-//					var li = document.createElement('li');
-//					li.className = 'mui-table-view-cell mui-media';
-//					li.innerHTML='<a href="javascript:;"><img class="mui-media-object mui-pull-right" src="../../img/u56.png">'+
-//						'<div class="mui-media-body"><div class="mui-ellipsis">重庆武隆滑坡已造成经济损失308.5万元</div>'+
-//						'</div><div class="place"><span>市局</span><span>8小时前</span></div></a>';
-//					table.appendChild(li);
-//				}
-//			}, 1000);
-//		}	
-		
-		//所属区县选项
-      (function($, doc) {
-			$.init();
-			$.ready(function() {
-				var cityPicker = new $.PopPicker({
-					//两列
-						layer:1
+
+			var cityData;
+			$.ajax({
+				url: ip+"getUnitForApp.do",
+				async: false,
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					cityData = json;
+				}
+			});
+			//所属区县选项
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					var cityPicker = new $.PopPicker({
+						//两列
+						layer: 1
 					});
 					cityPicker.setData(cityData);
 					var choose_one = document.getElementById('choose_one');
-						choose_one.addEventListener('tap', function(event) {
-							cityPicker.show(function(items) {
-								choose_one.innerText = items[0].text;
-								//返回 false 可以阻止选择框的关闭
-								//return false;
+
+					var dynamic_qx = document.getElementById('dynamic_qx');
+					choose_one.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							choose_one.innerText = items[0].text;
+							var dataId = items[0].id;
+							$.ajax({
+								url: ip+"getAreaJListForOneArea.do",
+								async: false, //同步请求	
+								type: "get",
+								data: {
+									id: dataId
+								},
+								dataType: "json",
+								success: function(json) {
+
+									dynamic_qx.innerHTML = "";
+									
+									contentThree = "";
+									var data = json;
+									for(var i = 0; i < data.length; i++) {
+										var str = data[i]['update_time'];
+										str = str.substring(0, 10);
+										if(i % 2 != 0) {
+											contentThree +=
+												'<li class="mui-table-view-cell mui-media">' +
+												'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+												'<img class="mui-media-object mui-pull-right" src="http://' + data[i]['pic'][0] + '">' +
+												'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+												'<div class="place">' +
+												'<span>' + data[i]['unit_name'] + '</span>' +
+												'<span>' + str + '</span>' +
+												'</div></a></li>';
+										} else {
+											contentThree +=
+												'<li class="mui-table-view-cell mui-media">' +
+												'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+												'<img class="mui-media-object mui-pull-left" src="http://' + data[i]['pic'][0] + '">' +
+												'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+												'<div class="place" style="float:right;">' +
+												'<span>' + data[i]['unit_name'] + '</span>' +
+												'<span>' + str + '</span>' +
+												'</div></a></li>';
+										}
+
+									}
+									dynamic_qx.innerHTML = contentThree;
+								}
 							});
-						}, false);
-					}); 
-		})(mui, document);
-	</script>	
+
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			//		点击每条区县新闻
+			var fishref = document.getElementsByClassName('fisnew');
+			var count = fishref.length;
+			for(i = 0; i < count; i++) {
+				fishref[i].addEventListener('tap', function() {
+					var id = this.getAttribute("data-id");
+					mui.openWindow({
+						url: 'newscon2.html?id=' + id,
+						id: 'newscon2.html'
+					});
+				});
+			}
+		</script>
 	</body>
+
 </html>
