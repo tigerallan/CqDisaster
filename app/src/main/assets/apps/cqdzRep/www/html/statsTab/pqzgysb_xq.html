@@ -187,6 +187,7 @@
 		<script src="../../js/mui.picker.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js"></script>
 		<script type="text/javascript">
 			mui.init();
 			//所属区县选项
@@ -211,7 +212,7 @@
 
 			var contentThree = "";
 			$.ajax({
-				url: "http://183.230.108.112:8076/wish/findWeekInfo.do?startTime=" + "2017-05-14" + "&endTime=" + "2017-05-20",
+				url: pianqu_ipconfig+"findWeekInfo.do?startTime=" + "2017-05-14" + "&endTime=" + "2017-05-20",
 				async: false,
 				type: "get",
 				dataType: "json",

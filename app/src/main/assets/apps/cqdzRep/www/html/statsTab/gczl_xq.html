@@ -2,432 +2,153 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8">
 		<title>工程治理项目统计</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
-		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
-		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/index.css" />
+		<link rel="stylesheet" href="../../css/gczl_xq.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.min.css" />
 		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
-		<style type="text/css">
-			body,
-			html {
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				padding: 0;
-				background: #fff;
-			}
-			
-			.citychoose {
-				float: right;
-				color: red;
-			}
-			
-			.citychoose>span {
-				font-size: 20px;
-			}
-			
-			.title_xz {
-				width: 100%;
-				height: 35px;
-				line-height: 35px;
-				position: fixed;
-				top: 0;
-				background-color: #fff;
-				margin-top: 60px;
-				z-index: 10000;
-				border-bottom: 1px solid #E0E0E0;
-			}
-			
-			#qx_news {
-				position: absolute;
-				top: 62px;
-			}
-			
-			.mui-bar-nav~.mui-content {
-				padding-top: 0px;
-			}
-			
-			#choose_one {
-				margin-right: 20px;
-			}
-			
-			.table-head {
-				width: 100%;
-				/*margin: 0px 5%;*/
-				position: fixed;
-				top: 62px;
-				z-index: 100;
-				background-color: #fff;
-			}
-			
-			.table-body {
-				width: 100%;
-				/*max-height:400px;*/
-				margin: 41px 0% 0px;
-				/*overflow-y:scroll;*/
-			}
-			
-			.table-head table,
-			.table-body table {
-				width: 100%;
-			}
-			/*tr{
-				border-bottom: 1px solid #E4E3E6;
-			}*/
-			
-			tr th {
-				text-align: center;
-			}
-			
-			tr td {
-				text-align: center;
-				line-height: 30px;
-			}
-			
-			.colorone {
-				background-color: #f0f8ff;
-			}
-			
-			.colortwo {
-				background-color: #fff;
-			}
-			
-			#offCanvasBtn {
-				line-height: 44px;
-				font-size: 16px;
-				font-weight: bold;
-				width: 60px;
-				padding-left: 10px;
-				color: #fff;
-			}
-			
-			#offCanvasBtn img {
-				width: 18px;
-				position: relative;
-				top: 3px;
-			}
-			
-			#offCanvasSideScroll {
-				background-color: #fff;
-			}
-			/*列表*/
-			
-			.icon2-ul-mc {
-				font-weight: 700;
-				font-size: 16px;
-			}
-			
-			.icon2-ul-sj {
-				position: absolute;
-				right: 35px;
-				/*top: 23px;*/
-				font-size: 12px;
-			}
-			
-			.icon2-ul-bh {
-				padding-top: 5px;
-				font-size: 16px;
-			}
-			
-			.icon2-ul-fonta {
-				color: red;
-			}
-			
-			.icon2-ul-fontb {
-				color: #F5CD19;
-			}
-			
-			.icon2-ul-fontc {
-				color: #c8c8c8;
-			}
-			
-			.pointlist img {
-				width: 40px;
-				float: left;
-				margin-right: 10px;
-			}
-			
-			.mui-content-padded {
-				margin: 0px 10px;
-			}
-			
-			.boxflex {
-				display: flex;
-			}
-			
-			.boxflex>span {
-				flex: 1;
-				font-size: 12px;
-				margin: 5px;
-				padding: 5px 0;
-				text-align: center;
-				background: #f6f6f6;
-				border-radius: 5px;
-				cursor: pointer;
-			}
-			
-			.mui-table-view-cell input {
-				background-color: #f6f6f6;
-			}
-			
-			.boxflex>.touming {
-				display: inline-block;
-				background: transparent;
-			}
-			
-			.celltitle {
-				display: inline-block;
-				margin: 10px 0;
-			}
-			
-			.citychoose {
-				float: right;
-				color: red;
-				padding-right: 10px;
-			}
-			
-			.citychoose>span {
-				font-size: 20px;
-			}
-			
-			#nav {
-				background-color: #f2f2f2;
-				border: 1px solid #d9d9d9;
-			}
-			
-			.mui-bar-tab .mui-tab-item.mui-active {
-				background-color: #DF1C1C;
-				color: #fff !important;
-				font-size: 18px;
-			}
-			
-			.mui-bar-tab .mui-tab-item {
-				color: #000000;
-			}
-			
-			#offCanvasContentScroll {
-				margin-top: 62px;
-			}
-			
-			#content_qcqf {
-				margin-top: 62px;
-			}
-			
-			.mui-content-padded {
-				margin: 0 !important;
-			}
-			
-			.checkborder {
-				font-size: 14px !important;
-			}
-			
-			.inputcheck {
-				width: 40%;
-				height: 30px;
-				padding: 5px;
-				border-radius: 5px;
-				background: #fff;
-				border: 1px solid #ddd;
-			}
-			
-			.mui-title {
-				color: #fff;
-			}
-			
-			.mui-table-view-cell .mui-active {
-				background: #fff;
-			}
-			#table_centent tr{
-				height: 50px;
-				line-height: 50px;
-			}
-			.mui-bar-nav~.mui-content{
-				padding-bottom: 0px !important;
-			}
-		</style>
 	</head>
 
-	<body>
-		<!--侧滑菜单容器-->
-		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-slide-in">
-			<!--菜单部分-->
+	<body onresize="document.activeElement.scrollIntoView(true);">
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--侧滑菜单-->
 			<aside id="offCanvasSide" class="mui-off-canvas-right">
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">筛选条件</h1>
+				</header>
 				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
 					<div class="mui-scroll">
-						<header class="mui-bar mui-bar-nav">
-							<h1 class="mui-title">筛选条件</h1>
-						</header>
-						<div class="mui-content">
-							<ul id="content_qcqf" class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<span>所属区县</span>
-									<span id="choose_qx" class="citychoose">请选择<span class="mui-icon mui-icon-forward"></span></span>
-								</li>
-								<li class="mui-table-view-cell mui-input-row">
-									<span class="celltitle">项目类别</span>
-									<div class="boxflex">
-										<span class="checkborder">库区外项目</span>
-										<span class="checkborder">规划内</span>
-									</div>
-									<div class="boxflex">
-										<span class="checkborder">应急抢险项目</span>
-									</div>
-									<div class="boxflex">
-										<span class="checkborder">规划外（国家批复）</span>
-									</div>
-									<div class="boxflex">
-										<span class="checkborder">规划外（市级批复）</span>
-									</div>
-								</li>
-								<li class="mui-table-view-cell mui-input-row">
-									<span class="celltitle">施工单位</span>
-									<div class="mui-input-row mui-search">
-										<input type="search" class="mui-input-clear" placeholder="">
-									</div>
-								</li>
-								<li class="mui-table-view-cell mui-input-row">
-									<span class="celltitle">灾害类型</span>
-									<div class="boxflex">
-										<span class="checkborder">滑坡</span>
-										<span class="checkborder">泥石流</span>
-										<span class="checkborder">地面塌陷</span>
-									</div>
-									<div class="boxflex">
-										<span class="checkborder">库岸</span>
-										<span class="checkborder">斜边坡</span>
-										<span class="checkborder">地裂缝</span>
-									</div>
-									<div class="boxflex">
-										<span class="checkborder">危岩</span>
-										<span class="checkborder">地震</span>
-										<span class="checkborder">冰雹</span>
-									</div>
-									<div class="boxflex">
-										<span class="checkborder">其他</span>
-									</div>
-								</li>
-								<li class="mui-table-view-cell mui-input-row">
-									<span class="celltitle">灾害等级</span>
-									<div class="boxflex">
-										<span class="checkborder">特大</span>
-										<span class="checkborder">大型</span>
-										<span class="checkborder">中型</span>
-										<span class="checkborder">小型</span>
-									</div>
-								</li>
-								<li class="mui-table-view-cell mui-input-row">
-									<span class="celltitle">防灾等级</span>
-									<div class="boxflex">
-										<span class="checkborder">Ⅰ</span>
-										<span class="checkborder">Ⅱ</span>
-										<span class="checkborder">Ⅲ</span>
-									</div>
-								</li>
-								<li class="mui-table-view-cell">
-									<span class="celltitle">开工时间</span>
-									<div class="boxflex">
-										<input class="inputcheck" type="" />　-　<input class="inputcheck" type="">
-									</div>
-								</li>
-								<li class="mui-table-view-cell mui-input-row">
-									<span class="celltitle">是否完工</span>
-									<div class="boxflex">
-										<span class="checkborder">已完工</span>
-										<span class="checkborder">未完工</span>
-										<span class="checkborder">全部</span>
-									</div>
-								</li>
-								<li class="mui-table-view-cell">
-									<span class="celltitle">总体形象进度(%)</span>
-									<div class="boxflex">
-										<input class="inputcheck" type="" />　-　<input class="inputcheck" type="">
-									</div>
-								</li>
-								<li class="mui-table-view-cell mui-input-row">
-									<span class="celltitle">项目名称</span>
-									<div class="mui-input-row mui-search">
-										<input type="search" class="mui-input-clear" placeholder="">
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<nav id="nav" class="mui-bar mui-bar-tab">
-						<a class="mui-tab-item mui-active">
-							<div class="mui-tab-label">确定</div>
-						</a>
-						<a class="mui-tab-item">
-							<div class="mui-tab-label">取消</div>
-						</a>
-					</nav>
-				</div>
-			</aside>
-			<div class="mui-inner-wrap">
-				<header class="mui-bar mui-bar-nav">
-					<a href="#" class="mui-action-back">
-						<span class="mui-icon mui-icon-arrowleft"></span>
-					</a>
-					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-pull-right">筛选<img src="../../img/filter1.png" alt="" /></a>
-					<h1 id="title" class="mui-title">工程治理项目统计</h1>
-				</header>
-				<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<div class="mui-content-padded">
+						<ul id="content_qcqf" class="mui-table-view">
+							<li id="qx" class="mui-table-view-cell">
+								<span>所属区县</span>
+								<span id="choose_qx" class="citychoose">请选择<span class="mui-icon mui-icon-forward"></span></span>
+							</li>
+							<li id="xmlb" class="mui-table-view-cell mui-input-row"></li>
 
-							<div class="table-body">
-								<table id="tb">
-									<colgroup>
-										<col style="width: 80px;" />
-										<col />
-									</colgroup>
-									<tbody id="table_centent">
-										<!--<tr class="colorone">
-											<td width="25%">开州区</td>
-											<td width="50%"><a id="itemDetails" href="#">龙井乡白水河库岸治理工程</a></td>
-											<td width="25%">73%</td>
-										</tr>-->
-									</tbody>
-								</table>
-							</div>
-						</div>
+							<li id="zhlx" class="mui-table-view-cell mui-input-row"></li>
+							<li id="zhdj" class="mui-table-view-cell mui-input-row"></li>
+							<li id="fzdj" class="mui-table-view-cell mui-input-row"></li>
+							<li class="mui-table-view-cell">
+								<span class="celltitle">开工时间</span>
+								<div class="boxflex">
+									<b id="start_time"></b>
+									<span class="s">至</span>
+									<b id="end_time"></b>
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-input-row">
+								<span class="celltitle">是否完工</span>
+								<div id="sfwg" class="boxflex">
+									<span id="1" class="checkborder">已完工</span>
+									<span id="2" class="checkborder">未完工</span>
+									<span id="0" class="checkborder">全部</span>
+								</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<span class="celltitle">总体形象进度(%)</span>
+								<div class="boxflex">
+									<input id="sxx" class="inputcheck" type="text" />
+									<span class="s">至</span>
+									<input id="exx" class="inputcheck" type="text">
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-input-row">
+								<span class="celltitle">施工单位</span>
+								<div class="mui-input-row mui-search">
+									<input id="sgdw" type="search" class="mui-input-clear" placeholder="">
+								</div>
+							</li>
+							<li class="mui-table-view-cell mui-input-row">
+								<span class="celltitle">项目名称</span>
+								<div class="mui-input-row mui-search">
+									<input id="xmmc" type="search" class="mui-input-clear" placeholder="">
+								</div>
+							</li>
+						</ul>
 					</div>
 				</div>
-				<div class="table-head">
-					<table style="width: 98%;margin: 10px 1%;">
-						<colgroup>
-							<col style="width: 80px;" />
-							<col />
-						</colgroup>
-						<thead>
-							<tr>
-								<th width="25%">区　县</th>
-								<th width="50%">项目名称</th>
-								<th width="25%">总体进度</th>
-							</tr>
-						</thead>
-					</table>
+				<!--底部选项卡-->
+				<nav id="nav" class="titlechoose mui-bar mui-bar-tab">
+					<a id="defaultTab" class="mui-tab-item mui-active">
+						<div class="mui-tab-label">确定</div>
+					</a>
+					<a id="secondTab" class="mui-tab-item">
+						<div class="mui-tab-label">取消</div>
+					</a>
+				</nav>
+			</aside>
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap" style="position: absolute;">
+				<!--主界面部分-->
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-back"></a>
+					<h1 id="title" class="mui-title">工程治理项目统计</h1>
+					<!--<a id="offCanvasShow" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right"></a>-->
+					<a id="offCanvasShow" class="mui-pull-right">筛选<img src="../../img/filter1.png" alt="" /></a>
+				</header>
+				<div class="content_iframe">
+					<!--<iframe src="table.html" id="table" width="100%" height="100%" scrolling="auto" frameborder="0"></iframe>-->
 				</div>
-				<!-- off-canvas backdrop -->
-				<div class="mui-off-canvas-backdrop"></div>
+
+				<div id="backdrop" class="mui-off-canvas-backdrop"></div>
 			</div>
-		</div>
 		</div>
 
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/h.js"></script>
-		<script src="../../js/quxian.js"></script>
-		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/gczl_xq.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			mui.init({
+				swipeBack: false //启用右滑关闭功能
+			});
+			mui.ready(function() {
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: true //是否启用回弹
+				});
+			});
 			mui.init();
+			//侧滑容器父节点
+			var offCanvasWrapper = mui('#offCanvasWrapper');
+			//主界面容器
+			var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+			//菜单容器
+			var offCanvasSide = document.getElementById("offCanvasSide");
+			//主界面‘显示侧滑菜单’按钮的点击事件
+			document.getElementById('offCanvasShow').addEventListener('tap', function() {
+				offCanvasWrapper.offCanvas('show');
+			});
+
 			//主界面和侧滑菜单界面均支持区域滚动；
 			mui('#offCanvasSideScroll').scroll();
 			mui('#offCanvasContentScroll').scroll();
+
+			//请求筛选中的数据
+			var cityData_qx;
+			var qxName_id = '';
+			$.ajax({
+				url: gczl_ipconfig + "findUnitData.do",
+				async: false,
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					cityData_qx = json.data;
+				}
+			});
 			//所属区县选项
 			(function($, doc) {
 				$.init();
@@ -435,78 +156,149 @@
 					var cityPicker = new $.PopPicker({
 						layer: 1
 					});
-					cityPicker.setData(cityData);
+					cityPicker.setData(cityData_qx);
 					var choose_one = document.getElementById('choose_qx');
 					choose_one.addEventListener('tap', function(event) {
 						cityPicker.show(function(items) {
 							choose_one.innerText = items[0].text;
+							qxName_id = items[0].id;
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
 					}, false);
-					mui('#content_qcqf').on('tap', '.checkborder', function() {
-						if(this.style.backgroundImage == "") {
-							this.style.backgroundImage = "url('../../img/choo.png')";
-							this.style.backgroundSize = "100% 100%";
-						} else {
-							this.style.backgroundImage = "";
-						}
-					});
 				});
 			})(mui, document);
 
-			var contentThree = "";
-			$.ajax({
-				url: "../../data/gczl_xq.json",
-				async: false, //同步请求	
-				type: "get",
-				dataType: "json",
-				success: function(json) {
-					var data = json.data;
-					for (var i=0;i<data.length;i++) {
-						contentThree +=
-							'<tr>' +
-							'<td width="25%">' + data[i].text + '</td>' +
-							'<td width="50%"><a href="javascript:void(0);" class="fisnew"  data-id="'+data[i].id+'">' + data[i].title + '</a></td>' +
-							'<td width="25%">' + data[i].schedule + '</td>' +
-							'</tr>';
-					}
-//					$.each(json.data, function(key, value) {
-//						contentThree +=
-//							'<tr>' +
-//							'<td width="25%">' + value['text'] + '</td>' +
-//							'<td width="50%"><a href="javascript:void(0);" class="fisnew"  data-id="'+data[i].id+'">' + value['title'] + '</a></td>' +
-//							'<td width="25%">' + value['schedule'] + '</td>' +
-//							'</tr>';
-//					});
-					$('#table_centent').html(contentThree);
+			//读取系统日期
+			var d = new Date();
+			var n = d.getFullYear();
+			var t = d.getMonth() + 1;
+			var m = d.getDate();
+			//设置结束时间
+			(function($, doc) {
+				$.init();
+				var result = document.getElementById("end_time");
+				if(t < 10) {
+					t = "0" + t;
 				}
+				if(m < 10) {
+					m = "0" + m;
+				}
+				$.ready(function() {
+					//					var choose_two = document.getElementById('end_time');
+					result.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m)
+						});
+						picker.show(function(rs) {
+							result.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			//设置开始时间
+			(function($, doc) {
+				$.init();
+				var result_two = document.getElementById("start_time");
+				$.ready(function() {
+					//		var choose_three = document.getElementById('start_time');
+					result_two.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m),
+							"value": n + "-" + t + "-01"
+						});
+						picker.show(function(rs) {
+							result_two.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			// 监听点击遮罩关闭事件
+			document.getElementById("backdrop").addEventListener('tap', function() {
+				document.activeElement.blur();
 			});
-			
-		var fishref = document.getElementsByClassName('fisnew');
-		var count=fishref.length;
-		for(i=0;i<count;i++){
-			fishref[i].addEventListener('tap', function() {
-			var id=this.getAttribute("data-id");
-			  mui.openWindow({
-			    url: 'itemDetails.html?id='+id, 
-			    id:'itemDetails.html'
-			  });
+			//点击取消
+			document.getElementById('secondTab').addEventListener('tap', function() {
+				offCanvasWrapper.offCanvas('close');
+				document.activeElement.blur();
 			});
-		}
+
+			//点击确定
+			var mycars = {};
+			document.getElementById('defaultTab').addEventListener('tap', function() {
+				offCanvasWrapper.offCanvas('close');
+				document.activeElement.blur();
+				leaveme();
 			
-			//隔行变色的表格
-			window.onload = function() { //页面所有元素加载完毕
-				var item = document.getElementById("tb"); //获取id为tb的元素(table)
-				var tbody = item.getElementsByTagName("tbody")[0]; //获取表格的第一个tbody元素
-				var trs = tbody.getElementsByTagName("tr"); //获取tbody元素下的所有tr元素
-				for(var i = 0; i < trs.length; i++) { //循环tr元素
-					if(i % 2 == 0) { //取模. (取余数.比如 0%2=0 , 1%2=1 , 2%2=0 , 3%2=1)
-						trs[i].style.backgroundColor = "#F0F9FD"; // 改变符合条件的tr元素的背景色.
+				var xmtypeName = '';
+				var xmtype = $('#xmlb').find('.checkborder');
+				for(var i = 0; i < xmtype.length; i++) {
+					if(xmtype[i].style.border != "") {
+						xmtypeName = xmtype[i].id;
 					}
 				}
-			}
+				var sgdw = $('#sgdw').val();
+				var zhtypeId = '';
+				var zhtype = $('#zhlx').find('.checkborder');
+				for(var i = 0; i < zhtype.length; i++) {
+					if(zhtype[i].style.border != "") {
+						zhtypeId = zhtype[i].id;
+					}
+				}
+				var zhlevelId = '';
+				var zhlevel = $('#zhdj').find('.checkborder');
+				for(var i = 0; i < zhlevel.length; i++) {
+					if(zhlevel[i].style.border != "") {
+						zhlevelId = zhlevel[i].id;
+					}
+				}
+				var fzlevelId = '';
+				var fzlevel = $('#fzdj').find('.checkborder');
+				for(var i = 0; i < fzlevel.length; i++) {
+					if(fzlevel[i].style.border != "") {
+						fzlevelId = fzlevel[i].id;
+					}
+				}
+				var stime = $('#start_time').html();
+				var etime = $('#end_time').html();
+				var sfwgId = '';
+				var sfwg = $('#sfwg').find('.checkborder');
+				for(var i = 0; i < sfwg.length; i++) {
+					if(sfwg[i].style.border != "") {
+						sfwgId = sfwg[i].id;
+					}
+				}
+				var sxx = $('#sxx').val();
+				var exx = $('#exx').val();
+				var xmmc = $('#xmmc').val();
+
+				mycars = {
+					areaId: qxName_id,
+					xmtype: xmtypeName,
+					sgdw: sgdw,
+					zhtype: zhtypeId,
+					zhlevel: zhlevelId,
+					fzlevel: fzlevelId,
+					stime: stime,
+					etime: etime,
+					sfwg: sfwgId,
+					sxx: sxx,
+					exx: exx,
+					xmmc: xmmc
+				};
+
+				openme(mycars);
+
+			});
 		</script>
 	</body>
-
-</html>

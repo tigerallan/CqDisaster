@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>工程治理项目统计</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/dropload.css" />
+		<style type="text/css">
+			.table-head {
+				position: fixed;
+				height: 42px;
+				width: 100%;
+				background-color: #fff;
+				z-index: 10001;
+			}
+			
+			.table-head tr {
+				height: 42px;
+			}
+			
+			.mui-bar-nav~.mui-content {
+				padding-top: 103px;
+				padding-bottom: 0px;
+			}
+			
+			#tb {
+				width: 100%;
+			}
+			
+			#tb tr {
+				text-align: center;
+				line-height: 35px;
+			}
+			
+			.mui-content {
+				position: absolute;
+				top: 42px;
+				width: 100%;
+				z-index: 1000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="table-head">
+			<table style="width: 100%;">
+				<tr>
+					<th width="25%">区　县</th>
+					<th width="50%">项目名称</th>
+					<th width="25%">总体进度</th>
+				</tr>
+			</table>
+		</div>
+		<div class="mui-content">
+
+			<table id="tb" class="table-body lists">
+
+			</table>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script src="../../js/dropload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/gczl_xq.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			//截取url地址 id
+			function Request() {
+
+				var strHref = location.href;
+				var intPos = strHref.indexOf("?");
+				var isTrue = true;
+
+				if(intPos > -1) {
+
+					var strRight = strHref.substr(intPos + 1);
+					var arrTmp = strRight.split("&");
+					var arrObj = {};
+					for(var i = 0; i < arrTmp.length; i++) {
+						var arrTemp = arrTmp[i].split("=");
+						//					if(arrTemp[0].toUpperCase() == argumemts[0].toUpperCase())
+						//						return arrTemp[1];
+
+						arrObj[arrTemp[0]] = arrTemp[1];
+					}
+					$.map(arrObj, function() {
+						isTrue = false
+					});
+				}
+				isTrue = isTrue ? "" : arrObj;
+				return isTrue;
+
+			}
+
+			function sljz() {
+				var counter = 0;
+				// 每页展示15个
+				var num = 15;
+				var pageStart = 0,
+					pageEnd = 0;
+				
+				
+				$('.mui-content').dropload({
+					scrollArea: window,
+					loadDownFn: function(me) {
+						
+						$.ajax({
+							type: 'GET',
+//														url: '../../data/gczl_xq.json',
+							url: gczl_ipconfig + "findProjectInfoData.do",
+							dataType: 'json',
+							data: Request(),
+							success: function(json) {
+								var data = json.data;
+								var result = '';
+								counter++;
+								pageEnd = num * counter;
+								pageStart = pageEnd - num;
+
+								for(var i = pageStart; i < pageEnd; i++) {
+									result += '<tr>' +
+										'<td width="25%">' + data[i].text + '</td>' +
+										'<td width="50%"><a href="javascript:void(0);" class="fisnew"  data-id="' + data[i].id + '">' + data[i].title + '</a></td>' +
+										'<td width="25%">' + data[i].schedule + '%</td>' +
+										'</tr>';
+									if((i + 1) >= data.length) {
+										// 锁定
+										me.lock();
+										// 无数据
+										me.noData();
+										break;
+									}
+								}
+								// 为了测试，延迟1秒加载
+								setTimeout(function() {
+									$('.lists').append(result);
+									tap();
+									table();
+									// 每次数据加载完，必须重置
+									me.resetload();
+								}, 500);
+							},
+							error: function(xhr, type) {
+								
+								console.log('数据请求失败!');
+								// 即使加载出错，也得重置
+								me.resetload();
+							}
+						});
+					}
+				});
+			};
+
+			window.onload = sljz;
+
+			//点击每条详情事件
+			function tap() {
+				var fishref = document.getElementsByClassName('fisnew');
+				var count = fishref.length;
+				for(i = 0; i < count; i++) {
+					fishref[i].addEventListener('tap', function() {
+						var id = this.getAttribute("data-id");
+						mui.openWindow({
+							url: 'itemDetails.html?id=' + id,
+							id: 'itemDetails.html'
+						});
+					});
+				}
+			}
+			//隔行变色的表格
+			function table() {
+				var item = document.getElementById("tb");
+				var trs = item.getElementsByTagName("tr");
+				for(var i = 0; i < trs.length; i++) {
+					if(i % 2 == 0) {
+						trs[i].style.backgroundColor = "#F0F9FD";
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

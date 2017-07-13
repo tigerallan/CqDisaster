@@ -170,6 +170,7 @@
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/h.js"></script>
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init();
 			mui.ready(function() {
@@ -205,32 +206,39 @@
 			var id = Request('id');
 			var contentThree = "";
 			$.ajax({
-				url: "../../data/infocontent_xq.json",
+//				url: "../../data/infocontent_xq.json",
+				url: infocontent_ipconfig+"getZhuangbaoInfo.do?id="+id,
 				type: "get",
+				async: false,
+//				data: {id:id},
 				dataType: "json",
 				success: function(json) {
 					var data = json.data;
 					contentThree +=
 						'<span>项目名称</span>' +
-						'<p>' + data[id].mc + '</p>' +
+						'<p>' + data[0].mc + '</p>' +
 						'<span>基本情况</span>' +
-						'<p>' + data[id].information1 + '</p>' +
-						(data[id].information2 != null ? ('<p>' + data[id].information2 + '</p>') : '');
-					contentThree += '<span>已开展工作</span>' +
-						'<p>' + data[id].completed1 + '</p>' +
-						(data[id].completed2 != null ? ('<p>' + data[id].completed2 + '</p>') : '') +
-						(data[id].completed3 != null ? ('<p>' + data[id].completed3 + '</p>') : '') +
-						(data[id].completed4 != null ? ('<p>' + data[id].completed4 + '</p>') : '') +
-						(data[id].completed5 != null ? ('<p>' + data[id].completed5 + '</p>') : '') +
-						(data[id].completed6 != null ? ('<p>' + data[id].completed6 + '</p>') : '');
-					contentThree += '<span>下步安排</span>' +
-						'<p>' + data[id].arrange1 + '</p>' +
-						(data[id].arrange2 != null ? ('<p>' + data[id].arrange2 + '</p>') : '') +
-						(data[id].arrange3 != null ? ('<p>' + data[id].arrange3 + '</p>') : '');
-					contentThree += '<span>填报审核</span>' +
-						'<div style="margin-left: 28px;">' +
-						'<input type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;" value="' + data[id].reported + '"/>' +
-						'<input type="text" style="width: 30%;color: #777;text-align: center;" value="' + data[id].audit + '"/>' +
+						'<p>' + data[0].information1 + '</p>' +
+						'<span>已开展工作</span>' +
+						'<p>' + data[0].completed + '</p>' +
+						'<span>下步安排</span>' +
+						'<p>' + data[0].arrange1 + '</p>' +
+						'<span>填报审核</span>' +
+						'<div style="margin-left: 28px;">' 
+						if(data[0].reported!=null){
+							contentThree +=
+							'<input type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;" value="' + data[0].reported + '"/>' 
+						}else{
+							contentThree +=
+							'<input type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;"/>' 
+						}
+						if(data[0].audit!=null){
+							contentThree +=
+							'<input type="text" style="width: 30%;color: #777;text-align: center;" value="' + data[0].audit + '"/>' 
+						}else{
+							contentThree +=
+							'<input type="text" style="width: 30%;color: #777;text-align: center;"/>' 
+						}
 						'</div>';
 					$('#newscon').append(contentThree);
 				}

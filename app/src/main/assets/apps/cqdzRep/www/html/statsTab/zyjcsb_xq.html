@@ -134,127 +134,151 @@
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/jquery-1.11.3.js"></script>
 		<script src="../../js/highcharts.js"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init();
-			//  	var colors = Highcharts.getOptions().colors,
-			var colors = ['#007ab7', '#01999A', '#9CFEFF', '#FEFF97', '#5796cc', '#5dbbc5', '#61bba1'],
-				categories = ['专业监测在线率', '专业监测掉线率'],
-				data = [{
-					y: 46.41,
-					color: colors[i],
-					drilldown: {
-						name: '专业监测在线率',
-						categories: ['1日告警', '2日告警', '3日告警', '4日及以上告警'],
-						data: [452, 203, 150, 53],
-						color: colors[i]
-					}
-				}, {
-					y: 53.59,
-					color: colors[4],
-					drilldown: {
-						name: '专业监测掉线率',
-						categories: ['掉线设备数量'],
-						data: [858],
-						color: colors[4]
-					}
-				}],
-				browserData = [],
-				versionsData = [],
-				i,
-				j,
-				dataLen = data.length,
-				drillDataLen,
-				brightness;
-			// 构建数据数组
-			for(i = 0; i < dataLen; i += 1) {
-				// 添加在线率数据
-
-				browserData.push({
-					name: categories[i],
-					y: data[i].y,
-					//          color: data[i].color
-					color: colors[i]
-				});
-				// 添加掉线率数据
-				drillDataLen = data[i].drilldown.data.length;
-				for(j = 0; j < drillDataLen; j += 1) {
-					brightness = 0.2 - (j / drillDataLen) / 5;
-					versionsData.push({
-						name: data[i].drilldown.categories[j],
-						y: data[i].drilldown.data[j],
-						color: Highcharts.Color(data[i].color).brighten(brightness).get()
-					});
-				}
-			}
-			var contentThree = '';
-			var p = 1;
-			var stais = {
-				chart: {
-					type: 'pie'
-				},
-				legend: {
-					enabled: false
-				},
-				title: {
-					text: null
-				},
-				credits: {
-					enabled: false
-				},
-				subtitle: {
-					text: null
-				},
-				yAxis: {
-					title: {
-						text: null
-					}
-				},
-				plotOptions: {
-					pie: {
-						//显不显示字
-						allowPointSelect: false,
-						//				cursor: 'pointer',
-						dataLabels: {
-							//					enabled: false
-							color: '#559aef'
-						},
-						//				showInLegend: true,
-
-						shadow: false,
-						center: ['50%', '50%']
-					}
-				},
-				tooltip: {
-					pointFormat: null
-				},
-				series: [{
-					name: '',
-					data: browserData,
-					size: '30%'
-				}, {
-					name: '',
-					data: versionsData,
-					size: '90%',
-					innerSize: '60%'
-				}]
-			}
-			//			var data = new Array();
+			var obj_a;
+			var obj_b;
+			var obj_c;
+			var obj_d;
+			var contentThree = "";
 			$.ajax({
-				url: "../../data/zyjcsb.json",
+//				url: "../../data/zyjcsb.json",
+				url:zyjcsb_ipconfig+"doveWarnDataAndDeviceOnline.do",
+				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
 				success: function(json) {
-					$.each(json.data, function(key, value) {
-						contentThree +=
-							'<div class="icon1_div">' + '<i class="i' + p++ + '"></i><span class="icon1_text">' + value['text'] + '</span>：<span class="icon1_price">' + value['price'] + '</span></div>'
-						//						data.push(value['price']);
-					});
+					var data = json.data;
+					obj_a = data.slice(0, 4);
+					obj_b = data.slice(4, 5);
+					obj_c = data.slice(5, 6);
+					obj_d = data.slice(6, 7);
+					var data_a = data[5].price;
+							data_a = data_a.toFixed(2);
+					var data_b = data[6].price;
+							data_b = data_b.toFixed(2);
+					contentThree +=
+						'<div class="ibox"><i class="i1"></i>' +
+						'<span class="icon1_text">' + data[0].text + '</span>：<span class="icon1_price">' + data[0].price + '</span></div>' +
+						'<div class="ibox"><i class="i2"></i>' +
+						'<span class="icon1_text">' + data[1].text + '</span>：<span class="icon1_price">' + data[1].price + '</span></div>' +
+						'<div class="ibox"><i class="i3"></i>' +
+						'<span class="icon1_text">' + data[2].text + '</span>：<span class="icon1_price">' + data[2].price + '</span></div>' +
+						'<div class="ibox"><i class="i4"></i>' +
+						'<span class="icon1_text">' + data[3].text + '</span>：<span class="icon1_price">' + data[3].price + '</span></div>' +
+						'<div class="ibox"><i class="i5"></i>' +
+						'<span class="icon1_text">' + data[4].text + '</span>：<span class="icon1_price">' + data[4].price + '</span></div>' +
+						'<div class="ibox"><i class="i6"></i>' +
+						'<span class="icon1_text">' + data[5].text + '</span>：<span class="icon1_price">' + data_a + '%</span></div>' +
+						'<div class="ibox"><i class="i7"></i>' +
+						'<span class="icon1_text">' + data[6].text + '</span>：<span class="icon1_price">' + data_b + '%</span></div>'
+
 					$('.icon1-centent-left').html(contentThree);
-					$('#container').highcharts(stais);
-					$(".highcharts-data-label-color-4 tspan")[0].setAttribute('y', 35);
-					$(".highcharts-data-label-color-4 tspan")[1].setAttribute('x', 10);
-					$(".highcharts-data-label-color-4 tspan")[1].setAttribute('y', 5);
 				}
+			});
+			$(function() {
+				var colors = ['#007ab7', '#01999A', '#9CFEFF', '#FEFF97', '#5796cc', '#5dbbc5', '#61bba1'],
+					categories = ['专业监测在线率', '专业监测掉线率'],
+					data = [{
+						y: Number(obj_c[0].price),
+						color: colors[i],
+						drilldown: {
+							name: '专业监测在线率',
+							categories: ['1日告警', '2日告警', '3日告警', '4日及以上告警'],
+							data: [Number(obj_a[0].price), Number(obj_a[1].price), Number(obj_a[2].price), Number(obj_a[3].price)],
+							color: colors[i]
+						}
+					}, {
+						y: Number(obj_d[0].price),
+						color: colors[4],
+						drilldown: {
+							name: '专业监测掉线率',
+							categories: ['掉线设备数量'],
+							data: [Number(obj_b[0].price)],
+							color: colors[4]
+						}
+					}],
+					browserData = [],
+					versionsData = [],
+					i,
+					j,
+					dataLen = data.length,
+					drillDataLen,
+					brightness;
+				// 构建数据数组
+				for(i = 0; i < dataLen; i += 1) {
+					// 添加在线率数据
+					browserData.push({
+						name: categories[i],
+						y: data[i].y,
+						//          color: data[i].color
+						color: colors[i]
+					});
+					// 添加掉线率数据
+					drillDataLen = data[i].drilldown.data.length;
+					for(j = 0; j < drillDataLen; j += 1) {
+						brightness = 0.2 - (j / drillDataLen) / 5;
+						versionsData.push({
+							name: data[i].drilldown.categories[j],
+							y: data[i].drilldown.data[j],
+							color: Highcharts.Color(data[i].color).brighten(brightness).get()
+						});
+					}
+				}
+				// 创建图表
+				$('#container').highcharts({
+					chart: {
+						type: 'pie'
+					},
+					legend: {
+						enabled: false
+					},
+					title: {
+						text: null
+					},
+					credits: {
+						enabled: false
+					},
+					subtitle: {
+						text: null
+					},
+					yAxis: {
+						title: {
+							text: null
+						}
+					},
+					plotOptions: {
+						pie: {
+							//显不显示字
+							allowPointSelect: false,
+							//				cursor: 'pointer',
+							dataLabels: {
+								//					enabled: false
+								color: '#559aef'
+							},
+							//				showInLegend: true,
+							shadow: false,
+							center: ['50%', '50%']
+						}
+					},
+					tooltip: {
+						pointFormat: null
+					},
+					series: [{
+						name: '',
+						data: browserData,
+						size: '30%'
+					}, {
+						name: '',
+						data: versionsData,
+						size: '90%',
+						innerSize: '60%'
+					}]
+				});
+				$(".highcharts-data-label-color-4 tspan")[0].setAttribute('y', 35);
+				$(".highcharts-data-label-color-4 tspan")[1].setAttribute('x', 10);
+				$(".highcharts-data-label-color-4 tspan")[1].setAttribute('y', 5);
 			});
 
 			var map_tb = document.getElementById('map_tb');

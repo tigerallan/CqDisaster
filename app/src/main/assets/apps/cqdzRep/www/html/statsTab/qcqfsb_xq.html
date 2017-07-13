@@ -158,6 +158,7 @@
 	<script src="../../js/mui.picker.js"></script>
 	<script src="../../js/mui.poppicker.js"></script>
 	<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/ip.js"></script>
 	<script type="text/javascript">
 		mui.init();
 		//所属区县选项
@@ -179,10 +180,9 @@
 						}, false);
 					}); 
 		})(mui, document);
-		//http://183.230.108.112:8090/meteor/findYiShangBaoDataByArea.do
 		var contentThree = "";
 		$.ajax({
-			url: "http://183.230.108.112:8090/meteor/findYiShangBaoDataByArea.do",
+			url: qcqf_ipconfig+"findYiShangBaoDataByArea.do",
 			async: false,
 			type: "get",
 			dataType: "json",

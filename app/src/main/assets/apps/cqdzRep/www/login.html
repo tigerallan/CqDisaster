@@ -29,8 +29,11 @@
 						<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
 					</div>
 				</form>
+				<div class="remember">
+					<input id="remember" class="inpu_remember" type="checkbox" name="remember"><label>记住账号</label>
+				</div>
 				<div class="mui-content-padded">
-					<a id="login" class="mui-btn mui-btn-block mui-btn-primary" style="background-color: #337AB7;">登录</a>
+					<a id="login" onclick="remPwd()" class="mui-btn mui-btn-block mui-btn-primary" style="background-color: #337AB7;">登录</a>
 				</div>
 				<div class="login-foot">
 					<p>地灾移动指挥系统</p>
@@ -38,6 +41,7 @@
 			</div>
 		</div>
 		<script src="js/mui.min.js"></script>
+		<script src="js/ip.js"></script>
 	</body>
 	<script type="text/javascript">
 		mui.init({
@@ -83,7 +87,7 @@
 							password: password
 						};
 						mui.ajax({
-							url: "http://183.230.108.112:9077/cqapp/checkPhoneNum.do",
+							url: login_ipconfig + "checkPhoneNum.do",
 							data: setData,
 							type: "get",
 							dataType: "json",
@@ -135,6 +139,29 @@
 				return false;
 			};
 		});
+
+		//记住账号和密码
+		var Id = localStorage.getItem("account");
+		if(Id != null) {
+			document.getElementById("account").value = Id;
+			document.getElementById("password").value = localStorage.getItem("password");
+			document.getElementById("remember").checked = "checked";
+		}
+		//将账号与密码保存到Localstore 
+		function remPwd() {
+			var check = document.getElementById("remember");
+			if(check.checked) //判断记住密码项是否勾选，是则记住密码到本地缓存 
+			{
+				var id = document.getElementById("account").value;
+				var pwd = document.getElementById("password").value;
+				localStorage.setItem("account", id);
+				localStorage.setItem("password", pwd);
+			} else //否则就移除本地缓存 
+			{
+				localStorage.removeItem("account");
+				localStorage.removeItem("password");
+			}
+		}
 	</script>
 
 </html>

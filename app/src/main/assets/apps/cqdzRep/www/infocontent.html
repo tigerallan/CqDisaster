@@ -72,7 +72,7 @@
 		</div>
 		<div id="qx_news" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
-				<ul id="infocontent" class="main mui-table-view">
+				<ul id="dynamic_qx" class="main mui-table-view">
 					<!--<li class="mui-table-view-cell mui-media">
 						<a class="fishref" href="javascript:void(0);" data-ng="0" data-id="0">
 							<div class="mui-media-body">
@@ -148,6 +148,7 @@
 		<script src="js/mui.picker.js"></script>
 		<script src="js/mui.poppicker.js"></script>
 		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/ip.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: false,
@@ -187,12 +188,11 @@
 				});
 			})
 
-			
-
 			//区县专报请求		
 			var content = "";
 			$.ajax({
-				url: "data/infocontent.json",
+				//				url: "data/infocontent.json",
+				url: infocontent_ipconfig + "getZhuangbao.do",
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
@@ -213,34 +213,30 @@
 							'</div></a>' +
 							'</li>';
 					}
-					$('#infocontent').html(content);
+					$('#dynamic_qx').html(content);
 				}
-				
+
 			});
 			var y = document.getElementsByClassName('fishref');
-			$(y).each(function(){
+			$(y).each(function() {
 				var ng = $(this).attr('data-ng');
-				if(ng==0){
-					$(this).css('background-color','rgba(221,221,221,.3)');
-				} else{
-					$(this).css('background-color','#fff');
+				if(ng == 0) {
+					$(this).css('background-color', 'rgba(221,221,221,.3)');
+				} else {
+					$(this).css('background-color', '#fff');
 				}
 			});
 
-			//点击每条跳转到详情页
-			var fishref = document.getElementsByClassName('fishref');
-			var count = fishref.length;
-			for(i = 0; i < count; i++) {
-				fishref[i].addEventListener('tap', function() {
-					$(this).attr("data-ng","1");
-					$(this).css('background-color','#fff');
-					var id = this.getAttribute("data-id");
-					mui.openWindow({
-						url: 'html/dynamicTab/infocontent_xq.html?id=' + id,
-						id: 'infocontent_xq.html'
-					});
-				});
-			}
+			var cityData;
+			$.ajax({
+				url: infocontent_ipconfig + "findAreaData.do",
+				async: false,
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					cityData = json;
+				}
+			});
 
 			//所属区县选项
 			(function($, doc) {
@@ -251,32 +247,77 @@
 					});
 					cityPicker.setData(cityData);
 					var choose_one = document.getElementById('choose_one');
+					var dynamic_qx = document.getElementById('dynamic_qx');
+
 					choose_one.addEventListener('tap', function(event) {
 						cityPicker.show(function(items) {
 							choose_one.innerText = items[0].text;
+							var areaId = items[0].id;
+
+							$.ajax({
+								url: infocontent_ipconfig + "getZhuangbao.do",
+								async: false, //同步请求	
+								type: "get",
+								data: {
+									areaId: areaId
+								},
+								dataType: "json",
+								success: function(json) {
+									dynamic_qx.innerHTML = "";
+									content = "";
+									var data = json.data;
+									
+									for(var i = 0; i < data.length; i++) {
+										var berichten = data[i].berichten;
+										content +=
+											'<li class="mui-table-view-cell mui-media">' +
+											'<a class="fishref" href="javascript:void(0);" data-ng="' + data[i].ng + '" data-id="' + data[i].id + '">' +
+											'<div class="mui-media-body">' +
+											'<div class="mui-ellipsis">' + data[i].title + '</div>' +
+											'</div>' +
+											'<div class="place">' +
+											'<span>' + data[i].county + '</span>' +
+											'<span>' + data[i].time + '</span>' +
+											'<span>' + data[i].dispose + '</span>' 
+											if (berichten!=null) {
+												content +=
+												'<span>' + berichten + '</span>'
+											}
+											'</div></a>' +
+											'</li>';
+									}
+									dynamic_qx.innerHTML = content;
+									count();
+								}
+							});
+
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
 					}, false);
 				});
 			})(mui, document);
-			//		var count = 0;
-			//		/** * 上拉加载 灾害点 */
-			//		function pullupRefresh() {
-			//			setTimeout(function() {
-			//				mui('#qx_news').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-			//				var table = document.body.querySelector('.main');
-			//				var cells = document.body.querySelectorAll('.mui-table-view-cell');
-			//				for (var i = cells.length, len = i + 3; i < len; i++) {
-			//					var li = document.createElement('li');
-			//					li.className = 'mui-table-view-cell mui-media';
-			//					li.innerHTML='<a href="javascript:;">'+
-			//						'<div class="mui-media-body"><div class="mui-ellipsis">重庆武隆滑坡已造成经济损失308.5万元</div>'+
-			//						'</div><div class="place"><span>市局</span><span>8小时前</span></div></a>';
-			//					table.appendChild(li);
-			//				}
-			//			}, 1000);
-			//		}
+
+			//点击每条跳转到详情页
+			function count() {
+				var fishref = document.getElementsByClassName('fishref');
+				var count = fishref.length;
+				for(i = 0; i < count; i++) {
+					fishref[i].addEventListener('tap', function() {
+						$(this).attr("data-ng", "1");
+						$(this).css('background-color', '#fff');
+						var id = this.getAttribute("data-id");
+						mui.openWindow({
+							url: 'html/dynamicTab/infocontent_xq.html?id=' + id,
+							id: 'infocontent_xq.html'
+						});
+					});
+				}
+			}
+
+			window.onload = count;
+
+		
 		</script>
 	</body>
 

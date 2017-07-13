@@ -257,6 +257,7 @@
 		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js"></script>
 		<script type="text/javascript">
 			mui.init();
 			//所属区县选项
@@ -345,7 +346,8 @@
 
 			function zq() {
 				//	var url = "http://183.230.108.112:8085/cmdcity/findDisasterSta.do?page=1&rows=100";
-				var url = "http://183.230.108.112:8085/cmdcity/findDisasterAndDangerSta.do";
+				var url = quxianRb_ipconfig+"findDisasterAndDangerSta.do";
+				
 				document.body.scrollIntoView();
 				if(arguments[0]) {
 //					url += "&starttime1=" + arguments[0] + "&endtime1=" + arguments[1];

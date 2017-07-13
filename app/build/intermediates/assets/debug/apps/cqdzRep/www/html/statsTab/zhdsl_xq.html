@@ -121,6 +121,7 @@
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/jquery-1.11.3.js"></script>
 		<script src="../../js/highcharts.js"></script>
+		<script src="../../js/ip.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: false,
@@ -169,7 +170,8 @@
 			}
 			var i = 1;
 			$.ajax({
-				url: "../../data/hazardone1.json",
+//				url: "../../data/hazardone1.json",
+				url: zhdsl_ipconfig+"getDisType.do",
 				type: "get",
 				dataType: "json",
 				success: function(json) {
@@ -227,7 +229,8 @@
 			var f = 1;
 			var colors = ['#d9ebb1', '#b7ddc8', '#95d0de', '#99ce7e'];
 			$.ajax({
-				url: "../../data/hazardone2.json",
+//				url: "../../data/hazardone2.json",
+				url: zhdsl_ipconfig+"getDisScale.do",
 				type: "get",
 				dataType: "json",
 				success: function(json) {
@@ -289,7 +292,8 @@
 			};
 			var p = 1;
 			$.ajax({
-				url: "../../data/hazardone3.json",
+//				url: "../../data/hazardone3.json",
+				url: zhdsl_ipconfig+"getDisStable.do",
 				type: "get",
 				dataType: "json",
 				success: function(json) {
