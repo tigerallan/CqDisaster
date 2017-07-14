@@ -567,7 +567,7 @@ public class HcActivity extends Activity implements OnClickListener {
         ChangeSingleSurFace(true);
         NET_DVR_PREVIEWINFO previewInfo = new NET_DVR_PREVIEWINFO();
         previewInfo.lChannel = m_iStartChan;
-        previewInfo.dwStreamType = 0; // substream
+        previewInfo.dwStreamType = 1; // substream
         previewInfo.bBlocked = 1;
         previewInfo.hHwnd = playView[0].getHolder();
         Log.d(TAG, "surface:" + playView[0].toString());
