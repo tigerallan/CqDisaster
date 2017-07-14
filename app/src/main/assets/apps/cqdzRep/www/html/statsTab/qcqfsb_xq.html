@@ -187,7 +187,7 @@
 			type: "get",
 			dataType: "json",
 			success: function(json) {
-				$.each(json.sz, function(key, value) {
+				$.each(json.data, function(key, value) {
 					contentThree +=
 						'<tr class="colortwo"'+(value['yi']==null?'style="color:red"':'')+'>' +
 						'<td width="20%">' + value['quxian'] + '</td>' +
