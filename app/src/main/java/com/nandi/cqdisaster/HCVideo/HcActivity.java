@@ -298,6 +298,7 @@ public class HcActivity extends Activity implements OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        HCNetSDK.getInstance().NET_DVR_Logout_V30(m_iLogID);
         Boolean i = HCNetSDK.getInstance().NET_DVR_Cleanup();
         Log.d(TAG, "释放资源是否成功：" + i);
     }
@@ -485,7 +486,7 @@ public class HcActivity extends Activity implements OnClickListener {
                     int error = HCNetSDK.getInstance().NET_DVR_GetLastError();
                     if (error == 23) {
                         Toast.makeText(HcActivity.this, "该设备不支持此功能！", Toast.LENGTH_SHORT).show();
-                    } else {
+                    } else if (error==32){
 
                         Toast.makeText(HcActivity.this, "回放失败，检查时间是否正确！", Toast.LENGTH_SHORT).show();
                     }
@@ -659,13 +660,13 @@ public class HcActivity extends Activity implements OnClickListener {
         }
         int loginId = HCNetSDK.getInstance().NET_DVR_Login_V30(ip, port, user, psd, m_oNetDvrDeviceInfoV30);
         if (loginId < 0) {
-            int code = HCNetSDK.getInstance().NET_DVR_GetLastError();
-            String msg;
             Log.e(TAG, "NET_DVR_Login is failed!Err:" + HCNetSDK.getInstance().NET_DVR_GetLastError());
-            if (code == 1) {
-                msg = "账号密码错误！";
-            } else {
-                msg = "从设备获取数据失败！";
+            int code = HCNetSDK.getInstance().NET_DVR_GetLastError();
+            String msg="";
+            if (code == 7) {
+                msg = "获取服务器数据失败！";
+            } else if(code==52){
+                msg = "登录设备数量达到上限！";
             }
             Toast.makeText(HcActivity.this, msg, Toast.LENGTH_SHORT).show();
             return -1;
