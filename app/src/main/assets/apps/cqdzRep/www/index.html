@@ -150,14 +150,17 @@
 			});
 		}
 
-		//消息推送页面打开
+		//专报页面打开
 		document.getElementById('newcontent').addEventListener('tap', function() {
 			mui.openWindow({
 				url: 'infocontent.html',
 				id: 'infocontent.html',
 				show: {
-					autoShow: true, //页面loaded事件发生后自动显示，默认为true
-					aniShow: 'slide-in-bottom'
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+				},
+				waiting: {
+					autoShow: true, //自动显示等待框，默认为true
+					title: '正在加载...' //等待对话框上显示的提示内容
 				}
 			});
 		});
@@ -173,6 +176,10 @@
 				},
 				extras: {
 					indexID: plus.webview.currentWebview().id
+				},
+				waiting: {
+					autoShow: true, //自动显示等待框，默认为true
+					title: '正在加载...' //等待对话框上显示的提示内容
 				}
 			});
 		});

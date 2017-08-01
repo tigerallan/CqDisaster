@@ -53,10 +53,6 @@
 			.openPopover{
 				color: #007aff;
 			}
-			.mui-popover{
-				height: 360px;
-				width: 300px;
-			}
 			#middlePopover{
 				top: 100px !important;
 				left: 40px !important;
@@ -70,172 +66,37 @@
 			.mui-content>.mui-table-view:first-child{
 				margin-top: 0;
 			}
+			.mui-popover{
+				top: 100px !important;
+    		left: 5% !important;
+    		height: 280px;
+				width: 90%;
+			}
+			.mui-bar-nav~.mui-content{
+				padding-top: 62px !important;
+				padding-bottom: 0px !important;
+			}
+			.mui-bar-nav{
+				-webkit-box-shadow: none; 
+    		box-shadow: none; 
+			}
 		</style>
 	</head>
 	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">隐患点数据</h1>
+		</header>
 		<div class="mui-content mui-row mui-fullscreen">
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-collapse">
-					<a class="mui-navigate-right" href="#">
-						<div class="mui-row">
-							<div class="mui-col-sm-12 mui-col-xs-12 content_text">
-								基本信息
-							</div>
-						</div>
-					</a>
-					<div class="mui-collapse-content">
-						<ul class="mui-table-view">
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">隐患点编号</span>
-						    	<span class="mui-pull-right">5001010000520101</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">隐患点编名称</span>
-						    	<span class="mui-pull-right">长地坪滑坡</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">经 度</span>
-						    	<span class="mui-pull-right">108.4439933</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">纬 度</span>
-						    	<span class="mui-pull-right">30.8326595</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">灾害类型</span>
-						    	<span class="mui-pull-right">滑坡</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">危害等级</span>
-						    	<span class="mui-pull-right">小型</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">稳定性</span>
-						    	<span class="mui-pull-right">稳定</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">片 所</span>
-						    	<span class="mui-pull-right">江南局</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">位 置</span>
-						    	<span class="mui-pull-right">万州区陈家坝街道晒网村</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">监测人员</span>
-						    	<span class="mui-pull-right">魏佐明</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">手机</span>
-						    	<span class="mui-pull-right">15702310784</span>
-						    </li>
-						</ul>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-collapse mui-active">
-					<a class="mui-navigate-right" href="#">
-						<div class="mui-row">
-							<div class="mui-col-sm-12 mui-col-xs-12 content_text">
-								宏观监测数据
-							</div>
-						</div>
-					</a>
-					<div class="mui-collapse-content">
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">合法半径</span>
-						    	<span class="mui-pull-right">999</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">告警阀值</span>
-						    	<span class="mui-pull-right">红 5 橙 4 黄 3 蓝 1</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">宏观现象</span>
-						    	<span class="mui-pull-right" style="margin-top: 5px;">地面新裂缝 地面新塌陷 墙上新塌陷 墙上新裂缝 新地鼓 小型崩塌 房屋变形 新泉水新湿地 井塘漏水 树木歪斜 地声 动物异常 其他现象</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">实测现象</span>
-						    	<span class="mui-pull-right">无异常</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">其他现象备注</span>
-						    	<span class="mui-pull-right">无</span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<button id="cktp" type="button" class="mui-pull-right">查看图片</button>
-						    </li>
-						</ul>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-collapse">
-					<a class="mui-navigate-right" href="#">
-						<div class="mui-row">
-							<div class="mui-col-sm-12 mui-col-xs-12 content_text">
-								历史监测数据
-							</div>
-						</div>
-					</a>
-					<div class="mui-collapse-content">
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">2017-03-20 13:55:11</span>
-						    	<span class="mui-pull-right mui-content-padded"><a href="#middlePopover" class="openPopover">查看</a></span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">2017-03-20 13:55:11</span>
-						    	<span class="mui-pull-right mui-content-padded"><a href="#middlePopover" class="openPopover">查看</a></span>
-						    </li>
-						    <li class="mui-table-view-cell">
-						    	<span class="mui-pull-left">2017-03-20 13:55:11</span>
-						    	<span class="mui-pull-right mui-content-padded"><a href="#middlePopover" class="openPopover">查看</a></span>
-						    </li>
-						</ul>
-					</div>
-				</li>
+			<ul id="content_name" class="mui-table-view">
+				
 			</ul>
 		</div>
 		<!--弹出内容-->
-		<div id="middlePopover" class="mui-popover">
-			<div class="mui-popover-arrow"></div>
-			<div class="mui-scroll-wrapper">
-				<div class="mui-scroll">
-					<ul class="mui-table-view">
-						<li class="mui-table-view-cell">
-					    	<span class="mui-pull-left">监测点编号</span>
-					    	<span class="mui-pull-right">DL01</span>
-					    </li>
-					    <li class="mui-table-view-cell">
-					    	<span class="mui-pull-left">监测点名称</span>
-					    	<span class="mui-pull-right">地裂1</span>
-					    </li>
-					    <li class="mui-table-view-cell">
-					    	<span class="mui-pull-left">监测点时间</span>
-					    	<span class="mui-pull-right">2017-03-20 13:55:11</span>
-					    </li>
-					    <li class="mui-table-view-cell">
-					    	<span class="mui-pull-left">数据有限性</span>
-					    	<span class="mui-pull-right"><img src="../../img/green.JPG"/></span>
-					    </li>
-					    <li class="mui-table-view-cell">
-					    	<span class="mui-pull-left">实测数据</span>
-					    	<span class="mui-pull-right">3373</span>
-					    </li>
-					    <li class="mui-table-view-cell">
-					    	<span class="mui-pull-left">相邻告警</span>
-					    	<span class="mui-pull-right">正常</span>
-					    </li>
-					    <li class="mui-table-view-cell">
-					    	<span class="mui-pull-left">累计告警</span>
-					    	<span class="mui-pull-right">正常</span>
-					    </li>
-					    <li class="mui-table-view-cell">
-					    	<span class="mui-pull-left">是否清空雨量筒</span>
-					    	<span class="mui-pull-right">否</span>
-					    </li>
-					</ul>
-				</div>
-			</div>
+		<div class="popup">
+			
 		</div>
 	<script src="../../js/mui.min.js"></script>
 	<script src="../../js/jquery-1.11.3.js"></script>
@@ -243,19 +104,161 @@
 	<script src="../../js/mui.picker.js"></script>
 	<script src="../../js/mui.poppicker.js"></script>
 	<script type="text/javascript">
+		mui.init();
 		mui('.mui-scroll-wrapper').scroll();
-		mui('body').on('shown', '.mui-popover', function(e) {
-			//console.log('shown', e.detail.id);//detail为当前popover元素
+		var content_name = "";
+		var lsjcsj_text = [];
+		var popup_text = "";
+		$.ajax({
+				url: "../../data/jcyj_hidden3.json",
+				async: false, //同步请求	
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json.data;
+					for(var i = 0; i < data.length; i++) {
+						content_name += 
+								'<li class="mui-table-view-cell mui-collapse">' +
+							'<a class="mui-navigate-right" href="javascript:viod(0)">' +
+							'<div class="mui-row">' +
+							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">基本信息</div></div></a>' +
+							'<div class="mui-collapse-content">' +
+							'<ul class="mui-table-view">' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">隐患点编号</span>' +
+							'<span class="mui-pull-right">' + data[i].bh + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">隐患点编名称</span>' +
+							'<span class="mui-pull-right">' + data[i].mc + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">经 度</span>' +
+							'<span class="mui-pull-right">' + data[i].jd + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">纬 度</span>' +
+							'<span class="mui-pull-right">' + data[i].wd + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">灾害类型</span>' +
+							'<span class="mui-pull-right">' + data[i].zhtype + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">危害等级</span>' +
+							'<span class="mui-pull-right">' + data[i].whdj + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">稳定性</span>' +
+							'<span class="mui-pull-right">' + data[i].wdx + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">片 所</span>' +
+							'<span class="mui-pull-right">' + data[i].ps + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">位 置</span>' +
+							'<span class="mui-pull-right">' + data[i].wz + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">监测人员</span>' +
+							'<span class="mui-pull-right">' + data[i].jcry + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">手机</span>' +
+							'<span class="mui-pull-right">' + data[i].cellphone + '</span></li>' +
+							'</ul></div></li>' +
+							'<li class="mui-table-view-cell mui-collapse mui-active">' +
+							'<a class="mui-navigate-right" href="#">' +
+							'<div class="mui-row">' +
+							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">定量监测数据</div></div></a>' +
+							'<div class="mui-collapse-content">' +
+							'<ul class="mui-table-view">' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">合法半径</span>' +
+							'<span class="mui-pull-right">' + data[i].hfbj + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">告警阀值</span>' +
+							'<span class="mui-pull-right">' + data[i].gjfz + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">宏观现象</span>' +
+							'<span class="mui-pull-right" style="margin-top: 5px;">' + data[i].hgxx + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">实测现象</span>' +
+							'<span class="mui-pull-right">' + data[i].scxx + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<span class="mui-pull-left">其他现象备注</span>' +
+							'<span class="mui-pull-right">' + data[i].qtxxbz + '</span></li>' +
+							'<li class="mui-table-view-cell">' +
+							'<button type="button" class="mui-pull-right">查看图片</button></li>' +
+							'</ul></div></li>' +
+							'<li class="mui-table-view-cell mui-collapse">' +
+							'<a class="mui-navigate-right" href="#">' +
+							'<div class="mui-row">' +
+							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">历史监测数据</div></div></a>' +
+							'<div class="mui-collapse-content">' +
+							'<ul id="ck_ls' + i + '" class="mui-table-view">' +
+							'</ul></div></li></ul>' +
+
+							'</div>';
+							var lsjcsj = data[i].lsjcsj;
+							lsjcsj_text[i] = '';
+						for(var e = 0; e < lsjcsj.length; e++) {
+							lsjcsj_text[i] +=
+								'<li class="mui-table-view-cell">' +
+								'<span class="mui-pull-left">' + lsjcsj[e].slsj + '</span>' +
+								'<span class="mui-pull-right mui-content-padded"><a href="#middlePopover' + i +'_'+ e + '" class="openPopover">查看</a></span>' +
+								'</li>';
+							var sfhf =  lsjcsj[e].sfhf;
+							var sfhfImg = "";
+							var sjyxx = lsjcsj[e].sjyxx;
+							var sjyxxImg = "";
+							if (sfhf.indexOf("是") >= 0) {
+								sfhfImg = "../../img/green.JPG";
+							} else{
+								sfhfImg = "../../img/red.JPG";
+							}
+							if (sjyxx.indexOf("是") >= 0) {
+								sjyxxImg = "../../img/green.JPG";
+							} else{
+								sjyxxImg = "../../img/red.JPG";
+							}
+							popup_text +=
+							'<div class="mui-popover" id="middlePopover'+ i +'_'+ e +'">' +
+							'<div class="mui-popover-arrow"></div>' +
+							'<div class="mui-scroll-wrapper">' +
+							'<div class="mui-scroll">' +
+							'<ul class="mui-table-view">' +
+							'<li class="mui-table-view-cell">' +
+								'<span class="mui-pull-left">监测点编号</span>' +
+								'<span class="mui-pull-right">' + data[i].bh + '</span>' +
+							'</li>' +
+							'<li class="mui-table-view-cell">' +
+								'<span class="mui-pull-left">监测点时间</span>' +
+								'<span class="mui-pull-right">' + lsjcsj[e].slsj + '</span>' +
+							'</li>' +
+							'<li class="mui-table-view-cell">' +
+								'<span class="mui-pull-left">是否合法</span>' +
+								'<span class="mui-pull-right"><img src="' + sfhfImg + '"/></span>' +
+							'</li>' +
+							'<li class="mui-table-view-cell">' +
+								'<span class="mui-pull-left">数据有限性</span>' +
+								'<span class="mui-pull-right"><img src="' + sjyxxImg + '"/></span>' +
+							'</li>' +
+							'<li class="mui-table-view-cell">' +
+								'<span class="mui-pull-left">告警等级</span>' +
+								'<span class="mui-pull-right">' + lsjcsj[e].gjxx + '</span>' +
+							'</li>' +
+							'<li class="mui-table-view-cell">' +
+								'<span class="mui-pull-left">宏观现象</span>' +
+								'<span class="mui-pull-right">' + lsjcsj[e].hgxx + '</span>' +
+							'</li>' +
+							'</ul></div></div></div>';
+						}
+					}
+					$("#content_name").html(content_name);
+					for(var arr = 0; arr < data.length; arr++) {
+						$("#ck_ls" + arr).append(lsjcsj_text[arr]);
+					}
+					$(".popup").html(popup_text);
+				}
 		});
-		mui('body').on('hidden', '.mui-popover', function(e) {
-			//console.log('hidden', e.detail.id);//detail为当前popover元素
-		});
-		document.getElementById('cktp').addEventListener('tap', function() {
-		  mui.openWindow({
-		    url: 'jcyj_cktp.html', 
-		    id:'jcyj_cktp.html'
-		  });
-		});
+//		document.getElementById('cktp').addEventListener('tap', function() {
+//		  mui.openWindow({
+//		    url: 'jcyj_cktp.html', 
+//		    id:'jcyj_cktp.html'
+//		  });
+//		});
 	</script>
 	</body>
 </html>

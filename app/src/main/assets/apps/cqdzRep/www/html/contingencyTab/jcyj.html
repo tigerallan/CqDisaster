@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title>监测预警</title>
@@ -7,134 +8,177 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../../css/mui.min.css">
-		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
 		<style>
 			html,
 			body {
 				background-color: #efeff4;
 			}
-			.mui-table-view-cell .mui-active{background:#fff;}
-			header a{
+			
+			.mui-table-view-cell .mui-active {
+				background: #fff;
+			}
+			
+			header a {
 				color: #fff;
 			}
-			header span.mui-icon{
+			
+			header span.mui-icon {
 				color: #fff;
 			}
-			.mui-title{
+			
+			.mui-title {
 				color: #fff;
 			}
-			.mui-content>.mui-table-view:first-child{
+			
+			.mui-content>.mui-table-view:first-child {
 				margin-top: 0;
 			}
-			#offCanvasBtn{
+			
+			#offCanvasBtn {
 				line-height: 44px;
 				font-size: 16px;
 				font-weight: bold;
 				width: 60px;
-    			padding-left: 10px;
+				padding-left: 10px;
 			}
-			#offCanvasBtn img{
-			    width: 18px;
-			    position: relative;
-			    top: 3px;
+			
+			#offCanvasBtn img {
+				width: 18px;
+				position: relative;
+				top: 3px;
 			}
-			#offCanvasSideScroll{
+			
+			#offCanvasSideScroll {
 				background-color: #fff;
 			}
 			/*列表*/
-			.icon2-ul-mc{
+			
+			.icon2-ul-mc {
 				font-weight: 700;
 				font-size: 16px;
 			}
-			.icon2-ul-sj{
+			
+			.icon2-ul-sj {
 				position: absolute;
 				right: 35px;
 				/*top: 23px;*/
 				font-size: 14px;
 			}
-			.icon2-ul-bh{
-				padding-top: 5px ;
+			
+			.icon2-ul-bh {
+				padding-top: 5px;
 				font-size: 16px;
 			}
-			.icon2-ul-fonta{
+			
+			.icon2-ul-fonta {
 				color: red;
 			}
-			.icon2-ul-fontb{
+			
+			.icon2-ul-fontb {
 				color: #F5CD19;
 			}
-			.icon2-ul-fontc{
+			
+			.icon2-ul-fontc {
 				color: #c8c8c8;
 			}
-			.pointlist img{
+			
+			.pointlist img {
 				width: 40px;
-			    float: left;
-			    margin-right: 10px;
+				float: left;
+				margin-right: 10px;
 			}
-			.mui-content-padded{
+			
+			.mui-content-padded {
 				margin: 0px;
 			}
-			.boxflex{
+			
+			.boxflex {
 				display: flex;
 			}
-			.boxflex>span{
+			
+			.boxflex>span {
 				flex: 1;
 				font-size: 12px;
-				margin:5px;
-				padding:5px 0;
+				margin: 5px;
+				padding: 5px 0;
 				text-align: center;
-				background:#f6f6f6;
+				background: #f6f6f6;
 				border-radius: 5px;
 				cursor: pointer;
+				border: 1px solid #fff;
 			}
-			.mui-table-view-cell input{
+			
+			.mui-table-view-cell input {
 				background-color: #f6f6f6;
 			}
-			.boxflex>.touming{
+			
+			.boxflex>.touming {
 				display: inline-block;
 				background: transparent;
 			}
-			.celltitle{
+			
+			.celltitle {
 				display: inline-block;
 				margin: 10px 0;
 			}
-			.citychoose{
+			
+			.citychoose {
 				float: right;
 				color: red;
 				padding-right: 10px;
 			}
-			.citychoose>span{
-			      	font-size:20px;
+			
+			.citychoose>span {
+				font-size: 20px;
 			}
-			#nav{
-				background-color:#f2f2f2;
+			
+			#nav {
+				background-color: #f2f2f2;
 				border: 1px solid #d9d9d9;
 			}
+			
 			.mui-bar-tab .mui-tab-item.mui-active {
 				background-color: #DF1C1C;
 				color: #fff !important;
 				font-size: 18px;
 			}
-			.mui-bar-tab .mui-tab-item{
+			
+			.mui-bar-tab .mui-tab-item {
 				color: #000000;
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background: #fff !important;
+			}
+			
+			.boxflex b {
+				width: 98%;
+				height: 36px;
+				line-height: 36px;
+				text-align: center;
+				background: #f6f6f6;
+				border-radius: 5px;
+				font-size: 14px;
 			}
 		</style>
 	</head>
 
-	<body>
+	<body onresize="document.activeElement.scrollIntoView(true);">
 		<!--侧滑菜单容器-->
 		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-slide-in">
 			<!--菜单部分-->
 			<aside id="offCanvasSide" class="mui-off-canvas-right">
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">筛选条件</h1>
+				</header>
 				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
 					<div class="mui-scroll">
-						<header class="mui-bar mui-bar-nav" >
-							<h1 class="mui-title">筛选条件</h1>
-						</header>
 						<div class="mui-content">
-						    <ul id="content_qcqf" class="mui-table-view">
-						    	<li class="mui-table-view-cell mui-input-row">
+							<ul id="content_qcqf" class="mui-table-view">
+								<li class="mui-table-view-cell mui-input-row">
 									<span class="celltitle">隐患点名称：</span>
 									<div class="mui-input-row mui-search">
 										<input type="search" class="mui-input-clear" placeholder="">
@@ -147,10 +191,10 @@
 									</div>
 								</li>
 								<li class="mui-table-view-cell">
-									<span>所属单位</span>
+									<span>所属区县</span>
 									<span id="choose_qx" class="citychoose">请选择<span class="mui-icon mui-icon-forward"></span></span>
 								</li>
-								<li class="mui-table-view-cell">
+								<li id="yhdtype" class="mui-table-view-cell">
 									<span class="celltitle">隐患点类型</span>
 									<div class="boxflex">
 										<span class="checkborder">全部</span>
@@ -170,20 +214,20 @@
 								<li class="mui-table-view-cell">
 									<span class="celltitle">开始时间</span>
 									<div class="boxflex">
-										<input type="text"/>
+										<b id="start_time"></b>
 									</div>
 								</li>
 								<li class="mui-table-view-cell">
 									<span class="celltitle">结束时间</span>
 									<div class="boxflex">
-										<input type="text"/>
+										<b id="end_time"></b>
 									</div>
 								</li>
 							</ul>
 						</div>
 					</div>
-					<nav id="nav" class="mui-bar mui-bar-tab" >
-				    	<a class="mui-tab-item mui-active">
+					<nav id="nav" class="mui-bar mui-bar-tab">
+						<a class="mui-tab-item mui-active">
 							<div class="mui-tab-label">确定</div>
 						</a>
 						<a class="mui-tab-item">
@@ -193,82 +237,18 @@
 				</div>
 			</aside>
 			<div class="mui-inner-wrap">
-				<header class="mui-bar mui-bar-nav" >
-					<a href="#" class="mui-action-back">
+				<header class="mui-bar mui-bar-nav">
+					<a href="javascript:void(0);" class="mui-action-back">
 						<span class="mui-icon mui-icon-arrowleft"></span>
 					</a>
-					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-pull-right">筛选<img src="../../img/filter1.png" alt="" /></a>
+					<!--<a id="offCanvasBtn" href="#offCanvasSide" class="mui-pull-right">筛选<img src="../../img/filter1.png" alt="" /></a>-->
 					<h1 id="title" class="mui-title">监测预警</h1>
 				</header>
 				<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
 					<div class="mui-scroll">
 						<div class="mui-content-padded">
-					     	<ul class="pointlist mui-table-view">
-							    <li class="mui-table-view-cell">
-							        <a class="list_text mui-navigate-right" href="javascript:void(0);">
-							        	<img src="../../img/1_8.png"/>
-							        	<div>
-							        		<span class="icon2-ul-mc">综合告警</span>
-							        		<span class="icon2-ul-sj icon2-ul-fontc">万州区</span>
-							        	</div>
-							        	<div class="icon2-ul-bh icon2-ul-fontc">
-							        		<span>500232107240101</span> 
-							        		<span class="icon2-ul-sj icon2-ul-fontc">2017-06-01</span>
-							        	</div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell">
-							        <a class="list_text mui-navigate-right" href="javascript:void(0);">
-							        	<img src="../../img/1_8.png"/>
-							        	<div>
-							        		<span class="icon2-ul-mc">定量监测告警</span>
-							        		<span class="icon2-ul-sj icon2-ul-fontc">渝北区</span>
-							        	</div>
-							        	<div class="icon2-ul-bh icon2-ul-fontc">
-							        		<span>500232107240101</span> 
-							        		<span class="icon2-ul-sj icon2-ul-fontc">2017-06-01</span>
-							        	</div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell">
-							        <a class="list_text mui-navigate-right" href="javascript:void(0);">
-							        	<img src="../../img/1_8.png"/>
-							        	<div>
-							        		<span class="icon2-ul-mc">宏观监测告警</span>
-							        		<span class="icon2-ul-sj icon2-ul-fontc">江北区</span>
-							        	</div>
-							        	<div class="icon2-ul-bh icon2-ul-fontc">
-							        		<span>500232107240101</span> 
-							        		<span class="icon2-ul-sj icon2-ul-fontc">2017-06-01</span>
-							        	</div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell">
-							        <a class="list_text mui-navigate-right" href="javascript:void(0);">
-							        	<img src="../../img/1_8.png"/>
-							        	<div>
-							        		<span class="icon2-ul-mc">宏观监测告警</span>
-							        		<span class="icon2-ul-sj icon2-ul-fontc">渝中区</span>
-							        	</div>
-							        	<div class="icon2-ul-bh icon2-ul-fontc">
-							        		<span>500232107240101</span> 
-							        		<span class="icon2-ul-sj icon2-ul-fontc">2017-06-01</span>
-							        	</div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell">
-							        <a class="list_text mui-navigate-right" href="javascript:void(0);">
-							        	<img src="../../img/1_8.png"/>
-							        	<div>
-							        		<span class="icon2-ul-mc">宏观监测告警</span>
-							        		<span class="icon2-ul-sj icon2-ul-fontc">沙坪坝区</span>
-							        	</div>
-							        	<div class="icon2-ul-bh icon2-ul-fontc">
-							        		<span>500232107240101</span> 
-							        		<span class="icon2-ul-sj icon2-ul-fontc">2017-06-01</span>
-							        	</div>
-							        </a>
-							    </li>
+							<ul id="jcyj_table" class="pointlist mui-table-view">
+
 							</ul>
 						</div>
 					</div>
@@ -279,46 +259,187 @@
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/city.data.js"></script>
-		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 		<script>
-//			mui.init({
-//				swipeBack: false,
-//			});
-			 //主界面和侧滑菜单界面均支持区域滚动；
+			//			mui.init({
+			//				swipeBack: false,
+			//			});
+			//主界面和侧滑菜单界面均支持区域滚动；
 			mui('#offCanvasSideScroll').scroll();
 			mui('#offCanvasContentScroll').scroll();
+
+			var content_jcyj = "";
+			$.ajax({
+				url: "../../data/jcyj.json",
+				async: false, //同步请求	
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json.data;
+					var urlimg = "";
+					var url1 = "../../img/jcyj_1.png";
+					var url2 = "../../img/jcyj_2.png";
+					var url3 = "../../img/jcyj_3.png";
+					var url4 = "../../img/jcyj_4.png";
+					var url5 = "../../img/jcyj_5.png";
+					for(var i = 0; i < data.length; i++) {
+						var gjlx = data[i].gjlx;
+						if(gjlx.indexOf("综合") >= 0) {
+							urlimg = url1;
+						} else if(gjlx.indexOf("定量") >= 0) {
+							urlimg = url2;
+						} else if(gjlx.indexOf("宏观") >= 0) {
+							urlimg = url3;
+						} else if(gjlx.indexOf("群测群防") >= 0) {
+							urlimg = url4;
+						} else {
+							urlimg = url5;
+						}
+						content_jcyj +=
+							'<li class="mui-table-view-cell">' +
+							'<a class="list_text mui-navigate-right" href="javascript:void(0);" data-mc="' + gjlx + '" data-id="' + data[i].id + '">' +
+							'<img src="' + urlimg + '"/>' +
+							'<div>' +
+							'<span class="icon2-ul-mc">' + gjlx + '</span>' +
+							'<span class="icon2-ul-sj icon2-ul-fontc">' + data[i].county + '</span>' +
+							'</div>' +
+							'<div class="icon2-ul-bh icon2-ul-fontc">' +
+							'<span>' + data[i].number + '</span>' +
+							'<span class="icon2-ul-sj icon2-ul-fontc">' + data[i].time + '</span>' +
+							'</div></a></li>';
+					}
+
+					$('#jcyj_table').html(content_jcyj);
+					day_tap();
+				}
+			});
+
 			//所属区县选项
-		      (function($, doc) {
-					$.init();
-					$.ready(function() {
-						var cityPicker = new $.PopPicker({
-								layer:1
-							});
-							cityPicker.setData(cityData);
-							var choose_one = document.getElementById('choose_qx');
-								choose_one.addEventListener('tap', function(event) {
-									cityPicker.show(function(items) {
-										choose_one.innerText = items[0].text;
-										//返回 false 可以阻止选择框的关闭
-										//return false;
-									});
-								}, false);
-							}); 
-				})(mui, document);
-				
-				//点击一条数据跳转到灾害点详细信息页面
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					var cityPicker = new $.PopPicker({
+						layer: 1
+					});
+					cityPicker.setData(cityData);
+					var choose_one = document.getElementById('choose_qx');
+					choose_one.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							choose_one.innerText = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			//点击一条数据跳转到灾害点详细信息页面
+			function day_tap() {
 				var day = document.getElementsByClassName('list_text');
 				var count = day.length;
 				for(i = 0; i < count; i++) {
 					day[i].addEventListener('tap', function() {
-						mui.openWindow({
-							url:"jcyj_hidden.html",
-							id:"jcyj_hidden.html"
-						});
+						var id = this.getAttribute("data-id");
+						var mc = this.getAttribute("data-mc");
+						if(mc.indexOf("综合") >= 0) {
+							mui.openWindow({
+								url: "jcyj_hidden.html?id=" + id,
+								id: "jcyj_hidden.html"
+							});
+						} else if(mc.indexOf("群测群防") >= 0) {
+							mui.openWindow({
+								url: "jcyj_hidden2.html?id=" + id,
+								id: "jcyj_hidden2.html"
+							});
+						} else if(mc.indexOf("定量") >= 0) {
+							mui.openWindow({
+								url: "jcyj_hiddenOne.html?id=" + id,
+								id: "jcyj_hiddenOne.html"
+							});
+						} else if(mc.indexOf("宏观") >= 0) {
+							mui.openWindow({
+								url: "jcyj_hiddenTwo.html?id=" + id,
+								id: "jcyj_hiddenTwo.html"
+							});
+						} else {
+							mui.openWindow({
+								url: "jcyj_hiddenThree.html?id=" + id,
+								id: "jcyj_hiddenThree.html"
+							});
+						}
+
 					});
 				}
-				
+			}
+
+			//读取系统日期
+			var d = new Date();
+			var n = d.getFullYear();
+			var t = d.getMonth() + 1;
+			var m = d.getDate();
+			//设置结束时间
+			(function($, doc) {
+				$.init();
+				var result = document.getElementById("end_time");
+				if(t < 10) {
+					t = "0" + t;
+				}
+				if(m < 10) {
+					m = "0" + m;
+				}
+				//				var str = d.getFullYear() + "-" + t + "-" + m;
+				//				result.innerText = str;
+				$.ready(function() {
+					var choose_two = document.getElementById('end_time');
+					choose_two.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m)
+						});
+						picker.show(function(rs) {
+							result.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			//设置开始时间
+			(function($, doc) {
+				$.init();
+				var result_two = document.getElementById("start_time");
+				//				var str = d.getFullYear() + "-" + t + "-01";
+				//				result_two.innerText = str;
+				$.ready(function() {
+					var choose_three = document.getElementById('start_time');
+					choose_three.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m),
+							"value": n + "-" + t + "-01"
+						});
+						picker.show(function(rs) {
+							result_two.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			mui('#yhdtype').on('tap', '.checkborder', function() {
+				var spans = document.getElementById("yhdtype").querySelectorAll(".checkborder");
+				Array.prototype.forEach.call(spans, function(e, i, a) {
+					e.style.border = '';
+				});
+				this.style.border = '1px solid red';
+				document.activeElement.blur();
+			});
 		</script>
 	</body>
 

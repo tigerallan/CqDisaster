@@ -99,28 +99,55 @@
 		}
 		
 		.place {
-			padding-top: 10px;
+			/*padding-top: -10px !important;*/
 			padding-right: 10px;
+			margin-top: 0px !important;
+			min-height: 31px;
 		}
-		.weathertext img{
+		
+		.weathertext img {
 			position: absolute;
 			top: 5px;
 			left: 5px;
 		}
-		.weathertext span{
+		
+		.weathertext span {
 			font-size: 14px;
 			position: absolute;
 			top: 10px;
 		}
-		#pDate{
-			margin: 30px 20px 0 0;
+		
+		#pDate {
+			margin: 13px 20px 0 0;
 			text-align: right;
 			color: #fff;
 			position: relative;
 			z-index: 10000;
 		}
-		.mui-slider{
+		
+		.mui-slider {
 			margin-top: -51px;
+		}
+		
+		.mui-ellipsis {
+			white-space: normal;
+			overflow: auto;
+		}
+		
+		.mui-media-body {
+			min-height: 42px;
+		}
+		
+		.mui-table-view-cell {
+			padding: 11px 15px 5px 15px !important;
+		}
+		
+		#nongli {
+			text-align: right;
+			color: #fff;
+			position: relative;
+			z-index: 10000;
+			right: 20px;
 		}
 	</style>
 
@@ -131,9 +158,10 @@
 			<div class="mui-scroll">
 				<!--当日天气情况-->
 				<div id="tq" class="weather">
-					
+
 				</div>
 				<div id="pDate" style="font-size:12px;"></div>
+				<div id="nongli" style="font-size:12px;"></div>
 				<!--新闻轮播-->
 				<div class="mui-slider">
 					<div id="xwlb" class="mui-slider-group mui-slider-loop">
@@ -196,49 +224,43 @@
 			mui.init({
 				swipeBack: false
 			});
-//			var _self, _next, timer;
-//			mui.plusReady(function() {
-//				_self = plus.webview.currentWebview();
-//				_next = plus.webview.getWebviewById('stats.html');
-//				//获取应用首页
-//				//		    index = plus.webview.getLaunchWebview();
-//				index = plus.webview.getWebviewById("index.html");
-//				_self.drag({
-//						direction: "left",
-//						moveMode: 　 "followFinger"
-//					}, {
-//						view　: 　_next,
-//						moveMode: "follow"
-//					},
-//					function(e) {
-//						if(timer != null) {
-//							clearTimeout(timer);
-//						}
-//						timer = setTimeout(function() {
-//							index.evalJS("h('#nav').find('a').removeClass('mui-active'); h('#secondTab').addClass('mui-active');h('#title').html(h('#secondTab').find('div').html());");
-//						}, 100);
-//					}
-//				);
-//			});
+			var gallery = mui(".mui-slider");
+			gallery.slider({
+				interval: 5000
+			});
 
 			//		点击更多进入市局,区县新闻列表
 			document.getElementById('rule_sj').addEventListener('tap', function() {
 				mui.openWindow({
 					url: 'html/dynamicTab/cityBureauPress.html',
-					id: 'cityBureauPress.html'
+					id: 'cityBureauPress.html',
+					show: {
+						autoShow: false
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...' //等待对话框上显示的提示内容
+					}
 				});
 			});
 			document.getElementById('rule_qx').addEventListener('tap', function() {
 				mui.openWindow({
 					url: 'html/dynamicTab/countyPress.html',
-					id: 'countyPress.html'
+					id: 'countyPress.html',
+					show: {
+						autoShow: false
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...' //等待对话框上显示的提示内容
+					}
 				});
 			});
-			
+
 			//天气
 			var tq = "";
 			$.ajax({
-				url: ip+"getWeather.do",
+				url: ip + "getWeather.do",
 				type: "get",
 				async: false, //同步请求	
 				dataType: "json",
@@ -246,94 +268,100 @@
 					var data = json.data;
 					var status1 = data.status1;
 					var src = '';
-					if(status1.indexOf("阴")>=0){
+					if(status1.indexOf("阴") >= 0) {
 						src = "img/yin.png";
-					}else if(status1.indexOf("晴")>=0){
+					} else if(status1.indexOf("晴") >= 0) {
 						src = "img/qing.png";
-					}else if(status1.indexOf("多云")>=0){
+					} else if(status1.indexOf("多云") >= 0) {
 						src = "img/duoyun.png";
-					}else if(status1.indexOf("雨")>=0){
+					} else if(status1.indexOf("雨") >= 0) {
 						src = "img/yu.png";
 					}
 					tq +=
-					'<div>'+
-						'<div class="weathertext">'+
-							'<img src="' + src + '" />'+
-							'<span style="font-size:14px;">温度：' + data.temperature2 + '°C~' + data.temperature1 + '°C</span>'+
-						'</div>'+
-					'</div>'+
-					'<div>'+
-						'<div class="weathertext">'+
-							'<div style="font-size:18px;margin-top:-15px;">重庆</div>'+
-							'<div style="font-size:12px;margin-top:-15px;">' + data.status1 + '</div>'+
-//							'<div id="pDate" style="font-size:12px;"></div>'+
-						'</div>'+
-					'</div>';
+						'<div>' +
+						'<div class="weathertext">' +
+						'<img src="' + src + '" />' +
+						'<span style="font-size:14px;">温度：' + data.temperature2 + '°C~' + data.temperature1 + '°C</span>' +
+						'</div>' +
+						'</div>' +
+						'<div>' +
+						'<div class="weathertext">' +
+						'<div style="font-size:18px;margin-top:-15px;margin-left:-12px;">重庆</div>' +
+						'<div style="font-size:12px;margin-top:-13px;">' + data.status1 + '</div>' +
+						//							'<div id="pDate" style="font-size:12px;"></div>'+
+						'</div>' +
+						'</div>';
 					$('#tq').html(tq);
 				}
 			});
-			
+
 			//新闻图片轮播请求		
-			
 			var contentThree = "";
 			$.ajax({
-//				url: "data/dynamic_xwlb.json",
-				url: ip+"getJList.do",
+				//				url: "data/dynamic_xwlb.json",
+				url: ip + "getJList.do",
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
 				success: function(json) {
 					var data = json;
+					var pic_imgs = new Array();
+					var pic_img_index = 0;
+					for(var i = 3; i < data.length; i++) {
+						var pic_img = data[i]['pic'][0];
+						if(pic_img != null) {
+							pic_img_index++;
+							if(pic_img_index <= 5) {
+								pic_imgs.push(data[i]);
+							} else {
+								break;
+							}
+						}
+					}
 					contentThree +=
 						'<div class="mui-slider-item mui-slider-item-duplicate">' +
-						'<a class="fishref" href="javascript:void(0);" data-id="' + data[7].id + '">' +
-						'<img src="http://' + data[7]['pic'][0] + '">' +
-						'<p class="mui-slider-title"><span>' + data[7]['title'] + '</span></p>' +
-						'</a></div>'+
+						'<a class="fishref" href="javascript:void(0);" data-id="' + pic_imgs[4].id + '">' +
+						'<img src="http://' + pic_imgs[4]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + pic_imgs[4].title + '</span></p>' +
+						'</a></div>' +
 						'<div class="mui-slider-item">' +
-						'<a class="fishref" href="javascript:void(0);" data-id="' + data[3].id + '">' +
-						'<img src="http://' + data[3]['pic'][0] + '">' +
-						'<p class="mui-slider-title"><span>' + data[3]['title'] + '</span></p>' +
-						'</a></div>'+
+						'<a class="fishref" href="javascript:void(0);" data-id="' + pic_imgs[0].id + '">' +
+						'<img src="http://' + pic_imgs[0]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + pic_imgs[0].title + '</span></p>' +
+						'</a></div>' +
 						'<div class="mui-slider-item">' +
-						'<a class="fishref" href="javascript:void(0);" data-id="' + data[4].id + '">' +
-						'<img src="http://' + data[4]['pic'][0] + '">' +
-						'<p class="mui-slider-title"><span>' + data[4]['title'] + '</span></p>' +
-						'</a></div>'+
+						'<a class="fishref" href="javascript:void(0);" data-id="' + pic_imgs[1].id + '">' +
+						'<img src="http://' + pic_imgs[1]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + pic_imgs[1].title + '</span></p>' +
+						'</a></div>' +
 						'<div class="mui-slider-item">' +
-						'<a class="fishref" href="javascript:void(0);" data-id="' + data[5].id + '">' +
-						'<img src="http://' + data[5]['pic'][0] + '">' +
-						'<p class="mui-slider-title"><span>' + data[5]['title'] + '</span></p>' +
-						'</a></div>'+
+						'<a class="fishref" href="javascript:void(0);" data-id="' + pic_imgs[2].id + '">' +
+						'<img src="http://' + pic_imgs[2]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + pic_imgs[2].title + '</span></p>' +
+						'</a></div>' +
 						'<div class="mui-slider-item">' +
-						'<a class="fishref" href="javascript:void(0);" data-id="' + data[6].id + '">' +
-						'<img src="http://' + data[6]['pic'][0] + '">' +
-						'<p class="mui-slider-title"><span>' + data[6]['title'] + '</span></p>' +
-						'</a></div>'+
+						'<a class="fishref" href="javascript:void(0);" data-id="' + pic_imgs[3].id + '">' +
+						'<img src="http://' + pic_imgs[3]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + pic_imgs[3].title + '</span></p>' +
+						'</a></div>' +
 						'<div class="mui-slider-item">' +
-						'<a class="fishref" href="javascript:void(0);" data-id="' + data[7].id + '">' +
-						'<img src="http://' + data[7]['pic'][0] + '">' +
-						'<p class="mui-slider-title"><span>' + data[7]['title'] + '</span></p>' +
-						'</a></div>'+
+						'<a class="fishref" href="javascript:void(0);" data-id="' + pic_imgs[4].id + '">' +
+						'<img src="http://' + pic_imgs[4]['pic'][0] + '">' +
+						'<p class="mui-slider-title"><span>' + pic_imgs[4].title + '</span></p>' +
+						'</a></div>' +
 						'<div class="mui-slider-item mui-slider-item-duplicate">' +
-						'<a class="fishref" href="javascript:void(0); data-id="' + data[3].id + '"">' +
-						'<img src="http://' + data[3]['pic'][0] + '">' +
-						'<p class="mui-slider-title"><span>' + data[3]['title'] + '</span></p>' +
+						'<a class="fishref" href="javascript:void(0); data-id="' + pic_imgs[0].id + '"">' +
+						'<img src="http://' + pic_imgs[0] + '">' +
+						'<p class="mui-slider-title"><span>' + pic_imgs[0].title + '</span></p>' +
 						'</a></div>';
-						
 					$('#xwlb').html(contentThree);
-
-					var gallery = mui(".mui-slider");
-					gallery.slider({
-						interval: 5000
-					});
 				}
 			});
 			//市局新闻请求	
 			var contentOne = "";
 			$.ajax({
-//				url: "data/dynamic_sj.json",
-				url: ip+"getJList.do",
+				//				url: "data/dynamic_sj.json",
+				url: ip + "getJList.do",
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
@@ -345,48 +373,95 @@
 					str1 = str1.substring(0, 10);
 					var str2 = data[2]['update_time'];
 					str2 = str2.substring(0, 10);
-							contentOne +=
-								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:;" data-id="' + data[0]['id'] + '">' +
-								'<img class="mui-media-object mui-pull-right" src="http://' + data[0]['pic'][0] + '">' +
-								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[0]['title'] + '</div>' +
-								'</div>' +
-								'<div class="place" style="float:left;">' +
-								'<span>' + data[0]['unit_name'] + '</span>' +
-								'<span>' + str0 + '</span>'+
-								'</div></a>' +
-								'</li>'+
-								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:;" data-id="' + data[1]['id'] + '">' +
-								'<img class="mui-media-object mui-pull-left" src="http://' + data[1]['pic'][0] + '">' +
-								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[1]['title'] + '</div>' +
-								'</div>' +
-								'<div class="place" style="float:right;">' +
-								'<span>' + data[1]['unit_name'] + '</span>' +
-								'<span>' + str1 + '</span>'+
-								'</div></a>' +
-								'</li>'+
-								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:;" data-id="' + data[2]['id'] + '">' +
-								'<img class="mui-media-object mui-pull-right" src="http://' + data[2]['pic'][0] + '">' +
-								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[2]['title'] + '</div>' +
-								'</div>' +
-								'<div class="place" style="float:left;">' +
-								'<span>' + data[2]['unit_name'] + '</span>' +
-								'<span>' + str2 + '</span>'+
-								'</div></a>' +
-								'</li>';
+					var pic0 = data[0]['pic'][0];
+					var pic1 = data[1]['pic'][0];
+					var pic2 = data[2]['pic'][0];
+					if(pic0 != null) {
+						contentOne +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[0]['id'] + '">' +
+							'<img class="mui-media-object mui-pull-right" src="http://' + pic0 + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[0]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:left;">' +
+							'<span>' + data[0]['unit_name'] + '</span>' +
+							'<span>' + str0 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					} else {
+						contentOne +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[0]['id'] + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[0]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:left;">' +
+							'<span>' + data[0]['unit_name'] + '</span>' +
+							'<span>' + str0 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					}
+					if(pic1 != null) {
+						contentOne +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[1]['id'] + '">' +
+							'<img class="mui-media-object mui-pull-left" src="http://' + pic1 + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[1]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:right;">' +
+							'<span>' + data[1]['unit_name'] + '</span>' +
+							'<span>' + str1 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					} else {
+						contentOne +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[1]['id'] + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[1]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:right;">' +
+							'<span>' + data[1]['unit_name'] + '</span>' +
+							'<span>' + str1 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					}
+					if(pic2 != null) {
+						contentOne +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[2]['id'] + '">' +
+							'<img class="mui-media-object mui-pull-right" src="http://' + pic2 + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[2]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:left;">' +
+							'<span>' + data[2]['unit_name'] + '</span>' +
+							'<span>' + str2 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					} else {
+						contentOne +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[2]['id'] + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[2]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:left;">' +
+							'<span>' + data[2]['unit_name'] + '</span>' +
+							'<span>' + str2 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					}
 					$('#dynamic_sj').html(contentOne);
 				}
 			});
 			//区县新闻请求		
 			var contentTwo = "";
 			$.ajax({
-//				url: "data/dynamic_qx.json",
-				url: ip+"getAreaJList.do",
+				//				url: "data/dynamic_qx.json",
+				url: ip + "getAreaJList.do",
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
@@ -398,40 +473,88 @@
 					str1 = str1.substring(0, 10);
 					var str2 = data[2]['update_time'];
 					str2 = str2.substring(0, 10);
-							contentTwo +=
-								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:;" data-id="' + data[0]['id'] + '">' +
-								'<img class="mui-media-object mui-pull-right" src="http://' + data[0]['pic'][0] + '">' +
-								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[0]['title'] + '</div>' +
-								'</div>' +
-								'<div class="place" style="float:left;">' +
-								'<span>' + data[0]['unit_name'] + '</span>' +
-								'<span>' + str0 + '</span>'+
-								'</div></a>' +
-								'</li>'+
-								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:;" data-id="' + data[1]['id'] + '">' +
-								'<img class="mui-media-object mui-pull-left" src="http://' + data[1]['pic'][0] + '">' +
-								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[1]['title'] + '</div>' +
-								'</div>' +
-								'<div class="place" style="float:right;">' +
-								'<span>' + data[1]['unit_name'] + '</span>' +
-								'<span>' + str1 + '</span>'+
-								'</div></a>' +
-								'</li>'+
-								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:;" data-id="' + data[2]['id'] + '">' +
-								'<img class="mui-media-object mui-pull-right" src="http://' + data[2]['pic'][0] + '">' +
-								'<div class="mui-media-body">' +
-								'<div class="mui-ellipsis">' + data[2]['title'] + '</div>' +
-								'</div>' +
-								'<div class="place" style="float:left;">' +
-								'<span>' + data[2]['unit_name'] + '</span>' +
-								'<span>' + str2 + '</span>'+
-								'</div></a>' +
-								'</li>';
+					var pic1 = data[0]['pic'][0];
+					var pic2 = data[1]['pic'][0];
+					var pic3 = data[2]['pic'][0];
+					if(pic1 != null) {
+						contentTwo +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[0]['id'] + '">' +
+							'<img class="mui-media-object mui-pull-right" src="http://' + pic1 + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[0]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:left;">' +
+							'<span>' + data[0]['unit_name'] + '</span>' +
+							'<span>' + str0 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					} else {
+						contentTwo +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[0]['id'] + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[0]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:left;">' +
+							'<span>' + data[0]['unit_name'] + '</span>' +
+							'<span>' + str0 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					}
+					if(pic2 != null) {
+						contentTwo +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[1]['id'] + '">' +
+							'<img class="mui-media-object mui-pull-right" src="http://' + pic2 + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[1]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:left;">' +
+							'<span>' + data[1]['unit_name'] + '</span>' +
+							'<span>' + str1 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					} else {
+						contentTwo +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[1]['id'] + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[1]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:left;">' +
+							'<span>' + data[1]['unit_name'] + '</span>' +
+							'<span>' + str1 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					}
+					if(pic3 != null) {
+						contentTwo +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[2]['id'] + '">' +
+							'<img class="mui-media-object mui-pull-left" src="http://' + pic3 + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[2]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:right;">' +
+							'<span>' + data[2]['unit_name'] + '</span>' +
+							'<span>' + str2 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					} else {
+						contentTwo +=
+							'<li class="mui-table-view-cell mui-media">' +
+							'<a class="fishref" href="javascript:;" data-id="' + data[2]['id'] + '">' +
+							'<div class="mui-media-body">' +
+							'<div class="mui-ellipsis">' + data[2]['title'] + '</div>' +
+							'</div>' +
+							'<div class="place" style="float:right;">' +
+							'<span>' + data[2]['unit_name'] + '</span>' +
+							'<span>' + str2 + '</span>' +
+							'</div></a>' +
+							'</li>';
+					}
+
 					$('#dynamic_qx').html(contentTwo);
 				}
 			});
@@ -444,7 +567,11 @@
 					var id = this.getAttribute("data-id");
 					mui.openWindow({
 						url: 'html/dynamicTab/newscon.html?id=' + id,
-						id: 'newscon.html'
+						id: 'newscon.html',
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+						}
 					});
 				});
 			}
@@ -457,7 +584,11 @@
 					var id = this.getAttribute("data-id");
 					mui.openWindow({
 						url: 'html/dynamicTab/newscon2.html?id=' + id,
-						id: 'newscon2.html'
+						id: 'newscon2.html',
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+						}
 					});
 				});
 			}
@@ -570,13 +701,15 @@
 			}
 
 			function showDate() {
-				var sValue = (dNow.getMonth() + 1) + "月" + dNow.getDate() + "日" + " " + sWeek[dNow.getDay()] + " ";
-				sValue += GetLunarDay(yy, mm, dd);
+				//				var sValue = (dNow.getMonth() + 1) + "月" + dNow.getDate() + "日" + " " + sWeek[dNow.getDay()] + " ";
+				//				sValue += GetLunarDay(yy, mm, dd);
+				var sValue = (dNow.getMonth() + 1) + "月" + dNow.getDate() + "日";
+				var cValue = GetLunarDay(yy, mm, dd) + " " + sWeek[dNow.getDay()] + " ";
 				document.getElementById("pDate").innerHTML = sValue;
+				document.getElementById("nongli").innerHTML = cValue;
 			};
-			
+
 			window.onload = showDate;
-			
 		</script>
 	</body>
 

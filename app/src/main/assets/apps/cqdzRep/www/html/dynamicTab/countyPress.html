@@ -44,6 +44,25 @@
 			#choose_one {
 				margin-right: 20px;
 			}
+			
+			.mui-ellipsis {
+				white-space: normal;
+				overflow: auto;
+			}
+			
+			.mui-media-body {
+				min-height: 42px;
+			}
+			
+			.mui-table-view-cell {
+				padding: 11px 15px 5px 15px !important;
+			}
+			
+			.place {
+				padding-right: 15px;
+				margin-top: 0px !important;
+				min-height: 31px;
+			}
 		</style>
 	</head>
 
@@ -169,31 +188,16 @@
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init({
-				swipeBack: false,
-				pullRefresh: {
-					container: '#qx_news',
-					down: {
-						height: 50,
-						auto: true,
-						contentdown: "下拉刷新",
-						callback: function() {
-							setTimeout(function() {
-								mui('#qx_news').pullRefresh().endPulldownToRefresh();
-							}, 1000);
-						}
-					},
-					up: {
-						contentrefresh: '正在加载...',
-						//						callback: pullupRefresh
-					}
-				}
+			mui.init();
+			var gallery = mui(".mui-slider");
+			gallery.slider({
+				interval: 5000
 			});
 
 			var contentThree = "";
 			$.ajax({
 				//			url: "../../data/countyPress.json",
-				url: ip+"getAreaJList.do",
+				url: ip + "getAreaJList.do",
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
@@ -202,36 +206,63 @@
 					for(var i = 0; i < data.length; i++) {
 						var str = data[i]['update_time'];
 						str = str.substring(0, 10);
-						if(i % 2 != 0) {
-							contentThree +=
-								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
-								'<img class="mui-media-object mui-pull-right" src="http://' + data[i]['pic'][0] + '">' +
-								'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
-								'<div class="place">' +
-								'<span>' + data[i]['unit_name'] + '</span>' +
-								'<span>' + str + '</span>' +
-								'</div></a></li>';
+						var pic = data[i]['pic'][0];
+						if(pic == null) {
+							if(i % 2 != 0) {
+								contentThree +=
+									'<li class="mui-table-view-cell mui-media">' +
+									'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+									'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+									'<div class="place">' +
+									'<span>' + data[i]['unit_name'] + '</span>' +
+									'<span>' + str + '</span>' +
+									'</div></a></li>';
+							} else {
+								contentThree +=
+									'<li class="mui-table-view-cell mui-media">' +
+									'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+									'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+									'<div class="place" style="float:right;">' +
+									'<span>' + data[i]['unit_name'] + '</span>' +
+									'<span>' + str + '</span>' +
+									'</div></a></li>';
+							}
 						} else {
-							contentThree +=
-								'<li class="mui-table-view-cell mui-media">' +
-								'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
-								'<img class="mui-media-object mui-pull-left" src="http://' + data[i]['pic'][0] + '">' +
-								'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
-								'<div class="place" style="float:right;">' +
-								'<span>' + data[i]['unit_name'] + '</span>' +
-								'<span>' + str + '</span>' +
-								'</div></a></li>';
+							if(i % 2 != 0) {
+								contentThree +=
+									'<li class="mui-table-view-cell mui-media">' +
+									'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+									'<img class="mui-media-object mui-pull-right" src="http://' + pic + '">' +
+									'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+									'<div class="place">' +
+									'<span>' + data[i]['unit_name'] + '</span>' +
+									'<span>' + str + '</span>' +
+									'</div></a></li>';
+							} else {
+								contentThree +=
+									'<li class="mui-table-view-cell mui-media">' +
+									'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+									'<img class="mui-media-object mui-pull-left" src="http://' + pic + '">' +
+									'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+									'<div class="place" style="float:right;">' +
+									'<span>' + data[i]['unit_name'] + '</span>' +
+									'<span>' + str + '</span>' +
+									'</div></a></li>';
+							}
 						}
-
 					}
 					$('#dynamic_qx').html(contentThree);
+					tup_table();
+					mui.plusReady(function() {
+						plus.nativeUI.closeWaiting();
+						mui.currentWebview.show("slide-in-bottom", 300);
+					});
 				}
 			});
 
 			var cityData;
 			$.ajax({
-				url: ip+"getUnitForApp.do",
+				url: ip + "getUnitForApp.do",
 				async: false,
 				type: "get",
 				dataType: "json",
@@ -256,7 +287,7 @@
 							choose_one.innerText = items[0].text;
 							var dataId = items[0].id;
 							$.ajax({
-								url: ip+"getAreaJListForOneArea.do",
+								url: ip + "getAreaJListForOneArea.do",
 								async: false, //同步请求	
 								type: "get",
 								data: {
@@ -266,36 +297,62 @@
 								success: function(json) {
 
 									dynamic_qx.innerHTML = "";
-									
+
 									contentThree = "";
 									var data = json;
 									for(var i = 0; i < data.length; i++) {
 										var str = data[i]['update_time'];
 										str = str.substring(0, 10);
-										if(i % 2 != 0) {
-											contentThree +=
-												'<li class="mui-table-view-cell mui-media">' +
-												'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
-												'<img class="mui-media-object mui-pull-right" src="http://' + data[i]['pic'][0] + '">' +
-												'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
-												'<div class="place">' +
-												'<span>' + data[i]['unit_name'] + '</span>' +
-												'<span>' + str + '</span>' +
-												'</div></a></li>';
+										var pic = data[i]['pic'][0];
+										if(pic == null) {
+											if(i % 2 != 0) {
+												contentThree +=
+													'<li class="mui-table-view-cell mui-media">' +
+													'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+													//													'<img class="mui-media-object mui-pull-right" src="http://' + data[i]['pic'][0] + '">' +
+													'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+													'<div class="place">' +
+													'<span>' + data[i]['unit_name'] + '</span>' +
+													'<span>' + str + '</span>' +
+													'</div></a></li>';
+											} else {
+												contentThree +=
+													'<li class="mui-table-view-cell mui-media">' +
+													'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+													//													'<img class="mui-media-object mui-pull-left" src="http://' + data[i]['pic'][0] + '">' +
+													'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+													'<div class="place" style="float:right;">' +
+													'<span>' + data[i]['unit_name'] + '</span>' +
+													'<span>' + str + '</span>' +
+													'</div></a></li>';
+											}
 										} else {
-											contentThree +=
-												'<li class="mui-table-view-cell mui-media">' +
-												'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
-												'<img class="mui-media-object mui-pull-left" src="http://' + data[i]['pic'][0] + '">' +
-												'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
-												'<div class="place" style="float:right;">' +
-												'<span>' + data[i]['unit_name'] + '</span>' +
-												'<span>' + str + '</span>' +
-												'</div></a></li>';
+											if(i % 2 != 0) {
+												contentThree +=
+													'<li class="mui-table-view-cell mui-media">' +
+													'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+													'<img class="mui-media-object mui-pull-right" src="http://' + pic + '">' +
+													'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+													'<div class="place">' +
+													'<span>' + data[i]['unit_name'] + '</span>' +
+													'<span>' + str + '</span>' +
+													'</div></a></li>';
+											} else {
+												contentThree +=
+													'<li class="mui-table-view-cell mui-media">' +
+													'<a class="fishref" href="javascript:void(0);" data-id="' + data[i]['id'] + '">' +
+													'<img class="mui-media-object mui-pull-left" src="http://' + pic + '">' +
+													'<div class="mui-media-body"><div class="mui-ellipsis">' + data[i]['title'] + '</div></div>' +
+													'<div class="place" style="float:right;">' +
+													'<span>' + data[i]['unit_name'] + '</span>' +
+													'<span>' + str + '</span>' +
+													'</div></a></li>';
+											}
 										}
 
 									}
 									dynamic_qx.innerHTML = contentThree;
+									tup_table();
 								}
 							});
 
@@ -307,16 +364,18 @@
 			})(mui, document);
 
 			//		点击每条区县新闻
-			var fishref = document.getElementsByClassName('fisnew');
-			var count = fishref.length;
-			for(i = 0; i < count; i++) {
-				fishref[i].addEventListener('tap', function() {
-					var id = this.getAttribute("data-id");
-					mui.openWindow({
-						url: 'newscon2.html?id=' + id,
-						id: 'newscon2.html'
+			function tup_table() {
+				var fishref = document.getElementsByClassName('fishref');
+				var count = fishref.length;
+				for(i = 0; i < count; i++) {
+					fishref[i].addEventListener('tap', function() {
+						var id = this.getAttribute("data-id");
+						mui.openWindow({
+							url: 'newscon2.html?id=' + id,
+							id: 'newscon2.html'
+						});
 					});
-				});
+				}
 			}
 		</script>
 	</body>

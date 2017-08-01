@@ -170,8 +170,8 @@
 			}
 			var i = 1;
 			$.ajax({
-//				url: "../../data/hazardone1.json",
-				url: zhdsl_ipconfig+"getDisType.do",
+				//				url: "../../data/hazardone1.json",
+				url: zhdsl_ipconfig + "getDisType.do",
 				type: "get",
 				dataType: "json",
 				success: function(json) {
@@ -229,8 +229,8 @@
 			var f = 1;
 			var colors = ['#d9ebb1', '#b7ddc8', '#95d0de', '#99ce7e'];
 			$.ajax({
-//				url: "../../data/hazardone2.json",
-				url: zhdsl_ipconfig+"getDisScale.do",
+				//				url: "../../data/hazardone2.json",
+				url: zhdsl_ipconfig + "getDisScale.do",
 				type: "get",
 				dataType: "json",
 				success: function(json) {
@@ -292,8 +292,8 @@
 			};
 			var p = 1;
 			$.ajax({
-//				url: "../../data/hazardone3.json",
-				url: zhdsl_ipconfig+"getDisStable.do",
+				//				url: "../../data/hazardone3.json",
+				url: zhdsl_ipconfig + "getDisStable.do",
 				type: "get",
 				dataType: "json",
 				success: function(json) {
@@ -308,20 +308,25 @@
 					});
 					$('.icon3-centent-left').html(contentThree);
 					$('#container_right3').highcharts(three);
+
+					mui.plusReady(function() {
+						plus.nativeUI.closeWaiting();
+						mui.currentWebview.show("slide-in-bottom", 300);
+					});
 				}
 			});
 
-			var map_tb = document.getElementById('map_tb');
-			slideopen(map_tb, "baidumaps.html");
-
-			function slideopen(arr, wz) {
-				arr.addEventListener('tap', function() {
-					mui.openWindow({
-						url: wz,
-						id: wz
-					});
-				});
-			}
+			//			var map_tb = document.getElementById('map_tb');
+			//			slideopen(map_tb, "baidumaps.html");
+			//
+			//			function slideopen(arr, wz) {
+			//				arr.addEventListener('tap', function() {
+			//					mui.openWindow({
+			//						url: wz,
+			//						id: wz
+			//					});
+			//				});
+			//			}
 		</script>
 	</body>
 

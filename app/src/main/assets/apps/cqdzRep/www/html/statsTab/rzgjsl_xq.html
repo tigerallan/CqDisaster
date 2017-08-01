@@ -189,7 +189,7 @@
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
 			<h1 id="title" class="mui-title">区县日报上报率</h1>
-			<span id="title_span">选区</span>
+			<!--<span id="title_span">选区</span>-->
 		</header>
 		<div class="title_xz">
 			<div id="botton_rq">
@@ -261,22 +261,22 @@
 		<script type="text/javascript">
 			mui.init();
 			//所属区县选项
-			(function($, doc) {
-				$.init();
-				$.ready(function() {
-					var cityPicker = new $.PopPicker({
-						//两列
-						layer: 1
-					});
-					cityPicker.setData(cityData);
-					var choose_one = document.getElementById('title_span');
-					choose_one.addEventListener('tap', function(event) {
-						cityPicker.show(function(items) {
-							//								choose_one.innerText = items[0].text;
-						});
-					}, false);
-				});
-			})(mui, document);
+//			(function($, doc) {
+//				$.init();
+//				$.ready(function() {
+//					var cityPicker = new $.PopPicker({
+//						//两列
+//						layer: 1
+//					});
+//					cityPicker.setData(cityData);
+//					var choose_one = document.getElementById('title_span');
+//					choose_one.addEventListener('tap', function(event) {
+//						cityPicker.show(function(items) {
+//							//								choose_one.innerText = items[0].text;
+//						});
+//					}, false);
+//				});
+//			})(mui, document);
 			//读取系统日期
 			var d = new Date();
 			var n = d.getFullYear();
@@ -345,7 +345,7 @@
 			var contentThree = "";
 
 			function zq() {
-				//	var url = "http://183.230.108.112:8085/cmdcity/findDisasterSta.do?page=1&rows=100";
+//					var url = "http://183.230.108.112:8085/cmdcity/findDisasterSta.do?page=1&rows=100";
 				var url = quxianRb_ipconfig+"findDisasterAndDangerSta.do";
 				
 				document.body.scrollIntoView();
@@ -354,7 +354,6 @@
 					url += "?starttime1=" + arguments[0] + "&endtime1=" + arguments[1];
 				}
 				
-				console.log(url);
 				$('#table_centent').empty();
 				contentThree = "";
 				$.ajax({

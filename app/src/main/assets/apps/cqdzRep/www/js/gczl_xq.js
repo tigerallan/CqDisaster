@@ -155,7 +155,7 @@ function openme(arr) {
 					 (arr.sfwg?'&sfwg='+arr.sfwg:'')+
 					 (arr.sxx?'&sxx='+arr.sxx:'')+
 					 (arr.exx?'&exx='+arr.exx:'')+
-					 (arr.xmmc?'&xmmc='+arr.xmmc:'');
+					 (arr.xmmc?'&xmname='+arr.xmmc:'');
 					 
 	arrUrl&&(arrUrl = '?' + arrUrl.slice(1));
 	

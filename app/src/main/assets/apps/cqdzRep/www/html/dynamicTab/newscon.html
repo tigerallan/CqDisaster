@@ -1,260 +1,243 @@
 <!doctype html>
 <html>
 
-  <head>
-    <meta charset="UTF-8">
-    <title>新闻动态</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-    <link href="../../css/mui.min.css" rel="stylesheet" />
-    <style type="text/css">
-      body {
-        opacity: 0;
-      }
-      
-      .mui-bar-nav {
-        -webkit-box-shadow: 0 1px 6px #337AB7;
-        box-shadow: 0 1px 6px #337AB7;
-        background-color: #337AB7;
-        color: white!important;
-      }
-      
-      .mui-bar-nav .mui-icon,
-      .mui-bar-nav .mui-title {
-        color: white;
-      }
-      
-      .mui-bar-nav .mui-title {
-        font-weight: bold;
-      }
-      
-      .mui-content {
-        position: relative;
-        padding: 55px 15px 15px !important;
-        background-color: #fff;
-      }
-      
-      .mui-content::before {
-        content: " ";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 1px;
-        border-top: 1px solid #e5e5e5;
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-        -webkit-transform: scaleY(0.5);
-        transform: scaleY(0.5);
-        top: auto;
-        bottom: -2px;
-      }
-      
-      .mui-content .new-title {
-        margin: 0 0 10px 0;
-        line-height: 1.4;
-        font-weight: bold;
-        font-size: 20px;
-      }
-      
-      .mui-content .news-info {
-        margin: 0 0 18px 0;
-        line-height: 20px;
-        font-size: 0;
-      }
-      
-      .mui-content .news-em {
-        color: #8c8c8c;
-        font-style: normal;
-        display: inline-block;
-        font-size: 16px;
-        margin-bottom: 10px;
-        margin-right: 12px;
-        vertical-align: middle;
-      }
-      
-      .mui-content .news-nickname {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-width: 9em;
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 8px;
-        margin-bottom: 10px;
-        font-size: 16px;
-        color: #18b4ed;
-        text-decoration: none;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      }
-      
-      .mui-content .news-img {
-        width: 100%;
-        margin-bottom: 6px;
-      }
-      
-      .mui-content .news-img img.imgnews {
-        height: auto !important;
-        max-width: 100%;
-      }
-      
-      .mui-content .news-content {
-        overflow: hidden;
-      }
-      
-      .mui-content .news-content * {
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        -webkit-box-sizing: border-box !important;
-        word-wrap: break-word !important;
-      }
-      
-      .mui-content .news-content p {
-        clear: both;
-        min-height: 1em;
-        white-space: pre-wrap;
-        margin-bottom: 20px;
-        text-indent: 2rem;
-        color: #3e3e3e !important;
-        font-size: 16px !important;
-      }
-      
-      .mui-content .news-content img {
-        height: auto !important;
-        max-width: 100%;
-        display: block;
-      }
-    </style>
-  </head>
+	<head>
+		<meta charset="UTF-8">
+		<title>新闻动态</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			body {
+				opacity: 0;
+			}
+			
+			.mui-bar-nav {
+				-webkit-box-shadow: 0 1px 6px #337AB7;
+				box-shadow: 0 1px 6px #337AB7;
+				background-color: #337AB7;
+				color: white!important;
+			}
+			
+			.mui-bar-nav .mui-icon,
+			.mui-bar-nav .mui-title {
+				color: white;
+			}
+			
+			.mui-bar-nav .mui-title {
+				font-weight: bold;
+			}
+			
+			.mui-content {
+				position: relative;
+				padding: 55px 15px 15px !important;
+				background-color: #fff;
+			}
+			
+			.mui-content::before {
+				content: " ";
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 1px;
+				border-top: 1px solid #e5e5e5;
+				-webkit-transform-origin: 0 0;
+				transform-origin: 0 0;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+				top: auto;
+				bottom: -2px;
+			}
+			
+			.mui-content .new-title {
+				margin: 0 0 10px 0;
+				line-height: 1.4;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			
+			.mui-content .news-info {
+				margin: 0 0 18px 0;
+				line-height: 20px;
+				font-size: 0;
+			}
+			
+			.mui-content .news-em {
+				color: #8c8c8c;
+				font-style: normal;
+				display: inline-block;
+				font-size: 16px;
+				margin-bottom: 10px;
+				margin-right: 12px;
+				vertical-align: middle;
+			}
+			
+			.mui-content .news-nickname {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				max-width: 9em;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 8px;
+				margin-bottom: 10px;
+				font-size: 16px;
+				color: #18b4ed;
+				text-decoration: none;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
+			
+			.mui-content .news-img {
+				width: 100%;
+				margin-bottom: 6px;
+			}
+			
+			.mui-content .news-img img.imgnews {
+				height: auto !important;
+				max-width: 100%;
+			}
+			
+			.mui-content .news-content {
+				overflow: hidden;
+			}
+			
+			.mui-content .news-content * {
+				max-width: 100% !important;
+				box-sizing: border-box !important;
+				-webkit-box-sizing: border-box !important;
+				word-wrap: break-word !important;
+			}
+			
+			.mui-content .news-content p {
+				clear: both;
+				min-height: 1em;
+				white-space: pre-wrap;
+				margin-bottom: 20px;
+				text-indent: 2rem;
+				color: #3e3e3e !important;
+				font-size: 16px !important;
+			}
+			
+			.mui-content .news-content img {
+				height: auto !important;
+				max-width: 100%;
+				display: block;
+			}
+		</style>
+	</head>
 
-  <body>
+	<body>
 
-    <header class="mui-bar mui-bar-nav" style="padding-top: 18px;height: 62px;">
-      <a class="mui-action-back">
+		<header class="mui-bar mui-bar-nav" style="padding-top: 18px;height: 62px;">
+			<a class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
-      <h1 class="mui-title">动态详情</h1>
-    </header>
+			<h1 class="mui-title">动态详情</h1>
+		</header>
 
-    <div class="mui-scroll-wrapper" style="margin-top:14px;">
-      <div class="mui-scroll">
-        <div id="newscon" class="mui-content">
-         <!--<h2 class="new-title">世界如此自由,却难有真正无视无争,可悲可叹</h2>
-          <div class="news-info">
-            <span class="news-em">最新消息</span>
-            <em class="news-em">2017-03-01</em>
-            <a class="news-nickname" href="javascript:void(0);">南地工作室</a>
-          </div>
-          <div class="news-img">
-            <img class="imgnews" src="../../img/banner1.png" />
-          </div>
-          <div class="news-content">
-            <p>36氪从一名不愿具名的投资界人士处获悉，滴滴快的正在参与东南亚打车应用GrabTaxi发起的新一轮融资，具体投资金额不明。GrabTaxi是主要面向东南亚地区的打车应用，也是Uber在该地区的最大竞争对手。有分析认为此举说明滴滴快的希望通过海外并购加速全球化布局，在全球范围内与Uber开展竞争。</p>
-            <p>和Uber不同的是，GrabTaxi的核心服务是出租车叫车服务，另外也提供类似Uber的私人叫车在越南、印尼等地还提供当地特色的摩托车叫车。</p>
-            <p><img src="../../img/banner2.jpg" /></p>
-            <p>截至2014年年底，GrabTaxi已将业务拓展至东南亚的6个国家17个城市，是当地最流行的打车应用，该公司于2012年由出身豪门的华裔马来西亚人陈炳耀（Anthony Tan）创办。</p>
-            <p>滴滴快的与GrabTaxi早有渊源。去年12月，日本软银向GrabTaxi注资2.5亿美元，成为该公司第一大股东。而软银恰好也是小桔快智（滴滴快的合并后的新公司）的投资方——今年1月，软银领投了快的打车总额6亿美金的D轮融资。除软银之外，老虎基金也是GrabTaxi和滴滴快的的共同投资者。</p>
-            <p>2014年GrabTaxi完成了四轮累计3.4亿美元的融资，投资方除了上面说到的软银和老虎基金之外，还包括淡马锡、纪源资本以及去哪儿等。</p>
-            <p><img src="../../img/banner3.jpg" /></p>
-            <p>上周，滴滴快的CEO程维在一封发给股东的邮件中透露，原计划15亿美元的新一轮融资获得了超额认购，因此公司计划增加融资规模，有猜测认为此轮融资将达到20亿美元。如果这一轮融资完成，滴滴快的将手握数十亿美元，完全有可能通过投资并购快速布局全球市场，从而与Uber开展新一轮竞争。</p>
-          </div>-->
-        </div>
-      </div>
-    </div>
+		<div class="mui-scroll-wrapper" style="margin-top:14px;">
+			<div class="mui-scroll">
+				<div id="newscon" class="mui-content">
+					<!--<h2 class="new-title">今起又要降雨降温 最低10℃</h2>
 
-    <script src="../../js/mui.min.js"></script>
-    <script src="../../js/h.js"></script>
-    <script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-      mui.init();
-      mui.ready(function() {
-        mui('.mui-scroll-wrapper').scroll({
-          scrollY: true, //是否竖向滚动
-          scrollX: false, //是否横向滚动
-          startX: 0, //初始化时滚动至x
-          startY: 0, //初始化时滚动至y
-          indicators: true, //是否显示滚动条
-          deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
-          bounce: true //是否启用回弹
-        });
+					<div class="news-info">
+						<span class="news-em">最新消息</span>
+						<em class="news-em">2017-02-28</em>
+						<a class="news-nickname" href="javascript:void(0);">南地工作室</a>
+					</div>
 
-        setTimeout(function() {
-          h('body').animate({ opacity: '1' });
-        }, 100);
-      });
-		function Request(strName) {
+					<div class="news-content">
+						<p><img src="../../img/banner3.jpg" /></p>
+						<p>昨日，阳光谢幕，全市各地迅速转阴，气温也随之下滑，主城气温仅14.2℃。市气象台表示，今日起，受波动气流影响，阴雨天气重返。气象专家提醒，天气多变，要注意根据天气变化，适时增减衣物。另外，最近我市春花开得灿烂，外出踏青的人群越来越多，3至5月也是花粉过敏症的高发期，如出现打喷嚏、流鼻涕、胸闷，需考虑是否得了过敏症，及时对症治疗。</p>
+						<p><img src="../../img/banner1.png" /></p>
+						<p>未来三天天气预报：</p>
+						<p>今天：主城，阴天有间断小雨，气温10～13℃；全市，中西部阴天有间断小雨，其余地区阴天，气温5～14℃。</p>
+						<p>明天：主城，间断小雨转阴天，气温10～13℃；全市，中西部间断小雨转阴天，其余地区阴天有间断小雨，气温5～14℃。</p>
+						<p>后天：主城，阴天有间断小雨，气温10～12℃；全市，东北部阴天有零星小雨，其余地区阴天有间断小雨，气温5～13℃。</p>
+						<p>滴滴快的与GrabTaxi早有渊源。去年12月，日本软银向GrabTaxi注资2.5亿美元，成为该公司第一大股东。而软银恰好也是小桔快智（滴滴快的合并后的新公司）的投资方——今年1月，软银领投了快的打车总额6亿美金的D轮融资。除软银之外，老虎基金也是GrabTaxi和滴滴快的的共同投资者。</p>
+						<p><img src="../../img/banner2.jpg" /></p>
+						<p>上周，滴滴快的CEO程维在一封发给股东的邮件中透露，原计划15亿美元的新一轮融资获得了超额认购，因此公司计划增加融资规模，有猜测认为此轮融资将达到20亿美元。如果这一轮融资完成，滴滴快的将手握数十亿美元，完全有可能通过投资并购快速布局全球市场，从而与Uber开展新一轮竞争。</p>
+					</div>-->
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.ready(function() {
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: true //是否启用回弹
+				});
+
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 100);
+			});
+
+			function Request(strName) {
 				var strHref = location.href;
 				var intPos = strHref.indexOf("?");
 				var strRight = strHref.substr(intPos + 1);
 				var arrTmp = strRight.split("&");
-				for (var i = 0; i < arrTmp.length; i++) {
+				for(var i = 0; i < arrTmp.length; i++) {
 					var arrTemp = arrTmp[i].split("=");
-					if (arrTemp[0].toUpperCase() == strName.toUpperCase()) 
+					if(arrTemp[0].toUpperCase() == strName.toUpperCase())
 						return arrTemp[1];
 				}
 				return "";
 			}
 
-		var id=Request('id');	
-		var contentThree = "";
-		$.ajax({
-//			url: "../../data/newscon.json",
-			url: ip+"getOneList.do",
-			async: false,//同步请求	
-			data: {id:id},
-			type: "get",
-			dataType: "json",
-			success: function(json) {
-				var data = json;
-				var context = data[0]['context'];
-				var msg = context.split("#*#");
-				var time = data[0]['update_time'];
-				time = time.substring(0, 10);
-				contentThree +=
-					'<h2 class="new-title">' + data[0]['title'] + '</h2>'
-					+'<div class="news-info"><span class="news-em">最新消息</span>'
-					+'<em class="news-em">' + time + '</em>'
-					+'<a class="news-nickname" href="javascript:void(0);">' + data[0]['unit_name'] + '</a></div>'
-					+'<div class="news-img"><img class="imgnews" src="http://' + data[0]['pic'][0] + '" /> </div>'
-					+'<div class="news-content">'
-					+'<p>' + msg[0] + '</p>'
-					if(data[0]['pic'][1]!=null){
-							contentThree +=
-						'<p><img src="http://' + data[0]['pic'][1] + '" /></p>'
-					}
-					if(msg[1]!=null){
-							contentThree +=
-						'<p>' + msg[1] + '</p>'
-					}
-					if(data[0]['pic'][2]!=null){
-							contentThree +=
-						'<p><img src="http://' + data[0]['pic'][2] + '" /></p>'
-					}
-					if(msg[2]!=null){
-							contentThree +=
-						'<p>' + msg[2] + '</p>'
-					}
-					if(data[0]['pic'][3]!=null){
-							contentThree +=
-						'<p><img src="http://' + data[0]['pic'][3] + '" /></p>'
-					}
-					if(msg[3]!=null){
-							contentThree +=
-						'<p>' + msg[3] + '</p>'
-					}
-					if(data[0]['pic'][4]!=null){
-							contentThree +=
-						'<p><img src="http://' + data[0]['pic'][4] + '" /></p>'
-					}
-					if(msg[4]!=null){
-							contentThree +=
-						'<p>' + msg[4] + '</p>'
-					}
-					+'</div>';
-				$('#newscon').html(contentThree);
-			}
-		});
-    </script>
-  </body>
+			var id = Request('id');
+			var contentThree = "";
+			$.ajax({
+				url: ip+"getOneList.do",
+				async: false, //同步请求	
+				data: {
+					id: id
+				},
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json;
+					var context = data[0]['context']; //得到段落
+					var msg = context.split("#*#"); //以特殊字符分段
+					var pic = data[0]['pic'];
+					var time = data[0]['update_time']; //获取时间
+					time = time.substring(0, 10); //截取时间前10位
+					contentThree +=
+						'<h2 class="new-title">' + data[0]['title'] + '</h2>' +
+						'<div class="news-info"><span class="news-em">最新消息</span>' +
+						'<em class="news-em">' + time + '</em>' +
+						'<a class="news-nickname" href="javascript:void(0);">' + data[0]['unit_name'] + '</a></div>' +
+						'<div class="news-content">';
+						for (var e = 0, i = 0; e < pic.length, i < msg.length; e++, i++) {
+							if (pic[e] != null) {
+								contentThree +=
+							'<p><img src="http://' + pic[e] + '" /></p>'
+							+'<p>' + msg[i] + '</p>';
+							} else {
+								contentThree +='<p>' + msg[i] + '</p>';
+							}
+						}
+						contentThree += '</div>';
+						
+					$('#newscon').html(contentThree);
+				}
+			});
+
+		</script>
+	</body>
 
 </html>

@@ -135,6 +135,16 @@
 				text-indent: 28px;
 				line-height: 24px;
 			}
+			
+			/*b {
+				width: 30%;
+				height: 40px;
+				border: 1px solid #8f8f94;
+				border-radius: 3px;
+				display: inline-block;
+				color: #8f8f94;
+				text-align: center;
+			}*/
 		</style>
 	</head>
 
@@ -151,18 +161,18 @@
 			<div class="mui-scroll">
 				<div id="newscon" class="mui-content">
 					<!--<span>基本情况</span>
-        	<p>滑坡堆积体有位移变形,仍未稳定，变形有所增大；滑坡后缘残体有微弱的水平和沉降变形，变形在持续发展。</p>
-        	<span>已开展工作</span>
-	    		<p>一、施工情况：累计清除松动块体38m3 。施工队伍严格按照爆破方案施工。投入劈岩机2套，5.5m3空压机1台，3.5m3空压机2台，抽水泵3套，焊机1台，探照灯5套，皮卡2辆（待命设备336挖机1台，50T吊车1台）。</p>
-	    		<p>二、监测情况：107地质队24小时不间断监测，后缘监测点累计水平位移变化量在0.0mm至0.2mm之间,累计沉降位移在0.0mm至-0.2mm之间。</p>
+					<p>滑坡堆积体有位移变形,仍未稳定，变形有所增大；滑坡后缘残体有微弱的水平和沉降变形，变形在持续发展。</p>
+					<span>已开展工作</span>
+					<p>一、施工情况：累计清除松动块体38m3 。施工队伍严格按照爆破方案施工。投入劈岩机2套，5.5m3空压机1台，3.5m3空压机2台，抽水泵3套，焊机1台，探照灯5套，皮卡2辆（待命设备336挖机1台，50T吊车1台）。</p>
+					<p>二、监测情况：107地质队24小时不间断监测，后缘监测点累计水平位移变化量在0.0mm至0.2mm之间,累计沉降位移在0.0mm至-0.2mm之间。</p>
 					<p>三、监理情况：投入监理人员4人。对残体清除作业、施工便道整修进行巡视检查；开展安全巡查，暂未发现施工安全隐患。</p>
-        	<span>下步安排</span>
-        	<p>按照既定方案继续施工活动</p>
-        	<span>填报审核</span>
-        	<div style="margin-left: 28px;">
-        		<input type="text" style="width: 30%;"/>
-        		<input type="text" style="width: 30%;"/>
-        	</div>-->
+					<span>下步安排</span>
+					<p>按照既定方案继续施工活动</p>
+					<span>填报审核</span>
+					<div style="margin-left: 28px;">
+						<b></b>
+						<b></b>
+					</div>-->
 				</div>
 			</div>
 		</div>
@@ -206,11 +216,11 @@
 			var id = Request('id');
 			var contentThree = "";
 			$.ajax({
-//				url: "../../data/infocontent_xq.json",
-				url: infocontent_ipconfig+"getZhuangbaoInfo.do?id="+id,
+				//				url: "../../data/infocontent_xq.json",
+				url: infocontent_ipconfig + "getZhuangbaoInfo.do?id=" + id,
 				type: "get",
 				async: false,
-//				data: {id:id},
+				//				data: {id:id},
 				dataType: "json",
 				success: function(json) {
 					var data = json.data;
@@ -224,22 +234,22 @@
 						'<span>下步安排</span>' +
 						'<p>' + data[0].arrange1 + '</p>' +
 						'<span>填报审核</span>' +
-						'<div style="margin-left: 28px;">' 
-						if(data[0].reported!=null){
-							contentThree +=
-							'<input type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;" value="' + data[0].reported + '"/>' 
-						}else{
-							contentThree +=
-							'<input type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;"/>' 
-						}
-						if(data[0].audit!=null){
-							contentThree +=
-							'<input type="text" style="width: 30%;color: #777;text-align: center;" value="' + data[0].audit + '"/>' 
-						}else{
-							contentThree +=
-							'<input type="text" style="width: 30%;color: #777;text-align: center;"/>' 
-						}
-						'</div>';
+						'<div style="margin-left: 28px;">'
+					if(data[0].reported != null) {
+						contentThree +=
+							'<input readonly type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;" value="' + data[0].reported + '"/>'
+					} else {
+						contentThree +=
+							'<input readonly type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;"/>'
+					}
+					if(data[0].audit != null) {
+						contentThree +=
+							'<input readonly type="text" style="width: 30%;color: #777;text-align: center;" value="' + data[0].audit + '"/>'
+					} else {
+						contentThree +=
+							'<input readonly type="text" style="width: 30%;color: #777;text-align: center;"/>'
+					}
+					'</div>';
 					$('#newscon').append(contentThree);
 				}
 			});

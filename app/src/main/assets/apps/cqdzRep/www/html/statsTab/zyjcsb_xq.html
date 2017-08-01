@@ -279,19 +279,24 @@
 				$(".highcharts-data-label-color-4 tspan")[0].setAttribute('y', 35);
 				$(".highcharts-data-label-color-4 tspan")[1].setAttribute('x', 10);
 				$(".highcharts-data-label-color-4 tspan")[1].setAttribute('y', 5);
+				
+				mui.plusReady(function() {
+					plus.nativeUI.closeWaiting();
+					mui.currentWebview.show("slide-in-bottom", 300);
+				});
 			});
 
-			var map_tb = document.getElementById('map_tb');
-			slideopen(map_tb, "baidumaps.html");
-
-			function slideopen(arr, wz) {
-				arr.addEventListener('tap', function() {
-					mui.openWindow({
-						url: wz,
-						id: wz
-					});
-				});
-			}
+//			var map_tb = document.getElementById('map_tb');
+//			slideopen(map_tb, "baidumaps.html");
+//
+//			function slideopen(arr, wz) {
+//				arr.addEventListener('tap', function() {
+//					mui.openWindow({
+//						url: wz,
+//						id: wz
+//					});
+//				});
+//			}
 		</script>
 	</body>
 

@@ -1,207 +1,284 @@
 /*修改mui的原生样式*/
-.mui-bar-nav~.mui-content{
-	padding-top:58px; 
+
+.mui-bar-nav~.mui-content {
+	padding-top: 58px;
 	padding-bottom: 50px;
 	background-color: #fff;
 }
-#nav{
+
+#nav {
 	background-color: #f2f2f2;
 	border-top: 1px solid #d9d9d9;
 }
-.mui-bar-tab .mui-tab-item.mui-active{
+
+.mui-bar-tab .mui-tab-item.mui-active {
 	color: #337AB7 !important;
 }
-.mui-bar-tab .mui-tab-item{
+
+.mui-bar-tab .mui-tab-item {
 	color: #9b9b9b !important;
 }
-.mui-content{
+
+.mui-content {
 	background-color: #fff;
 }
-html,body {
+
+html,
+body {
 	background-color: #fff;
 }
-.mui-bar-nav{
+
+.mui-bar-nav {
 	padding-top: 18px;
-    height: 62px;
+	height: 62px;
 	-webkit-box-shadow: 0 1px 6px #337AB7;
-    box-shadow: 0 1px 6px #337AB7;
-    background-color: #337AB7;
+	box-shadow: 0 1px 6px #337AB7;
+	background-color: #337AB7;
 }
-#title{
+
+#title {
 	color: #fff;
 	font-weight: bold;
 }
-header span{
+
+header span {
 	color: #fff;
 }
+
+
 /*首页标题栏*/
-#person{
-	width:70px;
+
+#person {
+	width: 70px;
 	font-size: 14px;
 	font-family: "微软雅黑";
 }
-.mui-popover.mui-bar-popover .mui-table-view{
-	width:70px;
+
+.mui-popover.mui-bar-popover .mui-table-view {
+	width: 70px;
 }
+
+
 /*底部导航栏*/
-#nav>.mui-tab-item>.mui-tab-label{
-	font-size:14px;
+
+#nav>.mui-tab-item>.mui-tab-label {
+	font-size: 14px;
 }
-#nav>a{
+
+#nav>a {
 	padding-top: 5px;
 }
+
+
 /*地灾动态*/
-.mui-slider .mui-slider-group .mui-slider-item img{
+
+.mui-slider .mui-slider-group .mui-slider-item img {
 	width: 100%;
 	height: 150px;
-    }
-.mui-table-view .mui-media-object{
-	max-width:60px;height: 60px;
-    }
-.mui-table-view-cell:after {
-	left:0;
-		}
-.mui-icon-chatbubble>.mui-badge{
-	top:5px;
-	left:80%;
 }
-.rule-lf,.rule-rg{
-	height: 1px;width:20%;
+
+.mui-table-view .mui-media-object {
+	max-width: 60px;
+	height: 60px;
+}
+
+.mui-table-view-cell:after {
+	left: 0;
+}
+
+.mui-icon-chatbubble>.mui-badge {
+	top: 5px;
+	left: 80%;
+}
+
+.rule-lf,
+.rule-rg {
+	height: 1px;
+	width: 20%;
 	background: #92bded;
 	position: absolute;
 	top: 50%;
-		}
-.rule-lf{left:5%;}
-.rule-rg{right:20%;}
-.rule_gd{
+}
+
+.rule-lf {
+	left: 5%;
+}
+
+.rule-rg {
+	right: 20%;
+}
+
+.rule_gd {
 	display: block;
 	float: right;
-	margin-right:3%;
-		font-size: 12px;
-	color:grey;
+	margin-right: 3%;
+	font-size: 12px;
+	color: grey;
 }
-#bottom-icon1>.mui-scroll>.mui-text-center{
-	padding:15px 0;
+
+#bottom-icon1>.mui-scroll>.mui-text-center {
+	padding: 15px 0;
 	color: #337AB7;
 	position: relative;
 }
-#bottom-icon1>.mui-scroll>.mui-table-view{
+
+#bottom-icon1>.mui-scroll>.mui-table-view {
 	color: gray;
 	font-size: 15px;
 }
-.place{
+
+.place {
 	font-size: 12px;
 	margin-top: 16px;
 }
-.place>span:first-child{
-	margin-right:10%;
+
+.place>span:first-child {
+	margin-right: 10%;
 }
+
+
 /*综合统计*/
-#bottom-icon2>.mui-table-view:first-child{
-	margin-top:0;
+
+#bottom-icon2>.mui-table-view:first-child {
+	margin-top: 0;
 	/*background: #337AB7;*/
-} 
-#bottom-icon2 img{
+}
+
+#bottom-icon2 img {
 	width: 60px;
 }
-div[class^=mui-col-sm-3]{
+
+div[class^=mui-col-sm-3] {
 	text-align: center;
 }
-.text{
+
+.text {
 	margin-top: 10px;
 }
-.text>p{
+
+.text>p {
 	/*position: absolute;
 	right: 30px;*/
 	margin-top: 5px;
 }
-#citybtn{
+
+#citybtn {
 	display: inline-block;
-	margin:5px;
+	margin: 5px;
 	font-size: 20px;
 	font-weight: bold;
 }
-#citybtn>span{
+
+#citybtn>span {
 	padding: 5px;
 	margin: 5px;
 	border: 1px solid #D1D1D1;
 	border-radius: 5px;
 }
-#bottom-icon2 .mui-collapse-content{
-	background:#f7f7f7;
+
+#bottom-icon2 .mui-collapse-content {
+	background: #f7f7f7;
 	padding-left: 50px;
 }
-#bottom-icon2 .mui-collapse-content>div{
+
+#bottom-icon2 .mui-collapse-content>div {
 	margin: 5px 0;
 	font-size: 14px;
 }
+
+
 /*#bottom-icon2 .mui-collapse-content>div:nth-child(odd){
 	text-align: center;
 }*/
+
+
 /*工作管理内容*/
-.mui-card{
-	display:inline-block;
+
+.mui-card {
+	display: inline-block;
 	height: 150px;
 	padding: 15px;
 	flex: 1;
 }
-#bottom-icon3>.boxflex>a:nth-child(1){
-	margin-right:0px;
+
+#bottom-icon3>.boxflex>a:nth-child(1) {
+	margin-right: 0px;
 }
-#bottom-icon3>.boxflex>a{
-	margin-bottom:0px;
+
+#bottom-icon3>.boxflex>a {
+	margin-bottom: 0px;
 }
-#bottom-icon3>.boxflex:nth-last-child(1){
-	margin-bottom:10px;
+
+#bottom-icon3>.boxflex:nth-last-child(1) {
+	margin-bottom: 10px;
 }
-.workmanage{
+
+.workmanage {
 	text-align: center;
 }
-.workmanage img{
-	width:60px;
+
+.workmanage img {
+	width: 60px;
 }
-.workmanage>dd{
-	margin:20px 0 0 0;
+
+.workmanage>dd {
+	margin: 20px 0 0 0;
 	text-align: center;
 	font-size: 17px;
-	color:#337AB7;
+	color: #337AB7;
 }
+
+
 /*应急管理内容*/
-#bottom-icon4>.mui-table-view{
-	margin-bottom:20px;
-	box-shadow:  0px 1px 1px lightgray;
+
+#bottom-icon4>.mui-table-view {
+	margin-bottom: 20px;
+	box-shadow: 0px 1px 1px lightgray;
 }
-#bottom-icon4>.mui-table-view:first-child{
+
+#bottom-icon4>.mui-table-view:first-child {
 	margin-top: 0;
 }
-#bottom-icon4{
+
+#bottom-icon4 {
 	background: #fafafa;
 }
+
+
 /*实时指挥*/
-#bottom-icon4 ul>li{
-	margin-bottom:30px;
+
+#bottom-icon4 ul>li {
+	margin-bottom: 30px;
 	border: 1px solid #c8c7cc;
 	/*background:#fff;*/
 }
-.realtime{
+
+.realtime {
 	font-size: 14px;
 }
-.realtime>dt{
+
+.realtime>dt {
 	text-align: center;
 }
-.realtime>dt>img{
+
+.realtime>dt>img {
 	width: 60px;
 }
-.realtime>dd{
+
+.realtime>dd {
 	margin-left: 0px;
 	text-align: center;
 }
- /*日常管理*/
-.boxflex{
-	display:flex;
+
+
+/*日常管理*/
+
+.boxflex {
+	display: flex;
 }
-.dailymanage{
-	border:1px solid lightgray;
+
+.dailymanage {
+	border: 1px solid lightgray;
 	color: #000;
 	font-size: 14px;
 	text-align: center;
@@ -209,14 +286,22 @@ div[class^=mui-col-sm-3]{
 	padding: 20px 25px;
 	margin: 10px;
 }
+
+
 /*市局新闻*/
-#sj_news{
+
+#sj_news {
 	padding-bottom: 0;
 }
+
+
 /*区县新闻*/
-#qx_news{
+
+#qx_news {
 	padding-bottom: 0;
 }
-#sj_news>ul,#qx_news>ul{
+
+#sj_news>ul,
+#qx_news>ul {
 	margin-top: 0;
 }

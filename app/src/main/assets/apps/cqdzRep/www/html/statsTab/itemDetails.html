@@ -120,10 +120,10 @@
 			var id = Request('id');
 			var contentThree = "";
 			$.ajax({
-//				url: "../../data/itemDetails.json",
-				url: gczl_ipconfig+"findProjectInfoDataById.do",
+				//				url: "../../data/itemDetails.json",
+				url: gczl_ipconfig + "findProjectInfoDataById.do",
 				data: {
-					id:id
+					id: id
 				},
 				async: false,
 				type: "get",
@@ -186,6 +186,10 @@
 						'</li>';
 
 					$('#plan').html(contentThree);
+					mui.plusReady(function() {
+						plus.nativeUI.closeWaiting();
+						mui.currentWebview.show("slide-in-bottom", 300);
+					});
 				}
 			});
 		</script>

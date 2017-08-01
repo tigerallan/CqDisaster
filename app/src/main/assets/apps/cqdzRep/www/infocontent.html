@@ -151,24 +151,7 @@
 		<script src="js/ip.js"></script>
 		<script type="text/javascript">
 			mui.init({
-				swipeBack: false,
-				pullRefresh: {
-					container: '#qx_news',
-					down: {
-						height: 50,
-						auto: true,
-						contentdown: "下拉刷新",
-						callback: function() {
-							setTimeout(function() {
-								mui('#qx_news').pullRefresh().endPulldownToRefresh();
-							}, 1000);
-						}
-					},
-					up: {
-						contentrefresh: '正在加载...',
-						//							callback: pullupRefresh
-					}
-				}
+				swipeBack: false
 			});
 			mui.ready(function() {
 				setTimeout(function() {
@@ -186,7 +169,7 @@
 					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
 					bounce: true //是否启用回弹
 				});
-			})
+			});
 
 			//区县专报请求		
 			var content = "";
@@ -214,8 +197,11 @@
 							'</li>';
 					}
 					$('#dynamic_qx').html(content);
+					mui.plusReady(function() {
+						plus.nativeUI.closeWaiting();
+						mui.currentWebview.show("slide-in-bottom", 300);
+					});
 				}
-
 			});
 			var y = document.getElementsByClassName('fishref');
 			$(y).each(function() {
@@ -253,7 +239,7 @@
 						cityPicker.show(function(items) {
 							choose_one.innerText = items[0].text;
 							var areaId = items[0].id;
-
+							mui('#qx_news').scroll().scrollTo(0, 0);
 							$.ajax({
 								url: infocontent_ipconfig + "getZhuangbao.do",
 								async: false, //同步请求	
@@ -266,7 +252,7 @@
 									dynamic_qx.innerHTML = "";
 									content = "";
 									var data = json.data;
-									
+
 									for(var i = 0; i < data.length; i++) {
 										var berichten = data[i].berichten;
 										content +=
@@ -278,13 +264,13 @@
 											'<div class="place">' +
 											'<span>' + data[i].county + '</span>' +
 											'<span>' + data[i].time + '</span>' +
-											'<span>' + data[i].dispose + '</span>' 
-											if (berichten!=null) {
-												content +=
+											'<span>' + data[i].dispose + '</span>'
+										if(berichten != null) {
+											content +=
 												'<span>' + berichten + '</span>'
-											}
-											'</div></a>' +
-											'</li>';
+										}
+										'</div></a>' +
+										'</li>';
 									}
 									dynamic_qx.innerHTML = content;
 									count();
@@ -309,15 +295,17 @@
 						var id = this.getAttribute("data-id");
 						mui.openWindow({
 							url: 'html/dynamicTab/infocontent_xq.html?id=' + id,
-							id: 'infocontent_xq.html'
+							id: 'infocontent_xq.html',
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+								title: '正在加载...' //等待对话框上显示的提示内容
+							}
 						});
 					});
 				}
 			}
 
 			window.onload = count;
-
-		
 		</script>
 	</body>
 

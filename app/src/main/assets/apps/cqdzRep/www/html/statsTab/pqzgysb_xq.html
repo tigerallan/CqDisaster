@@ -130,7 +130,7 @@
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
 			<h1 id="title" class="mui-title">片区专管员上报率</h1>
-			<span id="title_span">选区</span>
+			<!--<span id="title_span">选区</span>-->
 		</header>
 		<div class="title_xz">
 			<span>
@@ -191,61 +191,85 @@
 		<script type="text/javascript">
 			mui.init();
 			//所属区县选项
-			(function($, doc) {
-				$.init();
-				$.ready(function() {
-					var cityPicker = new $.PopPicker({
-						//两列
-						layer: 1
-					});
-					cityPicker.setData(cityData);
-					var choose_one = document.getElementById('title_span');
-					choose_one.addEventListener('tap', function(event) {
-						cityPicker.show(function(items) {
-							choose_one.innerText = items[0].text;
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-				});
-			})(mui, document);
+			//			(function($, doc) {
+			//				$.init();
+			//				$.ready(function() {
+			//					var cityPicker = new $.PopPicker({
+			//						//两列
+			//						layer: 1
+			//					});
+			//					cityPicker.setData(cityData);
+			//					var choose_one = document.getElementById('title_span');
+			//					choose_one.addEventListener('tap', function(event) {
+			//						cityPicker.show(function(items) {
+			//							choose_one.innerText = items[0].text;
+			//							//返回 false 可以阻止选择框的关闭
+			//							//return false;
+			//						});
+			//					}, false);
+			//				});
+			//			})(mui, document);
 
-			var contentThree = "";
-			$.ajax({
-				url: pianqu_ipconfig+"findWeekInfo.do?startTime=" + "2017-05-14" + "&endTime=" + "2017-05-20",
-				async: false,
-				type: "get",
-				dataType: "json",
-				success: function(json) {
-					$.each(json.data, function(key, value) {
-						var sbl = (value['sbl']*100).toFixed(2);
-						contentThree +=
-						'<tr class="colortwo"'+((value['sb']==null || value['ysb']==null)?'style="color:red"':'')+'>' +
-						'<td width="20%">' + value['area_name'] + '</td>' +
-						'<td width="20%">' + (value['ysb']==null?'0':value['ysb']) + '</td>' +
-						'<td width="20%">' ;
+			function pianqu() {
+				var contentThree = "";
+				//根据当前时间推算上一周时间
+				var now = new Date();
+				var nowTime = now.getTime();
+				var day = now.getDay();
+				var oneDayLong = 24 * 60 * 60 * 1000;
+				var MondayTime = nowTime - (day + 6) * oneDayLong;
+				var FridayTime = nowTime - day * oneDayLong;
+
+				var d = new Date(FridayTime);
+				var b = new Date(MondayTime);
+				var a = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+				var y = b.getFullYear() + '-' + (b.getMonth() + 1) + '-' + b.getDate();
+				$.ajax({
+					url: ip + "wish/getAreaOfficerWeek.do?startTime=" + y + "&endTime=" + a,
+					async: false,
+					type: "get",
+					dataType: "json",
+					success: function(json) {
+						$.each(json.data.week, function(key, value) {
+							var sbl = (value['sbl'] * 100).toFixed(2);
 							contentThree +=
-							(value['sb']==null?'0':(value['ysb']==null?'0':value['sb']>value['ysb']?value['ysb']:value['sb']))
-							+ '</td>' ;
+								'<tr class="colortwo"' + ((value['sb'] == null || value['ysb'] == null) ? 'style="color:red"' : '') + '>' +
+								'<td width="20%">' + value['area_name'] + '</td>' +
+								'<td width="20%">' + (value['ysb'] == null ? '0' : value['ysb']) + '</td>' +
+								'<td width="20%">';
 							contentThree +=
-							'<td width="20%">' ;
+								(value['sb'] == null ? '0' : (value['ysb'] == null ? '0' : value['sb'] > value['ysb'] ? value['ysb'] : value['sb'])) +
+								'</td>';
 							contentThree +=
-							 sbl>100.00?'100.00%':sbl
-							+ '%</td>'
+								'<td width="20%">';
+							contentThree +=
+								sbl > 100.00 ? '100.00%' : sbl +
+								'%</td>'
 							'</tr>';
-					});
-					$('#table_centent').html(contentThree);
-				}
-			});
-			window.onload = function() { //页面所有元素加载完毕
-				var item = document.getElementById("tb"); //获取id为tb的元素(table)
-				var tbody = item.getElementsByTagName("tbody")[0]; //获取表格的第一个tbody元素
-				var trs = tbody.getElementsByTagName("tr"); //获取tbody元素下的所有tr元素
-				for(var i = 0; i < trs.length; i++) { //循环tr元素
-					if(i % 2 == 0) { //取模. (取余数.比如 0%2=0 , 1%2=1 , 2%2=0 , 3%2=1)
-						trs[i].style.backgroundColor = "#F0F9FD"; // 改变 符合条件的tr元素 的背景色.
+						});
+						$('#table_centent').html(contentThree);
+					}
+				});
+			}
+
+			function table_tup() {
+				var item = document.getElementById("tb");
+				var tbody = item.getElementsByTagName("tbody")[0];
+				var trs = tbody.getElementsByTagName("tr");
+				for(var i = 0; i < trs.length; i++) {
+					if(i % 2 == 0) {
+						trs[i].style.backgroundColor = "#F0F9FD";
 					}
 				}
+			}
+
+			window.onload = function() {
+				pianqu();
+				table_tup();
+				mui.plusReady(function() {
+					plus.nativeUI.closeWaiting();
+					mui.currentWebview.show("slide-in-bottom", 300);
+				});
 			}
 		</script>
 	</body>
