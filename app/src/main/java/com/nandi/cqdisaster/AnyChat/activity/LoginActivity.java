@@ -29,10 +29,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class LoginActivity extends Activity implements AnyChatBaseEvent, OnClickListener {
     private Button configBtn;
     private Button loginBtn;
+    private ImageView ivBack;
     private ConfigEntity configEntity;
     private EditText mEditAccount;
     private ProgressDialog mProgressLogin;
@@ -117,7 +119,12 @@ public class LoginActivity extends Activity implements AnyChatBaseEvent, OnClick
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         this.setContentView(R.layout.login_layout);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+        ivBack= (ImageView) findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(this);
         mEditAccount = (EditText) findViewById(R.id.edit_account);
         mEditAccount.setText(strUserName);
 
@@ -239,6 +246,9 @@ public class LoginActivity extends Activity implements AnyChatBaseEvent, OnClick
             case R.id.btn_setting:
                 dialog = DialogFactory.getDialog(DialogFactory.DIALOGID_CONFIG, configEntity, this);
                 dialog.show();
+                break;
+            case R.id.iv_back:
+                finish();
                 break;
             default:
                 break;

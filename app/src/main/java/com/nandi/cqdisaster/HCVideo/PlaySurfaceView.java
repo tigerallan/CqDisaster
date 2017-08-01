@@ -79,7 +79,7 @@ public class PlaySurfaceView extends SurfaceView implements Callback {
 
     public void setParam(int nScreenSize) {
         m_iWidth = nScreenSize / 2;
-        m_iHeight = (m_iWidth * 5) / 4;
+        m_iHeight = (m_iWidth * 5+1) / 4;
     }
 
     public void startPreview(int iUserID, int iChan) {
