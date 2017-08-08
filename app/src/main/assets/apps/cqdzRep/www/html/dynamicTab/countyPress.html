@@ -9,7 +9,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
-		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.min.css" />
 		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
 		<style type="text/css">
 			.citychoose {
@@ -34,7 +34,7 @@
 			}
 			
 			#qx_news {
-				margin-top: 95px;
+				padding-top: 95px;
 			}
 			
 			.mui-bar-nav~.mui-content {
@@ -77,121 +77,53 @@
 			<span style="font-weight: bold;margin-left: 15px;">所属区县</span>
 			<span id="choose_one" class="citychoose">请选择<span class="mui-icon mui-icon-forward"></span></span>
 		</div>
-		<div id="qx_news" class="mui-content">
-			<ul id="dynamic_qx" class="main mui-table-view">
-				<!--<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
-						<div class="mui-media-body">
-							<div class='mui-ellipsis'>重庆云阳县滑坡已造成经济损失228.5万元</div>
-						</div>
-						<div class="place">
-							<span>市局</span>
-							<span>刚刚</span>
-							<img src="../../img/new_u58.gif"/>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
-						<div class="mui-media-body">
-							<div class='mui-ellipsis'>重庆云阳县地震已造成经济损失228.5万元</div>
-						</div>
-						<div class="place">
-							<span>市局</span>
-							<span>刚刚</span>
-							<img src="../../img/new_u58.gif"/>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
-						<div class="mui-media-body">
-							<div class='mui-ellipsis'>重庆云阳县地震已造成经济损失228.5万元</div>
-						</div>
-						<div class="place">
-							<span>市局</span>
-							<span>3小时前</span>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
-						<div class="mui-media-body">
-							<div class='mui-ellipsis'>重庆云阳县地震已造成经济损失228.5万元</div>
-						</div>
-						<div class="place">
-							<span>市局</span>
-							<span>3小时前</span>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
-						<div class="mui-media-body">
-							<div class='mui-ellipsis'>重庆云阳县地震已造成经济损失228.5万元</div>
-						</div>
-						<div class="place">
-							<span>市局</span>
-							<span>3小时前</span>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
-						<div class="mui-media-body">
-							<div class='mui-ellipsis'>重庆云阳县地震已造成经济损失228.5万元</div>
-						</div>
-						<div class="place">
-							<span>市局</span>
-							<span>3小时前</span>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
-						<div class="mui-media-body">
-							<div class='mui-ellipsis'>重庆云阳县地震已造成经济损失228.5万元</div>
-						</div>
-						<div class="place">
-							<span>市局</span>
-							<span>3小时前</span>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
-						<div class="mui-media-body">
-							<div class='mui-ellipsis'>重庆云阳县地震已造成经济损失228.5万元</div>
-						</div>
-						<div class="place">
-							<span>市局</span>
-							<span>3小时前</span>
-						</div>
-					</a>
-				</li>-->
-			</ul>
+		<div id="qx_news" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="dynamic_qx" class="main mui-table-view">
+					<!--<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-right" src="../../img/u56.png">
+							<div class="mui-media-body">
+								<div class='mui-ellipsis'>重庆云阳县滑坡已造成经济损失228.5万元</div>
+							</div>
+							<div class="place">
+								<span>市局</span>
+								<span>刚刚</span>
+								<img src="../../img/new_u58.gif" />
+							</div>
+						</a>
+					</li>-->
+				</ul>
+			</div>
 		</div>
 
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/h.js"></script>
 		<!--<script src="../../js/quxian.js"></script>-->
-		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init();
-			var gallery = mui(".mui-slider");
-			gallery.slider({
-				interval: 5000
+			mui.init({
+				swipeBack: false
+			});
+			mui.ready(function() {
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 50);
+
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: true //是否启用回弹
+				});
 			});
 
 			var contentThree = "";

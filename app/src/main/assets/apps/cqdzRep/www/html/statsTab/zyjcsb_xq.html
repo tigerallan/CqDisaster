@@ -106,7 +106,7 @@
 			<a class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
-			<h1 id="title" class="mui-title">专业监测设备</h1>
+			<h1 id="title" class="mui-title">专业监测设备上报率</h1>
 		</header>
 
 		<div class="mui-content">
@@ -279,7 +279,9 @@
 				$(".highcharts-data-label-color-4 tspan")[0].setAttribute('y', 35);
 				$(".highcharts-data-label-color-4 tspan")[1].setAttribute('x', 10);
 				$(".highcharts-data-label-color-4 tspan")[1].setAttribute('y', 5);
-				
+				$(".highcharts-data-label-color-0 tspan")[1].setAttribute('y',25);
+				$(".highcharts-data-label-color-3 tspan")[1].setAttribute('x',-10);
+				$(".highcharts-data-label-color-3 tspan")[1].setAttribute('y',10);
 				mui.plusReady(function() {
 					plus.nativeUI.closeWaiting();
 					mui.currentWebview.show("slide-in-bottom", 300);

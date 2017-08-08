@@ -212,15 +212,23 @@
 					$(this).css('background-color', '#fff');
 				}
 			});
-
 			var cityData;
+			var myArray=new Array();
 			$.ajax({
 				url: infocontent_ipconfig + "findAreaData.do",
 				async: false,
 				type: "get",
 				dataType: "json",
 				success: function(json) {
-					cityData = json;
+					function compare(property) {
+						return function(a, b) {
+							var value1 = a[property];
+							var value2 = b[property];
+							return value1 - value2;
+						}
+					}
+					myArray = json.sort(compare('id'));
+					cityData = myArray;
 				}
 			});
 
@@ -252,7 +260,6 @@
 									dynamic_qx.innerHTML = "";
 									content = "";
 									var data = json.data;
-
 									for(var i = 0; i < data.length; i++) {
 										var berichten = data[i].berichten;
 										content +=

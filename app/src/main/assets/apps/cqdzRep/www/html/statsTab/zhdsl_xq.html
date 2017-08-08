@@ -64,67 +64,87 @@
 				</div>
 			</div>
 		</div>-->
-		<div class="mui-content">
-			<div id="map_tb" class="map_tb">
-				<a href="javascript:void(0);">
-					<span class="mui-icon mui-icon-map"></span>
-				</a>
-			</div>
-			<div class="icon1-centent-text">
-				<p>灾害分类</p>
-				<b></b>
-				<div class="icon1-centent-left">
-					<!--<div><i class="i1"></i><span class="icon1_text">滑坡</span>：<span class="icon1_price">104个</span></div>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div id="map_tb" class="map_tb">
+					<a href="javascript:void(0);">
+						<span class="mui-icon mui-icon-map"></span>
+					</a>
+				</div>
+				<div class="icon1-centent-text">
+					<p>灾害分类</p>
+					<b></b>
+					<div class="icon1-centent-left">
+						<!--<div><i class="i1"></i><span class="icon1_text">滑坡</span>：<span class="icon1_price">104个</span></div>
 							<div><i class="i2"></i><span class="icon1_text">泥石流</span>：<span class="icon1_price">35个</span></div>
 							<div><i class="i3"></i><span class="icon1_text">危岩</span>：<span class="icon1_price">22个</span></div>
 							<div><i class="i4"></i><span class="icon1_text">不稳定斜坡</span>：<span class="icon1_price">99个</span></div>
 							<div><i class="i5"></i><span class="icon1_text">地面塌陷</span>：<span class="icon1_price">160个</span></div>
 							<div><i class="i6"></i><span class="icon1_text">地裂缝</span>：<span class="icon1_price">68个</span></div>
 							<div><i class="i7"></i><span class="icon1_text">库岸</span>：<span class="icon1_price">19个</span></div>-->
-				</div>
-				<div class="icon1-centent-right1">
-					<div id="container" style="width: 100%; height: 200px; margin: 0 auto"></div>
-					<div class="sum">
-						<span>总数：</span>
-						<span>16412</span>
+					</div>
+					<div class="icon1-centent-right1">
+						<div id="container" style="width: 100%; height: 200px; margin: 0 auto"></div>
+						<div class="sum">
+							<span>总数：</span>
+							<span>16412</span>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="icon1-centent-text">
-				<p>规模</p>
-				<b></b>
-				<div class="icon1-centent-right2">
-					<div id="container_right2" style="width: 100%; height: 130px; margin: 0 auto"></div>
-				</div>
-				<div class="icon2-centent-left">
-					<!--<div><i class="i3"></i>特大　：4个</div>
+				<div class="icon1-centent-text">
+					<p>规模</p>
+					<b></b>
+					<div class="icon1-centent-right2">
+						<div id="container_right2" style="width: 100%; height: 130px; margin: 0 auto"></div>
+					</div>
+					<div class="icon2-centent-left">
+						<!--<div><i class="i3"></i>特大　：4个</div>
 							<div><i class="i4"></i>大型　：2个</div>
 							<div><i class="i5"></i>中型　：8个</div>
 							<div><i class="i6"></i>小型　：5个</div>-->
+					</div>
 				</div>
-			</div>
-			<div class="icon1-centent-text">
-				<p>稳定性</p>
-				<b></b>
-				<div class="icon3-centent-left">
-					<!--<div><i class="i1"></i>稳定　　：8个</div>
+				<div class="icon1-centent-text">
+					<p>稳定性</p>
+					<b></b>
+					<div class="icon3-centent-left">
+						<!--<div><i class="i1"></i>稳定　　：8个</div>
 							<div><i class="i2"></i>基本稳定：4个</div>
 							<div><i class="i3"></i>不稳定　：0个</div>
 							<div><i class="i4"></i>欠稳定　：2个</div>-->
-				</div>
-				<div class="icon1-centent-right3">
-					<div id="container_right3" style="width: 100%; height: 130px; margin: 0 auto"></div>
+					</div>
+					<div class="icon1-centent-right3">
+						<div id="container_right3" style="width: 100%; height: 130px; margin: 0 auto"></div>
+					</div>
 				</div>
 			</div>
 
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/jquery-1.11.3.js"></script>
 		<script src="../../js/highcharts.js"></script>
 		<script src="../../js/ip.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: false,
+			});
+			mui.ready(function() {
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 50);
+
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: false //是否启用回弹
+				});
 			});
 
 			//第一个图表

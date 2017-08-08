@@ -36,6 +36,7 @@
 				line-height: 50px;
 				position: fixed;
 				top: 0;
+				padding: 0 10px;
 				background-color: #fff;
 				/*text-align: right;*/
 				margin-top: 60px;
@@ -146,7 +147,7 @@
 				color: #fff;
 				float: right;
 				right: 10px;
-				top: 10px;
+				top: 9px;
 				padding: 5px 12px 4px;
 			}
 			
@@ -180,6 +181,41 @@
 			.side-bar a:hover {
 				background-color: #669fdd;
 			}
+			
+			.mui-bar-nav~.mui-content {
+				padding-bottom: 0px;
+			}
+			
+			#botton_rq i {
+				color: red;
+				font-size: 15px;
+				display: inline-block;
+				/* margin-right: 12px; */
+				margin-left: 5px;
+				font-style: normal;
+			}
+			
+			#tb {
+				width: 100%;
+			}
+			
+			.table_head {
+				position: fixed;
+				top: 110px;
+				width: 100%;
+				height: 35px;
+				line-height: 35px;
+				z-index: 100;
+				background-color: white;
+			}
+			
+			#rz_table {
+				margin-top: 147px;
+			}
+			
+			.a {
+				font-size: 15px;
+			}
 		</style>
 	</head>
 
@@ -193,90 +229,68 @@
 		</header>
 		<div class="title_xz">
 			<div id="botton_rq">
-				<!--<img src="../../img/rli.png" alt="" />-->
-				<span>时间选择</span>
+				<i>时间</i>
 				<b id="start_time"></b>-
 				<b id="end_time"></b>
 				<button id="searchDate">查询</button>
 			</div>
-			<!--<span>
-				注:根据本日区县上报率,由高到低排名
-			</span>-->
 		</div>
-		<div id="qx_news" class="mui-content">
-			<div class="table-head">
-				<table style="width: 100%;margin: 10px 0;">
-					<colgroup>
-						<col style="width: 80px;" />
-						<col />
-					</colgroup>
-					<thead>
-						<tr>
-							<th width="20%">区县名称</th>
-							<th width="20%">应上报数</th>
-							<th width="20%">实上报数</th>
-							<th width="20%">未上报数</th>
-							<th width="20%">上报率</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-			<div class="table-body">
-				<table id="tb">
-					<colgroup>
-						<col style="width: 80px;" />
-						<col />
-					</colgroup>
-					<tbody id="table_centent">
-						<!--<tr class="colorone">
-							<td width="20%">开州区</td>
-							<td width="20%">73</td>
-							<td width="20%">73</td>
-							<td width="20%">100%</td>
-						</tr>
-						<tr class="colortwo">
-							<td width="20%">开州区</td>
-							<td width="20%">73</td>
-							<td width="20%">73</td>
-							<td width="20%">100%</td>
-						</tr>-->
-					</tbody>
-				</table>
+		<div class="mui-content">
+			<table class="table_head">
+				<tr>
+					<th width="20%">区县名</th>
+					<th width="20%">应上报</th>
+					<th width="20%">实上报</th>
+					<th width="20%">未上报</th>
+					<th width="20%">上报率</th>
+				</tr>
+			</table>
+			<div id="rz_table" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<table id="tb">
+						<tbody id="table_centent">
+							<!--<tr>
+								<td width="20%"><font size="13px">1</font></td>
+								<td width="20%">2</td>
+								<td width="20%">3</td>
+								<td width="20%">4</td>
+								<td width="20%">5</td>
+								</tr>-->
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-
-		<!--悬浮按钮-->
-		<!--<div class="side-bar">
-			<a id="icon_zq" href="javascript:void(0);" class="icon-blog">灾情</a>
-			<a id="icon_xq" href="javascript:void(0);" class="icon-mail">险情</a>
-		</div>-->
 
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/h.js"></script>
-		<script src="../../js/quxian.js"></script>
+		<!--<script src="../../js/quxian.js"></script>-->
 		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/ip.js"></script>
 		<script type="text/javascript">
-			mui.init();
-			//所属区县选项
-//			(function($, doc) {
-//				$.init();
-//				$.ready(function() {
-//					var cityPicker = new $.PopPicker({
-//						//两列
-//						layer: 1
-//					});
-//					cityPicker.setData(cityData);
-//					var choose_one = document.getElementById('title_span');
-//					choose_one.addEventListener('tap', function(event) {
-//						cityPicker.show(function(items) {
-//							//								choose_one.innerText = items[0].text;
-//						});
-//					}, false);
-//				});
-//			})(mui, document);
+			mui.init({
+				swipeBack: false
+			});
+			mui.ready(function() {
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 50);
+
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: false //是否启用回弹
+				});
+			});
+
 			//读取系统日期
 			var d = new Date();
 			var n = d.getFullYear();
@@ -298,7 +312,7 @@
 					var cityPicker = new $.PopPicker({
 						layer: 3
 					});
-					cityPicker.setData(cityData);
+					//					cityPicker.setData(cityData);
 					var choose_two = document.getElementById('end_time');
 					choose_two.addEventListener('tap', function(event) {
 						var id = this.getAttribute('id');
@@ -324,7 +338,7 @@
 					var cityPicker = new $.PopPicker({
 						layer: 3
 					});
-					cityPicker.setData(cityData);
+					//					cityPicker.setData(cityData);
 					var choose_three = document.getElementById('start_time');
 					choose_three.addEventListener('tap', function(event) {
 						var id = this.getAttribute('id');
@@ -345,15 +359,15 @@
 			var contentThree = "";
 
 			function zq() {
-//					var url = "http://183.230.108.112:8085/cmdcity/findDisasterSta.do?page=1&rows=100";
-				var url = quxianRb_ipconfig+"findDisasterAndDangerSta.do";
-				
+				//					var url = "http://183.230.108.112:8085/cmdcity/findDisasterSta.do?page=1&rows=100";
+				var url = quxianRb_ipconfig + "findDisasterAndDangerSta.do";
+
 				document.body.scrollIntoView();
 				if(arguments[0]) {
-//					url += "&starttime1=" + arguments[0] + "&endtime1=" + arguments[1];
+					//					url += "&starttime1=" + arguments[0] + "&endtime1=" + arguments[1];
 					url += "?starttime1=" + arguments[0] + "&endtime1=" + arguments[1];
 				}
-				
+
 				$('#table_centent').empty();
 				contentThree = "";
 				$.ajax({
@@ -362,57 +376,28 @@
 					type: "get",
 					dataType: "json",
 					success: function(json) {
-						$.each(json.rows, function(key, value) {
+						var data = json.rows;
+						for(var i = 0; i < data.length; i++) {
+							var sblv = data[i].sblv.toFixed(2);
+							var areaName = data[i].areaName;
+							var areaNameFont = '<b style="font-size:17px;font-weight:normal;">' + areaName + '</b>';
+							if(areaName.length > 3) {
+								areaNameFont = '<b style="font-size:14px;font-weight:normal;">' + areaName + '</b>';
+							}
 							contentThree +=
 								'<tr>' +
-								'<td width="20%">' + value['areaName'] + '</td>' +
-								'<td width="20%">' + value['yShangBao'] + '</td>' +
-								'<td width="20%">' + value['sjShangBao'] + '</td>' +
-								'<td width="20%">' + value['wShangBao'] + '</td>' +
-								'<td width="20%">' + value['sblv'].toFixed(2) + '%</td>' +
+								'<td width="20%">' + areaNameFont + '</td>' +
+								'<td width="20%">' + data[i].yShangBao + '</td>' +
+								'<td width="20%">' + data[i].sjShangBao + '</td>' +
+								'<td width="20%">' + data[i].wShangBao + '</td>' +
+								'<td width="20%">' + sblv + '%</td>' +
 								'</tr>';
-						});
+						}
 						$('#table_centent').html(contentThree);
-						//$('#icon_zq').css('background-color', 'rgba(51, 122, 183,.9)');
-						//$('#icon_xq').css('background-color', 'rgba(255,255,255,.8)');
-						//$('#icon_zq').css('color', '#fff');
-						//$('#icon_xq').css('color', '#337AB7');
+
 					}
 				})
 			};
-
-//			function xq() {
-//				var url = "http://183.230.108.112:8085/cmdcity/findDangerSta.do?page=1&rows=100";
-//				document.body.scrollIntoView();
-//				if(arguments[0]) {
-//					url += "&starttime1=" + arguments[0] + "&endtime1=" + arguments[1];
-//				}
-//				$('#table_centent').empty();
-//				contentThree = "";
-//				$.ajax({
-//					url: url,
-//					async: false,
-//					type: "get",
-//					dataType: "json",
-//					success: function(json) {
-//						$.each(json.rows, function(key, value) {
-//							contentThree +=
-//								'<tr>' +
-//								'<td width="20%">' + value['areaName'] + '</td>' +
-//								'<td width="20%">' + value['yShangBao'] + '</td>' +
-//								'<td width="20%">' + value['sjShangBao'] + '</td>' +
-//								'<td width="20%">' + value['wShangBao'] + '</td>' +
-//								'<td width="20%">' + value['sblv'].toFixed(2) + '%</td>' +
-//								'</tr>';
-//						});
-//						$('#table_centent').html(contentThree);
-//						$('#icon_xq').css('background-color', 'rgba(51, 122, 183,.9)');
-//						$('#icon_zq').css('background-color', 'rgba(255,255,255,.8)');
-//						$('#icon_xq').css('color', '#fff');
-//						$('#icon_zq').css('color', '#337AB7');
-//					}
-//				})
-//			};
 
 			function table() { //页面所有元素加载完毕
 				var item = document.getElementById("tb"); //获取id为tb的元素(table)
@@ -426,27 +411,27 @@
 			}
 
 			window.onload = function() {
-				zq();
-				table();
-			}
-//			document.getElementById('icon_xq').addEventListener('tap', function() {
-//				xq(h("#start_time").html(), h("#end_time").html());
-//				table();
-//			});
-//
+					zq();
+					table();
+				}
+				//			document.getElementById('icon_xq').addEventListener('tap', function() {
+				//				xq(h("#start_time").html(), h("#end_time").html());
+				//				table();
+				//			});
+				//
 			document.getElementById('searchDate').addEventListener('tap', function() {
-//				if($('#icon_zq').css('color') == 'rgb(255, 255, 255)') {
-					zq(h("#start_time").html(), h("#end_time").html());
-//				} else {
-//					xq(h("#start_time").html(), h("#end_time").html());
-//				}
+				//				if($('#icon_zq').css('color') == 'rgb(255, 255, 255)') {
+				zq(h("#start_time").html(), h("#end_time").html());
+				//				} else {
+				//					xq(h("#start_time").html(), h("#end_time").html());
+				//				}
 				table();
 			});
-//
-//			document.getElementById('icon_zq').addEventListener('tap', function() {
-//				zq(h("#start_time").html(), h("#end_time").html());
-//				table();
-//			});
+			//
+			//			document.getElementById('icon_zq').addEventListener('tap', function() {
+			//				zq(h("#start_time").html(), h("#end_time").html());
+			//				table();
+			//			});
 		</script>
 	</body>
 

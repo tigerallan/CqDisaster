@@ -66,33 +66,33 @@ function checkUpdate() {
 		plus.storage.removeItem(keyUpdate);
 	}
 	// 读取本地升级文件
-//	dir.getFile(localFile, {
-//		create: false
-//	}, function(fentry) {
-//		fentry.file(function(file) {
-//			var reader = new plus.io.FileReader();
-//			reader.onloadend = function(e) {
-//				fentry.remove();
-//				var data = null;
-//				try {
-//					data = JSON.parse(e.target.result);
-//				} catch(e) {
-//					console.log("读取本地升级文件，数据格式错误！");
-//					return;
-//				}
-//				checkUpdateData(data);
-//			}
-//			reader.readAsText(file);
-//		}, function(e) {
-//			console.log("读取本地升级文件，获取文件对象失败：" + e.message);
-//			fentry.remove();
-//		});
-//	}, function(e) {
-//		// 失败表示文件不存在，从服务器获取升级数据
-//		getUpdateData();
-//	});
+	//	dir.getFile(localFile, {
+	//		create: false
+	//	}, function(fentry) {
+	//		fentry.file(function(file) {
+	//			var reader = new plus.io.FileReader();
+	//			reader.onloadend = function(e) {
+	//				fentry.remove();
+	//				var data = null;
+	//				try {
+	//					data = JSON.parse(e.target.result);
+	//				} catch(e) {
+	//					console.log("读取本地升级文件，数据格式错误！");
+	//					return;
+	//				}
+	//				checkUpdateData(data);
+	//			}
+	//			reader.readAsText(file);
+	//		}, function(e) {
+	//			console.log("读取本地升级文件，获取文件对象失败：" + e.message);
+	//			fentry.remove();
+	//		});
+	//	}, function(e) {
+	//		// 失败表示文件不存在，从服务器获取升级数据
+	//		getUpdateData();
+	//	});
 
-getUpdateData();
+	getUpdateData();
 
 }
 
@@ -116,7 +116,19 @@ function checkUpdateData(j) {
 			plus.nativeUI.confirm(inf.note, function(i) {
 				if(0 == i.index) {
 
-					var dtask = plus.downloader.createDownload(inf.url, {}, function(d, status) {
+					//var dtask = plus.downloader.createDownload(inf.url, {}, function(d, status) {
+					//if(status == 200) { // 下载成功
+					//var path = d.filename;
+					//plus.runtime.install(path);
+					//console.log(d.filename);
+					//} else { //下载失败
+					//alert("Download failed: " + status);
+					//}
+					//});
+					//dtask.start();
+					//plus.runtime.openURL(inf.url);
+					var w = plus.nativeUI.showWaiting("　　 开始下载...　　 ");
+					dtask = plus.downloader.createDownload(inf.url, {}, function(d, status) {
 						if(status == 200) { // 下载成功
 							var path = d.filename;
 							plus.runtime.install(path);
@@ -126,7 +138,24 @@ function checkUpdateData(j) {
 						}
 					});
 					dtask.start();
-					// plus.runtime.openURL(inf.url);
+					dtask.addEventListener("statechanged", function(task, status) {
+						switch(task.state) {
+							case 1: // 开始
+								w.setTitle("　　 开始下载...　　 ");
+								break;
+							case 2: // 已连接到服务器
+								w.setTitle("　　 开始下载...　　 ");
+								break;
+							case 3:
+								var a = task.downloadedSize / task.totalSize * 100;
+								w.setTitle("　　 已下载" + parseInt(a) + "%　　 ");
+								break;
+							case 4: // 下载完成
+								w.close();
+								break;
+						}
+					});
+
 				} else if(1 == i.index) {
 					plus.storage.setItem(keyAbort, srvVer);
 					plus.storage.setItem(keyUpdate, (new Date()).getTime().toString());
@@ -151,20 +180,20 @@ function getUpdateData() {
 				if(xhr.status == 200) {
 					checkUpdateData(JSON.parse(xhr.responseText));
 					// 保存到本地文件中
-//					dir.getFile(localFile, {
-//						create: true
-//					}, function(fentry) {
-//						fentry.createWriter(function(writer) {
-//							writer.onerror = function() {
-//								console.log("获取升级数据，保存文件失败！");
-//							}
-//							writer.write(xhr.responseText);
-//						}, function(e) {
-//							console.log("获取升级数据，创建写文件对象失败：" + e.message);
-//						});
-//					}, function(e) {
-//						console.log("获取升级数据，打开保存文件失败：" + e.message);
-//					});
+					//					dir.getFile(localFile, {
+					//						create: true
+					//					}, function(fentry) {
+					//						fentry.createWriter(function(writer) {
+					//							writer.onerror = function() {
+					//								console.log("获取升级数据，保存文件失败！");
+					//							}
+					//							writer.write(xhr.responseText);
+					//						}, function(e) {
+					//							console.log("获取升级数据，创建写文件对象失败：" + e.message);
+					//						});
+					//					}, function(e) {
+					//						console.log("获取升级数据，打开保存文件失败：" + e.message);
+					//					});
 				} else {
 					console.log("获取升级数据，联网请求失败：" + xhr.status);
 				}

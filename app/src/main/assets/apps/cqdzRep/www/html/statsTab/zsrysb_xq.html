@@ -9,8 +9,6 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
-		<link rel="stylesheet" href="../../css/mui.picker.css" />
-		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
 		<style type="text/css">
 			body,
 			html {
@@ -121,6 +119,21 @@
 				display: inline-block;
 				margin-right: 12px;
 			}
+			.table_head {
+				position: fixed;
+				top: 95px;
+				width: 100%;
+				height: 35px;
+				line-height: 35px;
+				z-index: 100;
+				background-color: white;
+			}
+			#tb {
+				width: 100%;
+			}
+			#rz_table{
+				margin-top: 130px;
+			}
 		</style>
 	</head>
 
@@ -140,76 +153,50 @@
 		<!--<div class="img">
 			<img id="choose_img" src="../../img/1_43.png"/>
 		</div>-->
-		<div id="qx_news" class="mui-content">
-			<div class="table-head">
-				<table style="width: 98%;margin: 10px 1%;">
-					<colgroup>
-						<col style="width: 80px;" />
-						<col />
-					</colgroup>
-					<thead>
-						<tr>
-							<th width="25%">区县名称</th>
-							<th width="25%">应上报数</th>
-							<th width="25%">实上报数</th>
-							<th width="25%">上报率</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-			<div class="table-body">
-				<table id="tb">
-					<colgroup>
-						<col style="width: 80px;" />
-						<col />
-					</colgroup>
-					<tbody id="table_centent">
-						<!--<tr class="colorone">
-							<td width="20%">开州区</td>
-							<td width="20%">73</td>
-							<td width="20%">73</td>
-							<td width="20%">100%</td>
-						</tr>
-						<tr class="colortwo">
-							<td width="20%">开州区</td>
-							<td width="20%">73</td>
-							<td width="20%">73</td>
-							<td width="20%">100%</td>
-						</tr>-->
-					</tbody>
-				</table>
+		<div class="mui-content">
+			<table class="table_head">
+				<tr>
+					<th width="25%">区县名称</th>
+					<th width="25%">应上报数</th>
+					<th width="25%">实上报数</th>
+					<th width="25%">上报率</th>
+				</tr>
+			</table>
+			<div id="rz_table" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<table id="tb">
+						<tbody id="table_centent">
+
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/h.js"></script>
-		<script src="../../js/quxian.js"></script>
-		<script src="../../js/mui.picker.js"></script>
-		<script src="../../js/mui.poppicker.js"></script>
+		
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/ip.js"></script>
 		<script type="text/javascript">
 			mui.init();
+			mui.ready(function() {
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 50);
 
-			//						所属区县选项
-			//						(function($, doc) {
-			//							$.init();
-			//							$.ready(function() {
-			//								var cityPicker = new $.PopPicker({
-			//									//两列
-			//									layer: 1
-			//								});
-			//								cityPicker.setData(cityData);
-			//								var choose_one = document.getElementById('title_span');
-			//								choose_one.addEventListener('tap', function(event) {
-			//									cityPicker.show(function(items) {
-			//										choose_one.innerText = items[0].text;
-			//										//返回 false 可以阻止选择框的关闭
-			//										//return false;
-			//									});
-			//								}, false);
-			//							});
-			//						})(mui, document);
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: false //是否启用回弹
+				});
+			});
 
 			var contentThree = "";
 			$.ajax({
