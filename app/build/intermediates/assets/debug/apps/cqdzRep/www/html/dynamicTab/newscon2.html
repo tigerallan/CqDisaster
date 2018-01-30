@@ -212,52 +212,29 @@
 			dataType: "json",
 			success: function(json) {
 				var data = json;
-				var context = data[0]['context'];
-				var msg = context.split("#*#");
-				var time = data[0]['update_time'];
-				time = time.substring(0, 10);
-				contentThree +=
-					'<h2 class="new-title">' + data[0]['title'] + '</h2>'
-					+'<div class="news-info"><span class="news-em">最新消息</span>'
-					+'<em class="news-em">' + time + '</em>'
-					+'<a class="news-nickname" href="javascript:void(0);">' + data[0]['unit_name'] + '</a></div>'
-					+'<div class="news-img"><img class="imgnews" src="http://' + data[0]['pic'][0] + '" /> </div>'
-					+'<div class="news-content">'
-					+'<p>' + msg[0] + '</p>'
-					if(data[0]['pic'][1]!=null){
-							contentThree +=
-						'<p><img src="http://' + data[0]['pic'][1] + '" /></p>'
-					}
-					if(msg[1]!=null){
-							contentThree +=
-						'<p>' + msg[1] + '</p>'
-					}
-					if(data[0]['pic'][2]!=null){
-							contentThree +=
-						'<p><img src="http://' + data[0]['pic'][2] + '" /></p>'
-					}
-					if(msg[2]!=null){
-							contentThree +=
-						'<p>' + msg[2] + '</p>'
-					}
-					if(data[0]['pic'][3]!=null){
-							contentThree +=
-						'<p><img src="http://' + data[0]['pic'][3] + '" /></p>'
-					}
-					if(msg[3]!=null){
-							contentThree +=
-						'<p>' + msg[3] + '</p>'
-					}
-					if(data[0]['pic'][4]!=null){
-							contentThree +=
-						'<p><img src="http://' + data[0]['pic'][4] + '" /></p>'
-					}
-					if(msg[4]!=null){
-							contentThree +=
-						'<p>' + msg[4] + '</p>'
-					}
-					+'</div>';
-				$('#newscon').html(contentThree);
+					var context = data[0]['context']; //得到段落
+					var msg = context.split("#*#"); //以特殊字符分段
+					var pic = data[0]['pic'];
+					var time = data[0]['update_time']; //获取时间
+					time = time.substring(0, 10); //截取时间前10位
+					contentThree +=
+						'<h2 class="new-title">' + data[0]['title'] + '</h2>' +
+						'<div class="news-info"><span class="news-em">最新消息</span>' +
+						'<em class="news-em">' + time + '</em>' +
+						'<a class="news-nickname" href="javascript:void(0);">' + data[0]['unit_name'] + '</a></div>' +
+						'<div class="news-content">';
+						for (var e = 0, i = 0; e < pic.length, i < msg.length; e++, i++) {//双循环图片和段落
+							if (pic[e] != null) {//如果图片的路径不是空，就执行
+								contentThree +=
+							'<p><img src="http://' + pic[e] + '" /></p>'
+							+'<p>' + msg[i] + '</p>';
+							} else {//如果是空的话，就执行这个
+								contentThree +='<p>' + msg[i] + '</p>';
+							}
+						}
+						contentThree += '</div>';
+						
+					$('#newscon').html(contentThree);
 			}
 		});
     </script>

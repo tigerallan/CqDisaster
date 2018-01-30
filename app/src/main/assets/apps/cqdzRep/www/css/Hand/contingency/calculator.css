@@ -1,0 +1,30 @@
+body{
+		background: #000 !important;
+	}
+	button{
+		border-radius: 0;
+		height:70px;
+		background:#f3efef;
+		font-size: 25px !important;
+	}
+	#screenName{
+		width: 100%;
+		height:100px;
+		position: absolute;
+		bottom:350px;	
+		background: #000;
+		border: none;
+		color: #fff;
+		font-size: 55px;
+	}
+	#inum{
+		position: absolute;
+		bottom: 0;
+	}
+	.fc{
+		background: #ddd;
+	}
+	.hc{
+		background:rgb(243, 131, 16);
+		color: #fff;
+	}

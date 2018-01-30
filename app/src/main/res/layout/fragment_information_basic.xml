@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_basicInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--基本信息-->
+            <TextView
+                style="@style/DividerTextView"
+                android:text="@string/basic"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="隐患点名称："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_dangerName"
+                    android:layout_weight="6.5"
+                    android:text="隐患点名称"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="隐患点编号："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_dangerNum"
+                    android:layout_weight="6.5"
+                    android:text="1234567890123456"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="隐患点类型："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_dangerType"
+                    android:layout_weight="6.5"
+                    android:text="泥石流"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="诱因："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_cause"
+                    android:layout_weight="6.5"
+                    android:text="暴雨"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="危害等级："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_dangerLevel"
+                    android:layout_weight="6.5"
+                    android:text="特大型"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="发生时间："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_time"
+                    android:layout_weight="6.5"
+                    android:text="2008-01-09"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="入库时间："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_storageTime"
+                    android:layout_weight="6.5"
+                    android:text="2013-09-01"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="详细地址："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_dangerAddress"
+                    android:layout_weight="6.5"
+                    android:text="重庆市武隆区羊角乡镇"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <!--灾害影响-->
+            <TextView
+                style="@style/DividerTextView"
+                android:text="@string/disaster"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="威胁对象："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_object"
+                    android:layout_weight="6.5"
+                    android:text="居民"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="威胁人数："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_peopleNum"
+                    android:layout_weight="6.5"
+                    android:text="51"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="威胁户数："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_familyNum"
+                    android:layout_weight="6.5"
+                    android:text="1"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="威胁房屋："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_houseNum"
+                    android:layout_weight="6.5"
+                    android:text="1"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="威胁面积K㎡："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_threatArea"
+                    android:layout_weight="6.5"
+                    android:text="1"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="威胁财产："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_asset"
+                    android:layout_weight="6.5"
+                    android:text="500.000"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <!--地理信息-->
+            <TextView
+                style="@style/DividerTextView"
+                android:text="@string/geography"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="村组："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_village"
+                    android:layout_weight="6.5"
+                    android:text="朝阳村"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="经度："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_longitude"
+                    android:layout_weight="6.5"
+                    android:text="111"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="纬度："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_latitude"
+                    android:layout_weight="6.5"
+                    android:text="111"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="坡度："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_slope"
+                    android:layout_weight="6.5"
+                    android:text="111"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="面积K㎡："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_acreage"
+                    android:layout_weight="6.5"
+                    android:text="0"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="体积Km³："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_volume"
+                    android:layout_weight="6.5"
+                    android:text="0"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="前缘高程m："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_leadEdge"
+                    android:layout_weight="6.5"
+                    android:text="565.0000"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="后缘高程m："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_BackEdge"
+                    android:layout_weight="6.5"
+                    android:text="565.0000"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <!--其他-->
+            <TextView
+                style="@style/DividerTextView"
+                android:text="@string/ohter"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="注释："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_notes"
+                    android:layout_weight="6.5"
+                    android:text="0"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="处置意见："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_dispose"
+                    android:layout_weight="6.5"
+                    android:text="已处理"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="稳定性："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_stability"
+                    android:layout_weight="6.5"
+                    android:text="基本稳定"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="防治级别："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_prevenLevel"
+                    android:layout_weight="6.5"
+                    android:text="一级"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="群测员号码："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_quncePhone"
+                    android:layout_weight="6.5"
+                    android:text="18888888880"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:text="驻守员号码："/>
+
+                <TextView
+                    style="@style/basicTextViewTitle"
+                    android:id="@+id/tv_defendPhone"
+                    android:layout_weight="6.5"
+                    android:text="18888888888"/>
+            </LinearLayout>
+            <TextView
+                style="@style/DividerLine"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

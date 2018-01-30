@@ -1,0 +1,3 @@
+# Referenced at /Users/qingsong/git/CqDisaster/app/build/intermediates/manifests/full/debug/AndroidManifest.xml:35
+-keep class com.nandi.cqdisaster.MyAPP { <init>(...); }
+

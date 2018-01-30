@@ -1,0 +1,69 @@
+body,
+html {
+	background-color: #F3F3F3;
+}
+
+.mui-content {
+	background-color: #F3F3F3;
+}
+
+.mui-bar-nav~.mui-content {
+	padding-top: 44px;
+	padding-bottom: 0px;
+	background-color: #F3F3F3;
+}
+
+.mui-btn {
+	width: 100%;
+	height: 100%;
+}
+
+.button_one {
+	padding-right: 10px;
+	margin-bottom: 10px;
+	height: 60px;
+}
+
+.mui-content-padded {
+	margin: 10px 0px 10px 10px;
+}
+
+.mui-badge {
+	display: block;
+}
+
+.mui-btn .mui-badge {
+	background-color: transparent;
+	margin: 0;
+	font-size: 16px;
+}
+
+.mui-btn,
+button {
+	border-radius: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	background-clip: border-box;
+}
+
+.mui-btn-primary {
+	border: 1px solid #41b4e7;
+	background-color: #41b4e7;
+}
+
+.mui-btn-primary:enabled:active {
+	border: 1px solid #41b4e7;
+	background-color: #41b4e7;
+}
+
+.backF {
+	border: 1px solid #fff;
+	background-color: #fff;
+	color: #666666;
+}
+
+.backF span {
+	color: #666666;
+}

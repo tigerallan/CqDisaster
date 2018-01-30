@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>专业监测设备在线率</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/yhdzhtj.css" />
+	</head>
+
+	<body style="opacity:0">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 class="mui-title">专业监测设备在线率</h1>
+		</header>
+
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<h3>灾害分类</h3>
+				<div class="yhd yhd_one">
+					<div id="container"></div>
+				</div>
+				<div class="icon1-centent-left">
+					
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/highcharts.js"></script>
+		<script type="text/javascript">
+			mui.ready(function() {
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true,
+					scrollX: false,
+					startX: 0,
+					startY: 0,
+					indicators: true,
+					deceleration: 0.0006,
+					bounce: false
+				});
+
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 100);
+			});
+			
+			
+			var obj_a;
+			var obj_b;
+			var obj_c;
+			var obj_d;
+			var contentThree = "";
+			$.ajax({
+				url: ip + "doveWarnDataAndDeviceOnline.do",
+				async: false, //同步请求	
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json.data;
+					
+					obj_a = data.slice(0, 4);
+					obj_b = data.slice(4, 5);
+					obj_c = data.slice(5, 6);
+					obj_d = data.slice(6, 7);
+					var data_a = data[5].price;
+					if (data_a == "无数据") {
+						data_a == 0
+					} else{
+						data_a = data_a.toFixed(2) + "%";
+					}
+					var data_b = data[6].price;
+					if (data_b == "无数据") {
+						data_b == 0
+					} else{
+						data_b = data_b.toFixed(2) + "%";
+					}
+					contentThree +=
+						'<div class="ibox"><i class="i1"></i>' +
+						'<span class="icon1_text">' + data[0].text + '</span>：<span class="icon1_price">' + data[0].price + '</span></div>' +
+						'<div class="ibox"><i class="i2"></i>' +
+						'<span class="icon1_text">' + data[1].text + '</span>：<span class="icon1_price">' + data[1].price + '</span></div>' +
+						'<div class="ibox"><i class="i3"></i>' +
+						'<span class="icon1_text">' + data[2].text + '</span>：<span class="icon1_price">' + data[2].price + '</span></div>' +
+						'<div class="ibox"><i class="i4"></i>' +
+						'<span class="icon1_text">' + data[3].text + '</span>：<span class="icon1_price">' + data[3].price + '</span></div>' +
+						'<div class="ibox"><i class="i5"></i>' +
+						'<span class="icon1_text">' + data[4].text + '</span>：<span class="icon1_price">' + data[4].price + '</span></div>' +
+						'<div class="ibox"><i class="i6"></i>' +
+						'<span class="icon1_text">' + data[5].text + '</span>：<span class="icon1_price">' + data_a + '</span></div>' +
+						'<div class="ibox"><i class="i7"></i>' +
+						'<span class="icon1_text">' + data[6].text + '</span>：<span class="icon1_price">' + data_b + '</span></div>'
+
+					$('.icon1-centent-left').html(contentThree);
+				}
+			});
+			$(function() {
+				var colors = ['#007ab7', '#01999A', '#9CFEFF', '#FEFF97', '#5796cc', '#5dbbc5', '#61bba1'],
+					categories = ['专业监测在线率', '专业监测掉线率'],
+					data = [{
+						y: Number(obj_c[0].price),
+						color: colors[i],
+						drilldown: {
+							name: '专业监测在线率',
+							categories: ['1日告警', '2日告警', '3日告警', '4日及以上'],
+							data: [Number(obj_a[0].price), Number(obj_a[1].price), Number(obj_a[2].price), Number(obj_a[3].price)],
+							color: colors[i]
+						}
+					}, {
+						y: Number(obj_d[0].price),
+						color: colors[4],
+						drilldown: {
+							name: '专业监测掉线率',
+							categories: ['掉线设备数量'],
+							data: [Number(obj_b[0].price)],
+							color: colors[4]
+						}
+					}],
+					browserData = [],
+					versionsData = [],
+					i,
+					j,
+					dataLen = data.length,
+					drillDataLen,
+					brightness;
+				// 构建数据数组
+				for(i = 0; i < dataLen; i += 1) {
+					// 添加在线率数据
+					browserData.push({
+						name: categories[i],
+						y: data[i].y,
+						color: colors[i]
+					});
+					// 添加掉线率数据
+					drillDataLen = data[i].drilldown.data.length;
+					for(j = 0; j < drillDataLen; j += 1) {
+						brightness = 0.2 - (j / drillDataLen) / 5;
+						versionsData.push({
+							name: data[i].drilldown.categories[j],
+							y: data[i].drilldown.data[j],
+							color: Highcharts.Color(data[i].color).brighten(brightness).get()
+						});
+					}
+				}
+				// 创建图表
+				$('#container').highcharts({
+					chart: {
+						type: 'pie'
+					},
+					legend: {
+						enabled: false
+					},
+					title: {
+						text: null
+					},
+					credits: {
+						enabled: false
+					},
+					subtitle: {
+						text: null
+					},
+					yAxis: {
+						title: {
+							text: null
+						}
+					},
+					plotOptions: {
+						pie: {
+							//显不显示字
+							allowPointSelect: false,
+							dataLabels: {
+								color: '#559aef'
+							},
+							shadow: false,
+							center: ['50%', '50%']
+						}
+					},
+					tooltip: {
+						pointFormat: null
+					},
+					series: [{
+						name: '',
+						data: browserData,
+						size: '30%'
+					}, {
+						name: '',
+						data: versionsData,
+						size: '90%',
+						innerSize: '60%'
+					}]
+				});
+				solveFontOverlap();
+				mui.plusReady(function() {
+					plus.nativeUI.closeWaiting();
+					mui.currentWebview.show("slide-in-bottom", 300);
+				});
+			});
+
+			function solveFontOverlap() {
+				//1.记录文字的Y坐标值
+				var tempArray_Y = new Array();
+				var tempG = 0;
+				$(".highcharts-series-0 g").each(function() {
+					var translate = $(this).attr("transform");
+					tempArray_Y[tempG] = translate.substring(translate.lastIndexOf(",") + 1, translate.lastIndexOf(")"));
+					tempG++;
+				});
+
+				//2.记录Y坐标值的重复坐标数据或者是挨得太近的Y坐标(小于15)
+				var result = [];
+				//2.1排序
+				tempArray_Y.sort(function(a, b) {
+					return a - b;
+				});
+				//2.2笛卡尔积匹配
+				for(var i = 0; i < tempArray_Y.length; i++) {
+					for(var j = 0; j < tempArray_Y.length; j++) {
+						//不和自己比较
+						if(i == j) break;
+						var mathTemp = Math.abs(tempArray_Y[i] - tempArray_Y[j]);
+						if(mathTemp < 15) {
+							result.push(tempArray_Y[i]);
+						}
+					}
+				}
+				//2.3把符合条件的数组去重。
+				result = unique2(result);
+
+				//3.重新刷新重叠文字的Y坐标值
+				//3.1求（会重叠的）Y坐标值的平均值
+				var Yaverage = result.reduce(function(prevValue, currentValue) {
+					prevValue = parseInt(prevValue) + parseInt(currentValue);
+					return prevValue;
+				}, 0) / result.length;
+
+				//3.2遍历，改变重叠文字Y坐标值
+				$(".highcharts-series-0 g").each(function() {
+					var translate = $(this).attr("transform");
+					var valueX = translate.substring(translate.lastIndexOf("(") + 1, translate.lastIndexOf(","));
+					var valueY = translate.substring(translate.lastIndexOf(",") + 1, translate.lastIndexOf(")"));
+					for(var i = 0; i < result.length; i++) {
+						if(result[i] == valueY) {
+							Yaverage += 15; //Y坐标值的步伐  15
+							valueY = Yaverage;
+							$(this).attr("transform", "translate(" + valueX + "," + valueY + ")");
+							break;
+						}
+					}
+				});
+			}
+			//数组去重
+			function unique2(array) {
+				var n = {},
+					r = [],
+					len = array.length,
+					val, type;
+				for(var i = 0; i < array.length; i++) {
+					val = array[i];
+					type = typeof val;
+					if(!n[val]) {
+						n[val] = [type];
+						r.push(val);
+					} else if(n[val].indexOf(type) < 0) {
+						n[val].push(type);
+						r.push(val);
+					}
+				}
+				return r;
+			}
+		</script>
+	</body>
+
+</html>

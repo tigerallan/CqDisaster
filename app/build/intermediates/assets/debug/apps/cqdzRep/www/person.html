@@ -3,49 +3,69 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>设置</title>
+		<title>个人设置</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
-		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/common/header.css" />
+		<link rel="stylesheet" href="css/person.css" />
+		<link rel="stylesheet" href="css/common/mui.picker.css" />
+		<link rel="stylesheet" href="css/common/mui.poppicker.css" />
 	</head>
-	<style>
-		body {
-			opacity: 0;
-		}
-	</style>
 
-	<body>
-		<header class="mui-bar mui-bar-nav">
-			<a href="#" class="mui-action-back">
+	<body style="opacity: 0;">
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a href="javascript:void(0);" class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
 			<h1 id="title" class="mui-title">个人设置</h1>
 		</header>
-		<div class="mui-scroll-wrapper" style="margin-top: 62px;background:#efeff4;">
+		<div class="mui-scroll-wrapper mui-content">
 			<div class="mui-scroll">
 				<ul class="mui-table-view">
+					<li class="mui-table-view-cell quanxian">
+						<a href="javascript:;">账 号：
+							<span id="loginname" class="mui-pull-right home"></span>
+							<img src="img/quanxian1.png" />
+						</a>
+					</li>
 					<li class="mui-table-view-cell">
-						<a href="javascript:;">姓名
+						<a href="javascript:;">姓 名：
 							<span id="username" class="mui-pull-right"></span></a>
 					</li>
+					<div class="dqxz">
+						<li class="mui-table-view-cell">
+							<a href="javascript:;">地 区：
+							<span id="diqu" class="mui-pull-right"><span class="mui-icon mui-icon-forward" ></span></span>
+						</a>
+						</li>
+						<div id="qx_news" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id="dynamic_qx" class="main mui-table-view">
+								</ul>
+							</div>
+						</div>
+					</div>
 					<li class="mui-table-view-cell">
-						<a href="javascript:;">账号
-							<span id="loginname" class="mui-pull-right"></span></a>
+						<a href="javascript:;">机 构：
+							<span id="jigou" class="mui-pull-right"></span></a>
 					</li>
 					<li class="mui-table-view-cell">
-						<a href="javascript:;">职务
+						<a href="javascript:;">职 位：
 							<span id="work" class="mui-pull-right"></span></a>
 					</li>
 				</ul>
-				<ul class="mui-table-view" style="margin-top: 30px;">
+				<ul class="mui-table-view jcgx">
+					<!--<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" id="password" href="javascript:;">修改密码</a>
+					</li>-->
 					<li class="mui-table-view-cell">
 						<a class="mui-navigate-right" id="update" href="javascript:;">检查更新</a>
 					</li>
 				</ul>
-				<ul class="mui-table-view" style="margin-top:30px;">
-					<li class="mui-table-view-cell" style="text-align: center;">
+				<ul class="mui-table-view tcdl qrxg">
+					<li class="mui-table-view-cell">
 						<a id="quit">退出登录</a>
 					</li>
 				</ul>
@@ -54,10 +74,14 @@
 	</body>
 	<script src="js/mui.min.js"></script>
 	<script src="js/h.js"></script>
+	<script  src="js/ip.js" ></script>
 	<script src="js/update.js"></script>
+	<script src="js/mui.picker.js"></script>
+	<script src="js/mui.poppicker.js"></script>
+	<script src="js/city.data.js"></script>
+	<script src="js/city.data-3.js"></script>
 	<script type="text/javascript">
 		mui.init();
-
 		mui.ready(function() {
 			mui('.mui-scroll-wrapper').scroll({
 				scrollY: true, //是否竖向滚动
@@ -75,12 +99,10 @@
 				});
 			}, 50);
 		});
-
 		document.getElementById('quit').addEventListener('tap', function() {
-
 			var btnArray = ['否', '是'];
 			mui.confirm('确定退出？', '账号退出', btnArray, function(e) {
-				if(e.index == 1) {
+				if (e.index == 1) {
 					setTimeout(function() {
 						plus.webview.close(plus.webview.currentWebview().indexID);
 					}, 300);
@@ -96,16 +118,53 @@
 			})
 		});
 
+		//区县选项
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+				var cityPicker = new $.PopPicker({
+					layer: 1
+				});
+				cityPicker.setData(cityData);
+				var choose_one = document.getElementById('diqu');
+				var dynamic_qx = document.getElementById('dynamic_qx');
+				choose_one.addEventListener('tap', function(event) {
+					cityPicker.show(function(items) {
+						choose_one.innerText = items[0].text;
+					
+					});
+				}, false);
+			});
+		})(mui, document);
 		mui.plusReady(function() {
 			var info = JSON.parse(plus.storage.getItem("personal-information"));
 			h('#username').html(info[0].user_name);
 			h('#loginname').html(info[0].phone);
+			h('#diqu').html(info[0].diqu);
+			h('#jigou').html(info[0].jigou);
 			h('#work').html(info[0].job);
 
 			document.getElementById("update").addEventListener('tap', function() {
 				initUpdate();
 			});
 		});
+		
+
+		
+		//修改密码页面打开
+//		document.getElementById('password').addEventListener('tap', function() {
+//			mui.openWindow({
+//				url: 'html/pwd/changepawd.html',
+//				id: 'html/pwd/changepawd.html',
+//				show: {
+//					autoShow: true,
+//					aniShow: 'slide-in-bottom'
+//				},
+//				extras: {
+//					indexID: plus.webview.currentWebview().id
+//				}
+//			});
+//		});
 	</script>
 
 </html>

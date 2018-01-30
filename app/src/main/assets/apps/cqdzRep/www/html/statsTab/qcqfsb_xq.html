@@ -8,138 +8,12 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common/header.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
-		
-		<style type="text/css">
-			body,
-			html {
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				padding: 0;
-				background: #fff;
-			}
-			
-			.citychoose {
-				float: right;
-				color: red;
-			}
-			
-			.citychoose>span {
-				font-size: 20px;
-			}
-			
-			.title_xz {
-				width: 100%;
-				height: 35px;
-				line-height: 35px;
-				position: fixed;
-				top: 0;
-				background-color: #fff;
-				margin-top: 60px;
-				text-align: right;
-				z-index: 10000;
-				border-bottom: 1px solid #E0E0E0;
-			}
-			
-			#qx_news {
-				position: absolute;
-				top: 92px;
-				width: 100%;
-			}
-			
-			.mui-bar-nav~.mui-content {
-				padding-top: 0px;
-			}
-			
-			#choose_one {
-				margin-right: 20px;
-			}
-			
-			.table-head {
-				width: 100%;
-				/*margin: 0px 5%;*/
-				position: fixed;
-				background-color: #fff;
-			}
-			
-			.table-body {
-				width: 100%;
-				margin: 42px 0% 0px 0%;
-				/*overflow-y:scroll;*/
-			}
-			
-			.table-head table,
-			.table-body table {
-				width: 100%;
-			}
-			/*tr{
-				border-bottom: 1px solid #E4E3E6;
-			}*/
-			
-			tr th {
-				text-align: center;
-			}
-			
-			tr td {
-				text-align: center;
-				line-height: 40px;
-			}
-			
-			.colorone {
-				background-color: #f0f8ff;
-			}
-			
-			.colortwo {
-				background-color: #fff;
-			}
-			
-			.img {
-				display: block;
-				width: 15px;
-				height: 15px;
-				position: absolute;
-				top: 85px;
-				left: 56px;
-				z-index: 10000;
-			}
-			
-			.img img {
-				width: 15px;
-			}
-			
-			#title_span {
-				position: absolute;
-				right: 15px;
-				top: 32px;
-				font-size: 14px;
-			}
-			
-			.title_xz span {
-				color: red;
-				font-size: 12px;
-				display: inline-block;
-				margin-right: 12px;
-			}
-			.table_head {
-				position: fixed;
-				top: 95px;
-				width: 100%;
-				height: 35px;
-				line-height: 35px;
-				z-index: 100;
-				background-color: white;
-			}
-			#tb {
-				width: 100%;
-			}
-			#rz_table{
-				margin-top: 130px;
-			}
-		</style>
+		<link rel="stylesheet" href="../../css/Hand/stats.css" />
 	</head>
 
-	<body>
+	<body style="opacity:0">
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
@@ -152,9 +26,6 @@
 				(根据上周区县上报率，由高到低排名)
 			</span>
 		</div>
-		<!--<div class="img">
-			<img id="choose_img" src="../../img/1_43.png"/>
-		</div>-->
 		<div class="mui-content">
 			<table class="table_head">
 				<tr>
@@ -210,13 +81,13 @@
 						contentThree +=
 							'<tr class="colortwo"' + (value['yi'] == null ? 'style="color:red"' : '') + '>' +
 							'<td width="20%">' + value['quxian'] + '</td>' +
-							'<td width="20%">' + value['ying'] + '</td>' +
-							'<td width="20%">';
+							'<td id="ying" width="20%">' + value['ying'] + '</td>' +
+							'<td  id="shi"width="20%">';
 						contentThree +=
 							value['yi'] == null ? '0' : value['yi'] +
 							'</td>';
 						contentThree +=
-							'<td width="20%">' + (value['sblv'] * 100).toFixed(2) + '%</td>' +
+							'<td  id="sbl"width="20%">' + (value['sblv'] * 100).toFixed(2) + '%</td>' +
 							'</tr>';
 					});
 					$('#table_centent').html(contentThree);

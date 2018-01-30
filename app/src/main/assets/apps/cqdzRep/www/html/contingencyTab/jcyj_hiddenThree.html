@@ -4,81 +4,11 @@
 		<meta charset="UTF-8">
 		<title>专业监测数据</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css"/>
-		<style type="text/css">
-			body,html{
-				background-color: #EFEFF4;
-			}
-			.mui-table-view-cell .mui-active{background:#fff;}
-			.mui-row.mui-fullscreen>[class*="mui-col-"] {
-				height: 100%;
-			}
-			.mui-col-xs-2,
-			.mui-col-xs-10 {
-				overflow-y: auto;
-				height: 100%;
-			}
-			.mui-segmented-control .mui-control-item {
-				line-height: 50px;
-				width: 100%;
-			}
-			.mui-control-content {
-				display: block;
-			}
-			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
-				background-color: #fff;
-			}
-			#segmentedControls{
-				margin-top: 0px;
-			}
-			.color{
-				color: #007aff !important;
-				background-color: #fff;
-			}
-			.mui-col-xs-2{
-				background-color: #f2f2f2;
-			}
-			.content_text{
-				width: 100%;
-			    text-align: center;
-			    display: inline-block;
-			    color: #007aff;
-			    font-size: 18px;
-			}
-			.openPopover{
-				color: #007aff;
-			}
-			.mui-popover{
-				height: 360px;
-				width: 300px;
-			}
-			#middlePopover{
-				top: 100px !important;
-				left: 40px !important;
-			}
-			.mui-popover-arrow{
-				display: none;
-			}
-			.mui-content-padded{
-				margin: 0px;
-			}
-			.mui-content>.mui-table-view:first-child{
-				margin-top: 0;
-			}
-			.mui-bar-nav~.mui-content{
-				padding-top: 62px !important;
-				padding-bottom: 0px !important;
-			}
-			.mui-bar-nav{
-				-webkit-box-shadow: none; 
-    		box-shadow: none; 
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="../../css/common/header.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_hidden.css"/>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
@@ -100,8 +30,6 @@
 	<script src="../../js/mui.min.js"></script>
 	<script src="../../js/jquery-1.11.3.js"></script>
 	<script src="../../js/h.js"></script>
-	<script src="../../js/mui.picker.js"></script>
-	<script src="../../js/mui.poppicker.js"></script>
 	<script type="text/javascript">
 		mui.init();
 		mui('.mui-scroll-wrapper').scroll();
@@ -160,12 +88,12 @@
 		
 		
 		
-//		document.getElementById('ckxq').addEventListener('tap', function() {
-//		  mui.openWindow({
-//		    url: 'jcyj_ckxq.html', 
-//		    id:'jcyj_ckxq.html'
-//		  });
-//		});
+		document.getElementById('ckxq').addEventListener('tap', function() {
+		  mui.openWindow({
+		    url: 'jcyj_ckxq.html', 
+		    id:'jcyj_ckxq.html'
+		  });
+		});
 	</script>
 	</body>
 </html>

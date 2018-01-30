@@ -1,0 +1,108 @@
+.mui-content{
+	margin-top: 5%;
+	padding:2%;
+}
+.mui-scroll {
+    width: 96%;
+}
+.mui-table-view-cell {
+    border-bottom: 1px solid gainsboro;
+}
+.mui-table-view-cell:after {
+    background-color: ghostwhite;
+}
+/*设置页面的样式*/
+.home {
+    float: right;
+    position: absolute;
+    right: 40px;
+}
+.mui-icon-forward:before {
+    color: gainsboro;
+    font-size: 18px;
+}
+.mui-scroll-wrapper{
+	background:#efeff4 !important;
+}
+
+.tcdl{
+	margin-top:30px;
+}
+
+.tcdl li{
+	text-align: center;
+}
+.quanxian img{
+	width: 20px;
+    float: right;
+    position: inherit;
+}
+#qx_news {
+    padding-bottom: 0;
+    visibility: hidden;
+}
+/*修改密码*/
+#tip1,#tip2,#tip3,#tip4{
+	position: absolute;
+    top: 10px;
+    left: 50%;
+}
+.qrxg{
+	text-align: center;
+	color: #fff;
+	margin-top: 20px;
+	background-color: #0075AA;
+	border-radius: 5px;
+}
+.mui-input-row label {
+    width: 39%;
+}
+.mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea {
+    width: 60%;
+    font-size: 14px;
+}
+.mui-input-row {
+    position: relative;
+    height: 43px;
+    border-bottom: 1px solid gainsboro;
+}
+/*找回密码*/
+.yzm{
+	margin-top: 10px;
+}
+.yzm1{
+	width: 41% !important;
+    font-size: 14px;
+    padding: 11px 27px !important;
+    margin-left: 5px;
+}
+.btn_yzm{
+	padding: 10px 30px;
+	background-color:#41B4E8;
+	color: #fff;
+	float: right;
+	right: 5px;
+}
+.btn_yzm:hover{
+	border: 1px solid #41B4E8;
+	color: #41B4E8;
+	background-color: ghostwhite;
+}
+.btn {
+    position: relative;
+    top: 20px;
+}
+.btn1{
+	padding: 10px 55px;
+	background-color:#41B4E8;
+	color: #fff;
+	position: relative;
+	left: 10px;
+}
+.btn2{
+	padding: 10px 40px;
+    background-color: #0075AA;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+}

@@ -6,151 +6,13 @@
 		<title>上报专报</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
-		<style type="text/css">
-			body {
-				opacity: 0;
-			}
-			
-			.mui-bar-nav {
-				-webkit-box-shadow: 0 1px 6px #337AB7;
-				box-shadow: 0 1px 6px #337AB7;
-				background-color: #337AB7;
-				color: white!important;
-			}
-			
-			.mui-bar-nav .mui-icon,
-			.mui-bar-nav .mui-title {
-				color: white;
-			}
-			
-			.mui-bar-nav .mui-title {
-				font-weight: bold;
-			}
-			
-			.mui-content {
-				position: relative;
-				padding: 55px 15px 15px !important;
-				background-color: #fff;
-			}
-			
-			.mui-content::before {
-				content: " ";
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 1px;
-				border-top: 1px solid #e5e5e5;
-				-webkit-transform-origin: 0 0;
-				transform-origin: 0 0;
-				-webkit-transform: scaleY(0.5);
-				transform: scaleY(0.5);
-				top: auto;
-				bottom: -2px;
-			}
-			
-			.mui-content .new-title {
-				margin: 0 0 10px 0;
-				line-height: 1.4;
-				font-weight: bold;
-				font-size: 20px;
-			}
-			
-			.mui-content .news-info {
-				margin: 0 0 18px 0;
-				line-height: 20px;
-				font-size: 0;
-			}
-			
-			.mui-content .news-em {
-				color: #8c8c8c;
-				font-style: normal;
-				display: inline-block;
-				font-size: 16px;
-				margin-bottom: 10px;
-				margin-right: 12px;
-				vertical-align: middle;
-			}
-			
-			.mui-content .news-nickname {
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				max-width: 9em;
-				display: inline-block;
-				vertical-align: middle;
-				margin-right: 8px;
-				margin-bottom: 10px;
-				font-size: 16px;
-				color: #18b4ed;
-				text-decoration: none;
-				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-			}
-			
-			.mui-content .news-img {
-				width: 100%;
-				margin-bottom: 6px;
-			}
-			
-			.mui-content .news-img img.imgnews {
-				height: auto !important;
-				max-width: 100%;
-			}
-			
-			.mui-content .news-content {
-				overflow: hidden;
-			}
-			
-			.mui-content .news-content * {
-				max-width: 100% !important;
-				box-sizing: border-box !important;
-				-webkit-box-sizing: border-box !important;
-				word-wrap: break-word !important;
-			}
-			
-			.mui-content .news-content p {
-				clear: both;
-				min-height: 1em;
-				white-space: pre-wrap;
-				margin-bottom: 20px;
-				text-indent: 2rem;
-				color: #3e3e3e !important;
-				font-size: 16px !important;
-			}
-			
-			.mui-content .news-content img {
-				height: auto !important;
-				max-width: 100%;
-				display: block;
-			}
-			
-			#newscon span {
-				font-size: 18px;
-				display: block;
-				margin: 5px 0;
-				color: #337AB7;
-			}
-			
-			p {
-				text-indent: 28px;
-				line-height: 24px;
-			}
-			
-			/*b {
-				width: 30%;
-				height: 40px;
-				border: 1px solid #8f8f94;
-				border-radius: 3px;
-				display: inline-block;
-				color: #8f8f94;
-				text-align: center;
-			}*/
-		</style>
+		<link rel="stylesheet" type="text/css" href="../../css/infocontent_xq.css"/>
+		<link rel="stylesheet" href="../../css/common/header.css" />
 	</head>
 
 	<body>
 
-		<header class="mui-bar mui-bar-nav" style="padding-top: 18px;height: 62px;">
+		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
@@ -185,13 +47,13 @@
 			mui.init();
 			mui.ready(function() {
 				mui('.mui-scroll-wrapper').scroll({
-					scrollY: true, //是否竖向滚动
-					scrollX: false, //是否横向滚动
-					startX: 0, //初始化时滚动至x
-					startY: 0, //初始化时滚动至y
-					indicators: true, //是否显示滚动条
-					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
-					bounce: true //是否启用回弹
+					scrollY: true,
+					scrollX: false,
+					startX: 0,
+					startY: 0,
+					indicators: true,
+					deceleration: 0.0006,
+					bounce: true
 				});
 
 				setTimeout(function() {
@@ -216,11 +78,9 @@
 			var id = Request('id');
 			var contentThree = "";
 			$.ajax({
-				//				url: "../../data/infocontent_xq.json",
-				url: infocontent_ipconfig + "getZhuangbaoInfo.do?id=" + id,
+				url: ip + "getZhuangbaoInfo.do?id=" + id,
 				type: "get",
 				async: false,
-				//				data: {id:id},
 				dataType: "json",
 				success: function(json) {
 					var data = json.data;
@@ -237,10 +97,10 @@
 						'<div style="margin-left: 28px;">'
 					if(data[0].reported != null) {
 						contentThree +=
-							'<input readonly type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;" value="' + data[0].reported + '"/>'
+							'<input readonly type="text" style="width: 30%;margin-right:20px;margin-top:8px;color: #777;text-align: center;" value="' + data[0].reported + '"/>'
 					} else {
 						contentThree +=
-							'<input readonly type="text" style="width: 30%;margin-right:20px;color: #777;text-align: center;"/>'
+							'<input readonly type="text" style="width: 30%;margin-right:20px;margin-top:8px;color: #777;text-align: center;"/>'
 					}
 					if(data[0].audit != null) {
 						contentThree +=
@@ -251,6 +111,10 @@
 					}
 					'</div>';
 					$('#newscon').append(contentThree);
+					mui.plusReady(function() {
+						plus.nativeUI.closeWaiting();
+						mui.currentWebview.show("slide-in-bottom", 300);
+					});
 				}
 			});
 		</script>

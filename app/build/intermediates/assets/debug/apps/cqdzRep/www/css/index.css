@@ -1,221 +1,389 @@
 /*修改mui的原生样式*/
-.mui-bar-nav~.mui-content{
-	padding-top:58px; 
-	padding-bottom: 50px;
+
+.mui-bar-nav~.mui-content {
+	padding-bottom: 51px;
 	background-color: #fff;
 }
-#nav{
-	background-color: #f2f2f2;
-	border-top: 1px solid #d9d9d9;
+
+#person img {
+	width: 24px;
+	margin-top: 9px;
 }
-.mui-bar-tab .mui-tab-item.mui-active{
-	color: #337AB7 !important;
+
+#nav {
+	background-color: #fafafa;
 }
-.mui-bar-tab .mui-tab-item{
-	color: #9b9b9b !important;
+
+.mui-bar-tab .mui-tab-item.mui-active {
+	color: #0075a9 !important;
 }
-.mui-content{
+
+.mui-bar-tab .mui-tab-item {
+	color: #666666 !important;
+}
+
+.mui-content {
 	background-color: #fff;
 }
-html,body {
+
+html,
+body {
 	background-color: #fff;
 }
-.mui-bar-nav{
-	padding-top: 18px;
-    height: 62px;
-	-webkit-box-shadow: 0 1px 6px #337AB7;
-    box-shadow: 0 1px 6px #337AB7;
-    background-color: #337AB7;
+
+.mui-bar-nav {
+	background-color: #0075A9;
 }
-#title{
-	color: #fff;
-	font-weight: bold;
-}
-header span{
-	color: #fff;
-}
+
+
 /*首页标题栏*/
-#person{
-	width:70px;
+
+#person {
+	width: 70px;
 	font-size: 14px;
 	font-family: "微软雅黑";
 }
-.mui-popover.mui-bar-popover .mui-table-view{
-	width:70px;
+
+.mui-popover.mui-bar-popover .mui-table-view {
+	width: 70px;
 }
+
+
 /*底部导航栏*/
-#nav>.mui-tab-item>.mui-tab-label{
-	font-size:14px;
+
+#nav>.mui-tab-item>.mui-tab-label {
+	font-size: 14px;
 }
-#nav>a{
+
+#nav>a {
 	padding-top: 5px;
 }
+
+#nav>a img {
+	width: 25px;
+}
+
+
 /*地灾动态*/
-.mui-slider .mui-slider-group .mui-slider-item img{
+
+.mui-slider .mui-slider-group .mui-slider-item img {
 	width: 100%;
-	height: 150px;
-    }
-.mui-table-view .mui-media-object{
-	max-width:60px;height: 60px;
-    }
+	height: 220px;
+}
+
+.mui-table-view .mui-media-object {
+	max-width: 80px;
+	height: 80px;
+}
+
 .mui-table-view-cell:after {
-	left:0;
-		}
-.mui-icon-chatbubble>.mui-badge{
-	top:5px;
-	left:80%;
+	left: 0;
 }
-.rule-lf,.rule-rg{
-	height: 1px;width:20%;
-	background: #92bded;
-	position: absolute;
-	top: 50%;
-		}
-.rule-lf{left:5%;}
-.rule-rg{right:20%;}
-.rule_gd{
+
+.mui-icon-chatbubble>.mui-badge {
+	top: 5px;
+	left: 80%;
+}
+
+.mui-slider-title {
+	color: #fff;
+}
+
+.mui-slider-title span {
 	display: block;
-	float: right;
-	margin-right:3%;
-		font-size: 12px;
-	color:grey;
+	max-width: 60%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
-#bottom-icon1>.mui-scroll>.mui-text-center{
-	padding:15px 0;
+
+#dynamic>.mui-scroll>.mui-text-center {
+	padding: 15px 0;
 	color: #337AB7;
 	position: relative;
 }
-#bottom-icon1>.mui-scroll>.mui-table-view{
+
+#dynamic>.mui-scroll>.mui-table-view {
 	color: gray;
 	font-size: 15px;
 }
-.place{
+
+.place {
 	font-size: 12px;
+	margin-top: 16px;
 }
-.place>span:first-child{
-	margin-right:10%;
+
+.place>span:first-child {
+	margin-right: 10%;
 }
+
+.dynamic_jg {
+	width: 100%;
+	height: 5px;
+	background-color: #F0F0F0;
+}
+
+.dynamic_imgThree{
+	width: 100%;
+}
+.dynamic_imgThree img{
+	width: 32%;
+	height: 90px;
+}
+.dynamic_imgThree .pic0,
+.dynamic_imgThree .pic1{
+	margin-right: 2%;
+}
+.dynamic_imgOne img{
+	width: 100%;
+	/*max-height: 200px;*/
+}
+.mui-ellipsis{
+	color: #333;
+	font-size: 18px;
+	line-height: 28px;
+}
+
+/*.fishref .mui-media-body{
+	margin-bottom: 10px;
+}*/
 /*综合统计*/
-#bottom-icon2>.mui-table-view:first-child{
-	margin-top:0;
-	/*background: #337AB7;*/
-} 
-#bottom-icon2 img{
+
+#stats>.mui-table-view:first-child {
+	margin-top: 0;
+}
+
+#stats img {
 	width: 60px;
 }
-div[class^=mui-col-sm-3]{
+
+div[class^=mui-col-sm-3] {
 	text-align: center;
 }
-.text{
+
+.text {
 	margin-top: 10px;
 }
-.text>p{
-	/*position: absolute;
-	right: 30px;*/
+
+.text>p {
 	margin-top: 5px;
 }
-#citybtn{
+
+#citybtn {
 	display: inline-block;
-	margin:5px;
+	margin: 5px;
 	font-size: 20px;
 	font-weight: bold;
 }
-#citybtn>span{
+
+#citybtn>span {
 	padding: 5px;
 	margin: 5px;
 	border: 1px solid #D1D1D1;
 	border-radius: 5px;
 }
-#bottom-icon2 .mui-collapse-content{
-	background:#f7f7f7;
+
+#stats .mui-collapse-content {
+	background: #f7f7f7;
 	padding-left: 50px;
 }
-#bottom-icon2 .mui-collapse-content>div{
+
+#stats .mui-collapse-content>div {
 	margin: 5px 0;
 	font-size: 14px;
 }
-/*#bottom-icon2 .mui-collapse-content>div:nth-child(odd){
+
+#stats .mui-ellipsis{
+	font-size: 14px;
+	color: #808080;
+}
+
+.weather {
+	width: 100%;
+	height: 60px;
+	background-size: 100%;
+	position: absolute;
+	top: -15px;
+	left: 0px;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, .4);
+}
+
+.mui-slider .mui-slider-group .mui-slider-item img {
+	height: 250px;
+}
+
+.weather>div {
+	position: relative;
+}
+
+.weather>div:first-child {
+	float: right;
+	width: 40%;
+	height: 100%;
 	text-align: center;
-}*/
+	display: table;
+}
+
+.weather>div:last-child {
+	float: right;
+	width: 60%;
+	height: 100%;
+	display: table;
+}
+
+.weathertext {
+	color: #fff;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.weathertext>div:nth-of-type(1) {
+	width: 155px;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+	padding-right: 8px;
+	float: left;
+}
+
+.weathertext>div:nth-of-type(2) {
+	float: right;
+	width: 50%;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+}
+
+.mui-slider-title {
+	color: #fff;
+}
+
+.mui-slider-title span {
+	display: block;
+	max-width: 60%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.mui-slider-indicator .mui-indicator{
+		width: 14px;
+		height: 4px;
+		margin: -2px 3px;
+		background: #fff;
+		border-radius: 0;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+	}
+	.mui-slider-indicator .mui-active.mui-indicator{
+		background-color: #fc1c1c;
+	}
+.mui-slider-indicator{
+	right: 5px;
+}
+.place {
+	padding-right: 10px;
+	margin-top: 0px !important;
+	min-height: 31px;
+}
+
+.weathertext img {
+	position: absolute;
+	top: 8px;
+	right: 50px;
+	height: 30px;
+}
+.mui-slider-title{
+	text-indent: 10px;
+}
+.weathertext .wd {
+	font-size: 14px;
+	position: absolute;
+	top: 38px;
+	right: 10px;
+	font-size:14px;
+}
+.weathertext .tq {
+	font-size: 14px;
+	position: absolute;
+	top: 18px;
+	right: 10px;
+	font-size:14px;
+}
+#pDate {
+	margin: 13px 20px 0 10px;
+	text-align: left;
+	color: #fff;
+	font-size: 20px;
+	position: relative;
+	z-index: 10000;
+}
+
+.mui-slider {
+	margin-top: -55px;
+}
+
+.mui-ellipsis {
+	white-space: normal;
+	overflow: auto;
+}
+
+.mui-media-body {
+	min-height: 25px;
+}
+
+.mui-table-view-cell {
+	padding: 11px 12px 5px 12px !important;
+}
+
+#nongli {
+	text-align: left;
+	color: #fff;
+	position: relative;
+	z-index: 10000;
+	left: 10px;
+	top: 3px;
+	font-size:12px;
+	width: 200px;
+}
+
 /*工作管理内容*/
-.mui-card{
-	display:inline-block;
+
+.mui-card {
+	display: inline-block;
 	height: 150px;
 	padding: 15px;
 	flex: 1;
 }
-#bottom-icon3>.boxflex>a:nth-child(1){
-	margin-right:0px;
+
+#bottom-icon3>.boxflex>a:nth-child(1) {
+	margin-right: 0px;
 }
-#bottom-icon3>.boxflex>a{
-	margin-bottom:0px;
+
+#bottom-icon3>.boxflex>a {
+	margin-bottom: 0px;
 }
-#bottom-icon3>.boxflex:nth-last-child(1){
-	margin-bottom:10px;
+
+#bottom-icon3>.boxflex:nth-last-child(1) {
+	margin-bottom: 10px;
 }
-.workmanage{
+
+.workmanage {
 	text-align: center;
 }
-.workmanage img{
-	width:60px;
-}
-.workmanage>dd{
-	margin:20px 0 0 0;
-	text-align: center;
-	font-size: 17px;
-	color:#337AB7;
-}
-/*应急管理内容*/
-#bottom-icon4>.mui-table-view{
-	margin-bottom:20px;
-	box-shadow:  0px 1px 1px lightgray;
-}
-#bottom-icon4>.mui-table-view:first-child{
-	margin-top: 0;
-}
-#bottom-icon4{
-	background: #fafafa;
-}
-/*实时指挥*/
-#bottom-icon4 ul>li{
-	margin-bottom:30px;
-	border: 1px solid #c8c7cc;
-	/*background:#fff;*/
-}
-.realtime{
-	font-size: 14px;
-}
-.realtime>dt{
-	text-align: center;
-}
-.realtime>dt>img{
+
+.workmanage img {
 	width: 60px;
 }
-.realtime>dd{
-	margin-left: 0px;
+
+.workmanage>dd {
+	margin: 20px 0 0 0;
 	text-align: center;
+	font-size: 17px;
+	color: #337AB7;
 }
- /*日常管理*/
-.boxflex{
-	display:flex;
-}
-.dailymanage{
-	border:1px solid lightgray;
-	color: #000;
-	font-size: 14px;
-	text-align: center;
-	flex: 1;
-	padding: 20px 25px;
-	margin: 10px;
-}
-/*市局新闻*/
-#sj_news{
-	padding-bottom: 0;
-}
-/*区县新闻*/
-#qx_news{
-	padding-bottom: 0;
-}
-#sj_news>ul,#qx_news>ul{
-	margin-top: 0;
+
+.height{
+	min-height: 56px !important;
 }

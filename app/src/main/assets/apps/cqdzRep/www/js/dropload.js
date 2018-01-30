@@ -43,8 +43,8 @@
             },
             domDown : {                                                          // 下方DOM
                 domClass   : 'dropload-down',
-                domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
-                domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                domRefresh : '<div class="dropload-refresh">↑上拉显示更多</div>',
+                domLoad    : '<div class="dropload-load"><span class="loading"></span>正在加载...</div>',
                 domNoData  : '<div class="dropload-noData">没有更多数据了</div>'
             },
             autoLoad : true,                                                     // 自动加载

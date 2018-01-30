@@ -1,0 +1,33 @@
+.list_video {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.video_left {
+	float: left;
+	width: 50%;
+	margin: 0px;
+}
+
+.list_video img {
+	width: 90%;
+	margin: 5% 5% 0px;
+	max-height: 100px;
+}
+
+.video_right {
+	float: right;
+	width: 50%;
+	margin: 0px;
+}
+
+span {
+	display: inline-block;
+	font-size: 12px;
+	max-width: 80%;
+	color: #000000;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

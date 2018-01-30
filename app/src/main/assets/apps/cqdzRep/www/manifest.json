@@ -6,12 +6,12 @@
 	],
 	"id": "cqdzRep",
 	/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "重庆地灾",
+	"name": "地灾掌上管理系统",
 	/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.2.0",
+		"name": "4.0.0",
 		/*应用版本名称*/
-		"code": "83"
+		"code": "400"
 	},
 	"description": "",
 	/*应用描述信息*/
@@ -111,8 +111,8 @@
 				/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",
 				/*Android应用打包使用密钥库中证书的别名*/
-				"ImmersedStatusbar": true,
 				/*Android应用设置沉浸式状态栏*/
+				"ImmersedStatusbar": false,
 				"permissions": [
 					"<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
 					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
@@ -279,9 +279,21 @@
 					"img/yjgl2.png",
 					"img/1_8.png",
 					"img/yjgl1.png",
-					"img/rli.png"
+					"img/rli.png",
+					"img/znz.png",
+					"css/Hand/contingency/contingency.css",
+					"img/ycsp.png",
+					"img/dqsp.png",
+					"img/rl.png",
+					"img/qxsbl.png",
+					"img/wrjsp.png",
+					"img/jsq.png"
 				],
-				"refer": [],
+				"refer": [
+					"html/contingencyTab/wannianli/wannianli.html",
+					"html/contingencyTab/zddq_sssp.html",
+					"html/contingencyTab/uav-video.html"
+				],
 				"priority": 0
 			},
 			"stats.html": {
@@ -295,10 +307,23 @@
 					"img/1_11.png",
 					"css/mui.poppicker.css",
 					"css/mui.picker.css",
-					"img/1-3.png"
+					"img/1-3.png",
+					"img/zyjc.png",
+					"img/gczl.png",
+					"img/qcqf.png",
+					"img/pqzgy.png",
+					"js/jquery-1.11.3.js",
+					"css/common/mui.poppicker.css",
+					"fonts/mui.ttf",
+					"img/zsry.png",
+					"img/yhd.png",
+					"js/mui.min.js",
+					"css/Hand/stats.css",
+					"css/common/mui.picker.css"
 				],
 				"refer": [
-					"html/statsTab/qcqfsb_xq.html"
+					"html/statsTab/qcqfsb_xq.html",
+					"html/statsTab/gczl_xq.html"
 				],
 				"priority": 0
 			},
@@ -309,20 +334,32 @@
 					"fonts/iconfont.css",
 					"dynamic.html",
 					"js/update.js",
-					"fonts/iconfont.ttf"
+					"fonts/iconfont.ttf",
+					"img/tongji1.png",
+					"img/dongtai 2.png",
+					"img/account.png",
+					"js/jquery-1.11.3.js",
+					"img/dongtai 1.png",
+					"css/common/header.css",
+					"img/tongji2.png",
+					"img/yingji1.png"
 				],
 				"refer": [
 					"contingency.html",
 					"stats.html",
 					"work.html",
-					"infocontent.html"
+					"infocontent.html",
+					"person.html"
 				],
 				"priority": 0
 			},
 			"dynamic.html": {
 				"resources": [
 					"js/jquery-1.11.3.js",
-					"img/qing.png"
+					"img/qing.png",
+					"img/nobarern.png",
+					"img/yin.png",
+					"js/calendar.js"
 				],
 				"refer": [
 					"html/dynamicTab/newscon.html"
@@ -336,7 +373,9 @@
 					"js/mui.min.js",
 					"css/login.css",
 					"fonts/mui.ttf",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"img/password.png",
+					"img/account1.png"
 				],
 				"refer": [
 					"index.html"
@@ -350,7 +389,13 @@
 					"img/2_13.png",
 					"img/2_2.png",
 					"img/2_8.png",
-					"img/2_1.png"
+					"img/2_1.png",
+					"img/work6.jpg",
+					"img/work5.jpg",
+					"img/work2.jpg",
+					"img/work1.jpg",
+					"img/work4.jpg",
+					"img/work3.jpg"
 				],
 				"refer": [],
 				"priority": 0
@@ -361,6 +406,41 @@
 				],
 				"refer": [
 					"html/dynamicTab/infocontent_xq.html"
+				],
+				"priority": 0
+			},
+			"html/statsTab/gczl_xq.html": {
+				"resources": [
+					"js/h.js",
+					"css/index.css",
+					"js/ip.js",
+					"js/mui.picker.min.js",
+					"css/common/mui.poppicker.css",
+					"css/mui.min.css",
+					"css/Hand/gczl.css",
+					"css/common/mui.picker.min.css",
+					"css/common/header.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.js",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"html/statsTab/itemDetails.html"
+				],
+				"priority": 0
+			},
+			"html/statsTab/itemDetails.html": {
+				"resources": [
+					"css/Hand/gcz_xiangqing.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"person.html": {
+				"resources": [],
+				"refer": [
+					"login.html"
 				],
 				"priority": 0
 			}
@@ -427,7 +507,6 @@
 				"html/contingencyTab/wannianli/fonts/icomoon.svg",
 				"img/1_13.png",
 				"img/timg.jpeg",
-				"html/contingencyTab/wannianli/wannianli.html",
 				"img/dl4.png",
 				"html/contingencyTab/wannianli/images/btn_huangli.png",
 				"html/workTab/zhreport.html",
@@ -442,8 +521,6 @@
 				"html/contingencyTab/wannianli/css/htmleaf-demo.css",
 				"data/gczl_xq.json",
 				"img/yubei_guanyin2.jpg",
-				"html/statsTab/itemDetails.html",
-				"js/mui.picker.min.js",
 				"img/gzgl1.png",
 				"html/statsTab/zyjcsb_xqTwo.html",
 				"html/contingencyTab/jcyj_hiddenThree.html",
@@ -458,11 +535,8 @@
 				"img/1_6.png",
 				"html/workTab/qcqf/workQcqf.html",
 				"img/yu.png",
-				"person.html",
-				"html/contingencyTab/zddq_sssp.html",
 				"html/workTab/qcqf/workQcqfThree.html",
 				"img/gj3.png",
-				"html/contingencyTab/uav-video.html",
 				"data/jcyj_hidden1.json",
 				"html/workTab/qcqf/workQcqf_jcsjsbTj.html",
 				"html/workTab/worklist.html",
@@ -505,11 +579,9 @@
 				"leaflet/images/marker-icon-2x.png",
 				"img/dl5.png",
 				"html/workTab/qcqf/workQcqf_yhdFx.html",
-				"img/yin.png",
 				"data/dynamic_sj.json",
 				"img/dl2.png",
 				"img/duoyun.png",
-				"html/statsTab/gczl_xq.html",
 				"html/contingencyTab/uav-video-test.html",
 				"img/jcyj_3.png",
 				"html/workTab/qcqf/workQcqf_yjylOneList.html",

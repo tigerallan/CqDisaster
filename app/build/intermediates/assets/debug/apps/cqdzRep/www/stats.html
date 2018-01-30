@@ -1,77 +1,24 @@
 <!DOCTYPE html>
 <html>
-
-	<head>
-		<meta charset="UTF-8">
-		<title>综合统计</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" type="text/css" href="css/mui.picker.css" />
-		<link rel="stylesheet" type="text/css" href="css/mui.poppicker.css" />
-		<style type="text/css">
-			.ckxq {
-				text-align: right;
-				font-size: 18px !important;
-			}
-		</style>
-	</head>
-
-	<body>
-		<!--子页面内容-->
-		<div id="bottom-icon2" class="mui-content">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>综合统计</title>
+    <link rel="stylesheet" href="css/Hand/stats.css" />
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/common/mui.picker.css" />
+    <link rel="stylesheet" href="css/common/mui.poppicker.css" />
+</head>
+<body>
+	<div class="mui-content">
+	    <!--子页面内容-->
+		<div id="bottom-icon2" >
 			<ul class="mui-table-view">
-				<!--
-        	作者：allanzdl@163.com
-        	时间：2017-05-20
-        	描述：
-        <li class="mui-table-view-cell">
-					<a id="qxxx_xq" class="mui-navigate-right" href="javascript:void(0);">
-						<div class="mui-row">
-							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/1_9.png"/>
-							</div>
-							<div class="mui-col-sm-9 mui-col-xs-9 text">
-								地灾气象预警预报
-								<p class="mui-ellipsis">重庆主城以及区县天气详细信息</p>
-							</div>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell">
-					<a id="jianceyujing" class="mui-navigate-right" href="javascript:void(0);">
-						<div class="mui-row">
-							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/1_8.png"/>
-							</div>
-							<div class="mui-col-sm-9 mui-col-xs-9 text">
-								监测预警
-								<p class="mui-ellipsis">隐患点实时预警详情</p>
-							</div>
-						</div>
-					</a>
-				</li>
-        -->
-				<li class="mui-table-view-cell">
-					<a id="rzgjsl_xq" class="mui-navigate-right" href="javascript:void(0);">
-						<div class="mui-row">
-							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/gj2.png" />
-							</div>
-							<div class="mui-col-sm-9 mui-col-xs-9 text">
-								区县日报上报率
-								<p class="mui-ellipsis">日志告警数量以及上报率</p>
-							</div>
-						</div>
-					</a>
-				</li>
 				<li class="mui-table-view-cell">
 					<a id="zhdsl_xq" class="mui-navigate-right" href="javascript:void(0);">
 						<div class="mui-row">
 							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/1_1.png" />
+								<img src="img/yhd.png" />
 							</div>
 							<div class="mui-col-sm-9 mui-col-xs-9 text">
 								隐患点综合统计
@@ -84,7 +31,7 @@
 					<a id="zyjcsb_xq" class="mui-navigate-right" href="javascript:void(0);">
 						<div class="mui-row">
 							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/1_10.png" />
+								<img src="img/zyjc.png" />
 							</div>
 							<div class="mui-col-sm-9 mui-col-xs-9 text">
 								专业监测设备在线率
@@ -97,7 +44,7 @@
 					<a id="qcqfrysb_xq" class="mui-navigate-right" href="javascript:void(0);">
 						<div class="mui-row">
 							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/1_11.png" />
+								<img src="img/qcqf.png" />
 							</div>
 							<div class="mui-col-sm-9 mui-col-xs-9 text">
 								群测群防人员上报率
@@ -110,7 +57,7 @@
 					<a id="pqzgysb_xq" class="mui-navigate-right" href="javascript:void(0);">
 						<div class="mui-row">
 							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/1-3.png" />
+								<img src="img/pqzgy.png" />
 							</div>
 							<div class="mui-col-sm-9 mui-col-xs-9 text">
 								片区专管员上报率
@@ -123,7 +70,7 @@
 					<a id="zsrysb_xq" class="mui-navigate-right" href="javascript:void(0);">
 						<div class="mui-row">
 							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/1_5.png" />
+								<img src="img/zsry.png" />
 							</div>
 							<div class="mui-col-sm-9 mui-col-xs-9 text">
 								片区驻守人员上报率
@@ -136,7 +83,7 @@
 					<a id="gczl_xq" class="mui-navigate-right" href="javascript:void(0);">
 						<div class="mui-row">
 							<div class="mui-col-sm-3 mui-col-xs-3">
-								<img src="img/1_12.png" />
+								<img src="img/gczl.png" />
 							</div>
 							<div class="mui-col-sm-9 mui-col-xs-9 text">
 								工程治理项目统计
@@ -147,58 +94,17 @@
 				</li>
 			</ul>
 		</div>
-		<script src="js/mui.min.js"></script>
-		<script src="js/jquery-1.11.3.js"></script>
-		<script src="js/mui.picker.js"></script>
-		<script src="js/mui.poppicker.js"></script>
-		<script>
-			//		var _self, _next, timer;
-			//		mui.plusReady(function(){
-			//		    _self = plus.webview.currentWebview();
-			//		    _prev = plus.webview.getWebviewById('dynamic.html');
-			//		    _next = plus.webview.getWebviewById('contingency.html');
-			////		    index = plus.webview.getLaunchWebview();
-			//			index = plus.webview.getWebviewById("index.html");
-			//		    _self.drag(
-			//		        {
-			//		            direction : "right",
-			//		            moveMode  :　"followFinger"
-			//		        },
-			//		        {
-			//		            view　              :　_prev,
-			//		            moveMode  : "follow"
-			//		        },
-			//		        function(e){
-			//		            if(timer != null){clearTimeout(timer); }
-			//		            timer = setTimeout(function(){
-			//		                index.evalJS("h('#nav').find('a').removeClass('mui-active');h('#defaultTab').addClass('mui-active');h('#title').html(h('#defaultTab').find('div').html());");
-			//		            }, 100);
-			//		        }
-			//		    );
-			//		    _self.drag(
-			//		        {
-			//		            direction : "left",
-			//		            moveMode  :　"followFinger"
-			//		        },
-			//		        {
-			//		            view　              :　_next,
-			//		            moveMode  : "follow"
-			//		        },
-			//		        function(e){
-			//		            if(timer != null){clearTimeout(timer); }
-			//		            timer = setTimeout(function(){
-			//		                index.evalJS("h('#nav').find('a').removeClass('mui-active'); h('#thirdTab').addClass('mui-active');h('#title').html(h('#thirdTab').find('div').html());");
-			//		            }, 100);
-			//		        }
-			//		    );
-			//		});		
-			//			var qxxx_xq = document.getElementById('qxxx_xq');
-			//			slideopen(qxxx_xq, "construction.html");
-			//			slideopen(qxxx_xq, "html/statsTab/baidumaps.html");
-			var zhdsl_xq = document.getElementById('zhdsl_xq');
-			slideopen(zhdsl_xq, "html/statsTab/zhdsl_xq.html");
+	</div>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+	<script type="text/javascript" src="js/mui.picker.js" ></script>
+	<script type="text/javascript" src="js/mui.poppicker.js" ></script>
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init();
+      	var zhdsl_xq = document.getElementById('zhdsl_xq');
+			slideopen(zhdsl_xq, "html/statsTab/yhdzhtj.html");
 			var zyjcsb_xq = document.getElementById('zyjcsb_xq');
-			slideopen(zyjcsb_xq, "html/statsTab/zyjcsb_xq.html");
+			slideopen(zyjcsb_xq, "html/statsTab/zyjcsbzxl.html");
 			var qcqfrysb_xq = document.getElementById('qcqfrysb_xq');
 			slideopen(qcqfrysb_xq, "html/statsTab/qcqfsb_xq.html");
 			var pqzgysb_xq = document.getElementById('pqzgysb_xq');
@@ -207,30 +113,21 @@
 			slideopen(zsrysb_xq, "html/statsTab/zsrysb_xq.html");
 			var gczl_xq = document.getElementById('gczl_xq');
 			slideopen(gczl_xq, "html/statsTab/gczl_xq.html");
-			var rzgjsl_xq = document.getElementById('rzgjsl_xq');
-			slideopen(rzgjsl_xq, "html/statsTab/rzgjsl_xq.html");
-			//slideopen(rzgjsl_xq, "construction.html");
-			//	var jianceyujing = document.getElementById('jianceyujing');
-			//	slideopen(jianceyujing, "construction.html");
-
 			function slideopen(arr, wz) {
 				arr.addEventListener('tap', function() {
 					mui.openWindow({
 						url: wz,
 						id: wz,
-						show: {
-							autoShow: true,
-							aniShow: 'slide-in-bottom',
-							duration: 300
-						},
-						waiting: {
-							autoShow: true, //自动显示等待框，默认为true
-							title: '正在加载...' //等待对话框上显示的提示内容
-						}
+//						show: {
+//							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+//						},
+//						waiting: {
+//							autoShow: true, //自动显示等待框，默认为true
+//							title: '正在加载...' //等待对话框上显示的提示内容
+//						}
 					});
 				});
 			}
-		</script>
-	</body>
-
+    </script>
+</body>
 </html>

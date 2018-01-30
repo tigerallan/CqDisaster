@@ -62,4 +62,12 @@ dependencies {
     compile files('libs/sensor.jar')
     compile files('libs/device.jar')
     compile files('libs/downloader.jar')
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.chrisbanes:PhotoView:2.1.3'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'cn.jzvd:jiaozivideoplayer:6.0.0'
+    implementation 'com.android.support:design:24.2.1'
 }

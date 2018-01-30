@@ -9,23 +9,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<style type="text/css">
-			.mui-table-view-cell>a {
-				background-color: #eee;
-			}
-			
-			.mui_xgj {
-				height: 140px;
-			}
-			
-			.mui_xgj dt img {
-				width: 40px;
-			}
-			
-			.mui-collapse-content {
-				margin-top: 10px;
-			}
-		</style>
+		<link rel="stylesheet" href="css/Hand/contingency/contingency.css" />
 	</head>
 
 	<body>
@@ -48,12 +32,27 @@
             </li>
             <li class="mui-table-view-cell mui-collapse">统计分析</li>-->
 				<li class="mui-table-view-cell">
+					<a href="javascript:void(0);">数据查询/管理</a>
+					<div class="mui-collapse-content mui-row">
+						<a id="yhdcx" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                            <img src="img/work6.jpg"/>
+                        </dt>
+								<dd>
+									应急数据<br/>管理查询
+								</dd>
+							</dl>
+						</a>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
 					<a href="javascript:void(0);">实时指挥</a>
 					<div class="mui-collapse-content mui-row">
 						<a id="zddq_sssp" class="mui-col-sm-4 mui-col-xs-4">
 							<dl class="realtime">
 								<dt>
-                            <img src="img/yjgl2.png"/>
+                            <img src="img/dqsp.png"/>
                         </dt>
 								<dd>
 									重点地区<br/>实时视频
@@ -63,7 +62,7 @@
 						<a id="uav-video" class="mui-col-sm-4 mui-col-xs-4">
 							<dl class="realtime">
 								<dt>
-                        <img src="img/yjgl3.png"/>
+                        <img src="img/wrjsp.png"/>
                     </dt>
 								<dd>
 									应急无人机<br/>实时视频
@@ -73,7 +72,7 @@
 						<a id="spth" class="mui-col-sm-4 mui-col-xs-4">
 							<dl class="realtime">
 								<dt>
-                        <img src="img/yjgl1.png"/>
+                        <img src="img/ycsp.png"/>
                     </dt>
 								<dd>
 									远程<br/>视频通话
@@ -82,13 +81,40 @@
 						</a>
 					</div>
 				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript:void(0);">专题预警</a>
+					<div class="mui-collapse-content mui-row">
+						<a id="rzgjsl_xq" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                  <img src="img/qxsbl.png"/>
+                        </dt>
+								<dd>
+									区县日报<br/>上报率
+								</dd>
+							</dl>
+						</a>
+						<!--<a id="jcyj" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt><img src="img/jcyj.png"/></dt>
+								<dd>监测<br />预警</dd>
+							</dl>
+						</a>-->
+						<!--<a id="weather-warn" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt><img src="img/1_9.png"/></dt>
+								<dd>气象信息<br />预警预报</dd>
+							</dl>
+						</a>-->
+					</div>
+				</li>
 				<li class="mui-table-view-cell mui_xgj">
 					<a href="javascript:void(0);">实用小工具</a>
 					<div class="mui-collapse-content mui-row">
 						<a id="wannianli" class="mui-col-sm-4 mui-col-xs-4">
 							<dl class="realtime">
 								<dt>
-                            <img src="img/rli.png"/>
+                            <img src="img/rl.png"/>
                         </dt>
 								<dd>日历</dd>
 							</dl>
@@ -96,7 +122,7 @@
 						<a id="jisuanji" class="mui-col-sm-4 mui-col-xs-4">
 							<dl class="realtime">
 								<dt>
-                        <img src="img/jisuanji.png"/>
+                        <img src="img/jsq.png"/>
                     </dt>
 								<dd>计算器</dd>
 							</dl>
@@ -104,7 +130,7 @@
 						<a id="zhinanzhen" class="mui-col-sm-4 mui-col-xs-4">
 							<dl class="realtime">
 								<dt>
-                        <img src="img/zhinanzhen.png"/>
+                        <img src="img/znz.png"/>
                     </dt>
 								<dd>指南针</dd>
 							</dl>
@@ -119,91 +145,60 @@
 				swipeBack: false,
 			});
 			var _self, _prev, index, timer, info;
-			//			mui.plusReady(function() {
-			//				_self = plus.webview.currentWebview();
-			//				_prev = plus.webview.getWebviewById('stats.html');
-			//				_next = plus.webview.getWebviewById('work.html');
-			//				//		    index = plus.webview.getLaunchWebview();
-			//				index = plus.webview.getWebviewById("index.html");
-			//				_self.drag({
-			//						direction: "right",
-			//						moveMode: 　 "followFinger"
-			//					}, {
-			//						view　: 　_prev,
-			//						moveMode: "follow"
-			//					},
-			//					function(e) {
-			//						if(timer != null) {
-			//							clearTimeout(timer);
-			//						}
-			//						timer = setTimeout(function() {
-			//							index.evalJS("h('#nav').find('a').removeClass('mui-active'); h('#secondTab').addClass('mui-active');h('#title').html(h('#secondTab').find('div').html());");
-			//						}, 100);
-			//					}
-			//				);
-			//				_self.drag({
-			//						direction: "left",
-			//						moveMode: 　 "followFinger"
-			//					}, {
-			//						view　: 　_next,
-			//						moveMode: "follow"
-			//					},
-			//					function(e) {
-			//						if(timer != null) {
-			//							clearTimeout(timer);
-			//						}
-			//						timer = setTimeout(function() {
-			//							index.evalJS("h('#nav').find('a').removeClass('mui-active'); h('#fourthTab').addClass('mui-active');h('#title').html(h('#fourthTab').find('div').html());");
-			//						}, 100);
-			//					}
-			//				);
-			//			});
-			document.getElementById("zddq_sssp").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/zddq_sssp.html",
-					id: "zddq_sssp.html"
-				});
 
-			});
+			var zhdsl_xq = document.getElementById('zddq_sssp');
+			slideopen(zddq_sssp, "html/contingencyTab/zddq_sssp.html");
+			var uav_video = document.getElementById('uav-video');
+			slideopen(uav_video, "html/contingencyTab/uav-video.html");
+			var wannianli = document.getElementById('wannianli');
+			slideopen(wannianli, "html/contingencyTab/wannianli/wannianli.html");
+			var calculator = document.getElementById('jisuanji');
+			slideopen(calculator, "html/contingencyTab/calculator.html");
+			var orientation_compass = document.getElementById('zhinanzhen');
+			slideopen(orientation_compass, "html/contingencyTab/orientation_compass.html");
+			var rzgjsl_xq = document.getElementById('rzgjsl_xq');
+			slideopen(rzgjsl_xq, "html/contingencyTab/rzgjsl_xq.html");
+			//			var jcyj = document.getElementById('jcyj');
+			//			slideopen(jcyj, "html/contingencyTab/jcyj_list.html");
+			//			var weather_warn = document.getElementById('weather-warn');
+			//			slideopen(weather_warn, "html/contingencyTab/weather-warn.html");
 
-			//无人机视频
-			document.getElementById("uav-video").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/uav-video.html",
-					id: "zddq_sssp.html"
+			function slideopen(arr, wz) {
+				arr.addEventListener('tap', function() {
+					mui.openWindow({
+						url: wz,
+						id: wz,
+						show: {
+							autoShow: true,
+							aniShow: 'slide-in-bottom',
+							duration: 300
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+						}
+					});
 				});
+			}
 
-			});
-
-			document.getElementById("wannianli").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/wannianli/wannianli.html",
-					id: "wannianli.html"
-				});
-			});
-			document.getElementById("jisuanji").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/calculator.html",
-					id: "calculator.html"
-				});
-			});
-			document.getElementById("zhinanzhen").addEventListener("tap", function() {
-				mui.openWindow({
-					url: "html/contingencyTab/orientation_compass.html",
-					id: "orientation_compass.html"
-				});
-			});
 			mui.plusReady(function() {
 				info = JSON.parse(plus.storage.getItem("personal-information"));
 			});
 
 			document.getElementById("spth").addEventListener("tap", function() {
-
 				var activity = plus.android.runtimeMainActivity();
 				var Intent = plus.android.importClass("android.content.Intent");
 				var intent = new Intent();
 				intent.setClassName(activity, "com.nandi.cqdisaster.AnyChat.activity.LoginActivity");
 				intent.putExtra("NAME", info[0].user_name);
+				activity.startActivity(intent);
+			});
+			
+			document.getElementById("yhdcx").addEventListener("tap", function() {
+				var activity = plus.android.runtimeMainActivity();
+				var Intent = plus.android.importClass("android.content.Intent");
+				var intent = new Intent();
+				intent.setClassName(activity, "com.nandi.cqdisaster.securitydao.activity.MainActivity");
 				activity.startActivity(intent);
 			});
 		</script>

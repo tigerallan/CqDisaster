@@ -1,0 +1,157 @@
+<!DOCTYPE >
+<html lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>修改密码</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" href="../../css/person.css" />
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a href="javascript:void(0);" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">修改密码</h1>
+		</header>
+		<div class="mui-scroll-wrapper mui-content">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<li>
+						<div class="mui-input-row">
+							<label>原密码：</label>
+							<input type='password' id="oldpassword" name="oldpassword" onfocus="this.placeholder=''" onblur="this.placeholder='请输入原密码'" placeholder="请输入原密码" />
+							<div style="display: inline" id="tip1"></div>
+						</div>
+
+					</li>
+					<li>
+						<div class="mui-input-row">
+							<label>新密码：</label>
+							<input type='password' id="password1" name="password1" onfocus="this.placeholder=''" onblur="this.placeholder='由6-18位数字或字母组成'" placeholder="由6-18位数字或字母组成" />
+							<div style="display: inline" id="tip2">
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="mui-input-row">
+							<label>确认密码：</label>
+							<input type='password' id="password2"name="password2" onfocus="this.placeholder=''" onblur="this.placeholder='请再次输入新密码'" placeholder="请再次输入新密码" />
+							<div style="display: inline" id="tip3">
+							</div>
+						</div>
+					</li>
+					<div class="mui-table-view qrxg" style="background-color: #0075AA;">
+						<li class="mui-table-view-cell">
+							<a id="confirm">确认修改</a>
+						</li>
+					</div>
+					<li class="text-center">
+						<div id="tip4"></div>
+					</li>
+				</ul>
+				</div>
+				</div>
+				<script  src="../../js/mui.min.js"></script>
+				<script  src="../../js/mui.js"></script>
+				<script  src="../../js/jquery-1.11.3.js"></script>
+				<script  src="../../js/ip.js"></script>
+				<script type="text/javascript">
+					//					显示密码
+					var obj = document.getElementById('password1');
+					obj.onclick = change;
+
+					function change() {
+						obj.value = '';
+						obj.type = 'password';
+					}
+					//密码验证
+					$(document).ready(function() {
+						$("#oldpassword").blur(function() {
+							var param = $("#oldpassword").val();
+							$.ajax({
+								url: "${HttpPath}/user/checkoldpassword",
+								data: {
+									oldpassword: param
+								},
+								success: function(e) {
+									if (e.code == 1) {
+										$("#tip1").html("<font color=\"green\" size=\"2\">原密码正确！</font>");
+									} else {
+										$("#tip1").html("<font color=\"red\" size=\"2\">原密码不正确！</font>");
+									}
+								}
+							});
+						});
+						$("#password1").blur(function() {
+							var num = $("#password1").val().length;
+							if (num < 6) {
+								$("#tip2").html("<font color=\"red\" size=\"2\">由6-18位数字或字母组成</font>");
+							} else if (num > 18) {
+								$("#tip2").html("<font color=\"red\" size=\"2\">由6-18位数字或字母组成</font>");
+							} else {
+								$("#tip2").html("<font color=\"green\" size=\"2\">密码格式正确</font>");
+							}
+						});
+						$("#password2").blur(function() {
+							var tmp = $("#password1").val();
+							var num = $("#password2").val().length;
+							if ($("#password2").val() != tmp) {
+								$("#tip3").html("<font color=\"red\" size=\"2\">两次输入的密码不一致！</font>");
+							} else {
+								if (num >= 6 && num <= 18) {
+									$("#tip3").html("<font color=\"green\" size=\"2\">两次密码输入相同！</font>");
+								} else {
+									$("#tip3").html("<font color=\"red\" size=\"2\">输入的密码无效！</font>");
+								}
+							}
+						});
+						$("#confirm").click(function() {
+							var flag = true;
+							var old = $("#oldpassword").val();
+							var pass = $("#password1").val();
+							var pass2 = $("#password2").val();
+							var num1 = $("#password1").val().length;
+							var num2 = $("#password2").val().length;
+							if (num1 != num2 || num1 < 6 || num2 < 6 || num1 > 18 || num2 > 18 || pass != pass2) {
+								flag = false;
+							} else {
+								flag = true;
+							}
+							if (flag) {
+								$.ajax({
+									url: "${HttpPath}/user/editPassowrdyet",
+									data: {
+										oldpassword: old,
+										password: pass
+									},
+									success: function(e) {
+										if (e.code == 1) {
+											$("#tip4").show().html("<font color=\"green\" size=\"3\">  密码修改成功!</font>");
+											$("#oldpassword").val("");
+											$("#password1").val("");
+											$("#password2").val("");
+											$("#tip1").empty();
+											$("#tip2").empty();
+											$("#tip3").empty();
+											$("#tip4").delay(2000).hide(0);
+										} else {
+											$("#tip4").show().html("<font color=\"red\" size=\"3\">原密码错误!</font>");
+										}
+									}
+								});
+							} else {
+
+								$("#tip4").show().html("<font color=\"red\" size=\"3\">请按照提示修改密码!</font>");
+							}
+						});
+					});
+				</script>
+	</body>
+
+</html>

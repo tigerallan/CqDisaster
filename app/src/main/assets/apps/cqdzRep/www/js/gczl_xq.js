@@ -1,49 +1,70 @@
 //单选
 mui('#xmlb').on('tap', '.checkborder', function() {
 	var spans = document.getElementById("xmlb").querySelectorAll(".checkborder");
-	Array.prototype.forEach.call(spans, function(e, i, a) {
-		e.style.border = '';
-	});
-	this.style.border = '1px solid red';
-	document.activeElement.blur();
+	if(this.style.border == '1px solid red') {
+		this.style.border = '';
+	} else {
+		Array.prototype.forEach.call(spans, function(e, i, a) {
+			e.style.border = '';
+		});
+		this.style.border = '1px solid red';
+		document.activeElement.blur();
+	}
+
 });
 mui('#zhlx').on('tap', '.checkborder', function() {
 	var spans = document.getElementById("zhlx").querySelectorAll(".checkborder");
-	Array.prototype.forEach.call(spans, function(e, i, a) {
-		e.style.border = '';
-	});
-	this.style.border = '1px solid red';
-	document.activeElement.blur();
+	if(this.style.border == '1px solid red') {
+		this.style.border = '';
+	} else {
+		Array.prototype.forEach.call(spans, function(e, i, a) {
+			e.style.border = '';
+		});
+		this.style.border = '1px solid red';
+		document.activeElement.blur();
+	}
 });
 mui('#zhdj').on('tap', '.checkborder', function() {
 	var spans = document.getElementById("zhdj").querySelectorAll(".checkborder");
-	Array.prototype.forEach.call(spans, function(e, i, a) {
-		e.style.border = '';
-	});
-	this.style.border = '1px solid red';
-	document.activeElement.blur();
+	if(this.style.border == '1px solid red') {
+		this.style.border = '';
+	} else {
+		Array.prototype.forEach.call(spans, function(e, i, a) {
+			e.style.border = '';
+		});
+		this.style.border = '1px solid red';
+		document.activeElement.blur();
+	}
 });
 mui('#fzdj').on('tap', '.checkborder', function() {
 	var spans = document.getElementById("fzdj").querySelectorAll(".checkborder");
-	Array.prototype.forEach.call(spans, function(e, i, a) {
-		e.style.border = '';
+	if(this.style.border == '1px solid red') {
+		this.style.border = '';
+	} else {
+		Array.prototype.forEach.call(spans, function(e, i, a) {
+			e.style.border = '';
+		});
+		this.style.border = '1px solid red';
 		document.activeElement.blur();
-	});
-	this.style.border = '1px solid red';
+	}
 });
 mui('#sfwg').on('tap', '.checkborder', function() {
 	var spans = document.getElementById("sfwg").querySelectorAll(".checkborder");
-	Array.prototype.forEach.call(spans, function(e, i, a) {
-		e.style.border = '';
-	});
-	this.style.border = '1px solid red';
-	document.activeElement.blur();
+	if(this.style.border == '1px solid red') {
+		this.style.border = '';
+	} else {
+		Array.prototype.forEach.call(spans, function(e, i, a) {
+			e.style.border = '';
+		});
+		this.style.border = '1px solid red';
+		document.activeElement.blur();
+	}
 });
 
 //项目类别
 var content_xmlb = "";
 $.ajax({
-	url: gczl_ipconfig + "findStaticName.do?staticName=项目类别",
+	url: ip + "tea/findStaticName.do?staticName=项目类别",
 	async: false, //同步请求	
 	type: "get",
 	dataType: "json",
@@ -70,7 +91,7 @@ $.ajax({
 //灾害类型
 var content_zhlx = "";
 $.ajax({
-	url: gczl_ipconfig + "findStaticName.do?staticName=灾害类型",
+	url: ip + "tea/findStaticName.do?staticName=灾害类型",
 	async: false, //同步请求	
 	type: "get",
 	dataType: "json",
@@ -102,7 +123,7 @@ $.ajax({
 //灾害等级
 var content_zhdj = "";
 $.ajax({
-	url: gczl_ipconfig + "findStaticName.do?staticName=灾害等级",
+	url: ip + "tea/findStaticName.do?staticName=灾害等级",
 	async: false, //同步请求	
 	type: "get",
 	dataType: "json",
@@ -122,7 +143,7 @@ $.ajax({
 //防灾等级
 var content_fzdj = "";
 $.ajax({
-	url: gczl_ipconfig + "findStaticName.do?staticName=防灾等级",
+	url: ip + "tea/findStaticName.do?staticName=防灾等级",
 	async: false, //同步请求	
 	type: "get",
 	dataType: "json",
@@ -143,27 +164,28 @@ var inserthtml = '';
 
 function openme(arr) {
 	var arrUrl = '';
-	
-	arrUrl = (arr.areaId?'&areaId='+arr.areaId:'')+
-					 (arr.xmtype?'&xmtype='+arr.xmtype:'')+
-					 (arr.sgdw?'&sgdw='+arr.sgdw:'')+
-					 (arr.zhtype?'&zhtype='+arr.zhtype:'')+
-					 (arr.zhlevel?'&zhlevel='+arr.zhlevel:'')+
-					 (arr.fzlevel?'&fzlevel='+arr.fzlevel:'')+
-					 (arr.stime?'&stime='+arr.stime:'')+
-					 (arr.etime?'&etime='+arr.etime:'')+
-					 (arr.sfwg?'&sfwg='+arr.sfwg:'')+
-					 (arr.sxx?'&sxx='+arr.sxx:'')+
-					 (arr.exx?'&exx='+arr.exx:'')+
-					 (arr.xmmc?'&xmname='+arr.xmmc:'');
-					 
-	arrUrl&&(arrUrl = '?' + arrUrl.slice(1));
-	
 
-	inserthtml = '<iframe src="table.html'+arrUrl+'" id="table" width="100%" height="100%" scrolling="auto" frameborder="0"></iframe>'
+	arrUrl = (arr.areaId ? '&areaId=' + arr.areaId : '') +
+		(arr.xmtypeName ? '&xmtypeName=' + arr.xmtypeName : '') +
+		(arr.sgdw ? '&sgdw=' + arr.sgdw : '') +
+		(arr.zhtypeId ? '&zhtypeId=' + arr.zhtypeId : '') +
+		(arr.zhlevelId ? '&zhlevelId=' + arr.zhlevelId : '') +
+		(arr.fzlevelId ? '&fzlevelId=' + arr.fzlevelId : '') +
+		(arr.stime ? '&stime=' + arr.stime : '') +
+		(arr.etime ? '&etime=' + arr.etime : '') +
+		(arr.sfwgId ? '&sfwgId=' + arr.sfwgId : '') +
+		(arr.sxx ? '&sxx=' + arr.sxx : '') +
+		(arr.exx ? '&exx=' + arr.exx : '') +
+ 		(arr.xmname ? '&xmname=' + arr.xmname : '');
+
+	arrUrl && (arrUrl = '?' + arrUrl.slice(1));
+
+	inserthtml = '<iframe src="table.html' + arrUrl + '" id="table" width="100%" height="100%" scrolling="auto" frameborder="0"></iframe>'
 	$(".content_iframe").append(inserthtml);
 	
-	$('.checkborder').css('border','');
+	console.log(JSON.stringify(arrUrl));
+	
+	$('.checkborder').css('border', '');
 	$('#sgdw').val("");
 	$('#sxx').val("");
 	$('#exx').val("");

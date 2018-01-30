@@ -8,48 +8,9 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link href="../../css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
-		<style type="text/css">
-			.list_video {
-				width: 100%;
-				text-align: center;
-				margin-top: 10px;
-			}
-			
-			.video_left {
-				float: left;
-				width: 50%;
-				/*height: 150px;*/
-				margin: 0px;
-				/*border: 1px solid #000000;*/
-			}
-			
-			.list_video img {
-				width: 90%;
-				margin: 5% 5% 0px;
-				max-height: 100px;
-			}
-			
-			.video_right {
-				float: right;
-				width: 50%;
-				/*height: 150px;*/
-				margin: 0px;
-				/*border: 1px solid #000000;*/
-			}
-			
-			span {
-				display: inline-block;
-				font-size: 12px;
-				max-width: 80%;
-				color: #000000;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-			}
-		</style>
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" href="../../css/Hand/contingency/zddqsp.css" />
 	</head>
-
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a href="#" class="mui-action-back"> <span class="mui-icon mui-icon-arrowleft"></span>
@@ -60,55 +21,55 @@
 			<div class="mui-scroll">
 				<div class="list_video">
 					<div class="video_left">
-						<a id="shennvfeng"> <img src="../../img/wushan_shennvfeng.jpg" alt="" />
+						<a id="shennvfeng"> <img src="../../img/wushan_shennvfeng.png" alt="" />
 							<span>巫山县-神女峰箭川洞</span>
 						</a>
 					</div>
 					<div class="video_right">
-						<a id="guanyindong"> <img src="../../img/video4.jpg" alt="" />
+						<a id="guanyindong"> <img src="../../img/video4.png" alt="" />
 							<span>武隆区-观音洞危岩体</span>
 						</a>
 					</div>
 				</div>
 				<div class="list_video">
 					<div class="video_left">
-						<a id="guanyinyi"> <img src="../../img/yubei_guanyin1.jpg" alt="" />
+						<a id="guanyinyi"> <img src="../../img/yubai_ganyin1.png" alt="" />
 							<span>渝北区-观音公园危岩一</span>
 						</a>
 					</div>
 					<div class="video_right">
-						<a id="dabaishuyi"> <img src="../../img/yubei_dabaishu1.jpg" alt="" />
+						<a id="dabaishuyi"> <img src="../../img/yubei_dabaishu.png" alt="" />
 							<span>渝北区-大柏树滑坡一</span>
 						</a>
 					</div>
 				</div>
 				<div class="list_video">
 					<div class="video_left">
-						<a id="guanyiner"> <img src="../../img/yubei_guanyin2.jpg" alt="" />
+						<a id="guanyiner"> <img src="../../img/yubei_guanyin.png" alt="" />
 							<span>渝北区-观音公园危岩二</span>
 						</a>
 					</div>
 					<div class="video_right">
-						<a id="dabaishuer"> <img src="../../img/yubei_dabaishu2.jpg" alt="" />
+						<a id="dabaishuer"> <img src="../../img/yubei_dabai1.png" alt="" />
 							<span>渝北区-大柏树滑坡二</span>
 						</a>
 					</div>
 				</div>
 				<div class="list_video">
 					<div class="video_left">
-						<a id="guanyinsan"> <img src="../../img/yubei_guanyin3.jpg" alt="" />
+						<a id="guanyinsan"> <img src="../../img/yubai_guanyin2.png" alt="" />
 							<span>渝北区-观音公园危岩三</span>
 						</a>
 					</div>
 					<div class="video_right">
-						<a id="dabaishusan"> <img src="../../img/yubei_dabaishu3.jpg" alt="" />
+						<a id="dabaishusan"> <img src="../../img/yubai_dabaishu2.png" alt="" />
 							<span>渝北区-大柏树滑坡三</span>
 						</a>
 					</div>
 				</div>
 				<div class="list_video">
 					<div class="video_left">
-						<a id="dawanbei"> <img src="../../img/video3.png" alt="" />
+						<a id="dawanbei"> <img src="../../img/yubai_ganyin1.png" alt="" />
 							<span>武隆区-大湾北危岩体</span>
 						</a>
 					</div>
@@ -250,7 +211,7 @@
 			var intent = new Intent();
 			intent.setClassName(activity, "com.nandi.cqdisaster.HCVideo.HcActivity");
 			intent.putExtra("IP", "218.201.50.197");
-			intent.putExtra("PORT", 8001);
+			intent.putExtra("PORT", 8002);
 			intent.putExtra("USER", "admin");
 			intent.putExtra("PASSWORD", "admin1234");
 			activity.startActivity(intent);

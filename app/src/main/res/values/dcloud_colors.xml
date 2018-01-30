@@ -39,4 +39,11 @@
     <drawable name="meeting_tab_normal">#B3DBF8</drawable>
     <drawable name="meeting_tab_pressed">#FF9933</drawable>
     <drawable name="main_head">#6699CC</drawable>
+
+    <color name="colorPrimary">#1874CD</color>
+    <color name="colorPrimaryDark">#1874CD</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="dividerColor">	#F0F0F0</color>
+    <color name="text_color">#4F4F4F</color>
+    <color name="ac9455">#ac9455</color>
 </resources>

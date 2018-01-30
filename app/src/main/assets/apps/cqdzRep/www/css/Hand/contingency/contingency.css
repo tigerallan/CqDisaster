@@ -1,0 +1,71 @@
+/*应急管理内容*/
+
+#bottom-icon4>.mui-table-view {
+	margin-bottom: 20px;
+	box-shadow: 0px 1px 1px lightgray;
+}
+
+#bottom-icon4>.mui-table-view:first-child {
+	margin-top: 0;
+}
+
+#bottom-icon4 {
+	background: #fafafa;
+}
+
+
+/*实时指挥*/
+
+#bottom-icon4 ul>li {
+	border: 1px solid #c8c7cc;
+}
+
+
+.realtime {
+	font-size: 14px;
+	height: 100px;
+}
+
+.realtime>dt {
+	text-align: center;
+}
+
+.realtime>dt>img {
+	margin-top: 10px;
+	width: 50px;
+}
+
+.realtime>dd {
+	margin-left: 0px;
+	text-align: center;
+	    color: #666666;
+}
+/*日常管理*/
+
+.boxflex {
+	display: flex;
+}
+.dailymanage {
+	border: 1px solid lightgray;
+	color: #000;
+	font-size: 14px;
+	text-align: center;
+	flex: 1;
+	padding: 20px 25px;
+	margin: 10px;
+}
+.mui-table-view-cell>a {
+	background-color: #eee;
+}
+
+.mui_xgj {
+	height: 140px;
+}
+
+.mui_xgj dt img {
+	width: 40px;
+}
+
+.mui-collapse-content {
+	margin-top: 10px;
+}

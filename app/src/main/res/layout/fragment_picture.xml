@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--全景图-->
+            <LinearLayout
+                android:id="@+id/ll_panorama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DividerTextView"
+                    android:text="@string/panorama" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_panorama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!--平面图-->
+            <LinearLayout
+                android:id="@+id/ll_plan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_panorama"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DividerTextView"
+                    android:text="@string/plan" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_plan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!--特征图-->
+            <LinearLayout
+                android:id="@+id/ll_feature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_plan"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DividerTextView"
+                    android:text="@string/feature" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_feature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!--剖面图-->
+            <LinearLayout
+                android:id="@+id/ll_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_feature"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DividerTextView"
+                    android:text="@string/profile" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

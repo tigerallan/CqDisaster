@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dangerType">
+        <item>请选择</item>
+        <item>滑坡</item>
+        <item>泥石流</item>
+        <item>危岩</item>
+        <item>不稳定斜坡</item>
+        <item>地面塌陷</item>
+        <item>地裂缝</item>
+        <item>库岸</item>
+    </string-array>
+</resources>

@@ -1,0 +1,114 @@
+body {
+	opacity: 0;
+}
+
+.mui-content {
+	position: relative;
+	padding: 40px 15px 10px !important;
+	background-color: #fff;
+}
+
+.mui-content::before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 1px;
+	border-top: 1px solid #e5e5e5;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: scaleY(0.5);
+	transform: scaleY(0.5);
+	top: auto;
+	bottom: -2px;
+}
+
+.mui-content .new-title {
+	margin: 0;
+	line-height: 1.4;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.mui-content .news-info {
+	margin: 0 0 18px 0;
+	line-height: 20px;
+	font-size: 0;
+}
+
+.mui-content .news-em {
+	color: #8c8c8c;
+	font-style: normal;
+	display: inline-block;
+	font-size: 16px;
+	margin-bottom: 10px;
+	margin-right: 12px;
+	vertical-align: middle;
+}
+
+.mui-content .news-nickname {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 9em;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 8px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	color: #18b4ed;
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.mui-content .news-img {
+	width: 100%;
+	margin-bottom: 6px;
+}
+
+.mui-content .news-img img.imgnews {
+	height: auto !important;
+	max-width: 100%;
+}
+
+.mui-content .news-content {
+	overflow: hidden;
+}
+
+.mui-content .news-content * {
+	max-width: 100% !important;
+	box-sizing: border-box !important;
+	-webkit-box-sizing: border-box !important;
+	word-wrap: break-word !important;
+}
+
+.mui-content .news-content p {
+	clear: both;
+	min-height: 1em;
+	white-space: pre-wrap;
+	margin-bottom: 20px;
+	text-indent: 2rem;
+	color: #808080 !important;
+	font-size: 18px !important;
+}
+
+.mui-content .news-content img {
+	height: auto !important;
+	max-width: 100%;
+	display: block;
+}
+
+#newscon span {
+	font-size: 18px;
+	display: block;
+	margin: 5px 0;
+	color: #333;
+	border-bottom: 1px solid #F0F0F0;
+	padding-bottom: 8px;
+}
+
+p {
+	text-indent: 28px;
+	line-height: 24px;
+}

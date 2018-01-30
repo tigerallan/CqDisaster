@@ -1,0 +1,36 @@
+body,
+html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: "微软雅黑";
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+.mui-bar-nav {
+	background-color: #0075a9 !important;
+	color: white!important;
+}
+
+.mui-bar-nav .mui-title {
+	color: white;
+	font-weight: bold;
+}
+
+header span {
+	color: white;
+}
+
+#title_span {
+	position: absolute;
+	right: 15px;
+	top: 13px;
+	font-size: 14px;
+}
+
+.mui-bar .mui-btn-link {
+	color: white;
+}

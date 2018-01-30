@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>区县日报上报率</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" href="../../css/common/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../css/common/mui.poppicker.css" />
+		<link rel="stylesheet" href="../../css/Hand/contingency/rzsbl.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">区县日报上报率</h1>
+			<!--<span id="title_span">选区</span>-->
+		</header>
+		<div class="title_xz">
+			<div id="botton_rq">
+				<i>时间</i>
+				<b id="start_time"></b>-
+				<b id="end_time"></b>
+				<button id="searchDate">查询</button>
+			</div>
+		</div>
+		<div class="mui-content">
+			<table class="table_head">
+				<tr>
+					<th >区县名</th>
+					<th >应上报</th>
+					<th >实上报</th>
+					<th >未上报</th>
+					<th >上报率</th>
+				</tr>
+			</table>
+			<div id="rz_table" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<table id="tb">
+						<tbody id="table_centent">
+							<!--<tr>
+								<td width="20%"><font size="13px">1</font></td>
+								<td width="20%">2</td>
+								<td width="20%">3</td>
+								<td width="20%">4</td>
+								<td width="20%">5</td>
+								</tr>-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<!--<script src="../../js/quxian.js"></script>-->
+		<script src="../../js/mui.picker.min.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false
+			});
+			mui.ready(function() {
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 50);
+
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: false //是否启用回弹
+				});
+			});
+
+			//读取系统日期
+			var d = new Date();
+			var n = d.getFullYear();
+			var t = d.getMonth() + 1;
+			var m = d.getDate();
+			//设置结束时间
+			(function($, doc) {
+				$.init();
+				var result = document.getElementById("end_time");
+				if(t < 10) {
+					t = "0" + t;
+				}
+				if(m < 10) {
+					m = "0" + m;
+				}
+				var str = d.getFullYear() + "-" + t + "-" + m;
+				result.innerText = str;
+				$.ready(function() {
+					var cityPicker = new $.PopPicker({
+						layer: 3
+					});
+					//					cityPicker.setData(cityData);
+					var choose_two = document.getElementById('end_time');
+					choose_two.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m)
+						});
+						picker.show(function(rs) {
+							result.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+			//设置开始时间
+			(function($, doc) {
+				$.init();
+				var result_two = document.getElementById("start_time");
+				var str = d.getFullYear() + "-" + t + "-01";
+				result_two.innerText = str;
+				$.ready(function() {
+					var cityPicker = new $.PopPicker({
+						layer: 3
+					});
+					//					cityPicker.setData(cityData);
+					var choose_three = document.getElementById('start_time');
+					choose_three.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m),
+							"value": n + "-" + t + "-01"
+						});
+						picker.show(function(rs) {
+							result_two.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			var contentThree = "";
+
+			function zq() {
+				//					var url = "http://183.230.108.112:8085/cmdcity/findDisasterSta.do?page=1&rows=100";
+				var url = quxianRb_ipconfig + "findDisasterAndDangerSta.do";
+
+				document.body.scrollIntoView();
+				if(arguments[0]) {
+					//					url += "&starttime1=" + arguments[0] + "&endtime1=" + arguments[1];
+					url += "?starttime1=" + arguments[0] + "&endtime1=" + arguments[1];
+				}
+
+				$('#table_centent').empty();
+				contentThree = "";
+				$.ajax({
+					url: url,
+					async: false,
+					type: "get",
+					dataType: "json",
+					success: function(json) {
+						var data = json.rows;
+						for(var i = 0; i < data.length; i++) {
+							var sblv = data[i].sblv.toFixed(2);
+							var areaName = data[i].areaName;
+							var areaNameFont = '<b style="font-size:17px;font-weight:normal;">' + areaName + '</b>';
+							if(areaName.length > 3) {
+								areaNameFont = '<b style="font-size:14px;font-weight:normal;">' + areaName + '</b>';
+							}
+							contentThree +=
+								'<tr>' +
+								'<td  width="20%">' + areaNameFont + '</td>' +
+								'<td id="ying" width="20%">' + data[i].yShangBao + '</td>' +
+								'<td id="shi" width="20%">' + data[i].sjShangBao + '</td>' +
+								'<td id="wb" width="20%">' + data[i].wShangBao + '</td>' +
+								'<td  id="sbl"width="20%">' + sblv + '%</td>' +
+								'</tr>';
+						}
+						$('#table_centent').html(contentThree);
+
+					}
+				})
+			};
+
+			function table() { //页面所有元素加载完毕
+				var item = document.getElementById("tb"); //获取id为tb的元素(table)
+				var tbody = item.getElementsByTagName("tbody")[0]; //获取表格的第一个tbody元素
+				var trs = tbody.getElementsByTagName("tr"); //获取tbody元素下的所有tr元素
+				for(var i = 0; i < trs.length; i++) { //循环tr元素
+					if(i % 2 == 0) { //取模. (取余数.比如 0%2=0 , 1%2=1 , 2%2=0 , 3%2=1)
+						trs[i].style.backgroundColor = "#F0F9FD"; // 改变 符合条件的tr元素 的背景色.
+					}
+				}
+			}
+
+			window.onload = function() {
+					zq();
+					table();
+				}
+				//			document.getElementById('icon_xq').addEventListener('tap', function() {
+				//				xq(h("#start_time").html(), h("#end_time").html());
+				//				table();
+				//			});
+				//
+			document.getElementById('searchDate').addEventListener('tap', function() {
+				//				if($('#icon_zq').css('color') == 'rgb(255, 255, 255)') {
+				zq(h("#start_time").html(), h("#end_time").html());
+				//				} else {
+				//					xq(h("#start_time").html(), h("#end_time").html());
+				//				}
+				table();
+			});
+			//
+			//			document.getElementById('icon_zq').addEventListener('tap', function() {
+			//				zq(h("#start_time").html(), h("#end_time").html());
+			//				table();
+			//			});
+		</script>
+	</body>
+
+</html>

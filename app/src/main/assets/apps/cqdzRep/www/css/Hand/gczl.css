@@ -1,0 +1,383 @@
+/*工程治理项目统计*/
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: #fff;
+}
+
+#sbl {
+	color: #A52A2A;
+}
+
+#ying {
+	color: #006400;
+}
+
+#shi {
+	color: #0062CC;
+}
+
+.citychoose {
+	float: right;
+	color: red;
+}
+
+.citychoose>span {
+	font-size: 20px;
+}
+
+.title_xz {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	position: fixed;
+	top: 0;
+	background-color: #fff;
+	margin-top: 60px;
+	z-index: 10000;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+#qx_news {
+	position: absolute;
+	top: 62px;
+}
+
+.mui-bar-nav~.mui-content {
+	padding-top: 0px;
+}
+
+#choose_one {
+	margin-right: 20px;
+}
+
+col {
+	width: 80px;
+}
+
+.table-head {
+	width: 100%;
+	position: fixed;
+	top: 44px;
+	z-index: 100;
+	font-size: 17px;
+	font-variant: normal;
+	background-color: #fff;
+}
+
+tr th:nth-of-type(1),
+tr th:nth-of-type(2) {
+	border-right: 1px solid #fff;
+}
+
+#table_centent .colorone td {
+	border: 1px #ff000 solid
+}
+
+.table-body {
+	width: 100%;
+	margin: 41px 0% 0px;
+}
+
+.table-head table,
+.table-body table {
+	width: 100%;
+}
+
+tr th {
+	text-align: center;
+	height: 40px;
+	color: #333333;
+	font-family: monospace;
+	background-color: rgba(3, 169, 244, 0.3);
+}
+
+tr td {
+	text-align: center;
+	line-height: 30px;
+}
+
+tr td a {
+	color: #41b4e7;
+}
+
+tr td:nth-of-type(2),
+tr td:nth-of-type(3) {
+	border-left: 1px solid #EAF8FC;
+}
+
+.colorone {
+	background-color: #f0f8ff;
+}
+
+.colortwo {
+	background-color: #fff;
+}
+
+#offCanvasBtn {
+	line-height: 44px;
+	font-size: 16px;
+	font-weight: bold;
+	width: 60px;
+	padding-left: 25px;
+	color: #fff;
+}
+
+#offCanvasBtn img {
+	width: 18px;
+	position: relative;
+	top: 3px;
+}
+
+#offCanvasSideScroll {
+	background-color: #fff;
+}
+
+
+/*列表*/
+
+.icon2-ul-mc {
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.icon2-ul-sj {
+	position: absolute;
+	right: 35px;
+	font-size: 12px;
+}
+
+.icon2-ul-bh {
+	padding-top: 5px;
+	font-size: 16px;
+}
+
+.icon2-ul-fonta {
+	color: red;
+}
+
+.icon2-ul-fontb {
+	color: #F5CD19;
+}
+
+.icon2-ul-fontc {
+	color: #c8c8c8;
+}
+
+.pointlist img {
+	width: 40px;
+	float: left;
+	margin-right: 10px;
+}
+
+.mui-btn-blue,
+.mui-btn-primary,
+input[type=submit] {
+	color: #0075AA;
+	border: 1px solid #fff;
+	background-color: rgba(255, 255, 255, 0.98);
+}
+
+.mui-dtpicker-header {
+	background-color: #fff;
+}
+
+.mui-btn,
+button,
+input[type=button],
+input[type=reset],
+input[type=submit] {
+	color: #3F51B5;
+	border: 1px solid #fff;
+	background-color: #fff;
+}
+
+.mui-content-padded {
+	margin: 0px 10px;
+}
+
+.boxflex {
+	display: flex;
+}
+
+.boxflex>span {
+	flex: 1;
+	font-size: 12px;
+	margin: 5px;
+	padding: 5px 0;
+	text-align: center;
+	background: #f6f6f6;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.mui-search .mui-placeholder {
+	color: #41B4E7;
+}
+
+.mui-table-view-cell input {
+	background-color: #f6f6f6;
+	color: #41B4E7;
+}
+
+.boxflex>.touming {
+	display: inline-block;
+	background: transparent;
+}
+
+.celltitle {
+	display: inline-block;
+	margin: 10px 0;
+}
+
+.citychoose {
+	float: right;
+	color: #41B4E7;
+	padding-right: 10px;
+}
+
+.citychoose>span {
+	font-size: 20px;
+}
+
+#nav {
+	background-color: #f2f2f2;
+	border: 1px solid #d9d9d9;
+}
+
+.mui-bar-tab .mui-tab-item.mui-active {
+	background-color: #0075AA;
+	color: #fff !important;
+	font-size: 18px;
+}
+
+.mui-bar-tab .mui-tab-item {
+	color: #0075AA !important;
+	background-color: #e6e6e6;
+}
+
+.mui-bar-tab .mui-tab-item {
+	color: #000000;
+}
+
+#offCanvasContentScroll {
+	margin-top: 44px;
+}
+
+.mui-content-padded {
+	margin: 0 !important;
+}
+
+.checkborder {
+	font-size: 14px !important;
+	border: 1px solid #fff;
+}
+
+.inputcheck {
+	width: 40%;
+	height: 30px;
+	padding: 5px;
+	border-radius: 5px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.mui-title {
+	color: #fff;
+}
+
+.mui-table-view-cell.mui-active {
+	background: #fff !important;
+}
+
+#table_centent tr {
+	height: 50px;
+	line-height: 50px;
+}
+
+.mui-bar-nav~.mui-content {
+	padding-bottom: 52px !important;
+}
+
+.boxflex b {
+	width: 100px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	background: #f6f6f6;
+	border-radius: 5px;
+	color: #41B4E7;
+	font-family: -webkit-pictograph;
+}
+
+.backgroundImg {
+	background-image: url(../../img/choo.png);
+	background-size: 100% 100%;
+}
+
+.bug {
+	color: red;
+	width: 100%;
+	text-align: center;
+}
+
+#offCanvasSideScroll {
+	margin-bottom: 51px;
+	margin-top: 44px;
+}
+
+#sxx {
+	width: 45%;
+	border: none;
+}
+
+#exx {
+	width: 45%;
+	border: none;
+}
+
+.s {
+	background-color: white !important;
+}
+
+.content_iframe {
+	height: 100%;
+}
+
+.table-head {
+	position: fixed;
+	height: 42px;
+	width: 100%;
+	background-color: #fff;
+	z-index: 10001;
+}
+
+.table-head tr {
+	height: 42px;
+}
+
+.mui-bar-nav~.mui-content {
+	padding-top: 103px;
+	padding-bottom: 0px;
+}
+
+#tb {
+	width: 100%;
+}
+
+#tb tr {
+	text-align: center;
+	line-height: 50px;
+	height: 50px;
+}
+
+.mui-content {
+	position: absolute;
+	top: 42px;
+	width: 100%;
+	z-index: 1000;
+}

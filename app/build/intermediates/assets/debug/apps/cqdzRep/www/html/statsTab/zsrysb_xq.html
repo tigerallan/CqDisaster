@@ -8,129 +8,18 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common/header.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
-		<link rel="stylesheet" href="../../css/mui.picker.css" />
-		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
-		<style type="text/css">
-			body,
-			html {
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				padding: 0;
-				background: #fff;
-			}
-			
-			.citychoose {
-				float: right;
-				color: red;
-			}
-			
-			.citychoose>span {
-				font-size: 20px;
-			}
-			
-			.title_xz {
-				width: 100%;
-				height: 35px;
-				line-height: 35px;
-				position: fixed;
-				top: 0;
-				background-color: #fff;
-				text-align: right;
-				margin-top: 60px;
-				z-index: 998;
-				border-bottom: 1px solid #E0E0E0;
-			}
-			
-			#qx_news {
-				position: absolute;
-				top: 92px;
-			}
-			
-			.mui-bar-nav~.mui-content {
-				padding-top: 0px;
-			}
-			
-			#choose_one {
-				margin-right: 20px;
-			}
-			
-			.table-head {
-				width: 100%;
-				/*margin: 0px 5%;*/
-				position: fixed;
-				background-color: #fff;
-			}
-			
-			.table-body {
-				width: 100%;
-				margin: 40px 0% 0px 0%;
-				/*overflow-y:scroll;*/
-			}
-			
-			.table-head table,
-			.table-body table {
-				width: 100%;
-			}
-			/*tr{
-				border-bottom: 1px solid #E4E3E6;
-			}*/
-			
-			tr th {
-				text-align: center;
-			}
-			
-			tr td {
-				text-align: center;
-				line-height: 40px;
-			}
-			
-			.colorone {
-				background-color: #f0f8ff;
-			}
-			
-			.colortwo {
-				background-color: #fff;
-			}
-			
-			.img {
-				display: block;
-				width: 15px;
-				height: 15px;
-				position: absolute;
-				top: 72px;
-				left: 75px;
-				z-index: 10000;
-			}
-			
-			.img img {
-				width: 15px;
-			}
-			
-			#title_span {
-				position: absolute;
-				right: 15px;
-				top: 32px;
-				font-size: 14px;
-			}
-			
-			.title_xz span {
-				color: red;
-				font-size: 12px;
-				display: inline-block;
-				margin-right: 12px;
-			}
-		</style>
+		<link rel="stylesheet" href="../../css/Hand/stats.css" />
 	</head>
 
-	<body>
+	<body style="opacity:0">
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
 			<h1 id="title" class="mui-title">片区驻守人员上报率</h1>
-			<span id="title_span">选区</span>
+			<!--<span id="title_span">选区</span>-->
 		</header>
 		<div class="title_xz">
 			<span>
@@ -140,116 +29,94 @@
 		<!--<div class="img">
 			<img id="choose_img" src="../../img/1_43.png"/>
 		</div>-->
-		<div id="qx_news" class="mui-content">
-			<div class="table-head">
-				<table style="width: 98%;margin: 10px 1%;">
-					<colgroup>
-						<col style="width: 80px;" />
-						<col />
-					</colgroup>
-					<thead>
-						<tr>
-							<th width="25%">区县名称</th>
-							<th width="25%">应上报数</th>
-							<th width="25%">实上报数</th>
-							<th width="25%">上报率</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-			<div class="table-body">
-				<table id="tb">
-					<colgroup>
-						<col style="width: 80px;" />
-						<col />
-					</colgroup>
-					<tbody id="table_centent">
-						<!--<tr class="colorone">
-							<td width="20%">开州区</td>
-							<td width="20%">73</td>
-							<td width="20%">73</td>
-							<td width="20%">100%</td>
-						</tr>
-						<tr class="colortwo">
-							<td width="20%">开州区</td>
-							<td width="20%">73</td>
-							<td width="20%">73</td>
-							<td width="20%">100%</td>
-						</tr>-->
-					</tbody>
-				</table>
+		<div class="mui-content">
+			<table class="table_head">
+				<tr>
+					<th width="25%">区县名称</th>
+					<th width="25%">应上报数</th>
+					<th width="25%">实上报数</th>
+					<th width="25%">上报率</th>
+				</tr>
+			</table>
+			<div id="rz_table" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<table id="tb">
+						<tbody id="table_centent">
+
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/h.js"></script>
-		<script src="../../js/quxian.js"></script>
-		<script src="../../js/mui.picker.js"></script>
-		<script src="../../js/mui.poppicker.js"></script>
+		
 		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/ip.js"></script>
 		<script type="text/javascript">
 			mui.init();
+			mui.ready(function() {
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 50);
 
-//						所属区县选项
-						(function($, doc) {
-							$.init();
-							$.ready(function() {
-								var cityPicker = new $.PopPicker({
-									//两列
-									layer: 1
-								});
-								cityPicker.setData(cityData);
-								var choose_one = document.getElementById('title_span');
-								choose_one.addEventListener('tap', function(event) {
-									cityPicker.show(function(items) {
-										choose_one.innerText = items[0].text;
-										//返回 false 可以阻止选择框的关闭
-										//return false;
-									});
-								}, false);
-							});
-						})(mui, document);
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true, //是否竖向滚动
+					scrollX: false, //是否横向滚动
+					startX: 0, //初始化时滚动至x
+					startY: 0, //初始化时滚动至y
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+					bounce: false //是否启用回弹
+				});
+			});
 
-						var contentThree = "";
-						$.ajax({
-							url: pianqu_ipconfig+"countWorkLogSbl.do",
-							async: false,
-							type: "get",
-							dataType: "json",
-							success: function(json) {
-								
-								$.each(json.data, function(key, value) {
-									var sbl = (value['sbl']*100).toFixed(2);
-									contentThree +=
-									'<tr class="colortwo"'+(value['sb']==null?'style="color:red"':'')+'>' +
-									'<td width="20%">' + value['area_name'] + '</td>' +
-									'<td width="20%">' + value['ysb'] + '</td>' +
-									'<td width="20%">' ;
-									contentThree +=
-									(value['sb']==null?'0':(value['sb']>value['ysb']?value['ysb']:value['sb']))
-									+ '</td>' ;
-									contentThree +=
-									'<td width="20%">' ;
-									contentThree +=
-									 sbl>100.00?'100.00%':sbl
-									+ '%</td>'
-									'</tr>';
-								});
-								$('#table_centent').html(contentThree);
-							}
-						});
+			var contentThree = "";
+			$.ajax({
+				url: pianqu_ipconfig+"countWorkLogSbl.do",
+				async: false,
+				type: "get",
+				dataType: "json",
+				success: function(json) {
 
-						window.onload = function() { //页面所有元素加载完毕
-							var item = document.getElementById("tb"); //获取id为tb的元素(table)
-							var tbody = item.getElementsByTagName("tbody")[0]; //获取表格的第一个tbody元素
-							var trs = tbody.getElementsByTagName("tr"); //获取tbody元素下的所有tr元素
-							for(var i = 0; i < trs.length; i++) { //循环tr元素
-								if(i % 2 == 0) { //取模. (取余数.比如 0%2=0 , 1%2=1 , 2%2=0 , 3%2=1)
-									trs[i].style.backgroundColor = "#F0F9FD"; // 改变 符合条件的tr元素 的背景色.
-								}
-							}
-						}
+					$.each(json.data, function(key, value) {
+						var sbl = (value['sbl'] * 100).toFixed(2);
+						contentThree +=
+							'<tr class="colortwo"' + (value['sb'] == null ? 'style="color:red"' : '') + '>' +
+							'<td width="20%">' + value['area_name'] + '</td>' +
+							'<td id="ying" width="20%">' + value['ysb'] + '</td>' +
+							'<td id="shi"width="20%">';
+						contentThree +=
+							(value['sb'] == null ? '0' : (value['sb'] > value['ysb'] ? value['ysb'] : value['sb'])) +
+							'</td>';
+						contentThree +=
+							'<td  id="sbl"width="20%">';
+						contentThree +=
+							sbl > 100.00 ? '100.00%' : sbl +
+							'%</td>'
+						'</tr>';
+					});
+					$('#table_centent').html(contentThree);
+					mui.plusReady(function() {
+						plus.nativeUI.closeWaiting();
+						mui.currentWebview.show("slide-in-bottom", 300);
+					});
+				}
+			});
+
+			window.onload = function() { //页面所有元素加载完毕
+				var item = document.getElementById("tb"); //获取id为tb的元素(table)
+				var tbody = item.getElementsByTagName("tbody")[0]; //获取表格的第一个tbody元素
+				var trs = tbody.getElementsByTagName("tr"); //获取tbody元素下的所有tr元素
+				for(var i = 0; i < trs.length; i++) { //循环tr元素
+					if(i % 2 == 0) { //取模. (取余数.比如 0%2=0 , 1%2=1 , 2%2=0 , 3%2=1)
+						trs[i].style.backgroundColor = "#F0F9FD"; // 改变 符合条件的tr元素 的背景色.
+					}
+				}
+			}
 		</script>
 	</body>
 

@@ -1,0 +1,136 @@
+.mui-table-view-cell .mui-active {
+	background: #fff;
+}
+
+.mui-content>.mui-table-view:first-child {
+	margin-top: 62px;
+}
+
+#offCanvasBtn {
+	line-height: 44px;
+	font-size: 16px;
+	font-weight: bold;
+	width: 60px;
+	padding-left: 10px;
+}
+
+#offCanvasBtn img {
+	width: 18px;
+	position: relative;
+	top: 3px;
+}
+
+#offCanvasSideScroll {
+	background-color: #fff;
+}
+
+
+/*列表*/
+
+.icon2-ul-mc {
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.icon2-ul-sj {
+	position: absolute;
+	right: 35px;
+	/*top: 23px;*/
+	font-size: 14px;
+}
+
+.icon2-ul-bh {
+	padding-top: 5px;
+	font-size: 16px;
+}
+
+.icon2-ul-fonta {
+	color: red;
+}
+
+.icon2-ul-fontb {
+	color: #F5CD19;
+}
+
+.icon2-ul-fontc {
+	color: #c8c8c8;
+}
+
+.pointlist img {
+	width: 40px;
+	float: left;
+	margin-right: 10px;
+}
+
+.mui-content-padded {
+	margin: 0px;
+}
+
+.boxflex {
+	display: flex;
+}
+
+.boxflex>span {
+	flex: 1;
+	font-size: 16px;
+	margin: 5px;
+	padding: 5px 0;
+	text-align: center;
+	background: #f6f6f6;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 1px solid #fff;
+}
+
+.mui-table-view-cell input {
+	background-color: #f6f6f6;
+}
+
+.boxflex>.touming {
+	display: inline-block;
+	background: transparent;
+}
+
+.celltitle {
+	display: inline-block;
+	margin: 10px 0;
+}
+
+.citychoose {
+	float: right;
+	color: red;
+	padding-right: 10px;
+}
+
+.citychoose>span {
+	font-size: 20px;
+}
+
+#nav {
+	background-color: #f2f2f2;
+	border: 1px solid #d9d9d9;
+}
+
+.mui-bar-tab .mui-tab-item.mui-active {
+	background-color: #DF1C1C;
+	color: #fff !important;
+	font-size: 18px;
+}
+
+.mui-bar-tab .mui-tab-item {
+	color: #000000;
+}
+
+.mui-table-view-cell.mui-active {
+	background: #fff !important;
+}
+
+.boxflex b {
+	width: 98%;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	background: #f6f6f6;
+	border-radius: 5px;
+	font-size: 16px;
+}

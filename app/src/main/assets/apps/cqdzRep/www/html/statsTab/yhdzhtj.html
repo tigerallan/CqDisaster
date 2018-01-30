@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>隐患点综合统计</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/yhdzhtj.css" />
+	</head>
+
+	<body style="opacity:0">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 class="mui-title">隐患点综合统计</h1>
+		</header>
+
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<h3>灾害分类</h3>
+				<div class="yhd yhd_one">
+					<div id="container" style="width: 100%; height: 250px;"></div>
+					<div class="sum">
+						<span>总数：</span>
+						<span>16412</span>
+					</div>
+				</div>
+				<h3>规模</h3>
+				<div class="yhd">
+					<div id="contbar" style="width: 100%; height: 250px;"></div>
+				</div>
+				<h3>稳定性</h3>
+				<div class="yhd">
+					<div id="cont" style="width: 100%; height: 250px;"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.ready(function() {
+				mui('.mui-scroll-wrapper').scroll({
+					scrollY: true,
+					scrollX: false,
+					startX: 0,
+					startY: 0,
+					indicators: true,
+					deceleration: 0.0006,
+					bounce: false
+				});
+
+				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+				}, 100);
+			});
+
+			$.ajax({
+				url: ip + "meteor/getDisType.do",
+				type: "get",
+				dataType: "json",
+			}).done(function(json) {
+				var data = json.data;
+				var object = document.getElementById('container');
+				var option = {
+					colors: ['#f97973', '#4f505f', '#30aa90', '#8b9d9a', '#e37b79', '#d8d353', '#70bfbc', '#696559'],
+					tooltip: {
+						trigger: 'item',
+						formatter: "{b}<br/>{c} ({d}%)",
+						borderWidth: 0,
+						backgroundColor: 'rgba(240,240,240,.75)',
+						textStyle: {
+							color: '#666666'
+						}
+					},
+					legend: {
+						orient: 'vertical',
+						x: 'left',
+						itemWidth: 15,
+						itemHeight: 15,
+						textStyle: {
+							color: '#666666',
+							fontSize: '14'
+						},
+						data: ['不稳定斜坡', '地面坍塌', '地裂缝', '泥石流', '滑坡', '危岩', '库岸', '其他']
+					},
+					series: [{
+						type: 'pie',
+						center: ['65%', '40%'],
+						radius: ['25%', '70%'],
+						avoidLabelOverlap: false,
+						label: {
+							normal: {
+								show: false,
+								position: 'center'
+							},
+							emphasis: {
+								show: true,
+								textStyle: {
+									fontSize: '16',
+									fontWeight: 'bold'
+								}
+							}
+						},
+						labelLine: {
+							normal: {
+								show: false
+							}
+						},
+						data: [{
+							value: data[3].price,
+							name: '不稳定斜坡'
+						}, {
+							value: data[4].price,
+							name: '地面坍塌'
+						}, {
+							value: data[5].price,
+							name: '地裂缝'
+						}, {
+							value: data[1].price,
+							name: '泥石流'
+						}, {
+							value: data[0].price,
+							name: '滑坡'
+						}, {
+							value: data[2].price,
+							name: '危岩'
+						}, {
+							value: data[6].price,
+							name: '库岸'
+						}, {
+							value: data[7].price,
+							name: '其他'
+						}]
+					}]
+				};
+				var Chart = echarts.init(object);
+				Chart.setOption(option);
+			});
+
+			$.ajax({
+				url: ip + "meteor/getDisScale.do",
+				type: "get",
+				dataType: "json",
+			}).done(function(json) {
+				var data = json.data;
+				var objectContbar = document.getElementById('contbar');
+				var option = {
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								var colorList = [
+									'#f97973', '#4f595f', '#30aa90', '#8b9d9a'
+								];
+								return colorList[params.dataIndex]
+							},
+							label: {
+								show: false
+							}
+						}
+					},
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						},
+						borderWidth: 0,
+						backgroundColor: 'rgba(240,240,240,.75)',
+						textStyle: {
+							color: '#666666'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						top: '5%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['特大', '大', '中型', '小型'],
+						axisTick: {
+							alignWithLabel: true
+						}
+					}],
+					yAxis: [{
+						type: 'value'
+					}],
+					series: [{
+						name: '数量',
+						type: 'bar',
+						barWidth: '60%',
+						data: [data[0].price, data[1].price, data[2].price, data[3].price]
+					}]
+				};
+				var Chart = echarts.init(objectContbar);
+				Chart.setOption(option);
+			});
+
+			$.ajax({
+				url: ip + "meteor/getDisStable.do",
+				type: "get",
+				dataType: "json",
+			}).done(function(json) {
+				var data = json.data;
+				var objectCont = document.getElementById('cont');
+				var option = {
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								var colorList = [
+									'#e37b79', '#d8d353', '#70bfbc', '#696559'
+								];
+								return colorList[params.dataIndex]
+							},
+							label: {
+								show: false
+							}
+						}
+					},
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							type: 'shadow'
+						},
+						borderWidth: 0,
+						backgroundColor: 'rgba(240,240,240,.75)',
+						textStyle: {
+							color: '#666666'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						top: '5%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['稳定', '不稳定', '欠稳定', '基本稳定'],
+						axisTick: {
+							alignWithLabel: true
+						}
+					}],
+					yAxis: [{
+						type: 'value'
+					}],
+					series: [{
+						name: '数量',
+						type: 'bar',
+						barWidth: '60%',
+						data: [data[0].price, data[1].price, data[2].price, data[3].price]
+					}]
+				};
+				var Chart = echarts.init(objectCont);
+				Chart.setOption(option);
+				mui.plusReady(function() {
+						plus.nativeUI.closeWaiting();
+						mui.currentWebview.show("slide-in-bottom", 300);
+					});
+			});
+		</script>
+	</body>
+
+</html>

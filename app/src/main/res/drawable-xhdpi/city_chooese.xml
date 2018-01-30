@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android" >-->
+
+    <!--<solid android:color="@color/ac9455" />-->
+
+    <!--<corners android:radius="8px" />-->
+
+    <!--<stroke-->
+        <!--android:width="2px"-->
+        <!--android:color="@color/ac9455" />-->
+
+<!--</shape>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 阴影部分 -->
+    <!-- top代表下边的阴影高度，left代表右边的阴影宽度。其实也就是相对应的offset -->
+    <item
+        android:left="3dp"
+        android:top="3dp">
+
+        <shape android:shape="rectangle" >
+
+            <gradient
+                android:angle="270"
+                android:endColor="#8F3d3d3d"
+                android:startColor="#8F3d3d3d" />
+
+            <corners android:radius="6px" />
+        </shape>
+    </item>
+
+    <!-- 背景部分 -->
+    <!-- 形象的表达：bottom代表背景部分在上边缘超出阴影的高度，right代表背景部分在左边超出阴影的宽度（相对应的offset） -->
+    <item
+        android:right="1dp"
+        android:bottom="2dp">
+        <shape android:shape="rectangle" >
+
+            <gradient
+                android:angle="270"
+                android:endColor="@color/colorPrimaryDark"
+                android:startColor="@color/colorPrimaryDark" />
+
+            <corners android:radius="8px" />
+        </shape>
+    </item>
+</layer-list>

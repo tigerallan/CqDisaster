@@ -1,0 +1,97 @@
+<!DOCTYPE >
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>找回密码</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" href="../../css/person.css" />
+		<link rel="stylesheet" href="../../css/common/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/common/mui.poppicker.css" />
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a href="javascript:void(0);" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">找回密码</h1>
+		</header>
+		<div class="mui-scroll-wrapper mui-content">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<div class="mui-input-row">
+						<label>姓     名：</label>
+						<input id='pwd' name="password" type="text" class="mui-input-clear mui-input" onfocus="this.placeholder=''" onblur="this.placeholder='请输入真实姓名'" placeholder="请输入真实姓名">
+					</div>
+					<div class="dqxz">
+						<li class="mui-table-view-cell">
+							<a href="javascript:;">地 区：
+							<span id="diqu" class="mui-pull-right"><span class="mui-icon mui-icon-forward" ></span></span>
+						</a>
+						</li>
+						<div id="qx_news" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id="dynamic_qx" class="main mui-table-view">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="mui-input-row">
+						<label>手机号码：</label>
+						<input id='pwd' name="password" type="text" class="mui-input-clear mui-input" onfocus="this.placeholder=''" onblur="this.placeholder='请输入已注册手机号码'" placeholder="请输入已注册手机号码">
+					</div>
+				</ul>
+				<div class="yzm">
+					<input class="yzm1" name="yzm" type="text" class="mui-input-clear mui-input" onfocus="this.placeholder=''" onblur="this.placeholder='请输入验证码'" placeholder="请输入验证码" />
+					<button class="btn_yzm">获取验证码</button>
+				</div>
+				<ul class="mui-table-view">
+				<div class="mui-input-row">
+					<label>重置密码：</label>
+					<input id='pwd' name="password" type="text" class="mui-input-clear mui-input" onfocus="this.placeholder=''" onblur="this.placeholder='由6-18位数字或字母组成'" placeholder="由6-18位数字或字母组成">
+				</div>
+				<div class="mui-input-row">
+					<label>确认密码：</label>
+					<input id='pwd' name="password" type="text" class="mui-input-clear mui-input" onfocus="this.placeholder=''" onblur="this.placeholder=''" placeholder="">
+				</div>
+				</ul>
+				<div class="btn">
+					<button class="btn1">完      成</button>
+					<button class="btn2">直接登录</button>
+				</div>
+			</div>
+		</div>
+		<script  src="../../js/jquery-1.11.3.js" ></script>
+		<script  src="../../js/ip.js" ></script>
+		<script src="../../js/mui.min.js" ></script>
+		<script  src="../../js/mui.picker.js" ></script>
+		<script  src="../../js/mui.poppicker.js" ></script>
+		<script  src="../../js/city.data.js" ></script>
+		<script  src="../../js/city.data-3.js" ></script>
+		<script type="text/javascript">
+			//区县选项
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+				var cityPicker = new $.PopPicker({
+					layer: 1
+				});
+				cityPicker.setData(cityData);
+				var choose_one = document.getElementById('diqu');
+				var dynamic_qx = document.getElementById('dynamic_qx');
+				choose_one.addEventListener('tap', function(event) {
+					cityPicker.show(function(items) {
+						choose_one.innerText = items[0].text;
+					
+					});
+				}, false);
+			});
+		})(mui, document);
+		</script>
+	</body>
+
+</html>

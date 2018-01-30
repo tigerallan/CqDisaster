@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/common/mui.poppicker.css" />
+		<link rel="stylesheet" type="text/css" href="css/common/mui.picker.css" />
+		<link rel="stylesheet" type="text/css" href="css/infocontent.css" />
+	</head>
+
+	<body>
+
+		<div class="title_xz">
+			<span class="title_span">所属区县</span>
+			<span id="choose_one" class="citychoose">请选择<span class="mui-icon mui-icon-forward"></span></span>
+		</div>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="dynamic_qx" class="mui-table-view"></ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/h.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/mui.picker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/ip.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				pullRefresh: {
+					container: ".mui-content",
+					up: {
+						height: 50,
+						auto: true,
+						contentrefresh: "正在加载...",
+						contentnomore: '没有更多数据了',
+						callback: fnPullfresh
+					}
+				}
+			});
+			mui.ready(function() {
+//				setTimeout(function() {
+					h('body').animate({
+						opacity: '1'
+					});
+//				}, 50);
+			});
+
+			//请求所有数据
+			var url = ip + "getZhuangbao.do",
+				table = document.querySelector(".mui-table-view"),
+				data = null,
+				_that;
+
+			(function() {
+				mui.ajax(url, {
+					dataType: "json",
+					type: "get",
+					timeout: 10000,
+					success: function(d) {
+						data = d.data;
+					}
+				})
+			})()
+
+			function dataEach(data) {
+				var len = data.length;
+				if(len) {
+					data.forEach(function(e, i, a) {
+						if(i < 10) {
+							fnStorage(e.id,true,e);
+							count_table();
+						}
+					})
+					len<=10?_that.endPullupToRefresh(true):_that.endPullupToRefresh(false);
+					data.splice(0, 10);
+				} else {
+					_that.endPullupToRefresh(true);
+				}
+			}
+
+			function fnPullfresh() {
+				_that = this;
+				setTimeout(function() {
+					dataEach(data);
+
+				}, 1500)
+			}
+
+			var cityData;
+			var myArray = new Array();
+			$.ajax({
+				url: ip + "findAreaData.do",
+				async: false,
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					function compare(property) {
+						return function(a, b) {
+							var value1 = a[property];
+							var value2 = b[property];
+							return value1 - value2;
+						}
+					}
+					myArray = json.sort(compare('id'));
+					cityData = myArray;
+				}
+			});
+
+			//所属区县选项
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					var cityPicker = new $.PopPicker({
+						layer: 1
+					});
+					cityPicker.setData(cityData);
+					var choose_one = document.getElementById('choose_one');
+					var dynamic_qx = document.getElementById('dynamic_qx');
+
+					choose_one.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							choose_one.innerText = items[0].text;
+							var areaId = items[0].id;
+							$.ajax({
+								url: ip + "getZhuangbao.do",
+								async: false,
+								type: "get",
+								data: {
+									areaId: areaId
+								},
+								dataType: "json",
+								success: function(json) {
+									data = json.data;
+									dynamic_qx.innerHTML = "";
+									if (data.length <= 10) {
+										_that.endPullupToRefresh(true);
+									} else{
+										mui('.mui-content').pullRefresh().refresh(true);
+										_that.endPullupToRefresh(false);
+										
+									}
+									dataEach(data);
+									document.body.scrollTop = document.documentElement.scrollTop = 0;
+								}
+							});
+						});
+					}, false);
+				});
+			})(mui, document);
+
+
+			function fnStorage(newsId,type,e){
+				var oStorage = localStorage,
+					zbids = JSON.parse(oStorage.getItem("zbids"))||[];	//新闻zbids Array 注意初始化
+	
+				type?(function(){
+					//处理刷新
+					zbids.length?(function(){
+						var li = document.createElement("li");
+						li.className = "mui-table-view-cell mui-media";
+						var table = document.querySelector(".mui-table-view");
+
+						zbids.indexOf(newsId)<0?(function(){
+							//处理未读新闻
+							li.innerHTML = '<a class="fishref" href="javascript:void(0);"  data-ng="' + e.ng + '" data-id="' + e.id + '">' +
+								'<div class="mui_wd">' +
+								'<div class="mui_wdyd"></div></div>' +
+								'<div class="mui-media-body">' +
+								'<div class="mui-ellipsis">' + e.title + '</div>' +
+								'</div>' +
+								'<div class="place">' +
+								'<span>' + e.county + '</span>' +
+								'<span>' + e.time + '</span>' +
+								'<span>' + e.dispose + '</span>' +
+								'<span>' + e.berichten + '</span>' +
+								'</div></a>' +
+								'</li>' +
+								'</div></a>';
+							table.appendChild(li);
+						})():(function(){
+							//处理已读新闻     
+							li.innerHTML = '<a class="fishref" href="javascript:void(0);"  data-ng="' + e.ng + '" data-id="' + e.id + '">' +
+								'<div class="mui_wd">' +
+								'<div class="mui_wdyd" style="visibility:hidden"></div></div>' +
+								'<div class="mui-media-body">' +
+								'<div class="mui-ellipsis">' + e.title + '</div>' +
+								'</div>' +
+								'<div class="place">' +
+								'<span>' + e.county + '</span>' +
+								'<span>' + e.time + '</span>' +
+								'<span>' + e.dispose + '</span>' +
+								'<span>' + e.berichten + '</span>' +
+								'</div></a>' +
+								'</li>' +
+								'</div></a>';
+							table.appendChild(li);
+						})();
+					})():oStorage.setItem("zbids",JSON.stringify([newsId]));
+				})():(function(){
+					//处理查阅新闻
+					/**
+					 *防止对
+					 *同一条新闻的
+					 *重复阅读导致的
+					 *重复添加
+					 */
+					zbids.indexOf(newsId)<0?(function(){
+						oStorage.setItem("zbids",JSON.stringify((zbids.push(newsId)-zbids.length)||zbids));
+						// 对已读新闻进行处理
+	
+						console.log("已读 id:"+newsId); 
+					})():false;
+				})();
+			}
+
+
+			//点击每条跳转到详情页
+			function count_table() {
+				var fishref = document.getElementsByClassName('fishref');
+				var count_table = fishref.length;
+				for(i = 0; i < count_table; i++) {
+					fishref[i].addEventListener('tap', function() {
+						$(this).attr("data-ng", "0");
+						var wdyd = $(this).find(".mui_wdyd");
+						wdyd.css("visibility", "hidden");
+						var id = this.getAttribute("data-id");
+						
+						fnStorage(id,false);
+						mui.openWindow({
+							url: 'html/dynamicTab/infocontent_xq.html?id=' + id,
+							id: 'infocontent_xq.html',
+							waiting: {
+								autoShow: true,
+								title: '正在加载...'
+							},
+							show: {
+								autoShow: true,
+								aniShow: 'slide-in-bottom'
+							}
+						});
+					});
+				}
+			}
+			//进入时执行
+			window.onload = count_table;
+		</script>
+	</body>
+
+</html>
