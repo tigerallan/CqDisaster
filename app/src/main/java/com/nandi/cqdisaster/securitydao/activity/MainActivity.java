@@ -1,12 +1,16 @@
 package com.nandi.cqdisaster.securitydao.activity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -63,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private Context context;
     private String passwordDes;
+    private ImageView ivBack;
+    private TextView tvTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +94,18 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        if (Build.VERSION.SDK_INT >= 23) {
+            int REQUEST_CODE_CONTACT = 101;
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CALL_PHONE,Manifest.permission.READ_PHONE_STATE};
+            //验证是否许可权限
+            for (String str : permissions) {
+                if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
+                    //申请权限
+                    this.requestPermissions(permissions, REQUEST_CODE_CONTACT);
+                    return;
+                }
+            }
+        }
     }
 
     private void loginRequest() {
@@ -253,6 +271,16 @@ public class MainActivity extends AppCompatActivity {
         cityName = (TextView) findViewById(R.id.city_name);
         areaName = (Spinner) findViewById(R.id.area_name);
         typePoint = (Spinner) findViewById(R.id.type_point);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
+        tvTitle = (TextView) findViewById(R.id.tv_title);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        tvTitle.setText("应急数据管理查询");
+
         areaName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

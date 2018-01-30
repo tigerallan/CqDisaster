@@ -54,6 +54,7 @@ public class VideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_video, container, false);
         ButterKnife.bind(this, view);
+        fileDir = createFileDir("Video");
         fileName = getArguments().getString("URL");
         if (fileName.trim().length() == 0) {
             fileName = "5002322010050101.mp4";
@@ -136,7 +137,7 @@ public class VideoFragment extends Fragment {
 
     @OnClick(R.id.video_start)
     public void onViewClicked() {
-        fileDir = createFileDir("Video");
+
         file = new File(fileDir, fileName);
         long length = file.length();
         if (length > 0) {
