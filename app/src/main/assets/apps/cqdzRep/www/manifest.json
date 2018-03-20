@@ -66,6 +66,9 @@
 		"Accelerometer": {}
 	},
 	"plus": {
+		"statusbar": {
+			"immersed": true
+		},
 		"splashscreen": {
 			"autoclose": true,
 			/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
@@ -112,7 +115,7 @@
 				"aliasname": "",
 				/*Android应用打包使用密钥库中证书的别名*/
 				/*Android应用设置沉浸式状态栏*/
-				"ImmersedStatusbar": true,
+				"ImmersedStatusbar": false,
 				"permissions": [
 					"<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
 					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
@@ -289,11 +292,7 @@
 					"img/wrjsp.png",
 					"img/jsq.png"
 				],
-				"refer": [
-					"html/contingencyTab/wannianli/wannianli.html",
-					"html/contingencyTab/zddq_sssp.html",
-					"html/contingencyTab/uav-video.html"
-				],
+				"refer": [],
 				"priority": 0
 			},
 			"stats.html": {
@@ -348,8 +347,7 @@
 					"contingency.html",
 					"stats.html",
 					"work.html",
-					"infocontent.html",
-					"person.html"
+					"infocontent.html"
 				],
 				"priority": 0
 			},
@@ -436,13 +434,6 @@
 				],
 				"refer": [],
 				"priority": 0
-			},
-			"person.html": {
-				"resources": [],
-				"refer": [
-					"login.html"
-				],
-				"priority": 0
 			}
 		},
 		"idle": {
@@ -507,6 +498,7 @@
 				"html/contingencyTab/wannianli/fonts/icomoon.svg",
 				"img/1_13.png",
 				"img/timg.jpeg",
+				"html/contingencyTab/wannianli/wannianli.html",
 				"img/dl4.png",
 				"html/contingencyTab/wannianli/images/btn_huangli.png",
 				"html/workTab/zhreport.html",
@@ -535,8 +527,11 @@
 				"img/1_6.png",
 				"html/workTab/qcqf/workQcqf.html",
 				"img/yu.png",
+				"person.html",
+				"html/contingencyTab/zddq_sssp.html",
 				"html/workTab/qcqf/workQcqfThree.html",
 				"img/gj3.png",
+				"html/contingencyTab/uav-video.html",
 				"data/jcyj_hidden1.json",
 				"html/workTab/qcqf/workQcqf_jcsjsbTj.html",
 				"html/workTab/worklist.html",

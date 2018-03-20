@@ -49,7 +49,7 @@
     <string name="str_notifitcation">iCloudSoft正在运行中</string>
     <string name="str_dialog_title_protip">呼叫提示</string>
 
-    <string name="base_url">http://183.230.182.149:19088/rend</string>
+    <string name="base_url">http://183.230.252.112:19088/rend</string>
     <string name="picPath">d:/cmd/img/</string>
     <string name="panorama">全景图</string>
     <string name="plan">平面图</string>
@@ -63,4 +63,7 @@
     <string name="prompt_email">账号</string>
     <string name="prompt_password">密码</string>
     <string name="action_sign_in">登录</string>
+    <string name="chooese">选择范围</string>
+    <string name="currLocation">当前位置：</string>
+    <string name="choo">选择范围：</string>
 </resources>

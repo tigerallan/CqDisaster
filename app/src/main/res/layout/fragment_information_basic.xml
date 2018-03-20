@@ -507,6 +507,14 @@
             </LinearLayout>
             <TextView
                 style="@style/DividerLine"/>
+            <Button
+                android:id="@+id/naviBtn"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="35dp"
+                android:text="导航"
+                android:background="@drawable/city_chooese"/>
 
         </LinearLayout>
     </ScrollView>

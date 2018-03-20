@@ -9,25 +9,23 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
-
 	</head>
 
 	<body>
 		<!--子页面内容-->
 		<div id="dynamic" class="mui-content">
 			<div class="mui-scroll">
-
 				<!--当日天气情况-->
 				<div id="tq" class="weather"></div>
 				<div id="pDate"></div>
 				<div id="nongli"></div>
-
 				<!--新闻轮播-->
 				<div class="mui-slider">
 					<div id="xwlb" class="mui-slider-group mui-slider-loop">
-						<div class="mui-slider-item"><a href="#"><img src="img/nobarern.png" /></a></div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="img/nobarern.png" /></a>
+						</div>
 					</div>
-
 					<div class="mui-slider-indicator mui-text-right">
 						<div class="mui-indicator mui-active"></div>
 						<div class="mui-indicator"></div>
@@ -40,7 +38,7 @@
 				<div class="dynamic_jg"></div>
 				<!--新闻列表-->
 				<ul id="dynamic_sj" class="main mui-table-view">
-					<!--<li class="mui-table-view-cell mui-media">
+					<!-- <li class="mui-table-view-cell mui-media">
 						<a class="fishref" href="javascript:;">
 							<div class="mui-media-body">
 								<div class='mui-ellipsis'>我市第五届“爱在公租房”社区邻里节启动</div>
@@ -92,7 +90,7 @@
 								<span>2017-09-11</span>
 							</div>
 						</a>
-					</li>-->
+					</li> -->
 				</ul>
 				<div class="dynamic_jg"></div>
 			</div>
@@ -101,190 +99,137 @@
 		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/ip.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/calendar.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/indexDB-simp.min.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				pullRefresh: {
-					container: ".mui-content", //待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+					container: "#dynamic",
 					up: {
-						height: 50, //可选.默认50.触发上拉加载拖动距离
-						auto: true, //可选,默认false.自动上拉加载一次
-						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
-						contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
-						callback: fnPullfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+						height: 50,
+						auto: true,
+						contentrefresh: "正在加载...",
+						contentnomore: '没有更多数据了',
+						callback: fnPullfresh
 					}
 				}
 			});
+			
+			window.onload = function() {
+				showDate(); //农历方法
+				xwlb(); //新闻轮播
+			}
+			var _downThis; //下拉加载this
 
-			var arrDisplay = []; //保存已读新闻的id
-			//天气
-//			var tq = "";
-//			$.ajax({
-//				url: ip + "getWeather.do",
-//				type: "get",
-//				async: false, //同步请求	
-//				dataType: "json",
-//				success: function(json) {
-//					var data = json.data;
-//					var status1 = data.status1;
-//					var src = '';
-//					if(status1.indexOf("阴") >= 0) {
-//						src = "img/yin.png";
-//					} else if(status1.indexOf("晴") >= 0) {
-//						src = "img/qing.png";
-//					} else if(status1.indexOf("多云") >= 0) {
-//						src = "img/duoyun.png";
-//					} else if(status1.indexOf("雨") >= 0) {
-//						src = "img/yu.png";
-//					}
-//					tq +=
-//						'<div>' +
-//						'<div class="weathertext">' +
-//						'<img src="' + src + '" />' +
-//						'<span class="wd">' + data.temperature2 + '°C~' + data.temperature1 + '°C</span>' +
-//						'<span class="tq">' + data.status1 + '</span>' +
-//						'</div>' +
-//						'</div>' +
-//						'<div>' +
-//						'<div class="weathertext">' +
-//						'<div style="font-size:20px;margin-top:-12px;margin-left:-12px;">重庆</div>' +
-//						'</div>' +
-//						'</div>';
-//					$('#tq').html(tq);
-//				}
-//			});
-			//新闻图片轮播请求
-			var slideUrl = ip + "getNew.do",
-				allData = []; //所有新闻数据
+			var page = 1; //页码
 
-			(function() {
-				mui.ajax(slideUrl, {
-					dataType: "json",
-					type: "get",
+			//上拉刷新
+			function fnPullfresh() {
+				var url = ip + "getNew.do?page=" + page + "&rows=10";
+				_that = this;
+				mui.ajax(url, {
+					dataType: 'json',
+					type: 'get',
 					timeout: 10000,
 					success: function(data) {
-						var slideWrap = document.getElementById("xwlb"), //轮播容器 
-							oDiv = "", //轮播内容
-							slideData = []; //轮播数据
-
-						//过滤轮播数据
-						allData = data.filter(function(e, i, a) {
-							if(slideData.length <= 4) {
-								if(e.sfPic == 1) {
-									slideData.push(e);
-									oDiv += '<div class="mui-slider-item"><a class="fis" href="javascript:void(0);" data-id="' + e.id + '"><img src="http://' + e.pic[0] + '"><p class="mui-slider-title"><span>' + e.title + '</span></p></a></div>';
-								} else {
-									return e;
+						if(data.length) {
+							var table = document.querySelector(".mui-table-view");
+							data.forEach(function(e, i, a) {
+								var li = document.createElement("li");
+								li.className = "mui-table-view-cell mui-media";
+								switch(e.pic.length) {
+									case 0:
+										li.innerHTML = '<a id="' + e.id + '" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis">' + e.title + '</div></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
+										break;
+									case 1:
+										li.innerHTML = '<a id="' + e.id + '" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><img class="mui-media-object mui-pull-right" src="http://' + e.pic[0] + '"><div class="mui-media-body"><div class="mui-ellipsis">' + e.title + '</div></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
+										break;
+									case 2:
+										li.innerHTML = '<a id="' + e.id + '" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis">' + e.title + '</div></div><div class="dynamic_imgOne"><img src="http://' + e.pic[0] + '"></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
+										break;
+									default:
+										li.innerHTML = '<a id="' + e.id + '" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis">' + e.title + '</div></div><div class="dynamic_imgThree"><img class="pic0" src="http://' + e.pic[0] + '"><img class="pic1" src="http://' + e.pic[1] + '"><img class="pic2" src="http://' + e.pic[2] + '"></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
 								}
-							} else {
-								return e;
-							}
-						});
-						oDiv += '<div class="mui-slider-item mui-slider-item-duplicate"><a class="fis" href="javascript:void(0);" data-id="' + slideData[slideData.length - 1].id + '"><img src="http://' + slideData[slideData.length - 1].pic[0] + '"><p class="mui-slider-title"><span>' + slideData[slideData.length - 1].title + '</span></p></a></div>';
-						var oFo = '<div class="mui-slider-item mui-slider-item-duplicate"><a class="fis" href="javascript:void(0);" data-id="' + slideData[0].id + '"><img src="http://' + slideData[0].pic[0] + '"><p class="mui-slider-title"><span>' + slideData[0].title + '</span></p></a></div>' + oDiv;
-						slideWrap.innerHTML = oFo;
-						sidClick();
-						var gallery = mui(".mui-slider");
-						gallery.slider({
-							interval: 5000
-						});
+								table.appendChild(li);
+							})
+							_that.endPullupToRefresh(false);
+							page++;
+						} else {
+							_that.endPullupToRefresh(true);
+						}
 					}
-				})
-			})()
-//			localStorage.removeItem("ids");
+				});
+			}
 
-			//上拉加载方法
-			function fnPullfresh() {
-				var _that = this;
-
-				setTimeout(function() {
-					if(allData.length) {
-						allData.forEach(function(e, i, a) {
-							if(i < 10) {
-								fnStorage(e.id,true,e);
-								//fishrefClick();  
-							}
-						})
-						allData.splice(0, 10);
-						_that.endPullupToRefresh(false);
-					} else {
-						_that.endPullupToRefresh(true);
+			function xwlb() {
+				var contentThree = "";
+				$.ajax({
+					url: ip + "getTopNewList.do",
+					type: 'get',
+					xhrFields: {
+						withCredentials: true
+					},
+					crossDomain: true,
+					success: function(result) {
+						for(var i = 0; i < result.length; i++) {
+							contentThree =
+								'<div class="mui-slider-item mui-slider-item-duplicate">' +
+								'<a class="fishref" onclick="fishrefClick(this)" href="javascript:void(0);" data-id="' + result[4]['id'] + '">' +
+								'<img src="http://' + result[4]['pic'][0] + '">' +
+								'<p class="mui-slider-title"><span>' + result[4]['title'] + '</span></p>' +
+								'</a></div>' +
+								'<div class="mui-slider-item">' +
+								'<a class="fishref" onclick="fishrefClick(this)" href="javascript:void(0);" data-id="' + result[0]['id'] + '">' +
+								'<img src="http://' + result[0]['pic'][0] + '">' +
+								'<p class="mui-slider-title"><span>' + result[0]['title'] + '</span></p>' +
+								'</a></div>' +
+								'<div class="mui-slider-item">' +
+								'<a class="fishref" onclick="fishrefClick(this)" href="javascript:void(0);" data-id="' + result[1]['id'] + '">' +
+								'<img src="http://' + result[1]['pic'][0] + '">' +
+								'<p class="mui-slider-title"><span>' + result[1]['title'] + '</span></p>' +
+								'</a></div>' +
+								'<div class="mui-slider-item">' +
+								'<a class="fishref" onclick="fishrefClick(this)" href="javascript:void(0);" data-id="' + result[2]['id'] + '">' +
+								'<img src="http://' + result[2]['pic'][0] + '">' +
+								'<p class="mui-slider-title"><span>' + result[2]['title'] + '</span></p>' +
+								'</a></div>' +
+								'<div class="mui-slider-item">' +
+								'<a class="fishref" onclick="fishrefClick(this)" href="javascript:void(0);" data-id="' + result[3]['id'] + '">' +
+								'<img src="http://' + result[3]['pic'][0] + '">' +
+								'<p class="mui-slider-title"><span>' + result[3]['title'] + '</span></p>' +
+								'</a></div>' +
+								'<div class="mui-slider-item">' +
+								'<a class="fishref" onclick="fishrefClick(this)" href="javascript:void(0);" data-id="' + result[4]['id'] + '">' +
+								'<img src="http://' + result[4]['pic'][0] + '">' +
+								'<p class="mui-slider-title"><span>' + result[4]['title'] + '</span></p>' +
+								'</a></div>' +
+								'<div class="mui-slider-item mui-slider-item-duplicate">' +
+								'<a class="fishref" onclick="fishrefClick(this)" href="javascript:void(0); data-id="' + result[0]['id'] + '"">' +
+								'<img src="http://' + result[0]['pic'][0] + '">' +
+								'<p class="mui-slider-title"><span>' + result[0]['title'] + '</span></p>' +
+								'</a></div>';
+							$('#xwlb').html(contentThree);
+						}
 					}
-				}, 1000)
+				});
+
+				var gallery = mui('.mui-slider');
+				gallery.slider({
+					interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+				});
 			}
-			
-			//新闻已读存值
-			function fnStorage(newsId,type,e){
-				var oStorage = localStorage,
-					ids = JSON.parse(oStorage.getItem("ids"))||[];	//新闻ids Array 注意初始化
-					
-				type?(function(){
-					//处理刷新
-					ids.length?(function(){
-						var li = document.createElement("li");
-						li.className = "mui-table-view-cell mui-media",
-						table = document.querySelector(".mui-table-view");
-						
-						ids.indexOf(newsId)<0?(function(){
-							//处理未读新闻
-							switch(e.pic.length) {
-								case 0:
-									li.innerHTML = '<a id="'+e.id+'" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis">' + e.title + '</div></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
-									break; 
-								case 1:
-									li.innerHTML = '<a id="'+e.id+'" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><img class="mui-media-object mui-pull-right" src="http://' + e.pic[0] + '"><div class="mui-media-body"><div class="mui-ellipsis">' + e.title + '</div></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
-									break;
-								case 2:
-									li.innerHTML = '<a id="'+e.id+'" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis">' + e.title + '</div></div><div class="dynamic_imgOne"><img src="http://' + e.pic[0] + '"></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
-									break;
-								default:
-									li.innerHTML = '<a id="'+e.id+'" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis">' + e.title + '</div></div><div class="dynamic_imgThree"><img class="pic0" src="http://' + e.pic[0] + '"><img class="pic1" src="http://' + e.pic[1] + '"><img class="pic2" src="http://' + e.pic[2] + '"></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
-							}
-							table.appendChild(li); 
-						})():(function(){
-							//处理已读新闻     
-							switch(e.pic.length) {
-								case 0:
-									li.innerHTML = '<a id="'+e.id+'" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis" style="color:#808080;">' + e.title + '</div></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
-									break; 
-								case 1:
-									li.innerHTML = '<a id="'+e.id+'" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><img class="mui-media-object mui-pull-right" src="http://' + e.pic[0] + '"><div class="mui-media-body"><div class="mui-ellipsis" style="color:#808080;">' + e.title + '</div></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
-									break;
-								case 2:
-									li.innerHTML = '<a id="'+e.id+'" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis" style="color:#808080;">' + e.title + '</div></div><div class="dynamic_imgOne"><img src="http://' + e.pic[0] + '"></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
-									break;
-								default:
-									li.innerHTML = '<a id="'+e.id+'" onclick="fishrefClick(this)" class="fishref" href="javascript:;" data-id="' + e.id + '"><div class="mui-media-body"><div class="mui-ellipsis" style="color:#808080;">' + e.title + '</div></div><div class="dynamic_imgThree"><img class="pic0" src="http://' + e.pic[0] + '"><img class="pic1" src="http://' + e.pic[1] + '"><img class="pic2" src="http://' + e.pic[2] + '"></div><div class="place"><span>' + e.unit_name + '</span><span>' + e.update_time.split(" ")[0] + '</span></div></a></li>';
-							}
-							table.appendChild(li); 
-						})();
-					})():oStorage.setItem("ids",JSON.stringify([newsId]));
-				})():(function(){
-					//处理查阅新闻
-					/**
-					 *防止对
-					 *同一条新闻的
-					 *重复阅读导致的
-					 *重复添加
-					 */
-					ids.indexOf(newsId)<0?(function(){
-						oStorage.setItem("ids",JSON.stringify((ids.push(newsId)-ids.length)||ids));
-					})():false;
-				})();
-			}
+
 			//点击每条新闻
 			function fishrefClick(self) {
 				var fishref = document.getElementsByClassName('fishref');
 				var count = fishref.length;
-				fnStorage($(self).data("id"),false);
 						var ellipsis = $(self).find(".mui-ellipsis");
 						ellipsis.css("color", "#808080");
 						var id = self.getAttribute("data-id");
-						arrDisplay.push(id);
 						mui.openWindow({
 							url: 'html/dynamicTab/newscon.html?id=' + id,
 							id: 'newscon',
 							waiting: {
-								autoShow: true,
+								autoShow: true, 
 								title: '正在加载...'
 							},
 							show: {
@@ -293,33 +238,6 @@
 							}
 						});
 			}
-			
-			function sidClick(){
-				
-				var fishref = document.getElementsByClassName('fis');
-				var count = fishref.length;
-				
-				for (var i = 0; i < fishref.length; i++) {
-					fishref[i].addEventListener("tap",function(){
-						var id = this.getAttribute("data-id");
-						mui.openWindow({
-							url: 'html/dynamicTab/newscon.html?id=' + id,
-							id: 'newscon',
-							waiting: {
-								autoShow: true,
-								title: '正在加载...'
-							},
-							show: {
-								autoShow: true,
-								aniShow: 'slide-in-bottom'
-							}
-						});
-					});
-				}
-			}
-			
-			//农历方法
-			window.onload = showDate;
 		</script>
 	</body>
 

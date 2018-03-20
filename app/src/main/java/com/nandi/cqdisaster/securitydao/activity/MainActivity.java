@@ -3,19 +3,32 @@ package com.nandi.cqdisaster.securitydao.activity;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.NumberKeyListener;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.Address;
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -29,13 +42,16 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 
+
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.nandi.cqdisaster.R;
 import com.nandi.cqdisaster.securitydao.Constant;
 import com.nandi.cqdisaster.securitydao.adapter.AreaAdapter;
 import com.nandi.cqdisaster.securitydao.bean.AreaName;
+import com.nandi.cqdisaster.securitydao.bean.Gps;
 import com.nandi.cqdisaster.securitydao.bean.LocationPoint;
+import com.nandi.cqdisaster.securitydao.utils.AppUtils;
 import com.nandi.cqdisaster.securitydao.utils.DESUtil;
 import com.nandi.cqdisaster.securitydao.utils.JsonFormat;
 import com.nandi.cqdisaster.securitydao.utils.SharedUtils;
@@ -63,24 +79,36 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout search;
     private int level;
     private TextView cityName;
+    private List<LocationPoint> disasterOverlay = new ArrayList<>();
     private LatLng point;
     private ProgressDialog progressDialog;
     private Context context;
     private String passwordDes;
     private ImageView ivBack;
     private TextView tvTitle;
+    private LocationClient locationClient = null;
+    private LocationListener locationListener;
+    private double meLongitude = 0;
+    private double meLatitude = 0;
+    private String address;
+    private int range=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-        progressDialog = new ProgressDialog(this, ProgressDialog.STYLE_SPINNER);
-        progressDialog.setCancelable(false);
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setMessage("正在搜索");
+        initStting();
+        turnOnLocation();
         loginRequest();
         initMapView();
+        mBaidumap.setOnMyLocationClickListener(new BaiduMap.OnMyLocationClickListener() {
+            @Override
+            public boolean onMyLocationClick() {
+            alert_edit();
+                return false;
+            }
+        });
         mBaidumap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -96,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         });
         if (Build.VERSION.SDK_INT >= 23) {
             int REQUEST_CODE_CONTACT = 101;
-            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CALL_PHONE,Manifest.permission.READ_PHONE_STATE};
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CALL_PHONE,Manifest.permission.READ_PHONE_STATE,Manifest.permission.ACCESS_FINE_LOCATION};
             //验证是否许可权限
             for (String str : permissions) {
                 if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
@@ -106,6 +134,40 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void alert_edit(){
+        View view = LayoutInflater.from(context).inflate(R.layout.item_location, null);
+        ImageView back = (ImageView) view.findViewById(R.id.back);
+        TextView curr = (TextView) view.findViewById(R.id.currLocation);
+        curr.setText("当前位置："+address);
+        final EditText choose = (EditText) view.findViewById(R.id.choose);
+        Button chooseBtn = (Button) view.findViewById(R.id.chooseBtn);
+        final android.app.AlertDialog show = new android.app.AlertDialog.Builder(context)
+                .setView(view)
+                .setCancelable(false)
+                .show();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                show.dismiss();
+            }
+        });
+        chooseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                range = Integer.parseInt(choose.getText().toString())*1000;
+                searchRequest(1,1,-1);
+                show.dismiss();
+            }
+        });
+
+    }
+    private void initStting() {
+        progressDialog = new ProgressDialog(this, ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("正在搜索");
     }
 
     private void loginRequest() {
@@ -126,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
-
                     @Override
                     public void onResponse(String response, int id) {
                         try {
@@ -200,6 +261,10 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * 搜索全部打点
+     * @param locationPoints  数据源
+     */
     private void initOverLay(List<LocationPoint> locationPoints) {
         // TODO: 2018/1/8 打点
         //创建OverlayOptions的集合
@@ -246,24 +311,8 @@ public class MainActivity extends AppCompatActivity {
         MapStatus mMapStatus = new MapStatus.Builder().zoom(8).build();
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
         mBaidumap.setMapStatus(mMapStatusUpdate);
-        // 构造定位数据
-        MyLocationData locData = new MyLocationData.Builder()
-                .accuracy(0)
-                // 此处设置开发者获取到的方向信息，顺时针0-360
-                .direction(0)
-                .latitude(29.56667)
-                .longitude(106.45000)
-                .build();
 
-        // 设置定位数据
-        mBaidumap.setMyLocationData(locData);
 
-        // 设置定位图层的配置（定位模式，是否允许方向信息，用户自定义定位图标）
-        mCurrentMarker = BitmapDescriptorFactory.fromResource(0);
-        MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, false, mCurrentMarker);
-        mBaidumap.setMyLocationConfiguration(config);
-        // 当不需要定位图层时关闭定位图层
-        mBaidumap.setMyLocationEnabled(true);
     }
 
     private void initListener() {
@@ -316,43 +365,132 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.show();
-                mBaidumap.clear();
-                OkHttpUtils.get().url(getString(R.string.base_url) + "/tabDisastersInfo/sreachDisasters/" + areaId + "/" + typeId)
-                        .build()
-                        .execute(new StringCallback() {
-
-
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                progressDialog.dismiss();
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-
-                                System.out.println("response = " + response);
-                                JSONObject js;
-                                try {
-                                    js = new JSONObject(response);
-                                    JSONObject meta = new JSONObject(js.optString("meta"));
-                                    Boolean success = meta.optBoolean("success");
-                                    String message = meta.optString("message");
-                                    if (success) {
-                                        String data = js.optString("data");
-                                        List<LocationPoint> locationPoints = JsonFormat.stringToList(data, LocationPoint.class);
-                                        initOverLay(locationPoints);
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        });
+                searchRequest(0,areaId,typeId);
             }
         });
     }
 
+    private void searchRequest(final int monitor, int areaId, int typeId) {
+        progressDialog.show();
+        mBaidumap.clear();
+        OkHttpUtils.get().url(getString(R.string.base_url) + "/tabDisastersInfo/sreachDisasters/" + areaId + "/" + typeId)
+                .build()
+                .execute(new StringCallback() {
+
+
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        progressDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+
+                        System.out.println("response = " + response);
+                        JSONObject js;
+                        try {
+                            js = new JSONObject(response);
+                            JSONObject meta = new JSONObject(js.optString("meta"));
+                            Boolean success = meta.optBoolean("success");
+                            String message = meta.optString("message");
+                            if (success) {
+                                String data = js.optString("data");
+                                List<LocationPoint> locationPoints = JsonFormat.stringToList(data, LocationPoint.class);
+                                if (monitor == 0) {
+                                    initOverLay(locationPoints);
+                                }else if(monitor ==1){
+                                    for (LocationPoint disasterPoint : locationPoints) {
+                                        double disasterLon = disasterPoint.getDis_lon();
+                                        double disasterLat = disasterPoint.getDis_lat();
+                                        double distance = AppUtils.getDistance(meLongitude, meLatitude, disasterLon, disasterLat);
+                                        if (distance < range) {
+                                            Log.d("qs", "onResponse: "+distance+"rang:"+range);
+                                            disasterOverlay.add(disasterPoint);
+                                        }
+                                    }
+                                    if (disasterOverlay.size() > 0) {
+                                        initOverLay(disasterOverlay);
+                                        Log.d("qs", "开始打点 周围隐患点个数：" + disasterOverlay.size());
+                                    } else {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(MainActivity.this, "当前位置周围没有隐患点", Toast.LENGTH_SHORT).show();
+                                    }  
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+    /**
+     * 获取定位
+     */
+    private void turnOnLocation() {
+        Log.d("qs", "turnOnLocation: ----------------");
+        locationClient =  new LocationClient(context);
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
+        option.setCoorType("BD09LL");
+        option.setIsNeedLocationDescribe(true);
+        option.setScanSpan(1000);
+        //可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
+        option.setOpenGps(true);
+        //可选，默认false,设置是否使用gps
+        option.setIgnoreKillProcess(false);
+        locationClient.setLocOption(option);
+        locationListener = new LocationListener();
+        locationClient.registerLocationListener(locationListener);
+        locationClient.start();
+    }
+
+    /**
+     * 定位监听
+     */
+    private class LocationListener extends BDAbstractLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            int locType = bdLocation.getLocType();
+            Log.d("qs", "onReceiveLocationloctype: "+locType);
+            if (locType == BDLocation.TypeOffLineLocation || locType == BDLocation.TypeGpsLocation || locType == BDLocation.TypeNetWorkLocation) {
+                double lon = bdLocation.getLongitude();
+                double lat = bdLocation.getLatitude();
+                address = String.valueOf(bdLocation.getLocationDescribe());
+                meLatitude = lat;
+                meLongitude = lon;
+                // 构造定位数据
+                MyLocationData locData = new MyLocationData.Builder()
+                        .accuracy(0)
+                        // 此处设置开发者获取到的方向信息，顺时针0-360
+                        .direction(0)
+                        .latitude(lat)
+                        .longitude(lon)
+                        .build();
+
+                // 设置定位数据
+                mBaidumap.setMyLocationData(locData);
+                // 设置定位图层的配置（定位模式，是否允许方向信息，用户自定义定位图标）
+                mCurrentMarker = BitmapDescriptorFactory.fromResource(0);
+                MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, false, mCurrentMarker);
+                mBaidumap.setMyLocationConfiguration(config);
+                // 当不需要定位图层时关闭定位图层
+                mBaidumap.setMyLocationEnabled(true);
+                locationClient.unRegisterLocationListener(locationListener);
+                locationClient.stop();
+            }
+        }
+
+        @Override
+        public void onLocDiagnosticMessage(int locType, int diagnosticType, String diagnosticMessage) {
+            if (diagnosticType == LocationClient.LOC_DIAGNOSTIC_TYPE_BETTER_OPEN_GPS) {
+                Toast.makeText(context, "请打开GPS", Toast.LENGTH_SHORT).show();
+            } else if (diagnosticType == LocationClient.LOC_DIAGNOSTIC_TYPE_BETTER_OPEN_WIFI) {
+                Toast.makeText(context, "建议打开WIFI提高定位经度", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

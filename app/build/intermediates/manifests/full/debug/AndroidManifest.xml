@@ -86,6 +86,10 @@
         <service
             android:name="io.dcloud.common.adapter.io.MiniServerService"
             android:exported="true" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
 
         <activity
             android:name="com.nandi.cqdisaster.AnyChat.activity.HallActivity"

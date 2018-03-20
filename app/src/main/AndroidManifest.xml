@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nandi.cqdisaster">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
@@ -21,7 +22,7 @@
     <uses-permission android:name="android.permission.RESTART_PACKAGES" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".MyAPP"
@@ -36,6 +37,7 @@
         <meta-data
             android:name="immersed.status.bar"
             android:value="true" />
+
 
         <activity
             android:name="io.dcloud.PandoraEntry"
@@ -74,6 +76,10 @@
         <service
             android:name="io.dcloud.common.adapter.io.MiniServerService"
             android:exported="true" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
 
         <activity
             android:name=".AnyChat.activity.HallActivity"
@@ -106,9 +112,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="standard"
             android:screenOrientation="portrait">
-
         </activity>
-
     </application>
 
 </manifest>

@@ -1,17 +1,24 @@
 package com.nandi.cqdisaster.securitydao.fragment;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import com.nandi.cqdisaster.R;
 import com.nandi.cqdisaster.securitydao.bean.LocationPoint;
+import com.nandi.cqdisaster.securitydao.utils.AMapUtil;
+import com.nandi.cqdisaster.securitydao.utils.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,7 +88,10 @@ public class BasicInformationFragment extends Fragment {
     @BindView(R.id.tv_defendPhone)
     TextView tvDefendPhone;
     Unbinder unbinder;
+    @BindView(R.id.naviBtn)
+    Button naviBtn;
     private LocationPoint point;
+    private PopupWindow popupWindow;
 
     public static BasicInformationFragment newInstance(LocationPoint baseMessage) {
         BasicInformationFragment fragment = new BasicInformationFragment();
@@ -95,6 +105,7 @@ public class BasicInformationFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         point = (LocationPoint) getArguments().getSerializable("baseMessage");
+
     }
 
     @Nullable
@@ -103,7 +114,80 @@ public class BasicInformationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_information_basic, container, false);
         unbinder = ButterKnife.bind(this, view);
         initView();
+        naviBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popView();
+            }
+        });
         return view;
+    }
+
+    private void popView() {
+        View popView = LayoutInflater.from(getActivity()).inflate(R.layout.map_navagation_sheet, null);
+        Button gaode = (Button) popView.findViewById(R.id.gaode_btn);
+        Button baidu = (Button) popView.findViewById(R.id.baidu_btn);
+        Button tencent = (Button) popView.findViewById(R.id.tencent_btn);
+        Button clear = (Button) popView.findViewById(R.id.clear_btn);
+        final String name = tvDangerName.getText().toString();
+        final String lat = tvLatitude.getText().toString();
+        final String lon = tvLongitude.getText().toString();
+        gaode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (AMapUtil.isInstallByRead("com.autonavi.minimap")) {
+                    double[] togcj02 =  AppUtils.bd09togcj02(Double.parseDouble(lon),Double.parseDouble(lat));
+                    AMapUtil.goToGaoDe(getActivity(), name, togcj02[1] + "", togcj02[0] + "", "0");
+                } else {
+                    Toast.makeText(getActivity(), "您尚未安装高德地图", Toast.LENGTH_SHORT).show();
+                }
+                popupWindow.dismiss();
+            }
+
+        });
+        baidu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (AMapUtil.isInstallByRead("com.baidu.BaiduMap")) {
+                    AMapUtil.goToBaidu(getActivity(), name, lat, lon);
+                } else {
+                    Toast.makeText(getActivity(), "您尚未安装百度地图", Toast.LENGTH_SHORT).show();
+                }
+                popupWindow.dismiss();
+            }
+        });
+        tencent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (AMapUtil.isInstallByRead("com.tencent.map")) {
+                    double[] togcj02 =  AppUtils.bd09togcj02(Double.parseDouble(lon),Double.parseDouble(lat));
+                    AMapUtil.goToTencent(getActivity(), name, togcj02[1] + "", togcj02[0] + "");
+                } else {
+                    Toast.makeText(getActivity(), "您尚未安装腾讯地图", Toast.LENGTH_SHORT).show();
+                }
+                popupWindow.dismiss();
+            }
+        });
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+            }
+        });
+        popupWindow = new PopupWindow(popView, ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setTouchable(true);
+        View rootView = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_information_basic, null);
+        popupWindow.showAtLocation(rootView, Gravity.BOTTOM, 0, 0);
+        popView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                popupWindow.dismiss();
+                return false;
+            }
+        });
     }
 
     private void initView() {
@@ -116,9 +200,9 @@ public class BasicInformationFragment extends Fragment {
         tvStorageTime.setText(checkNull(point.getCome_time()));
         tvDangerAddress.setText(checkNull(point.getDis_location()));
         tvObject.setText(checkNull(point.getMain_object()));
-        tvPeopleNum.setText(checkNull(point.getImperil_man()+""));
-        tvFamilyNum.setText(checkNull(point.getImperil_families()+""));
-        tvHouseNum.setText(checkNull(point.getImperil_house()+""));
+        tvPeopleNum.setText(checkNull(point.getImperil_man() + ""));
+        tvFamilyNum.setText(checkNull(point.getImperil_families() + ""));
+        tvHouseNum.setText(checkNull(point.getImperil_house() + ""));
         tvThreatArea.setText(checkNull(point.getImperil_area()));
         tvAsset.setText(checkNull(point.getImperil_money()));
         tvVillage.setText(checkNull(point.getVillage()));
@@ -136,10 +220,12 @@ public class BasicInformationFragment extends Fragment {
         tvQuncePhone.setText(checkNull(point.getQcqfry_tel()));
         tvDefendPhone.setText(checkNull(point.getZsry_tel()));
     }
-    private String checkNull(String s){
 
-        return "null".equals(s)?"无":s;
+    private String checkNull(String s) {
+
+        return "null".equals(s) ? "无" : s;
     }
+
     private String getLevel(int defense_level) {
         String result;
         switch (defense_level) {
@@ -209,7 +295,7 @@ public class BasicInformationFragment extends Fragment {
     }
 
     private String getCause(String dis_cause) {
-        Log.d("cp", "getCause:"+dis_cause );
+        Log.d("cp", "getCause:" + dis_cause);
         String result = "";
         String[] split = dis_cause.split(",");
         for (String s : split) {
