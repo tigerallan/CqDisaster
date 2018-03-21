@@ -1,5 +1,6 @@
 package com.nandi.cqdisaster.examine.activity;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -29,12 +31,18 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
+import me.weyye.hipermission.PermissionItem;
 import okhttp3.Call;
 
 /**
  *
  */
-public class MainActivityExamine extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
+public class MainActivityExamine extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
     private static String TAG = "MainActivityExamine", status, msg;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
@@ -50,35 +58,49 @@ public class MainActivityExamine extends AppCompatActivity implements ActivityCo
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_main_examine);
         //动态获取权限
-        initBuild();
+        checkPremission();
         //初始化视图
         initViews();
-        updateManager();
+//        updateManager();
         // setListeners();
     }
 
-    private void initBuild() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            PermissionUtils.requestMultiPermissions(MainActivityExamine.this,mPermissionGrant);
-        }
-    }
-    private PermissionUtils.PermissionGrant mPermissionGrant = new PermissionUtils.PermissionGrant() {
-        @Override
-        public void onPermissionGranted(int requestCode) {
-            switch (requestCode){
-                case PermissionUtils.CODE_CAMERA:
-                    break;
-                case PermissionUtils.CODE_RECORD_AUDIO:
-                    break;
-                case PermissionUtils.CODE_READ_EXTERNAL_STORAGE:
-                    break;
-            }
-        }
-    };
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        PermissionUtils.requestPermissionsResult(this, requestCode, permissions, grantResults, mPermissionGrant);
+    private void checkPremission() {
+        List<PermissionItem> permissionItems = new ArrayList<PermissionItem>();
+        permissionItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_camera));
+        permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION, "定位", R.drawable.permission_ic_location));
+        permissionItems.add(new PermissionItem(Manifest.permission.WRITE_EXTERNAL_STORAGE, "读写SD卡", R.drawable.permission_ic_storage));
+        permissionItems.add(new PermissionItem(Manifest.permission.READ_EXTERNAL_STORAGE, "读写SD卡", R.drawable.permission_ic_storage));
+        permissionItems.add(new PermissionItem(Manifest.permission.RECORD_AUDIO, "录音", R.drawable.permission_ic_micro_phone));
+        permissionItems.add(new PermissionItem(Manifest.permission.SEND_SMS, "短信", R.drawable.permission_ic_sms));
+        HiPermission.create(this)
+                .title("权限申请")
+                .permissions(permissionItems)
+                .filterColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, getTheme()))//图标的颜色
+                .msg("为了您更好的使用体验，开启这些权限吧！\n一定要确认啰！")
+                .style(R.style.PermissionDefaultBlueStyle)
+                .checkMutiPermission(new PermissionCallback() {
+                    @Override
+                    public void onClose() {
+                        checkPremission();
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onDeny(String permission, int position) {
+                    }
+
+                    @Override
+                    public void onGuarantee(String permission, int position) {
+
+                    }
+                });
+
+
     }
 
     private void updateManager() {
@@ -141,7 +163,6 @@ public class MainActivityExamine extends AppCompatActivity implements ActivityCo
     }
 
 
-
     private void initViews() {
 
         //使用适配器将ViewPager与Fragment绑定在一起
@@ -193,6 +214,7 @@ public class MainActivityExamine extends AppCompatActivity implements ActivityCo
                 }).show();
 
     }
+
     public void signOut2() {
         new AlertDialog.Builder(this)
                 .setTitle("退出程序")
@@ -216,10 +238,9 @@ public class MainActivityExamine extends AppCompatActivity implements ActivityCo
     }
 
 
-
     /**
      * 注销推送绑定
-//     */
+     //     */
 //    private void initPushOut() {
 //        CloudPushService pushService = PushServiceFactory.getCloudPushService();
 //        pushService.unbindAccount(new CommonCallback() {

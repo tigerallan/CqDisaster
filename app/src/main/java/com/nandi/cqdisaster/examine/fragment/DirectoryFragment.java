@@ -141,7 +141,7 @@ public class DirectoryFragment extends Fragment {
                                         sp.edit().putBoolean("isLogin",false).apply();
 //                                        Intent intent = new Intent(context, LoginActivity.class);
 //                                        context.startActivity(intent);
-                                        getActivity().finish();
+//                                        getActivity().finish();
                                     } else if ("500".equals(status)) {
                                         ToastUtils.showShortToast("搜索条件不匹配！");
                                     }

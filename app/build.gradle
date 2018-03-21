@@ -87,4 +87,5 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
     compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.2'
     compile 'com.allenliu.badgeview:library:1.1.1'
+    compile 'me.weyye.hipermission:library:1.0.7'
 }

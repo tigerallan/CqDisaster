@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
+    <array name="permissionNames">
+        <item>@string/permission_storage</item>
+        <item>@string/permission_location</item>
+        <item>@string/permission_camera</item>
+    </array>
+    <attr format="reference" name="PermissionBackround"/>
+    <attr format="color" name="PermissionBgFilterColor"/>
+    <attr format="reference" name="PermissionButtonBackground"/>
+    <attr format="color" name="PermissionButtonTextColor"/>
+    <attr format="color" name="PermissionIconFilterColor"/>
+    <attr format="color" name="PermissionItemTextColor"/>
+    <attr format="color" name="PermissionMsgColor"/>
+    <attr format="color" name="PermissionTitleColor"/>
     <attr format="reference" name="constraintSet"/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -212,6 +225,10 @@
     <color name="notification_action_color_filter">#ffffffff</color>
     <color name="notification_icon_bg_color">#ff9e9e9e</color>
     <color name="notification_material_background_media_default_color">#ff424242</color>
+    <color name="permissionBgColorBlue">#ee447AA4</color>
+    <color name="permissionBgColorGreenLight">#44A49C</color>
+    <color name="permissionColorGreen">#41c236</color>
+    <color name="permissionColorWhite">#ffffff</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
     <color name="primary_material_dark">@color/material_grey_900</color>
@@ -811,6 +828,19 @@
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="load_more_text">正在加载...</string>
     <string name="no_url">No url</string>
+    <string name="permission_btn_next">Next</string>
+    <string name="permission_camera">Camera</string>
+    <string name="permission_cancel">Cancel</string>
+    <string name="permission_denied">We need access to %1$s,otherwise, you will not be able to use %2$s</string>
+    <string name="permission_denied_with_naac">"Because %1$s cannot use %2$s,Can not run normally,Please open permissions before using.\n\nSetup path: Apps->%3$s->Permissions"</string>
+    <string name="permission_dialog_msg">For your normal use %s, you need the following permissions</string>
+    <string name="permission_dialog_title">Start %s</string>
+    <string name="permission_ensure">Enter</string>
+    <string name="permission_go_to_setting">Go to Setting</string>
+    <string name="permission_location">Location</string>
+    <string name="permission_reject">Deny</string>
+    <string name="permission_storage">Storage</string>
+    <string name="permission_title">Please allow access to %s</string>
     <string name="replay">Replay</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
@@ -1863,6 +1893,17 @@
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
+    <style name="CustomTheme_Dialog" parent="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@style/notAnimation</item>
+    </style>
     <style name="MD_ActionButton">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">@dimen/md_button_height</item>
@@ -1914,6 +1955,42 @@
     <item name="android:windowEnterAnimation">@anim/popup_enter</item>
     <item name="android:windowExitAnimation">@anim/popup_exit</item>
   </style>
+    <style name="PermissionAnimFade">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+    <style name="PermissionAnimModal">
+        <item name="android:windowEnterAnimation">@anim/modal_in</item>
+        <item name="android:windowExitAnimation">@anim/modal_out</item>
+    </style>
+    <style name="PermissionAnimScale">
+        <item name="android:windowEnterAnimation">@anim/scale_in</item>
+        <item name="android:windowExitAnimation">@anim/scale_out</item>
+    </style>
+    <style name="PermissionBaseWhiteStyle">
+        <item name="PermissionTitleColor">@color/permissionColorWhite</item>
+        <item name="PermissionMsgColor">@color/permissionColorWhite</item>
+        <item name="PermissionItemTextColor">@color/permissionColorWhite</item>
+        <item name="PermissionButtonTextColor">@color/permissionColorWhite</item>
+        <item name="PermissionIconFilterColor">@color/permissionColorWhite</item>
+    </style>
+    <style name="PermissionDefaultBlueStyle" parent="PermissionBaseWhiteStyle">
+        <item name="PermissionButtonBackground">@drawable/shape_btn_border_white</item>
+        <item name="PermissionBackround">@drawable/shape_btn_blue</item>
+    </style>
+    <style name="PermissionDefaultGreenStyle" parent="PermissionBaseWhiteStyle">
+        <item name="PermissionButtonBackground">@drawable/shape_btn_green_light</item>
+        <item name="PermissionBackround">@drawable/permission_card1</item>
+        <item name="PermissionBgFilterColor">@color/permissionBgColorGreenLight</item>
+    </style>
+    <style name="PermissionDefaultNormalStyle">
+        <item name="PermissionTitleColor">#737373</item>
+        <item name="PermissionMsgColor">#737373</item>
+        <item name="PermissionItemTextColor">#737373</item>
+        <item name="PermissionButtonBackground">@drawable/shape_btn_next</item>
+        <item name="PermissionBackround">@drawable/shape_bg_white</item>
+        <item name="PermissionButtonTextColor">@android:color/white</item>
+    </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
 
@@ -2449,5 +2526,19 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/jz_popup_toast_anim</item>
         <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="notAnimation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
     </style>
 </resources>

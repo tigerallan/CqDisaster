@@ -215,6 +215,17 @@
 					plus.nativeUI.closeWaiting(); //这里监听页面是否加载完毕，完成后关闭等待框
 				}, 1000);
 			});
+			document.getElementById("yjcz").addEventListener("tap", function() {
+				plus.nativeUI.showWaiting(); //这里是开始显示原生等待框
+				var activity = plus.android.runtimeMainActivity();
+				var Intent = plus.android.importClass("android.content.Intent");
+				var intent = new Intent();
+				intent.setClassName(activity, "com.nandi.cqdisaster.examine.activity.LoginActivity");
+				activity.startActivity(intent);
+				setTimeout(function() {
+					plus.nativeUI.closeWaiting(); //这里监听页面是否加载完毕，完成后关闭等待框
+				}, 1000);
+			});
 		</script>
 	</body>
 

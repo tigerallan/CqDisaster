@@ -28,6 +28,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <meta-data
         android:name="android.support.VERSION"
@@ -134,8 +135,7 @@
             android:name="com.nandi.cqdisaster.AnyChat.activity.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="standard"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <!-- 应急调查 -->
         <activity
             android:name="com.nandi.cqdisaster.examine.activity.CompleteTaskActivity"
@@ -179,6 +179,11 @@
         <activity
             android:name="com.nandi.cqdisaster.examine.activity.LoginActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="me.weyye.hipermission.PermissionActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme_Dialog" />
     </application>
 
 </manifest>

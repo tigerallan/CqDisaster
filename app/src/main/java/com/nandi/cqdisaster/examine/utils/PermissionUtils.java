@@ -36,6 +36,7 @@ public class PermissionUtils {
     public static final int CODE_ACCESS_COARSE_LOCATION = 6;
     public static final int CODE_READ_EXTERNAL_STORAGE = 7;
     public static final int CODE_WRITE_EXTERNAL_STORAGE = 8;
+    public static final int CODE_SEND_SMS = 9;
     public static final int CODE_MULTI_PERMISSION = 100;
 
     public static final String PERMISSION_RECORD_AUDIO = Manifest.permission.RECORD_AUDIO;
@@ -56,8 +57,8 @@ public class PermissionUtils {
 //            PERMISSION_CALL_PHONE,
             PERMISSION_CAMERA,
             PERMISSION_SEND_SMS,
-//            PERMISSION_ACCESS_FINE_LOCATION,
-//            PERMISSION_ACCESS_COARSE_LOCATION,
+            PERMISSION_ACCESS_FINE_LOCATION,
+            PERMISSION_ACCESS_COARSE_LOCATION,
             PERMISSION_READ_EXTERNAL_STORAGE,
             PERMISSION_WRITE_EXTERNAL_STORAGE
     };
@@ -144,7 +145,7 @@ public class PermissionUtils {
         if (notGranted.size() == 0) {
             permissionGrant.onPermissionGranted(CODE_MULTI_PERMISSION);
         } else {
-            openSettingActivity(activity, "those permission need granted!");
+            openSettingActivity(activity, "需要打开所需权限才能正常使用！");
         }
 
     }

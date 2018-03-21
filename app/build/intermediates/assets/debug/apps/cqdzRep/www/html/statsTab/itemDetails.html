@@ -83,8 +83,9 @@
 				dataType: "json",
 				success: function(json) {
 					var data = json.data;
-					var xmwz = data[0].xmwz;
-					if(xmwz == null){
+					var xmwz = "无";
+					var xmwzNull = data[0].xmwz;
+					if(!xmwzNull){
 						xmwz == "无";
 					}
 					contentThree +=
