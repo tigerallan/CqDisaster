@@ -38,7 +38,15 @@
             android:name="immersed.status.bar"
             android:value="true" />
 
-
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.nandity.disastersystem"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
         <activity
             android:name="io.dcloud.PandoraEntry"
             android:configChanges="orientation|keyboardHidden|keyboard|navigation"
@@ -113,6 +121,35 @@
             android:launchMode="standard"
             android:screenOrientation="portrait">
         </activity>
+        <!--应急调查-->
+        <activity android:name=".examine.activity.CompleteTaskActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.EditMessageActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.CompleteInfoActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.CreateTaskActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.FillInfoActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.MainActivityExamine"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.MyTaskActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.QueryDisasterActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.SendMessageActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.SettingsActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.TaskActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.TaskInfoActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.UnCompleteActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
+        <activity android:name=".examine.activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation"/>
     </application>
 
 </manifest>

@@ -10,4 +10,21 @@
         <item>地裂缝</item>
         <item>库岸</item>
     </string-array>
+    <string-array name="time_type">
+        <item>月份</item>
+        <item>年度</item>
+        <item>同比</item>
+        <item>季度比</item>
+    </string-array>
+    <string-array name="permissions">
+        <item>@string/permission_recode_audio_hint</item>
+        <item>@string/permission_get_accounts_hint</item>
+        <item>@string/permission_read_phone_hint</item>
+        <item>@string/permission_call_phone_hint</item>
+        <item>@string/permission_camera_hint</item>
+        <item>@string/permission_access_fine_location_hint</item>
+        <item>@string/permission_access_coarse_location_hint</item>
+        <item>@string/permission_read_external_hint</item>
+        <item>@string/permission_white_external_hint</item>
+    </string-array>
 </resources>

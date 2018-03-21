@@ -35,11 +35,13 @@
 
     <application
         android:name="com.nandi.cqdisaster.MyAPP"
+        android:allowBackup="true"
         android:allowClearUserData="true"
         android:debuggable="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <meta-data
@@ -48,6 +50,16 @@
         <meta-data
             android:name="immersed.status.bar"
             android:value="true" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.nandity.disastersystem"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
         <activity
             android:name="io.dcloud.PandoraEntry"
@@ -124,6 +136,49 @@
             android:launchMode="standard"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- 应急调查 -->
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.CompleteTaskActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.EditMessageActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.CompleteInfoActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.CreateTaskActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.FillInfoActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.MainActivityExamine"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.MyTaskActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.QueryDisasterActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.SendMessageActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.SettingsActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.TaskActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.TaskInfoActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.UnCompleteActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+        <activity
+            android:name="com.nandi.cqdisaster.examine.activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
     </application>
 
 </manifest>

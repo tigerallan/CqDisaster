@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 24
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.nandi.cqdisaster"
         minSdkVersion 16
@@ -10,6 +10,12 @@ android {
         versionName "3.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.nandi.cqdisaster.examine.database'
+        targetGenDir 'src/main/java'
     }
     buildTypes {
         release {
@@ -22,15 +28,20 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
+
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile('me.drakeet.multitype:multitype:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile files('libs/BaiduLBS_Android.jar')
@@ -70,4 +81,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'cn.jzvd:jiaozivideoplayer:6.0.0'
     implementation 'com.android.support:design:24.2.1'
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'org.greenrobot:greendao-generator:3.2.2'
+    compile 'com.android.support:cardview-v7:24.2.1'
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.2'
+    compile 'com.allenliu.badgeview:library:1.1.1'
 }

@@ -2,6 +2,8 @@ package com.nandi.cqdisaster;
 
 
 import com.baidu.mapapi.SDKInitializer;
+import com.nandi.cqdisaster.examine.database.DaoMaster;
+import com.nandi.cqdisaster.examine.database.DaoSession;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
@@ -15,9 +17,13 @@ import okhttp3.OkHttpClient;
  */
 
 public class MyAPP extends DCloudApplication {
+    private static DaoSession daoSession;
     @Override
     public void onCreate() {
         super.onCreate();
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), "lenve.db", null);
+        DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
+        daoSession = daoMaster.newSession();
         SDKInitializer.initialize(getApplicationContext());
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -28,5 +34,8 @@ public class MyAPP extends DCloudApplication {
                 .build();
 
         OkHttpUtils.initClient(okHttpClient);
+    }
+    public static DaoSession getDaoSession() {
+        return daoSession;
     }
 }
