@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>专业监测预警</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_list.css" />
+		<style type="text/css">
+			.mui-btn-primary {
+				border-radius: 20px;
+				height: 50px;
+				border-radius: 10px;
+				font: 16px 'Open Sans', sans-serif;
+				color: #fff;
+				background-color: #53CDD8;
+			}
+			
+			.mui-badge {
+				padding: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a href="javascript:void(0);" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">专业监测预警</h1>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div id="would_list" class="mui-content-padded mui-row">
+
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false
+			});
+			mui('.mui-scroll-wrapper').scroll({
+				deceleration: 0.0005
+			});
+
+			var would = "";
+			$.ajax({
+				//				url: "http://192.168.10.136:8080/cqapp/meteor/findWarnGroupByArea.do",
+				url: ip+"meteor/findWarnGroupByArea.do?type=2",
+				async: false, //同步请求 
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					var data = json.data;
+					for(var e = 0; e < data.length; e++) {
+						var dataNumber = data[e].dataNumber;
+						would +=
+							'<div class="mui-col-sm-4 mui-col-xs-4 button_one" data-value="' + data[e].areacode + '">' +
+							'<button type="button" class="mui-btn mui-btn-primary"><span class="mui-badge mui-badge-primary">' + dataNumber + '</span>' + data[e].county_name + '</button></div>';
+					}
+					$('#would_list').html(would);
+					tup_table();
+					mui.plusReady(function() {
+						plus.nativeUI.closeWaiting();
+						mui.currentWebview.show("slide-in-bottom", 300);
+					});
+				}
+			});
+
+			function tup_table() {
+				var btn = document.getElementsByClassName('button_one');
+				mui("#would_list").on("tap", ".button_one", function() {
+					var self = this;
+					mui.openWindow({
+						url: 'jcyj.html',
+						id: 'jcyj.html',
+						show: {
+							autoShow: true,
+							aniShow: 'slide-in-bottom',
+							duration: 300
+						},
+						waiting: {
+							autoShow: true,
+							title: '正在加载...'
+						}
+					});
+				});
+
+			}
+		</script>
+	</body>
+
+</html>

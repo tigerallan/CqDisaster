@@ -325,7 +325,8 @@
 			"html/contingencyTab/zddq_sssp.html",
 			"html/statsTab/rzgjsl_xq.html",
 			"html/contingencyTab/jcyj_list.html",
-			"html/contingencyTab/rzgjsl_xq.html"
+			"html/contingencyTab/rzgjsl_xq.html",
+			"html/contingencyTab/jcyjlx.html"
 		]
 	},
 	"html/contingencyTab/calculator.html": {
@@ -491,12 +492,16 @@
 			"img/jcyj_1.png",
 			"img/jcyj_4.png",
 			"img/jcyj_2.png",
-			"img/jcyj_3.png"
+			"img/jcyj_3.png",
+			"html/contingencyTab/jcyj_hiddenOne.html",
+			"html/contingencyTab/jcyjtable.html"
 		],
 		"refer": [
 			"html/contingencyTab/jcyj_hidden.html",
 			"html/contingencyTab/jcyj_hidden2.html",
-			"html/contingencyTab/jcyj_hiddenThree.html"
+			"html/contingencyTab/jcyj_hiddenThree.html",
+			"html/contingencyTab/jcyj_hiddenOne.html",
+			"html/contingencyTab/jcyjtable.html"
 		]
 	},
 	"html/contingencyTab/jcyj_hiddenOne.html": {
@@ -727,6 +732,22 @@
 		],
 		"refer": [
 			"html/dynamicTab/infocontent_xq.html"
+		]
+	},
+	"html/contingencyTab/jcyjlx.html": {
+		"refer": [
+			"html/contingencyTab/qcqfyj.html",
+			"html/contingencyTab/zyjcyj.html"
+		]
+	},
+	"html/contingencyTab/qcqfyj.html": {
+		"refer": [
+			"html/contingencyTab/jcyj.html"
+		]
+	},
+	"html/contingencyTab/zyjcyj.html": {
+		"refer": [
+			"html/contingencyTab/jcyj.html"
 		]
 	}
 }

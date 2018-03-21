@@ -44,6 +44,16 @@
 								</dd>
 							</dl>
 						</a>
+						<a id="yjcz" class="mui-col-sm-4 mui-col-xs-4">
+							<dl class="realtime">
+								<dt>
+                            <img src="img/work2.jpg"/>
+                        </dt>
+								<dd>
+									应急<br/>处置
+								</dd>
+							</dl>
+						</a>
 					</div>
 				</li>
 				<li class="mui-table-view-cell">
@@ -94,12 +104,12 @@
 								</dd>
 							</dl>
 						</a>
-						<!--<a id="jcyj" class="mui-col-sm-4 mui-col-xs-4">
+						<a id="jcyj" class="mui-col-sm-4 mui-col-xs-4">
 							<dl class="realtime">
 								<dt><img src="img/jcyj.png"/></dt>
 								<dd>监测<br />预警</dd>
 							</dl>
-						</a>-->
+						</a>
 						<!--<a id="weather-warn" class="mui-col-sm-4 mui-col-xs-4">
 							<dl class="realtime">
 								<dt><img src="img/1_9.png"/></dt>
@@ -158,8 +168,8 @@
 			slideopen(orientation_compass, "html/contingencyTab/orientation_compass.html");
 			var rzgjsl_xq = document.getElementById('rzgjsl_xq');
 			slideopen(rzgjsl_xq, "html/contingencyTab/rzgjsl_xq.html");
-			//			var jcyj = document.getElementById('jcyj');
-			//			slideopen(jcyj, "html/contingencyTab/jcyj_list.html");
+			var jcyj = document.getElementById('jcyj');
+			slideopen(jcyj, "html/contingencyTab/jcyjlx.html");
 			//			var weather_warn = document.getElementById('weather-warn');
 			//			slideopen(weather_warn, "html/contingencyTab/weather-warn.html");
 
@@ -193,13 +203,17 @@
 				intent.putExtra("NAME", info[0].user_name);
 				activity.startActivity(intent);
 			});
-			
+
 			document.getElementById("yhdcx").addEventListener("tap", function() {
+				plus.nativeUI.showWaiting(); //这里是开始显示原生等待框
 				var activity = plus.android.runtimeMainActivity();
 				var Intent = plus.android.importClass("android.content.Intent");
 				var intent = new Intent();
 				intent.setClassName(activity, "com.nandi.cqdisaster.securitydao.activity.MainActivity");
 				activity.startActivity(intent);
+				setTimeout(function() {
+					plus.nativeUI.closeWaiting(); //这里监听页面是否加载完毕，完成后关闭等待框
+				}, 1000);
 			});
 		</script>
 	</body>

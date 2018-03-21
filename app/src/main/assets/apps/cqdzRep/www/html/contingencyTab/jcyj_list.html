@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../../css/mui.min.css">
 		<link rel="stylesheet" href="../../css/common/header.css" />
 		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
-		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_list.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_list.css" />
 	</head>
 
 	<body>
@@ -23,7 +23,7 @@
 		</header>
 		<div class="mui-content">
 			<div id="would_list" class="mui-content-padded mui-row">
-				
+
 			</div>
 		</div>
 
@@ -35,27 +35,28 @@
 			});
 
 			var would = "";
-			var myArray = new Array(),
-				MyData = "";
 			$.ajax({
-				url: "../../data/jcyj_list.json",
+				url: "http://192.168.10.136:8080/cqapp/meteor/findWarnGroupByArea.do",
+//				url: "../../data/jcyj_li.json",
 				async: false, //同步请求        
 				type: "get",
 				dataType: "json",
 				success: function(json) {
-					var data = MyData = json.data;
-					$.each(data, function(key, value) {
-						var dataNub = Object.keys(value).length;
-						if (dataNub == 0) {
+					var data = json.data;
+					console.log(data);
+					for(var e = 0; e < data.length; e++) {
+						var dataNumber = data[e].dataNumber;
+
+						if(dataNumber == 0) {
 							would +=
-							'<div class="mui-col-sm-4 mui-col-xs-4 button_one" data-value="' + key + '">' +
-							'<button type="button" class="mui-btn mui-btn-primary backF"><span class="mui-badge mui-badge-primary">' + dataNub + '</span>' + key + '</button></div>';
-						} else{
+								'<div class="mui-col-sm-4 mui-col-xs-4 button_one" data-areacode="' + data[e].areacode + '">' +
+								'<button type="button" class="mui-btn mui-btn-primary backF"><span class="mui-badge mui-badge-primary">' + dataNumber + '</span>' + data[e].county_name + '</button></div>';
+						} else {
 							would +=
-							'<div class="mui-col-sm-4 mui-col-xs-4 button_one" data-value="' + key + '">' +
-							'<button type="button" class="mui-btn mui-btn-primary"><span class="mui-badge mui-badge-primary">' + dataNub + '</span>' + key + '</button></div>';
+								'<div class="mui-col-sm-4 mui-col-xs-4 button_one" data-value="' + data[e].areacode + '">' +
+								'<button type="button" class="mui-btn mui-btn-primary"><span class="mui-badge mui-badge-primary">' + dataNumber + '</span>' + data[e].county_name + '</button></div>';
 						}
-					});
+					}
 					$('#would_list').html(would);
 					tup_table();
 				}
@@ -76,14 +77,10 @@
 						waiting: {
 							autoShow: true,
 							title: '正在加载...'
-						},
-						extras: {
-							tupData: MyData[self.dataset.value],
-							qxData: self.dataset.value
 						}
 					});
 				});
-				
+
 			}
 		</script>
 	</body>

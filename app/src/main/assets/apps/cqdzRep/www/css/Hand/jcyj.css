@@ -1,3 +1,4 @@
+
 .mui-table-view-cell .mui-active {
 	background: #fff;
 }
@@ -11,19 +12,16 @@
 	font-size: 16px;
 	font-weight: bold;
 	width: 60px;
-	padding-left: 10px;
+	padding-left: 25px;
+	color: #fff;
 }
-
-#offCanvasBtn img {
-	width: 18px;
-	position: relative;
-	top: 3px;
+.checkborder {
+	font-size: 14px !important;
+	border: 1px solid #fff;
 }
-
 #offCanvasSideScroll {
 	background-color: #fff;
 }
-
 
 /*列表*/
 
@@ -72,14 +70,13 @@
 
 .boxflex>span {
 	flex: 1;
-	font-size: 16px;
+	font-size: 12px;
 	margin: 5px;
 	padding: 5px 0;
 	text-align: center;
 	background: #f6f6f6;
 	border-radius: 5px;
 	cursor: pointer;
-	border: 1px solid #fff;
 }
 
 .mui-table-view-cell input {
@@ -125,12 +122,20 @@
 	background: #fff !important;
 }
 
+#offCanvasSideScroll {
+	margin-bottom: 51px;
+	margin-top: 44px;
+}
 .boxflex b {
-	width: 98%;
+	width: 100px;
 	height: 36px;
 	line-height: 36px;
 	text-align: center;
 	background: #f6f6f6;
 	border-radius: 5px;
-	font-size: 16px;
+	color: #41B4E7;
+	font-family: -webkit-pictograph;
+}
+.s {
+	background-color: white !important;
 }

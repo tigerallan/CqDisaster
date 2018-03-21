@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>监测预警</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<style type="text/css">
+			.text {
+				font-size: 18px;
+			}
+			
+			.text span {
+				font-size: 14px;
+				color: red;
+			}
+			
+			.mui-ellipsis {
+				font-size: 13px;
+				color: #666;
+				padding-right: 20px;
+				font-weight: 100;
+			}
+			
+			.mui-row img {
+				margin-top: 12px;
+				margin-right: 10px;
+				width: 60px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a href="javascript:void(0);" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">监测预警</h1>
+		</header>
+		<div class="mui-content">
+			<div id="would_list" class="mui-content-padded mui-row">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a id="qcqf" class="mui-navigate-right" href="javascript:void(0);">
+							<div class="mui-row">
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<img src="../../img/qcqfyj.png" />
+								</div>
+								<div class="mui-col-sm-9 mui-col-xs-9 text">
+									群测群防预警<span>(今日告警：<b id="qcqfgjunmber">0</b>条)</span>
+									<p class="mui-ellipsis">根据地质灾害群测群防信息管理系统历史以及今日告警信息展示与查询</p>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="zyjc" class="mui-navigate-right" href="javascript:void(0);">
+							<div class="mui-row">
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<img src="../../img/zdhjcyj.png" />
+								</div>
+								<div class="mui-col-sm-9 mui-col-xs-9 text">
+									专业监测预警<span>(今日告警：<b id="zyjcgjnumber">0</b>条)</span>
+									<p class="mui-ellipsis">根据自动化安全监测设备管理平台历史以及今日告警信息展示与查询</p>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: false
+			});
+
+			var qcqf = document.getElementById('qcqf');
+			slideopen(qcqf, "qcqfyj.html");
+			var zyjc = document.getElementById('zyjc');
+			slideopen(zyjc, "zyjcyj.html");
+
+			function slideopen(arr, wz) {
+				arr.addEventListener('tap', function() {
+					mui.openWindow({
+						url: wz,
+						id: wz,
+						show: {
+							autoShow: false,
+							aniShow: 'slide-in-bottom',
+							duration: 300
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '正在加载...' //等待对话框上显示的提示内容
+						}
+					});
+				});
+			}
+
+			$.ajax({
+				type: "get",
+				url: "http://192.168.10.136:8080/cqapp/meteor/findMonitorWarnToday.do",
+				xhrFields: {
+					withCredentials: true
+				},
+				crossDomain: true,
+				success: function(json) {
+					$("#qcqfgjunmber").html(json.data.monitorCount + json.data.macroCount + json.data.disWarnCount);
+					$("#zyjcgjnumber").html(json.data.doveWarnCount);
+				}
+			});
+		</script>
+	</body>
+
+</html>
