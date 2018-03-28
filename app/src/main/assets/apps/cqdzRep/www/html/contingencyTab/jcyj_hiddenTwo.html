@@ -1,190 +1,126 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
-		<title>宏观监测数据</title>
+		<title>宏观巡查告警数据</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/common/header.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_hidden.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" href="../../css/common/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../css/common/mui.poppicker.css" />
+		<link rel="stylesheet" href="../../css/Hand/contingency/jcyjlist.css" />
+		<style type="text/css">
+			.mui-pull-right b {
+				display: inline-block;
+				margin-right: 10px;
+				font-weight: 100;
+			}
+			
+			.title_xz {
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				position: fixed;
+				top: 0;
+				background-color: #f0f0f0;
+				margin-top: 44px;
+				z-index: 990;
+				padding: 0 15px;
+				border-bottom: 1px solid #E0E0E0;
+			}
+			
+			.start_time,
+			.end_time {
+				width: 100px;
+				height: 50px;
+				float: left;
+				padding-top: 10px;
+				text-align: center;
+			}
+			
+			.start_time span {
+				display: block;
+				min-width: 100px;
+				height: 30px;
+				line-height: 30px;
+				border-radius: 5px;
+				border: 1px solid #00008B;
+			}
+			
+			.end_time span {
+				display: block;
+				min-width: 100px;
+				height: 30px;
+				line-height: 30px;
+				border-radius: 5px;
+				border: 1px solid #00008B;
+			}
+			
+			.title_xz button {
+				background-color: #41B4E7;
+				color: #fff;
+				float: right;
+				right: -5px;
+				top: 12px;
+				border: none;
+				border-radius: 6px;
+				padding: 5px 12px 4px;
+			}
+		</style>
 	</head>
+
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<a href="#" class="mui-action-back">
+			<a class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
-			<h1 id="title" class="mui-title">隐患点数据</h1>
+			<h1 id="title" class="mui-title" data-macro_info="" data-macro_radius="" data-warn_value1="" data-warn_value2="" data-warn_value3="" data-warn_value4="">宏观巡查告警数据</h1>
 		</header>
-		<div class="mui-content mui-row mui-fullscreen">
-			<ul id="content_name" class="mui-table-view">
-				
-			</ul>
-		</div>
-		<!--弹出内容-->
-		<div class="popup">
+		
+		<div class="mui-content">
 			
 		</div>
-	<script src="../../js/mui.min.js"></script>
-	<script src="../../js/jquery-1.11.3.js"></script>
-	<script src="../../js/h.js"></script>
-	<script type="text/javascript">
-		mui.init();
-		mui('.mui-scroll-wrapper').scroll();
-		var content_name = "";
-		var lsjcsj_text = [];
-		var popup_text = "";
-		$.ajax({
-				url: "../../data/jcyj_hidden3.json",
-				async: false, //同步请求	
-				type: "get",
-				dataType: "json",
-				success: function(json) {
-					var data = json.data;
-					for(var i = 0; i < data.length; i++) {
-						content_name += 
-								'<li class="mui-table-view-cell mui-collapse">' +
-							'<a class="mui-navigate-right" href="javascript:viod(0)">' +
-							'<div class="mui-row">' +
-							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">基本信息</div></div></a>' +
-							'<div class="mui-collapse-content">' +
-							'<ul class="mui-table-view">' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">隐患点编号</span>' +
-							'<span class="mui-pull-right">' + data[i].bh + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">隐患点编名称</span>' +
-							'<span class="mui-pull-right">' + data[i].mc + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">经 度</span>' +
-							'<span class="mui-pull-right">' + data[i].jd + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">纬 度</span>' +
-							'<span class="mui-pull-right">' + data[i].wd + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">灾害类型</span>' +
-							'<span class="mui-pull-right">' + data[i].zhtype + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">危害等级</span>' +
-							'<span class="mui-pull-right">' + data[i].whdj + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">稳定性</span>' +
-							'<span class="mui-pull-right">' + data[i].wdx + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">片 所</span>' +
-							'<span class="mui-pull-right">' + data[i].ps + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">位 置</span>' +
-							'<span class="mui-pull-right">' + data[i].wz + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">监测人员</span>' +
-							'<span class="mui-pull-right">' + data[i].jcry + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">手机</span>' +
-							'<span class="mui-pull-right">' + data[i].cellphone + '</span></li>' +
-							'</ul></div></li>' +
-							'<li class="mui-table-view-cell mui-collapse mui-active">' +
-							'<a class="mui-navigate-right" href="#">' +
-							'<div class="mui-row">' +
-							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">定量监测数据</div></div></a>' +
-							'<div class="mui-collapse-content">' +
-							'<ul class="mui-table-view">' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">合法半径</span>' +
-							'<span class="mui-pull-right">' + data[i].hfbj + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">告警阀值</span>' +
-							'<span class="mui-pull-right">' + data[i].gjfz + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">宏观现象</span>' +
-							'<span class="mui-pull-right" style="margin-top: 5px;">' + data[i].hgxx + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">实测现象</span>' +
-							'<span class="mui-pull-right">' + data[i].scxx + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">其他现象备注</span>' +
-							'<span class="mui-pull-right">' + data[i].qtxxbz + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<button id="cktp" type="button" class="mui-pull-right">查看图片</button></li>' +
-							'</ul></div></li>' +
-							'<li class="mui-table-view-cell mui-collapse">' +
-							'<a class="mui-navigate-right" href="#">' +
-							'<div class="mui-row">' +
-							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">历史监测数据</div></div></a>' +
-							'<div class="mui-collapse-content">' +
-							'<ul id="ck_ls' + i + '" class="mui-table-view">' +
-							'</ul></div></li></ul>' +
 
-							'</div>';
-							var lsjcsj = data[i].lsjcsj;
-							lsjcsj_text[i] = '';
-						for(var e = 0; e < lsjcsj.length; e++) {
-							lsjcsj_text[i] +=
-								'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">' + lsjcsj[e].slsj + '</span>' +
-								'<span class="mui-pull-right mui-content-padded"><a href="#middlePopover' + i +'_'+ e + '" class="openPopover">查看</a></span>' +
-								'</li>';
-							var sfhf =  lsjcsj[e].sfhf;
-							var sfhfImg = "";
-							var sjyxx = lsjcsj[e].sjyxx;
-							var sjyxxImg = "";
-							if (sfhf.indexOf("是") >= 0) {
-								sfhfImg = "../../img/green.JPG";
-							} else{
-								sfhfImg = "../../img/red.JPG";
-							}
-							if (sjyxx.indexOf("是") >= 0) {
-								sjyxxImg = "../../img/green.JPG";
-							} else{
-								sjyxxImg = "../../img/red.JPG";
-							}
-							popup_text +=
-							'<div class="mui-popover" id="middlePopover'+ i +'_'+ e +'">' +
-							'<div class="mui-popover-arrow"></div>' +
-							'<div class="mui-scroll-wrapper">' +
-							'<div class="mui-scroll">' +
-							'<ul class="mui-table-view">' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">监测点编号</span>' +
-								'<span class="mui-pull-right">' + data[i].bh + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">监测点时间</span>' +
-								'<span class="mui-pull-right">' + lsjcsj[e].slsj + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">是否合法</span>' +
-								'<span class="mui-pull-right"><img src="' + sfhfImg + '"/></span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">数据有限性</span>' +
-								'<span class="mui-pull-right"><img src="' + sjyxxImg + '"/></span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">告警等级</span>' +
-								'<span class="mui-pull-right">' + lsjcsj[e].gjxx + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">宏观现象</span>' +
-								'<span class="mui-pull-right">' + lsjcsj[e].hgxx + '</span>' +
-							'</li>' +
-							'</ul></div></div></div>';
-						}
-					}
-					$("#content_name").html(content_name);
-					for(var arr = 0; arr < data.length; arr++) {
-						$("#ck_ls" + arr).append(lsjcsj_text[arr]);
-					}
-					$(".popup").html(popup_text);
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<!--<script src="../../js/quxian.js"></script>-->
+		<script src="../../js/mui.picker.min.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js"></script>
+		<script type="text/javascript">
+			function requireUrlData(strName) {
+				var strHref = location.href;
+				console.log(strHref);
+				var intPos = strHref.indexOf("?");
+				var strRight = strHref.substr(intPos + 1);
+				var arrTmp = strRight.split("&");
+				for(var i = 0; i < arrTmp.length; i++) {
+					var arrTemp = arrTmp[i].split("=");
+					if(arrTemp[0].toUpperCase() == strName.toUpperCase())
+						return arrTemp[1];
 				}
-		});
-		document.getElementById('cktp').addEventListener('tap', function() {
-		  mui.openWindow({
-		    url: 'jcyj_cktp.html', 
-		    id:'jcyj_cktp.html'
-		  });
-		});
-	</script>
+				return "";
+			}
+
+			var id = requireUrlData('id');
+			mui.init({
+				subpages: [{
+					url: 'jcyj_hiddenTwoZi.html?id='+id,
+					id: 'jcyj_hiddenTwoZi.html',
+					styles: {
+						top: '44px', //mui标题栏默认高度为45px；
+						bottom: '0px' //默认为0px，可不定义；
+					}
+				}]
+			});
+			
+			
+		</script>
 	</body>
+
 </html>

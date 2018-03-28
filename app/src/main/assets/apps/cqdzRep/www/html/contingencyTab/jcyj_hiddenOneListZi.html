@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>定量监测告警数据</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/index.css" />
+		<link rel="stylesheet" href="../../css/common/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../css/common/mui.poppicker.css" />
+		<link rel="stylesheet" href="../../css/Hand/contingency/jcyjlist.css" />
+		<style type="text/css">
+			li {
+				line-height: 35px;
+			}
+			
+			.mui-table-view-cell {
+				padding: 10px 6px 6px 15px !important
+			}
+		</style>
+		<style type="text/css">
+			.mui-pull-right b {
+				display: inline-block;
+				margin-right: 10px;
+				font-weight: 100;
+			}
+			
+			.title_xz {
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				position: fixed;
+				top: -44px;
+				background-color: #f0f0f0;
+				z-index: 990;
+				padding: 0 15px;
+				border-bottom: 1px solid #E0E0E0;
+			}
+			
+			.start_time,
+			.end_time {
+				width: 100px;
+				height: 50px;
+				float: left;
+				padding-top: 10px;
+				text-align: center;
+			}
+			
+			.start_time span {
+				display: block;
+				min-width: 100px;
+				height: 30px;
+				line-height: 30px;
+				border-radius: 5px;
+				border: 1px solid #00008B;
+			}
+			
+			.end_time span {
+				display: block;
+				min-width: 100px;
+				height: 30px;
+				line-height: 30px;
+				border-radius: 5px;
+				border: 1px solid #00008B;
+			}
+			
+			.title_xz button {
+				background-color: #41B4E7;
+				color: #fff;
+				float: right;
+				right: -5px;
+				top: 12px;
+				border: none;
+				border-radius: 6px;
+				padding: 5px 12px 4px;
+			}
+			.mui-content{
+				margin-top: 50px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="title_xz">
+			<div style="float: left;">时间：</div>
+			<div class="start_time">
+				<span id="start_time"></span>
+			</div>
+			<div style="float: left;margin-left: 7px;">至</div>
+			<div class="end_time">
+				<span id="end_time"></span>
+			</div>
+			<button id="searchDate">查询</button>
+		</div>
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<ul id="dynamic_sj" class="mui-table-view" data-yhdId="" data-time="" data-monitor_no="" data-is_destroy="" data-monitor_radius="" data-monitor_name="" data-monitor_direction="">
+
+				</ul>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/h.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				pullRefresh: {
+					container: '.mui-content',
+					up: {
+						height: 50, //可选.默认50.触发上拉加载拖动距离
+						auto: true, //可选,默认false.自动上拉加载一次
+						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+						contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback: pullupRefresh
+					}
+				}
+			});
+			
+			//读取系统日期
+			var d = new Date();
+			var n = d.getFullYear();
+			var t = d.getMonth() + 1;
+			var m = d.getDate();
+			//设置结束时间
+			(function($, doc) {
+				$.init();
+				var result = document.getElementById("end_time");
+				if(t < 10) {
+					t = "0" + t;
+				}
+				if(m < 10) {
+					m = "0" + m;
+				}
+				$.ready(function() {
+					//					var choose_two = document.getElementById('end_time');
+					result.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m)
+						});
+						picker.show(function(rs) {
+							result.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			//设置开始时间
+			(function($, doc) {
+				$.init();
+				var result_two = document.getElementById("start_time");
+				$.ready(function() {
+					//		var choose_three = document.getElementById('start_time');
+					result_two.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m),
+							"value": n + "-" + t + "-01"
+						});
+						picker.show(function(rs) {
+							result_two.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			function requireUrlData(strName) {
+				var strHref = location.href;
+				console.log(strHref);
+				var intPos = strHref.indexOf("?");
+				var strRight = strHref.substr(intPos + 1);
+				var arrTmp = strRight.split("&");
+				for(var i = 0; i < arrTmp.length; i++) {
+					var arrTemp = arrTmp[i].split("=");
+					if(arrTemp[0].toUpperCase() == strName.toUpperCase())
+						return arrTemp[1];
+				}
+				return "";
+			}
+
+			var ng = requireUrlData('ng');
+			var count = 1;
+			var stime = "",
+				etime = "";
+				
+			//点击查询按钮
+			$("#searchDate").on("tap",function(){
+				$("#dynamic_sj").html("");
+				stime = $("#start_time").html();
+				etime = $("#end_time").html();
+				count = 1;
+				mui('.mui-content').pullRefresh().pullupLoading();
+			});
+			
+			function pullupRefresh() {
+				var table = document.body.querySelector('.mui-table-view');
+				var url = ip + "meteor/findMonitorData3.do";
+				_that = this;
+				mui.ajax(url, {
+					dataType: 'json',
+					data: {
+						id: ng,
+						page: count,
+						row: 20,
+						stime: stime,
+						etime: etime
+					},
+					type: 'get',
+					success: function(json) {
+						var data = json.data;
+						if(data.length) {
+							data.forEach(function(e, i, a) {
+								var li = document.createElement("li");
+								li.className = "mui-table-view-cell";
+								li.innerHTML = '<a class="mui-navigate-right" onclick="day_tap(this)" data-monitor_url="' + e.monitor_url + '" data-is_valid="' + e.is_valid + '" data-state="' + e.state + '" data-monitor_data="' + e.monitor_data + '" data-warn_level="' + e.warn_level + '" data-warn_level1="' + e.warn_level1 + '" data-has_clean="' + e.has_clean + '" href="#">' + e.upload_time + '</a>';
+								table.appendChild(li);
+							})
+							if (data.length < 20) {
+								_that.endPullupToRefresh(true);
+							} else{
+								_that.endPullupToRefresh(false);
+							}
+							count++;
+						} else {
+							_that.endPullupToRefresh(true);
+						}
+					}
+				});
+			}
+			
+			mui.plusReady(function() {
+				var self = plus.webview.getWebviewById("jcyj_hiddenOneList.html");
+				$("#dynamic_sj").attr("data-time", self.time);
+				$("#dynamic_sj").attr("data-monitor_no", self.monitor_no);
+				$("#dynamic_sj").attr("data-is_destroy", self.is_destroy);
+				$("#dynamic_sj").attr("data-monitor_radius", self.monitor_radius);
+				$("#dynamic_sj").attr("data-monitor_name", self.monitor_name);
+				$("#dynamic_sj").attr("data-monitor_direction", self.monitor_direction);
+				$("#dynamic_sj").attr("data-yhdId", self.yhdId);
+			});
+
+			//点击一条数据跳转到灾害点详细信息页面
+			function day_tap(self) {
+				var monitor_no = $("#dynamic_sj").attr("data-monitor_no");
+				var time = $("#dynamic_sj").attr("data-time");
+				var yhdId = $("#dynamic_sj").attr("data-yhdId");
+				var is_destroy = $("#dynamic_sj").attr("data-is_destroy");
+				var monitor_radius = $("#dynamic_sj").attr("data-monitor_radius");
+				var monitor_name = $("#dynamic_sj").attr("data-monitor_name");
+				var monitor_direction = $("#dynamic_sj").attr("data-monitor_direction");
+				var is_valid = $(self).attr("data-is_valid");
+				var state = $(self).attr("data-state");
+				var monitor_data = $(self).attr("data-monitor_data");
+				var warn_level = $(self).attr("data-warn_level");
+				var warn_level1 = $(self).attr("data-warn_level1");
+				var has_clean = $(self).attr("data-has_clean");
+				var monitor_url = $(self).attr("data-monitor_url");
+				mui.openWindow({
+					url: "lishijilu_dljcgj.html?ng="+ng,//ng为监测点的id
+					id: "lishijilu_dljcgj.html",
+					extras: {
+						yhdId: yhdId,//隐患点id
+						monitor_no: monitor_no,
+						time: time,
+						is_destroy: is_destroy,
+						monitor_radius: monitor_radius,
+						monitor_name: monitor_name,
+						monitor_direction: monitor_direction,
+						is_valid: is_valid,
+						state: state,
+						monitor_data: monitor_data,
+						warn_level: warn_level,
+						warn_level1: warn_level1,
+						has_clean: has_clean,
+						monitor_url: monitor_url
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

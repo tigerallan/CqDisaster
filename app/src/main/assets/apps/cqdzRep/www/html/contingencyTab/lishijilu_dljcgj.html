@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>定量监测数据</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/header.css" />
+		<style type="text/css">
+			body,
+			html {
+				background-color: #fff;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">定量监测数据</h1>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="ultable" class="mui-table-view">
+
+				</ul>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+
+			function requireUrlData(strName) {
+				var strHref = location.href;
+				console.log(strHref);
+				var intPos = strHref.indexOf("?");
+				var strRight = strHref.substr(intPos + 1);
+				var arrTmp = strRight.split("&");
+				for(var i = 0; i < arrTmp.length; i++) {
+					var arrTemp = arrTmp[i].split("=");
+					if(arrTemp[0].toUpperCase() == strName.toUpperCase())
+						return arrTemp[1];
+				}
+				return "";
+			}
+
+			var ng = requireUrlData('ng');
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				var time = self.time;
+				var monitor_no = self.monitor_no;
+				var is_destroy = self.is_destroy;
+				if(is_destroy == 1) {
+					is_destroy = "是"
+				} else {
+					is_destroy = "否"
+				}
+				var yhdId = self.yhdId;
+				var monitor_radius = self.monitor_radius;
+				var monitor_name = self.monitor_name;
+				var monitor_direction = self.monitor_direction;
+				var is_valid = self.is_valid;
+				var ids = self.ids;
+				if(is_valid == 1) {
+					is_valid = "../../img/green.JPG"
+				} else {
+					is_valid = "../../img/red.JPG"
+				}
+				var state = self.state;
+				if(state == 1) {
+					state = "../../img/green.JPG"
+				} else {
+					state = "../../img/red.JPG"
+				}
+				var monitor_data = self.monitor_data;
+				var warn_level = self.warn_level;
+				if(warn_level == 1) {
+					warn_level = '<img src="../img/blue.png" border="0">';
+				} else if(warn_level == 2) {
+					warn_level = '<img src="../img/yellow.png" border="0">';
+				} else if(warn_level == 3) {
+					warn_level = '<img src="../img/orange.png" border="0">';
+				} else if(warn_level == 4) {
+					warn_level = '<img src="../img/red.JPG" border="0">';
+				} else if(warn_level == -1) {
+					warn_level = "异常";
+				} else {
+					warn_level = "正常 ";
+				}
+				var warn_level1 = self.warn_level1;
+				if(warn_level1 == 1) {
+					warn_level1 = '<img src="../img/blue.png" border="0">';
+				} else if(warn_level1 == 2) {
+					warn_level1 = '<img src="../img/yellow.png" border="0">';
+				} else if(warn_level1 == 3) {
+					warn_level1 = '<img src="../img/orange.png" border="0">';
+				} else if(warn_level1 == 4) {
+					warn_level1 = '<img src="../img/red.JPG" border="0">';
+				} else if(warn_level1 == -1) {
+					warn_level1 = "异常";
+				} else {
+					warn_level1 = "正常 ";
+				}
+				var has_clean = self.has_clean;
+				if(has_clean == 1) {
+					has_clean = '是';
+				} else {
+					has_clean = '否';
+				}
+				var monitor_url = self.monitor_url;
+				//				var ng = self.ng;
+				var html = '<li class="mui-table-view-cell"><span class="mui-pull-left">监测点编号</span>' +
+					'<span class="mui-pull-right">' + monitor_no + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">建点时间</span>' +
+					'<span class="mui-pull-right">' + time + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">监测点名称</span>' +
+					'<span class="mui-pull-right">' + monitor_name + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">合法半径(米)</span>' +
+					'<span class="mui-pull-right">' + monitor_radius + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">是否损坏</span>' +
+					'<span class="mui-pull-right">' + is_destroy + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">监测方向</span>' +
+					'<span class="mui-pull-right">' + monitor_direction + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">是否合法</span>' +
+					'<span class="mui-pull-right"><img src="' + is_valid + '"></span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">数据有效性</span>' +
+					'<span class="mui-pull-right"><img src="' + state + '"></span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">实测数据</span>' +
+					'<span class="mui-pull-right">' + monitor_data + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">相邻告警</span>' +
+					'<span class="mui-pull-right">' + warn_level + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">累计告警</span>' +
+					'<span class="mui-pull-right">' + warn_level1 + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">是否清空雨量筒</span>' +
+					'<span class="mui-pull-right">' + has_clean + '</span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left">查看图片</span>' +
+					'<span class="mui-pull-right"><a id="cktp" href="#">查看</a></span></li>' +
+					'<li class="mui-table-view-cell"><span class="mui-pull-left" >查看曲线</span>' +
+					'<span class="mui-pull-right"><a id="sjqxt" href="#">查看</a></span></li>';
+				$("#ultable").append(html);
+
+				document.getElementById("cktp").addEventListener("tap", function() {
+					mui.openWindow({
+						url: "http://183.230.108.112:8076/wish/test/jcyj_cktp.html?monitor_url=" + monitor_url,
+						id: "guotu"
+					});
+				});
+//				alert(ng);
+//				alert(yhdId);
+				document.getElementById('sjqxt').addEventListener('tap', function() {
+					mui.openWindow({
+						url: "jcyj_sjqxt.html",
+						id: "jcyj_sjqxt.html",
+						extras:{
+							ng: ng,
+							yhdId: yhdId
+						}
+					});
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

@@ -66,6 +66,9 @@
 		"Accelerometer": {}
 	},
 	"plus": {
+		"statusbar":{
+				"background":"#0075a9"
+		},
 		"splashscreen": {
 			"autoclose": true,
 			/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
@@ -294,7 +297,10 @@
 					"html/contingencyTab/zddq_sssp.html",
 					"html/contingencyTab/uav-video.html",
 					"html/contingencyTab/jcyj_list.html",
-					"html/contingencyTab/jcyjlx.html"
+					"html/contingencyTab/jcyjlx.html",
+					"html/contingencyTab/rzgjsl_xq.html",
+					"html/contingencyTab/calculator.html",
+					"html/contingencyTab/orientation_compass.html"
 				],
 				"priority": 0
 			},
@@ -469,7 +475,8 @@
 			},
 			"html/contingencyTab/jcyj_hidden.html": {
 				"resources": [
-					"html/contingencyTab/jcyj_hiddenOne.html"
+					"html/contingencyTab/jcyj_hiddenOne.html",
+					"html/contingencyTab/jcyj_yhdjbxx.html"
 				],
 				"refer": [
 					"html/contingencyTab/jcyj_hiddenTwo.html"
@@ -480,7 +487,10 @@
 				"resources": [],
 				"refer": [
 					"html/contingencyTab/jcyj_cktp.html",
-					"html/contingencyTab/jcyj_sjqxt.html"
+					"html/contingencyTab/jcyj_sjqxt.html",
+					"html/contingencyTab/lssjck.html",
+					"html/contingencyTab/lishijilu.html",
+					"html/contingencyTab/jcyj_hiddenOneList.html"
 				],
 				"priority": 0
 			},
@@ -488,14 +498,19 @@
 				"resources": [],
 				"refer": [
 					"html/contingencyTab/qcqfyj.html",
-					"html/contingencyTab/zyjcyj.html"
+					"html/contingencyTab/zyjcyj.html",
+					"html/contingencyTab/zhgjn.html",
+					"html/contingencyTab/dljcgjn.html",
+					"html/contingencyTab/zyjcyjn.html",
+					"html/contingencyTab/hgxcgjn.html"
 				],
 				"priority": 0
 			},
 			"html/contingencyTab/qcqfyj.html": {
 				"resources": [],
 				"refer": [
-					"html/contingencyTab/jcyj.html"
+					"html/contingencyTab/jcyj.html",
+					"html/contingencyTab/qcqflist.html"
 				],
 				"priority": 0
 			},
@@ -503,6 +518,115 @@
 				"resources": [],
 				"refer": [
 					"html/contingencyTab/jcyj.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/zhgjn.html": {
+				"resources": [
+					"html/contingencyTab/zhgjnlist.html",
+					"img/jcyj_3.png",
+					"fonts/mui.ttf",
+					"img/jcyj_1.png",
+					"img/jcyj_4.png"
+				],
+				"refer": [
+					"html/contingencyTab/jcyj_hidden.html",
+					"html/contingencyTab/zhgjnF.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/jcyj_hiddenTwo.html": {
+				"resources": [
+					"html/contingencyTab/jcyj_hiddenTwoZi.html"
+				],
+				"refer": [
+					"html/contingencyTab/lishijilu.html",
+					"html/contingencyTab/lishijilu_dljcgj.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/jcyj_hiddenOneList.html": {
+				"resources": [
+					"html/contingencyTab/jcyj_hiddenOneListZi.html"
+				],
+				"refer": [
+					"html/contingencyTab/lishijilu.html",
+					"html/contingencyTab/lishijilu_dljcgj.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/zyjcyjn.html": {
+				"resources": [],
+				"refer": [
+					"html/contingencyTab/jcyj_hiddenThree.html",
+					"html/contingencyTab/jcyj_hidden.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/dljcgjn.html": {
+				"resources": [
+					"html/contingencyTab/dljcgjnTable.html"
+				],
+				"refer": [
+					"html/contingencyTab/jcyj_hiddenOne.html",
+					"html/contingencyTab/dljcgjnF.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/dljcgjnF.html": {
+				"resources": [
+					"html/contingencyTab/jcyj_yhdjbxx.html"
+				],
+				"refer": [
+					"html/contingencyTab/jcyj_hiddenOne.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/hgxcgjn.html": {
+				"resources": [],
+				"refer": [
+					"html/contingencyTab/hgxcgjnF.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/hgxcgjnF.html": {
+				"resources": [
+					"html/contingencyTab/jcyj_yhdjbxx.html"
+				],
+				"refer": [
+					"html/contingencyTab/jcyj_hiddenTwo.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/lishijilu_dljcgj.html": {
+				"resources": [],
+				"refer": [
+					"html/contingencyTab/jcyj_cktp.html",
+					"html/contingencyTab/jcyj_sjqxt.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/zhgjnF.html": {
+				"resources": [
+					"html/contingencyTab/jcyj_yhdjbxx.html"
+				],
+				"refer": [
+					"html/contingencyTab/jcyj_hiddenOne.html",
+					"html/contingencyTab/jcyj_hiddenTwo.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/jcyj_hiddenOneListZi.html": {
+				"resources": [],
+				"refer": [
+					"html/contingencyTab/lishijilu_dljcgj.html"
+				],
+				"priority": 0
+			},
+			"html/contingencyTab/jcyj_hiddenTwoZi.html": {
+				"resources": [],
+				"refer": [
+					"html/contingencyTab/lishijilu.html"
 				],
 				"priority": 0
 			}
@@ -533,7 +657,6 @@
 				"data/dynamic_xwlb.json",
 				"leaflet/images/layers.png",
 				"data/newscon2.json",
-				"html/contingencyTab/calculator.html",
 				"img/jcyj_2.png",
 				"img/tq.png",
 				"html/contingencyTab/wannianli/images/calendar_arrow_lright.png",
@@ -642,7 +765,6 @@
 				"img/dl2.png",
 				"img/duoyun.png",
 				"html/contingencyTab/uav-video-test.html",
-				"img/jcyj_3.png",
 				"html/workTab/qcqf/workQcqf_yjylOneList.html",
 				"img/mapicon.png",
 				"img/2_5.png",
@@ -681,7 +803,6 @@
 				"html/workTab/qcqf/workQcqf_content.html",
 				"html/contingencyTab/wannianli/images/btn_huangli_selected.png",
 				"html/workTab/qcqf/workQcqf_tbxsOne.html",
-				"img/jcyj_1.png",
 				"img/2_7.png",
 				"html/contingencyTab/wannianli/fonts/icomoon.ttf",
 				"data/jibenxinxi.json",
@@ -730,7 +851,6 @@
 				"html/contingencyTab/wannianli/images/calendar_img_work.png",
 				"css/hazardPoint.css",
 				"img/1_7.png",
-				"html/contingencyTab/orientation_compass.html",
 				"js/dropload.js",
 				"html/workTab/qcqf/imgTab.html",
 				"leaflet/images/marker-shadow.png",
@@ -749,7 +869,6 @@
 				"html/workTab/qcqf/workQcqf_ndfa.html",
 				"img/1_43.png",
 				"images/qihoo.png",
-				"img/jcyj_4.png",
 				"html/statsTab/table.html",
 				"css/mui.picker.min.css",
 				"data/zyjcsb.json",

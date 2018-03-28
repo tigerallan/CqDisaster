@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>历史数据查看</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" href="../../css/common/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../css/common/mui.poppicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj.css" />
+		<style type="text/css">
+			.mui-bar-nav~.mui-content {
+				height: 100%;
+			}
+			
+			.content_iframe {
+				height: 100%;
+			}
+			
+			#dynamic_sj {
+				margin-top: 1px;
+			}
+			.main{
+				font-size: 16px;
+			}
+		</style>
+	</head>
+
+	<body onresize="document.activeElement.scrollIntoView(true);">
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-slide-in">
+			<!--菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-right">
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">筛选条件</h1>
+				</header>
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						
+							<li class="mui-table-view-cell">
+								<span class="celltitle">时间选择</span>
+								<div class="boxflex">
+									<b id="start_time"></b>
+									<span class="s">至</span>
+									<b id="end_time"></b>
+								</div>
+							</li>
+							
+						</ul>
+					</div>
+
+				</div>
+				<!--底部选项卡-->
+				<nav id="nav" class="mui-bar mui-bar-tab">
+					<a id="confirm" class="mui-tab-item mui-active">
+						<div class="mui-tab-label">确定</div>
+					</a>
+					<a id="abolish" class="mui-tab-item">
+						<div class="mui-tab-label">取消</div>
+					</a>
+				</nav>
+			</aside>
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a href="javascript:void(0);" class="mui-action-back">
+						<span class="mui-icon mui-icon-arrowleft"></span>
+					</a>
+					<h1 id="title" class="mui-title">历史记录</h1>
+					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-pull-right">筛选</a>
+				</header>
+				<div id="dynamic" class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul id="dynamic_sj" class="main mui-table-view">
+
+						</ul>
+					</div>
+				</div>
+				<div id="backdrop" class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui.init({
+				pullRefresh: {
+					container: "#dynamic",
+					up: {
+						height: 50,
+						auto: true,
+						contentrefresh: "正在加载...",
+						contentnomore: '没有更多数据了',
+						callback: fnPullfresh
+					}
+				}
+			});
+			//主界面和侧滑菜单界面均支持区域滚动；
+			mui('.mui-scroll-wrapper').scroll();
+
+			var _downThis; //下拉加载this
+
+			var page = 1; //页码
+			function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+			function errorImg(img) {
+				img.src = "../../img/jcyj_1.png";
+				img.onerror = null;
+			}
+			//上拉刷新
+			function fnPullfresh() {
+				var url = ip + "meteor/findWarnDataCountByAreaId.do?type=1&page=" + page + "&row=20";
+				_that = this;
+				mui.ajax(url, {
+					dataType: 'json',
+					type: 'get',
+					timeout: 10000,
+					success: function(json) {
+						var data = json.data;
+						if(data.length) {
+							var table = document.querySelector(".main");
+							data.forEach(function(e, i, a) {
+								var time = timestampToTime(e.upload_time / 1000);
+								var li = document.createElement("li");
+								li.className = "mui-table-view-cell";
+								li.innerHTML = '<a class="mui-navigate-right main" href="#">'+time+'</a>';
+								table.appendChild(li);
+							})
+							_that.endPullupToRefresh(false);
+							page++;
+						} else {
+							_that.endPullupToRefresh(true);
+						}
+					}
+				});
+			}
+			
+		</script>
+	</body>
+
+</html>

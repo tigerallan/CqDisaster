@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.nandity.disastersystem.activity.FillInfoActivity">
+    tools:context="com.nandi.cqdisaster.examine.activity.FillInfoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
         <RelativeLayout
-            android:background="@color/c1olorblue"
+            android:background="@color/title_bar_color"
             android:layout_width="match_parent"
             android:layout_height="45dp">
 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>定量监测数据</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/header.css" />
+		<style type="text/css">
+			body,
+			html {
+				background-color: #fff;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">历史数据</h1>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="ultable" class="mui-table-view">
+					<!--<img src="../../img/blue.png"/>
+					<img src="../../img/orange.png"/>-->
+				</ul>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			var zyjc_text = "";
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				var is_new = self.is_new;//新app上报
+				var warn_level = self.warn_level;//告警等级 1蓝2黄3橙4红
+				var dis_id = self.dis_id;//操作
+				var upload_time = self.upload_time;//监测时间
+				var is_validate = self.is_validate;//是否合法
+				var dis_no = self.dis_no;//隐患点编号
+				var macro_url = self.macro_url;//图片
+				var otherPhenomena = self.otherPhenomena;//其他现象备注
+				var disId = self.disId;//
+				var id = self.id;//查看上报
+				var state = self.state;//数据有效性 1绿2红
+				var macro_data = self.macro_data;//宏观现象
+				var remarks = self.remarks;//备注
+				var macro_info = self.macro_info;
+				var macro_radius = self.macro_radius;
+				var warn_value1 = self.warn_value1;
+				var warn_value2 = self.warn_value2;
+				var warn_value3 = self.warn_value3;
+				var warn_value4 = self.warn_value4;
+				if(state == 1) {
+					state = '<img src="../../img/green.JPG"/>';
+				} else{
+					state = '<img src="../../img/red.JPG"/>';
+				}
+				if(is_validate == 0) {
+					is_validate = "否";
+				} else if(is_validate == 1) {
+					is_validate = "是";
+				}
+				if(warn_level == 0) {
+					warn_level = '<img src="../../img/blue.png"/>';
+				} else if(warn_level == 1) {
+					warn_level = '<img src="../../img/yellow.png"/>';
+				}else if(warn_level == 2) {
+					warn_level = '<img src="../../img/orange.png"/>';
+				}else if(warn_level == 3) {
+					warn_level = '<img src="../../img/red.JPG"/>';
+				}
+				 zyjc_text =
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">隐患点编号</span>' +
+					'<span class="mui-pull-right">' + dis_no + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">监测时间</span>' +
+					'<span class="mui-pull-right">' + upload_time + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">实测现象</span>' +
+					'<span class="mui-pull-right">' + macro_data + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">告警等级</span>' +
+					'<span class="mui-pull-right">' + warn_level + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">是否合法</span>' +
+					'<span class="mui-pull-right">' + is_validate + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">数据有效性</span>' +
+					'<span class="mui-pull-right">' + state + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">合法半径(米)</span>' +
+					'<span class="mui-pull-right">' + macro_radius + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">宏观现象：</span>' +
+					'<span class="mui-pull-right">' + macro_info + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">备注</span>' +
+					'<span class="mui-pull-right">' + remarks + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">其他现象备注</span>' +
+					'<span class="mui-pull-right">' + otherPhenomena + '</span>' +
+					'</li>';
+				$("#ultable").html(zyjc_text);
+			});
+		</script>
+	</body>
+
+</html>

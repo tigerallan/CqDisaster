@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>专业监测数据</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/common/header.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_hidden.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_hidden.css" />
 	</head>
+
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a href="#" class="mui-action-back">
@@ -18,82 +20,103 @@
 			<h1 id="title" class="mui-title">监测设备</h1>
 		</header>
 		<div class="mui-content mui-row mui-fullscreen">
-			
-					<div class="mui-collapse-content">
-						<ul id="zyjc_table" class="mui-table-view">
-						    
-						</ul>
-					</div>
-				
+
+			<div class="mui-collapse-content">
+				<ul id="zyjc_table" class="mui-table-view">
+
+				</ul>
+			</div>
+
 		</div>
-		
-	<script src="../../js/mui.min.js"></script>
-	<script src="../../js/jquery-1.11.3.js"></script>
-	<script src="../../js/h.js"></script>
-	<script type="text/javascript">
-		mui.init();
-		mui('.mui-scroll-wrapper').scroll();
-		var zyjc_text = "";
-		$.ajax({
-				url: "../../data/jcyj_hidden4.json",
-				async: false, //同步请求	
-				type: "get",
-				dataType: "json",
-				success: function(json) {
-					var data = json.data;
-							zyjc_text +=
-								'<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">区县</span>' +
-						    	'<span class="mui-pull-right">' + data[0].qx + '</span>' +
-						    '</li>' +
-						    '<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">监测单位</span>' +
-						    	'<span class="mui-pull-right">' + data[0].jcdw + '</span>' +
-						    '</li>' +
-						    '<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">所属项目</span>' +
-						    	'<span class="mui-pull-right">' + data[0].ssxm + '</span>' +
-						    '</li>' +
-						    '<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">监测点名称</span>' +
-						    	'<span class="mui-pull-right">' + data[0].jcdmc + '</span>' +
-						    '</li>' +
-						    '<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">告警类型</span>' +
-						    	'<span class="mui-pull-right">' + data[0].gjtype + '</span>' +
-						    '</li>' +
-						    '<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">告警等级</span>' +
-						    	'<span class="mui-pull-right">' + data[0].gjdj + '</span>' +
-						    '</li>' +
-						    '<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">告警时间</span>' +
-						    	'<span class="mui-pull-right">' + data[0].gjtime + '</span>' +
-						    '</li>' +
-						    '<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">是否处置</span>' +
-						    	'<span class="mui-pull-right">' + data[0].sfcz + '</span>' +
-						    '</li>' +
-						    '<li class="mui-table-view-cell">' +
-						    	'<span class="mui-pull-left">查看详情</span>' +
-						    	'<span class="mui-pull-right">' +
-						    		'<button id="ckxq" type="button" class="mui-pull-right">查看详情</button>' +
-						    	'</span>' +
-						    '</li>';
-					$("#zyjc_table").html(zyjc_text);
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script src="../../js/h.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			var zyjc_text = "";
+
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				var name = self.name;
+				var handle = self.handle;
+				var monitor = self.monitor;
+				var deal = self.deal;
+				var record = self.record;
+				var level = self.level;
+				var time = self.time;
+				var project = self.project;
+				var jcdw = self.jcdw;
+				var type = self.type;
+				var gjlx = self.gjlx;
+				var handle_time = self.handle_time;
+				var deal_record = self.deal_record;
+				if(deal == 0) {
+					deal = "否";
+				} else if(deal == 1) {
+					deal = "是";
 				}
-		});
-		
-		
-		
-		
-		
-		document.getElementById('ckxq').addEventListener('tap', function() {
-		  mui.openWindow({
-		    url: 'jcyj_ckxq.html', 
-		    id:'jcyj_ckxq.html'
-		  });
-		});
-	</script>
+				
+				if(type == 1) {
+					type = "相邻告警";
+				} else if(type == 2) {
+					type = "累计告警";
+				}
+				if(level == 1) {
+					level = "蓝色";
+				} else if(level == 2) {
+					level = "黄色";
+				}else if(level == 3) {
+					level = "橙色";
+				}else if(level == 4) {
+					level = "红色";
+				}
+				
+				var zyjc_text =
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">区县</span>' +
+					'<span class="mui-pull-right">' + name + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">监测单位</span>' +
+					'<span class="mui-pull-right">' + jcdw + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">所属项目</span>' +
+					'<span class="mui-pull-right">' + project + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">监测点名称</span>' +
+					'<span class="mui-pull-right">' + monitor + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">告警类型</span>' +
+					'<span class="mui-pull-right">' + type + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">告警等级</span>' +
+					'<span class="mui-pull-right">' + level + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">告警时间</span>' +
+					'<span class="mui-pull-right">' + time + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">是否处置</span>' +
+					'<span class="mui-pull-right">' + deal + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">处置时间</span>' +
+					'<span class="mui-pull-right">' + handle_time + '</span>' +
+					'</li>' +
+					'<li class="mui-table-view-cell">' +
+					'<span class="mui-pull-left">备注</span>' +
+					'<span class="mui-pull-right">' + deal_record + '</span>' +
+					'</li>';
+				$("#zyjc_table").html(zyjc_text);
+			});
+		</script>
 	</body>
+
 </html>

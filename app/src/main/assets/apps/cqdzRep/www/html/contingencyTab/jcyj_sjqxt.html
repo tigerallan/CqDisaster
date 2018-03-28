@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title>数据曲线图</title>
@@ -7,15 +8,20 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../../css/mui.min.css">
-		<link rel="stylesheet" type="text/css" href="../../css/common/header.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/common/header.css" />
+		<style type="text/css">
+			body,html,.mui-content{
+				background-color: #fff;
+			}
+		</style>
 		<style>
-			
+
 		</style>
 	</head>
 
 	<body>
-		
-		<header class="mui-bar mui-bar-nav" >
+
+		<header class="mui-bar mui-bar-nav">
 			<a href="#" class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
@@ -24,12 +30,11 @@
 		<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<div class="mui-content-padded">
-			     	<div id="container"></div>
+					<div id="container" data-ng=''></div>
 				</div>
 			</div>
 		</div>
-		
-			
+		<script src="../../js/ip.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/city.data.js"></script>
 		<script src="../../js/mui.picker.js"></script>
@@ -40,48 +45,76 @@
 			mui.init({
 				swipeBack: false
 			});
+
+			mui.plusReady(function() {
+				plus.nativeUI.showWaiting("正在加载..."); //这里是开始显示原生等待框
+				var self = plus.webview.currentWebview();
+				var ng = self.ng;
+				var yhdId = self.yhdId;
+				$.ajax({
+					type: 'get',
+					url: ip + 'meteor/findHighcharts.do?id=' + yhdId + '&tabMonInfoId=' + ng,
+					dataType: 'json',
+					async: false, //同步
+					success: function(csv) {
+						plus.nativeUI.closeWaiting(); //这里监听页面是否加载完毕，完成后关闭等待框
+						var datas = csv[0];
+						var data = [];
+						for(var i = 0; i < datas.length; i++) {
+							var dataList = [datas[i].upload_time, datas[i].monitor_data];
+							data.push(dataList);
+						}
+						var charData = [{
+							name: datas[0].monitor_name,
+							data: data
+						}]
+						//、、、、、、
+						var chart = new Highcharts.Chart('container', {
+							title: {
+								text: '',
+								x: -20
+							},
+							credits: {
+								enabled: false
+							},
+							xAxis: {
+								type: 'datetime',
+								dateTimeLabelFormats: {
+									week: '%m-%d'
+								}
+							},
+							yAxis: {
+								title: {
+									text: '单位(mm)'
+								},
+								plotLines: [{
+									value: 0,
+									width: 1,
+									color: '#808080'
+								}]
+							},
+							tooltip: {
+								// 时间格式化字符
+								headerFormat: '<b>{point.key}</b><br/>',
+								xDateFormat: '%Y-%m-%d %H:%M:%S',
+							},
+							legend: {
+								layout: 'horizontal',
+								align: 'center',
+								verticalAlign: 'bottom',
+								borderWidth: 0
+							},
+							series: charData
+						});
+						//、、、、、、
+					}
+
+				});
+			});
 			
-		var chart = new Highcharts.Chart('container', {
-			title: {
-			    text: '实测数据曲线图',
-			    x: -20
-			},
-			credits : {
-				enabled: false
-			},
-			xAxis: {
-			    categories: ['2014-01-01', '2014-05-01', '2014-09-01', '2015-01-01', '2015-05-01', '2015-09-01', '2016-01-01', '2016-05-01', '2016-09-01', '2017-01-01']
-			},
-			yAxis: {
-			    title: {
-			        text: '单位(mm)'
-			    },
-			    plotLines: [{
-			        value: 0,
-			        width: 1,
-			        color: '#808080'
-			    }]
-			},
-			tooltip: {
-			    valueSuffix: 'mm'
-			},
-			legend: {
-			    layout: 'horizontal',
-			    align: 'center',
-			    verticalAlign: 'bottom',
-			    borderWidth: 0
-			},
-			series: [{
-				    name: '地裂01',
-				    data: [3348, 3348, 3348, 3348, 3353, 3353, 3353, 3353, 3364, 3364]
-				}, {
-				    name: '地裂02',
-				    data: [2986, 2986, 2986, 2986, 3023, 3023, 3023, 3023, 3059, 3059]
-				}, {
-				    name: '地裂03',
-				    data: [4289, 4289, 4289, 4289, 4289, 4289, 4289, 4289, 4363, 4363]
-				}]
-			});	
+
+			//http://192.168.10.136:8080/cqapp/meteor/findHighcharts.do?id=57560&tabMonInfoId=50378
+			//'http://192.168.10.136:8080/cqapp/meteor/findHighcharts.do?id='+ng+'&tabMonInfoId='+ng+'
 		</script>
 	</body>
 

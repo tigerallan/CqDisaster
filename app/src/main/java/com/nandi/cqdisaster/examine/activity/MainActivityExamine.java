@@ -5,9 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.res.ResourcesCompat;
@@ -17,13 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nandi.cqdisaster.R;
 import com.nandi.cqdisaster.examine.adapter.MyFragmentPagerAdapter;
 import com.nandi.cqdisaster.examine.constant.ConnectUrl;
 import com.nandi.cqdisaster.examine.receiver.UpdataService;
 import com.nandi.cqdisaster.examine.utils.MyUtils;
-import com.nandi.cqdisaster.examine.utils.PermissionUtils;
 import com.nandi.cqdisaster.examine.utils.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -34,6 +33,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
@@ -44,6 +46,10 @@ import okhttp3.Call;
  */
 public class MainActivityExamine extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
     private static String TAG = "MainActivityExamine", status, msg;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private MyFragmentPagerAdapter myFragmentPagerAdapter;
@@ -57,6 +63,7 @@ public class MainActivityExamine extends AppCompatActivity implements ActivityCo
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_main_examine);
+        ButterKnife.bind(this);
         //动态获取权限
         checkPremission();
         //初始化视图
@@ -164,7 +171,7 @@ public class MainActivityExamine extends AppCompatActivity implements ActivityCo
 
 
     private void initViews() {
-
+        tvTitle.setText("应急处置");
         //使用适配器将ViewPager与Fragment绑定在一起
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
@@ -184,15 +191,7 @@ public class MainActivityExamine extends AppCompatActivity implements ActivityCo
         three.setIcon(R.drawable.selected_tab_image_setup);
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-            signOut();
-            return true;
-        }
-        return false;
 
-    }
 
 
     public void signOut() {
@@ -235,6 +234,11 @@ public class MainActivityExamine extends AppCompatActivity implements ActivityCo
                     }
                 }).show();
 
+    }
+
+    @OnClick(R.id.iv_back)
+    public void onViewClicked() {
+        finish();
     }
 
 

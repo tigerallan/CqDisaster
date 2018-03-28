@@ -17,7 +17,7 @@
             android:id="@+id/my_task_toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/my_toolbar_height"
-            android:background="@color/c1olorblue"
+            android:background="@color/title_bar_color"
             >
 
             <ImageView

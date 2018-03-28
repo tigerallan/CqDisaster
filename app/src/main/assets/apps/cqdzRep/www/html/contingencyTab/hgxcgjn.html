@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>宏观巡查主页面</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common/header.css" />
+		<link rel="stylesheet" href="../../css/common/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../css/common/mui.poppicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj.css" />
+		<style type="text/css">
+			.mui-bar-nav~.mui-content {
+				height: 100%;
+			}
+			
+			.content_iframe {
+				height: 100%;
+			}
+			
+			#dynamic_sj {
+				margin-top: 1px;
+			}
+			
+			.imgUrl {
+				float: left;
+				width: 40px;
+				margin-right: 10px;
+			}
+			
+			.icon2-ul-mc {
+				font-size: 16px;
+			}
+			
+			.icon2-ul-fu {
+				font-size: 14px;
+				color: #666;
+				display: inline-block;
+				margin-top: 3px;
+			}
+			
+			#dynamic_sj {
+				height: 100%;
+				overflow: auto;
+			}
+		</style>
+	</head>
+
+	<body onresize="document.activeElement.scrollIntoView(true);">
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-slide-in">
+			<!--菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-right">
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">筛选条件</h1>
+				</header>
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul id="content_qcqf" class="mui-table-view">
+								<li id="qx" class="mui-table-view-cell">
+								<span>所属区县</span>
+								<span id="choose_qx" class="citychoose">请选择<span class="mui-icon mui-icon-forward"></span></span>
+							</li>
+							<li class="mui-table-view-cell mui-input-row">
+								<span class="celltitle">隐患点编号</span>
+								<div class="mui-input-row mui-search">
+									<input id="yhdname" type="search" class="mui-input-clear" placeholder="">
+								</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<span class="celltitle">时间选择</span>
+								<div class="boxflex">
+									<b id="start_time"></b>
+									<span class="s">至</span>
+									<b id="end_time"></b>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<!--底部选项卡-->
+				<nav id="nav" class="mui-bar mui-bar-tab">
+					<a id="confirm" class="mui-tab-item mui-active">
+						<div class="mui-tab-label">确定</div>
+					</a>
+					<a id="abolish" class="mui-tab-item">
+						<div class="mui-tab-label">取消</div>
+					</a>
+				</nav>
+			</aside>
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a href="javascript:void(0);" class="mui-action-back">
+						<span class="mui-icon mui-icon-arrowleft"></span>
+					</a>
+					<h1 id="title" class="mui-title">宏观巡查</h1>
+					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-pull-right">筛选</a>
+				</header>
+				<div class="content_iframe">
+					<!--<iframe src="table.html" id="table" width="100%" height="100%" scrolling="auto" frameborder="0"></iframe>-->
+				</div>
+				<!-- off-canvas backdrop -->
+				<div id="backdrop" class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<div id="haha" data-id=""></div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui.init();
+
+			//主界面和侧滑菜单界面均支持区域滚动；
+			mui('.mui-scroll-wrapper').scroll();
+			//请求筛选中的数据
+			var cityData_qx;
+			var qxName_id = '';
+			var choose_one = document.getElementById('choose_qx');
+			$.ajax({
+				url: ip + "dove/findUnitData.do",
+				async: false,
+				type: "get",
+				dataType: "json",
+				success: function(json) {
+					cityData_qx = json.data;
+				}
+			});
+			//所属区县选项
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					var cityPicker = new $.PopPicker({
+						layer: 1
+					});
+					cityPicker.setData(cityData_qx);
+					choose_one.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							choose_one.innerText = items[0].text;
+							qxName_id = items[0].id;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+			})(mui, document);
+			//读取系统日期
+			var d = new Date();
+			var n = d.getFullYear();
+			var t = d.getMonth() + 1;
+			var m = d.getDate();
+			//设置结束时间
+			(function($, doc) {
+				$.init();
+				var result = document.getElementById("end_time");
+				if(t < 10) {
+					t = "0" + t;
+				}
+				if(m < 10) {
+					m = "0" + m;
+				}
+				$.ready(function() {
+					//					var choose_two = document.getElementById('end_time');
+					result.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m)
+						});
+						picker.show(function(rs) {
+							result.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+
+			//设置开始时间
+			(function($, doc) {
+				$.init();
+				var result_two = document.getElementById("start_time");
+				$.ready(function() {
+					//		var choose_three = document.getElementById('start_time');
+					result_two.addEventListener('tap', function(event) {
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker({
+							"type": "date",
+							"beginDate": new Date("1970-01-01"),
+							"endDate": new Date(n + "-" + t + "-" + m),
+							"value": n + "-" + t + "-01"
+						});
+						picker.show(function(rs) {
+							result_two.innerText = rs.text;
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui, document);
+			var offCanvasWrapper = mui('#offCanvasWrapper');
+			// 监听点击遮罩关闭事件
+			document.getElementById("backdrop").addEventListener('tap', function() {
+				document.activeElement.blur();
+				mui('#offCanvasSideScroll').scroll().scrollTo(0, 0);
+			});
+			//点击取消
+			document.getElementById('abolish').addEventListener('tap', function() {
+				offCanvasWrapper.offCanvas('close');
+				document.activeElement.blur();
+				mui('#offCanvasSideScroll').scroll().scrollTo(0, 0);
+				choose_one.innerText = "请选择  >";
+				qxName_id = "";
+				$('#start_time').html("");
+				$('#end_time').html("");
+				$("#yhdname").val("");
+			});
+			//点击确定
+			var mycars = {
+				type: 2,
+				page: 1,
+				row: 　10
+			};
+			document.getElementById('confirm').addEventListener('tap', function() {
+				leaveme();
+				mui('#offCanvasSideScroll').scroll().scrollTo(0, 0); //让筛选条件回到页面顶点
+				offCanvasWrapper.offCanvas('close'); //关闭遮罩层
+				document.activeElement.blur(); //关闭输入法
+
+				var start_time = $('#start_time').html();
+				var end_time = $('#end_time').html();
+				var dis_no = $('#yhdname').val();
+
+				mycars = {
+					type: 2,
+					page: 1,
+					row: 15,
+					dis_no: dis_no,
+					area_id: qxName_id,
+					stime: start_time,
+					etime: end_time
+				};
+
+				openme(mycars);
+				
+				choose_one.innerText = "请选择  >";
+				qxName_id = "";
+				$('#start_time').html("");
+				$('#end_time').html("");
+				$("#yhdname").val("");
+			});
+
+			$('#haha').click(function() {
+				var id = this.dataset.id;
+				mui.openWindow({
+					url: 'hgxcgjnF.html?id=' + id,
+					id: 'hgxcgjnF.html'
+				});
+			});
+
+			var inserthtml = '';
+
+			function openme(arr) {
+				var arrUrl = '';
+
+				arrUrl = (arr.type ? '?type=' + arr.type : '') +
+					(arr.page ? '&page=' + arr.page : '') +
+					(arr.area_id ? '&area_id=' + arr.area_id : '') +
+					(arr.dis_no ? '&dis_no=' + arr.dis_no : '') +
+					(arr.stime ? '&stime=' + arr.stime : '') +
+					(arr.etime ? '&etime=' + arr.etime : '') +
+					(arr.row ? '&row=' + arr.row : '');
+
+				arrUrl && (arrUrl = '?' + arrUrl.slice(1));
+
+				inserthtml = '<iframe src="hgxcnTable.html' + arrUrl + '" id="table" width="100%" height="100%" scrolling="auto" frameborder="0"></iframe>'
+				$(".content_iframe").append(inserthtml);
+			}
+
+			window.onload = openme(mycars);
+
+			function leaveme() {
+				$(".content_iframe :first-child").remove();
+			}
+		</script>
+	</body>
+
+</html>

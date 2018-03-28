@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>隐患点数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_hidden.css" />
+	</head>
+
+	<body>
+		<nav id="nav" class="mui-bar mui-bar-tab">
+			<a id="default" class="mui-tab-item mui-active">
+				<div class="mui-tab-label">基本信息</div>
+			</a>
+			<a id="secondTab" class="mui-tab-item">
+				<div class="mui-tab-label">宏观巡查</div>
+			</a>
+		</nav>
+		<div class="mui-content">
+
+		</div>
+
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/h.js"></script>
+	<script type="text/javascript">
+		function requireUrlData(strName) {
+			var strHref = location.href;
+			console.log(strHref);
+			var intPos = strHref.indexOf("?");
+			var strRight = strHref.substr(intPos + 1);
+			var arrTmp = strRight.split("&");
+			for(var i = 0; i < arrTmp.length; i++) {
+				var arrTemp = arrTmp[i].split("=");
+				if(arrTemp[0].toUpperCase() == strName.toUpperCase())
+					return arrTemp[1];
+			}
+			return "";
+		}
+		
+		var id = requireUrlData('id');
+		mui.init({
+			subpages: [{
+				url: 'jcyj_yhdjbxx.html?id=' + id,
+				id: 'jcyj_yhdjbxx.html',
+				styles: {
+					top: '0px',
+					bottom: '52px',
+					width: "100%"
+				}
+			},{
+				url: 'jcyj_hiddenTwo.html?id=' + id,
+				id: 'jcyj_hiddenTwo.html',
+				styles: {
+					left: '100%',
+					top: '0px',
+					bottom: '52px',
+					width: "100%"
+				},
+				extras:{
+					name:id
+				}
+			}]
+		});
+		mui.plusReady(function() {
+			h('#default').tap(function() {
+				changSub(1);
+			});
+			h('#secondTab').tap(function() {
+				changSub(2);
+			});
+		});
+
+		function changSub(index) {
+			var sub1 = plus.webview.getWebviewById('jcyj_yhdjbxx.html');
+			var sub2 = plus.webview.getWebviewById('jcyj_hiddenTwo.html');
+			sub1.setStyle({
+				left: (index - 1) * 100 + "%"
+			});
+			sub2.setStyle({
+				left: (2 - index) * 100 + "%"
+			});
+			
+		}
+	</script>
+
+</html>

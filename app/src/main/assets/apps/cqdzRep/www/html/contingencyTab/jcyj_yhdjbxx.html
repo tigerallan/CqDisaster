@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>定量监测数据</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/header.css" />
+		<style type="text/css">
+			body,
+			html {
+				background-color: #fff;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a href="#" class="mui-action-back">
+				<span class="mui-icon mui-icon-arrowleft"></span>
+			</a>
+			<h1 id="title" class="mui-title">基本信息</h1>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="ultable" class="mui-table-view">
+
+				</ul>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.11.3.js"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function requireUrlData(strName) {
+				var strHref = location.href;
+				console.log(strHref);
+				var intPos = strHref.indexOf("?");
+				var strRight = strHref.substr(intPos + 1);
+				var arrTmp = strRight.split("&");
+				for(var i = 0; i < arrTmp.length; i++) {
+					var arrTemp = arrTmp[i].split("=");
+					if(arrTemp[0].toUpperCase() == strName.toUpperCase())
+						return arrTemp[1];
+				}
+				return "";
+			}
+
+			var id = requireUrlData('id');
+			var url = ip + "meteor/findDisById.do?dis_id=" + id;
+			mui.ajax(url, {
+				dataType: 'json',
+				type: 'get',
+				timeout: 10000,
+				success: function(json) {
+					var data = json.data;
+					var disasterType = data[0].dis_type;
+					if(disasterType == 1) {
+						disasterType = "滑坡";
+					} else if(disasterType == 2) {
+						disasterType = "崩塌";
+					} else if(disasterType == 3) {
+						disasterType = "泥石流";
+					} else if(disasterType == 4) {
+						disasterType = "地面塌陷";
+					} else if(disasterType == 5) {
+						disasterType = "地面沉降";
+					} else if(disasterType == 6) {
+						disasterType = "地裂缝";
+					} else if(disasterType == 0) {
+						disasterType = "不稳定斜坡";
+					}
+					var forecastLevel = data[0].imperil_level; 
+					if(forecastLevel == 19) {
+						forecastLevel = "小型";
+					} else if(forecastLevel == 18) {
+						forecastLevel = "中型";
+					} else if(forecastLevel == 17) {
+						forecastLevel = "大型";
+					} else if(forecastLevel == 16){
+						forecastLevel = "特大型";
+					}
+					var stable_level = data[0].stable_level;
+					if(stable_level == 14){
+						stable_level = "稳定"
+					}else if(stable_level == 15){
+						stable_level = "不稳定"
+					}else if(stable_level == 31){
+						stable_level = "欠稳定"
+					} else if(stable_level == 43){
+						stable_level = "基本稳定"
+					}
+					
+					var content = '<li class="mui-table-view-cell"><span class="mui-pull-left">隐患点编号</span>' +
+						'<span class="mui-pull-right">' + data[0].dis_no + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">隐患点编名称</span>' +
+						'<span class="mui-pull-right">' + data[0].dis_name + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">经 度</span>' +
+						'<span class="mui-pull-right">' + data[0].dis_lon + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">纬 度</span>' +
+						'<span class="mui-pull-right">' + data[0].dis_lat + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">灾害类型</span>' +
+						'<span class="mui-pull-right">' + disasterType + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">危害等级</span>' +
+						'<span class="mui-pull-right">' + forecastLevel + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">稳定性</span>' +
+						'<span class="mui-pull-right">' + stable_level + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">片 所</span>' +
+						'<span class="mui-pull-right">' + data[0].unit_name + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">位 置</span>' +
+						'<span class="mui-pull-right">' + data[0].dis_location + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">监测人员</span>' +
+						'<span class="mui-pull-right">' + data[0].human_name + '</span></li>' +
+						'<li class="mui-table-view-cell"><span class="mui-pull-left">手机</span>' +
+						'<span class="mui-pull-right">' + data[0].warn_mobile + '</span></li>';
+					$("#ultable").append(content);
+				}
+			});
+		</script>
+	</body>
+
+</html>

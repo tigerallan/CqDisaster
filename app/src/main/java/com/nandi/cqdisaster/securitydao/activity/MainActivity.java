@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     private double meLongitude = 0;
     private double meLatitude = 0;
     private String address;
-    private int range=1;
+    private int range = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         mBaidumap.setOnMyLocationClickListener(new BaiduMap.OnMyLocationClickListener() {
             @Override
             public boolean onMyLocationClick() {
-            alert_edit();
+                alert_edit();
                 return false;
             }
         });
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         });
         if (Build.VERSION.SDK_INT >= 23) {
             int REQUEST_CODE_CONTACT = 101;
-            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CALL_PHONE,Manifest.permission.READ_PHONE_STATE,Manifest.permission.ACCESS_FINE_LOCATION};
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_FINE_LOCATION};
             //验证是否许可权限
             for (String str : permissions) {
                 if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
@@ -136,11 +136,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void alert_edit(){
+    public void alert_edit() {
         View view = LayoutInflater.from(context).inflate(R.layout.item_location, null);
         ImageView back = (ImageView) view.findViewById(R.id.back);
         TextView curr = (TextView) view.findViewById(R.id.currLocation);
-        curr.setText("当前位置："+address);
+        curr.setText("当前位置：" + address);
         final EditText choose = (EditText) view.findViewById(R.id.choose);
         Button chooseBtn = (Button) view.findViewById(R.id.chooseBtn);
         final android.app.AlertDialog show = new android.app.AlertDialog.Builder(context)
@@ -156,13 +156,19 @@ public class MainActivity extends AppCompatActivity {
         chooseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                range = Integer.parseInt(choose.getText().toString())*1000;
-                searchRequest(1,1,-1);
+                String s = choose.getText().toString();
+                if (s.isEmpty()) {
+                    range = 1000;
+                } else {
+                    range = Integer.parseInt(s) * 1000;
+                }
+                searchRequest(1, 1, -1);
                 show.dismiss();
             }
         });
 
     }
+
     private void initStting() {
         progressDialog = new ProgressDialog(this, ProgressDialog.STYLE_SPINNER);
         progressDialog.setCancelable(false);
@@ -188,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
+
                     @Override
                     public void onResponse(String response, int id) {
                         try {
@@ -263,7 +270,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 搜索全部打点
-     * @param locationPoints  数据源
+     *
+     * @param locationPoints 数据源
      */
     private void initOverLay(List<LocationPoint> locationPoints) {
         // TODO: 2018/1/8 打点
@@ -365,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchRequest(0,areaId,typeId);
+                searchRequest(0, areaId, typeId);
             }
         });
     }
@@ -398,13 +406,13 @@ public class MainActivity extends AppCompatActivity {
                                 List<LocationPoint> locationPoints = JsonFormat.stringToList(data, LocationPoint.class);
                                 if (monitor == 0) {
                                     initOverLay(locationPoints);
-                                }else if(monitor ==1){
+                                } else if (monitor == 1) {
                                     for (LocationPoint disasterPoint : locationPoints) {
                                         double disasterLon = disasterPoint.getDis_lon();
                                         double disasterLat = disasterPoint.getDis_lat();
                                         double distance = AppUtils.getDistance(meLongitude, meLatitude, disasterLon, disasterLat);
                                         if (distance < range) {
-                                            Log.d("qs", "onResponse: "+distance+"rang:"+range);
+                                            Log.d("qs", "onResponse: " + distance + "rang:" + range);
                                             disasterOverlay.add(disasterPoint);
                                         }
                                     }
@@ -414,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
                                     } else {
                                         progressDialog.dismiss();
                                         Toast.makeText(MainActivity.this, "当前位置周围没有隐患点", Toast.LENGTH_SHORT).show();
-                                    }  
+                                    }
                                 }
                             }
                         } catch (JSONException e) {
@@ -424,12 +432,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
     /**
      * 获取定位
      */
     private void turnOnLocation() {
         Log.d("qs", "turnOnLocation: ----------------");
-        locationClient =  new LocationClient(context);
+        locationClient = new LocationClient(context);
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         option.setCoorType("BD09LL");
@@ -453,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
             int locType = bdLocation.getLocType();
-            Log.d("qs", "onReceiveLocationloctype: "+locType);
+            Log.d("qs", "onReceiveLocationloctype: " + locType);
             if (locType == BDLocation.TypeOffLineLocation || locType == BDLocation.TypeGpsLocation || locType == BDLocation.TypeNetWorkLocation) {
                 double lon = bdLocation.getLongitude();
                 double lat = bdLocation.getLatitude();
@@ -491,6 +500,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

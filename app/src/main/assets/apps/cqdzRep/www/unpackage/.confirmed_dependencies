@@ -522,7 +522,10 @@
 		],
 		"refer": [
 			"html/contingencyTab/jcyj_sjqxt.html",
-			"html/contingencyTab/jcyj_cktp.html"
+			"html/contingencyTab/jcyj_cktp.html",
+			"html/contingencyTab/lssjck.html",
+			"html/contingencyTab/lishijilu.html",
+			"html/contingencyTab/jcyj_hiddenOneList.html"
 		]
 	},
 	"html/contingencyTab/jcyj_hiddenThree.html": {
@@ -553,10 +556,14 @@
 			"css/mui.min.css",
 			"css/Hand/jcyj_hidden.css",
 			"css/common/header.css",
-			"img/red.JPG"
+			"img/red.JPG",
+			"html/contingencyTab/jcyj_hiddenTwoZi.html"
 		],
 		"refer": [
-			"html/contingencyTab/jcyj_cktp.html"
+			"html/contingencyTab/jcyj_cktp.html",
+			"html/contingencyTab/lishijilu.html",
+			"html/contingencyTab/lishijilu_dljcgj.html",
+			"html/contingencyTab/jcyj_hiddenTwoZi.html"
 		]
 	},
 	"html/contingencyTab/jcyj_hidden.html": {
@@ -569,12 +576,14 @@
 			"js/mui.poppicker.js",
 			"css/mui.min.css",
 			"css/common/header.css",
-			"css/Hand/jcyj_hidden.css"
+			"css/Hand/jcyj_hidden.css",
+			"html/contingencyTab/jcyj_yhdjbxx.html"
 		],
 		"refer": [
 			"html/contingencyTab/jcyj_hiddenOne.html",
 			"html/contingencyTab/jcyj_hiddenThree.html",
-			"html/contingencyTab/jcyj_hiddenTwo.html"
+			"html/contingencyTab/jcyj_hiddenTwo.html",
+			"html/contingencyTab/jcyj_yhdjbxx.html"
 		]
 	},
 	"html/contingencyTab/jcyj_hidden2.html": {
@@ -737,17 +746,110 @@
 	"html/contingencyTab/jcyjlx.html": {
 		"refer": [
 			"html/contingencyTab/qcqfyj.html",
-			"html/contingencyTab/zyjcyj.html"
+			"html/contingencyTab/zyjcyj.html",
+			"html/contingencyTab/zhgjn.html",
+			"html/contingencyTab/dljcgjn.html",
+			"html/contingencyTab/zyjcyjn.html",
+			"html/contingencyTab/hgxcgjn.html"
 		]
 	},
 	"html/contingencyTab/qcqfyj.html": {
 		"refer": [
-			"html/contingencyTab/jcyj.html"
+			"html/contingencyTab/jcyj.html",
+			"html/contingencyTab/qcqflist.html"
 		]
 	},
 	"html/contingencyTab/zyjcyj.html": {
 		"refer": [
 			"html/contingencyTab/jcyj.html"
+		]
+	},
+	"html/contingencyTab/zhgjn.html": {
+		"refer": [
+			"html/contingencyTab/jcyj_hidden.html",
+			"html/contingencyTab/zhgjnlist.html",
+			"html/contingencyTab/zhgjnF.html"
+		],
+		"resources": [
+			"html/contingencyTab/zhgjnlist.html",
+			"img/jcyj_3.png",
+			"fonts/mui.ttf",
+			"img/jcyj_1.png",
+			"img/jcyj_4.png"
+		]
+	},
+	"html/contingencyTab/jcyj_hiddenOneList.html": {
+		"refer": [
+			"html/contingencyTab/lishijilu.html",
+			"html/contingencyTab/lishijilu_dljcgj.html",
+			"html/contingencyTab/jcyj_hiddenOneListZi.html"
+		],
+		"resources": [
+			"html/contingencyTab/jcyj_hiddenOneListZi.html"
+		]
+	},
+	"html/contingencyTab/zyjcyjn.html": {
+		"refer": [
+			"html/contingencyTab/jcyj_hiddenThree.html",
+			"html/contingencyTab/jcyj_hidden.html"
+		]
+	},
+	"html/contingencyTab/dljcgjn.html": {
+		"refer": [
+			"html/contingencyTab/jcyj_hiddenOne.html",
+			"html/contingencyTab/dljcgjnF.html"
+		],
+		"resources": [
+			"html/contingencyTab/dljcgjnTable.html"
+		]
+	},
+	"html/contingencyTab/dljcgjnF.html": {
+		"resources": [
+			"html/contingencyTab/jcyj_yhdjbxx.html"
+		],
+		"refer": [
+			"html/contingencyTab/jcyj_hiddenOne.html",
+			"html/contingencyTab/jcyj_yhdjbxx.html"
+		]
+	},
+	"html/contingencyTab/hgxcgjn.html": {
+		"refer": [
+			"html/contingencyTab/hgxcgjnF.html"
+		]
+	},
+	"html/contingencyTab/hgxcgjnF.html": {
+		"resources": [
+			"html/contingencyTab/jcyj_yhdjbxx.html"
+		],
+		"refer": [
+			"html/contingencyTab/jcyj_hiddenTwo.html",
+			"html/contingencyTab/jcyj_yhdjbxx.html"
+		]
+	},
+	"html/contingencyTab/lishijilu_dljcgj.html": {
+		"refer": [
+			"html/contingencyTab/jcyj_cktp.html",
+			"html/contingencyTab/jcyj_sjqxt.html"
+		]
+	},
+	"html/contingencyTab/zhgjnF.html": {
+		"resources": [
+			"html/contingencyTab/jcyj_yhdjbxx.html"
+		],
+		"refer": [
+			"html/contingencyTab/jcyj_hiddenOne.html",
+			"html/contingencyTab/jcyj_hiddenTwo.html",
+			"html/contingencyTab/jcyj_yhdjbxx.html"
+		]
+	},
+	"html/contingencyTab/jcyj_hiddenOneListZi.html": {
+		"refer": [
+			"html/contingencyTab/lishijilu_dljcgj.html"
+		]
+	},
+	"html/contingencyTab/jcyj_hiddenTwoZi.html": {
+		"refer": [
+			"html/contingencyTab/lishijilu.html"
 		]
 	}
 }

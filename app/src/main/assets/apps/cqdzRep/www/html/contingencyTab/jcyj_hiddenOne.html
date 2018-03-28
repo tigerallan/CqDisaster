@@ -2,14 +2,30 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8">
-		<title>定量监测数据</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
-		<link rel="stylesheet" type="text/css" href="../../css/common/header.css"/>
-		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj_hidden.css"/>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/common/header.css" />
+		<style type="text/css">
+			body,
+			html {
+				width: 100%;
+				height: 100%;
+				background-color: #fff;
+			}
+			.mui-content{
+				background-color: #fff;
+			}
+			.bussTitle{
+				width: 100%;
+				font-size: 16px;
+				text-align: center;
+				margin-top: 10px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -17,223 +33,107 @@
 			<a href="#" class="mui-action-back">
 				<span class="mui-icon mui-icon-arrowleft"></span>
 			</a>
-			<h1 id="title" class="mui-title">隐患点数据</h1>
+			<h1 id="title" class="mui-title">定量监测数据</h1>
 		</header>
-		<div class="mui-content mui-row mui-fullscreen">
-			<div class="mui-col-xs-2">
-				<ul id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="bussTitle">
+					暂无更多监测数据
+				</div>
+				<ul id="buss" class="mui-table-view">
 
 				</ul>
 			</div>
-			<div id="layge" class="mui-col-xs-10" style="border-left: 1px solid #c8c7cc;">
-
-			</div>
-
-		</div>
-		<!--弹出内容-->
-		<div class="popup">
-			
 		</div>
 		<script src="../../js/mui.min.js"></script>
-		<script src="../../js/jquery-1.11.3.js"></script>
-		<script src="../../js/h.js"></script>
-		<script type="text/javascript">
+		<script src="../../js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+
+			function requireUrlData(strName) {
+				var strHref = location.href;
+				console.log(strHref);
+				var intPos = strHref.indexOf("?");
+				var strRight = strHref.substr(intPos + 1);
+				var arrTmp = strRight.split("&");
+				for(var i = 0; i < arrTmp.length; i++) {
+					var arrTemp = arrTmp[i].split("=");
+					if(arrTemp[0].toUpperCase() == strName.toUpperCase())
+						return arrTemp[1];
+				}
+				return "";
+			}
+
+			var id = requireUrlData('id');
 			var li = "";
-			var layge_text = "";
-			var lsjcsj_text = [];
-			var popup_text = "";
+			function timestampToTime(timestamp) {
+				var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+				Y = date.getFullYear() + '-';
+				M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+				D = date.getDate() + ' ';
+				h = date.getHours() + ':';
+				m = date.getMinutes() + ':';
+				s = date.getSeconds();
+				return Y + M + D + h + m + s;
+			}
 			$.ajax({
-				url: "../../data/jcyj_hidden2.json",
+				url: ip + "meteor/findMonitorInfo.do?id=" + id,
 				async: false, //同步请求	
 				type: "get",
 				dataType: "json",
 				success: function(json) {
 					var data = json.data;
-					for(var i = 0; i < data.length; i++) {
-						li +=
-							'<li data-index="' + i + '">' +
-							'<a class="mui-control-item" href="#content' + i + '">' + data[i].jcdbh + '</a>' +
-							'</li>';
-						layge_text +=
-							'<div id="content' + i + '" class="mui-control-content" style="display: none;">' +
-							'<ul class="mui-table-view">' +
-							'<li class="mui-table-view-cell mui-collapse">' +
-							'<a class="mui-navigate-right" href="javascript:viod(0)">' +
-							'<div class="mui-row">' +
-							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">基本信息</div></div></a>' +
-							'<div class="mui-collapse-content">' +
-							'<ul class="mui-table-view">' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">隐患点编号</span>' +
-							'<span class="mui-pull-right">' + data[i].bh + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">隐患点编名称</span>' +
-							'<span class="mui-pull-right">' + data[i].mc + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">经 度</span>' +
-							'<span class="mui-pull-right">' + data[i].jd + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">纬 度</span>' +
-							'<span class="mui-pull-right">' + data[i].wd + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">灾害类型</span>' +
-							'<span class="mui-pull-right">' + data[i].zhtype + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">危害等级</span>' +
-							'<span class="mui-pull-right">' + data[i].whdj + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">稳定性</span>' +
-							'<span class="mui-pull-right">' + data[i].wdx + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">片 所</span>' +
-							'<span class="mui-pull-right">' + data[i].ps + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">位 置</span>' +
-							'<span class="mui-pull-right">' + data[i].wz + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">监测人员</span>' +
-							'<span class="mui-pull-right">' + data[i].jcry + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">手机</span>' +
-							'<span class="mui-pull-right">' + data[i].cellphone + '</span></li>' +
-							'</ul></div></li>' +
-							'<li class="mui-table-view-cell mui-collapse mui-active">' +
-							'<a class="mui-navigate-right" href="#">' +
-							'<div class="mui-row">' +
-							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">定量监测数据</div></div></a>' +
-							'<div class="mui-collapse-content">' +
-							'<ul class="mui-table-view">' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">监测点编号</span>' +
-							'<span class="mui-pull-right">' + data[i].jcdbh + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">建点时间</span>' +
-							'<span class="mui-pull-right">' + data[i].jdsj + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">监测点名称</span>' +
-							'<span class="mui-pull-right">' + data[i].jcdmc + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">合法半径</span>' +
-							'<span class="mui-pull-right">' + data[i].hfbj + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">是否损坏</span>' +
-							'<span class="mui-pull-right">' + data[i].sfsh + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<span class="mui-pull-left">监测方向</span>' +
-							'<span class="mui-pull-right">' + data[i].jcfx + '</span></li>' +
-							'<li class="mui-table-view-cell">' +
-							'<button id="sjqxt" type="button" class="mui-pull-left">数据曲线图</button>' +
-							'<button id="cktp" type="button" class="mui-pull-right">查看图片</button></li>' +
-							'</ul></div></li>' +
-							'<li class="mui-table-view-cell mui-collapse">' +
-							'<a class="mui-navigate-right" href="#">' +
-							'<div class="mui-row">' +
-							'<div class="mui-col-sm-12 mui-col-xs-12 content_text">历史监测数据</div></div></a>' +
-							'<div class="mui-collapse-content">' +
-							'<ul id="ck_lssj' + i + '" class="mui-table-view">' +
-							'</ul></div></li></ul>' +
-
-							'</div>';
-						var lsjcsj = data[i].lsjcsj;
-						lsjcsj_text[i] = '';
-						for(var e = 0; e < lsjcsj.length; e++) {
-							lsjcsj_text[i] +=
-								'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">' + lsjcsj[e].slsj + '</span>' +
-								'<span class="mui-pull-right mui-content-padded"><a href="#middlePopover' + i +'_'+ e + '" class="openPopover">查看</a></span>' +
+					if(data.length == 0) {
+						$("#buss").hide();
+						$(".bussTitle").show();
+					} else {
+						$("#buss").show();
+						$(".bussTitle").hide();
+						for(var i = 0; i < data.length; i++) {
+							var time = timestampToTime(data[i].create_time);
+							var is_destroy = data[i].is_destroy;
+							if(is_destroy == 1) {
+								is_destroy = "是";
+							} else {
+								is_destroy = "否";
+							}
+							li += '<li class="mui-table-view-cell">' +
+								'<a class="mui-navigate-right" onclick="dataclick(this)" href="#" data-monitor_direction="' + data[i].monitor_direction + '" data-is_destroy="' + data[i].is_destroy + '" data-monitor_radius="' + data[i].monitor_radius + '" data-monitor_name="' + data[i].monitor_name + '" data-time="' + time + '" data-monitor_no="' + data[i].monitor_no + '" data-ng="' + data[i].id + '">' + data[i].monitor_no + '</a>' +
 								'</li>';
-							var sfhf =  lsjcsj[e].sfhf;
-							var sfhfImg = "";
-							var sjyxx = lsjcsj[e].sjyxx;
-							var sjyxxImg = "";
-							if (sfhf.indexOf("是") >= 0) {
-								sfhfImg = "../../img/green.JPG";
-							} else{
-								sfhfImg = "../../img/red.JPG";
-							}
-							if (sjyxx.indexOf("是") >= 0) {
-								sjyxxImg = "../../img/green.JPG";
-							} else{
-								sjyxxImg = "../../img/red.JPG";
-							}
-							popup_text +=
-							'<div class="mui-popover" id="middlePopover'+ i +'_'+ e +'">' +
-							'<div class="mui-popover-arrow"></div>' +
-							'<div class="mui-scroll-wrapper">' +
-							'<div class="mui-scroll">' +
-							'<ul class="mui-table-view">' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">监测点编号</span>' +
-								'<span class="mui-pull-right">' + data[i].bh + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">监测点名称</span>' +
-								'<span class="mui-pull-right">' + data[i].mc + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">监测点时间</span>' +
-								'<span class="mui-pull-right">' + lsjcsj[e].slsj + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">是否合法</span>' +
-								'<span class="mui-pull-right"><img src="' + sfhfImg + '"/></span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">数据有限性</span>' +
-								'<span class="mui-pull-right"><img src="' + sjyxxImg + '"/></span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">实测数据</span>' +
-								'<span class="mui-pull-right">' + lsjcsj[e].scsj + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">相邻告警</span>' +
-								'<span class="mui-pull-right">' + lsjcsj[e].xlgj + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">累计告警</span>' +
-								'<span class="mui-pull-right">' + lsjcsj[e].ljgj + '</span>' +
-							'</li>' +
-							'<li class="mui-table-view-cell">' +
-								'<span class="mui-pull-left">是否清空雨量筒</span>' +
-								'<span class="mui-pull-right">' + lsjcsj[e].sfqkylt + '</span>' +
-							'</li></ul></div></div></div>';
 						}
+						$("#buss").append(li);
 					}
-					$("#segmentedControls").html(li);
-					$("#segmentedControls li:first-child").addClass('color');
-					$("#layge").html(layge_text);
-					$("#layge div:first-child").css("display", "block");
-					$("#layge div:first-child").addClass('mui-active');
-					for(var arr = 0; arr < data.length; arr++) {
-						$("#ck_lssj" + arr).append(lsjcsj_text[arr]);
-					}
-					$(".popup").html(popup_text);
+
 				}
 			});
 
-			$("#segmentedControls li").on("tap", function() {
-				$(this).parent().children().removeClass("color");
-				$(this).addClass("color");
-				var i = $(this).attr("data-index");
-				$("#content" + i).siblings().hide();
-				$("#content" + i).show();
-			});
-			mui('.mui-scroll-wrapper').scroll();
-			
-			document.getElementById('sjqxt').addEventListener('tap', function() {
+			function dataclick(self) {
+				var ng = $(self).attr("data-ng");
+				var monitor_no = $(self).attr("data-monitor_no");
+				var time = $(self).attr("data-time");
+				var is_destroy = $(self).attr("data-is_destroy");
+				var monitor_radius = $(self).attr("data-monitor_radius");
+				var monitor_name = $(self).attr("data-monitor_name");
+				var monitor_direction = $(self).attr("data-monitor_direction");
 				mui.openWindow({
-					url: 'jcyj_sjqxt.html',
-					id: 'jcyj_sjqxt.html'
+					url: "jcyj_hiddenOneList.html?ng=" + ng,
+					id: "jcyj_hiddenOneList.html",
+					extras: {
+						yhdId: id,
+						monitor_no: monitor_no,
+						time:　time,
+						is_destroy: is_destroy,
+						monitor_radius:　monitor_radius,
+						monitor_name:　monitor_name,
+						monitor_direction:　monitor_direction
+					}
 				});
-			});
-			document.getElementById('cktp').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'jcyj_cktp.html',
-					id: 'jcyj_cktp.html'
-				});
-			});
+			}
 		</script>
+
 	</body>
 
 </html>

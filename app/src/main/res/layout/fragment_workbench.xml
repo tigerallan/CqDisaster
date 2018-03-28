@@ -5,16 +5,6 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/c1olorblue"
-        android:gravity="center"
-        android:text="@string/workbench"
-        android:textColor="@color/c1olorwhite"
-        android:textSize="18sp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

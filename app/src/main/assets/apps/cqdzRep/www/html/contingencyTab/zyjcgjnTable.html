@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>专业监测iframe</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/dropload.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/Hand/jcyj.css" />
+		<style type="text/css">
+			.mui-bar-nav~.mui-content {
+				height: 100%;
+			}
+			
+			.content_iframe {
+				height: 100%;
+			}
+			
+			#dynamic_sj {
+				margin-top: 1px;
+			}
+			
+			.imgUrl {
+				float: left;
+				width: 40px;
+				margin-right: 10px;
+			}
+			
+			.icon2-ul-mc {
+				font-size: 16px;
+			}
+			
+			.icon2-ul-fu {
+				font-size: 14px;
+				color: #666;
+				display: inline-block;
+				margin-top: 3px;
+			}
+			
+			#dynamic_sj {
+				height: 100%;
+				overflow: auto;
+			}
+			
+			#tb {
+				width: 100%;
+			}
+			
+			.mui-content {
+				position: absolute;
+				top: -20px;
+				width: 100%;
+				z-index: 1000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<ul id="tb" class="mui-table-view">
+
+			</ul>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<!--<script src="../../js/jquery-1.11.3.js"></script>-->
+		<script src="../../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/dropload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/ip.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			//截取url地址 id
+			function Request() {
+				var url = window.location.search; //获取url中"?"符后的字串   
+				var theRequest = new Object();
+				if(url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					strs = str.split("&");
+					for(var i = 0; i < strs.length; i++) {
+						theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+					}
+				}
+				return theRequest;
+			}
+
+			function timestampToTime(timestamp) {
+        var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+
+			function errorImg(img) {
+				img.src = "../../img/jcyj_1.png";
+				img.onerror = null;
+			}
+			var requestData = Request();
+
+			function sljz() {
+				var counter = 0;
+				// 每页展示15个
+				var num = 15;
+				var pageStart = 0,
+					pageEnd = 0;
+
+				$('.mui-content').dropload({
+					scrollArea: window,
+					loadDownFn: function(me) {
+
+						$.ajax({
+							type: 'post',
+							url: ip + "meteor/findWarnDataCountByAreaId.do",
+							dataType: 'json',
+							data: requestData,
+							success: function(json) {
+//								alert(JSON.stringify(json));
+								var data = json.data;
+								var result = '';
+								counter++;
+								pageEnd = num * counter;
+								pageStart = pageEnd - num;
+
+								if(data.length == 0) {
+									// 无数据
+									me.noData();
+								} else {
+									data.forEach(function(e, i, a) {
+										result += '<li class="mui-table-view-cell mui-media fisnew"><a class="list_text mui-navigate-right" href="javascript:void(0);" onclick="tap(this)" data-gjlx="' + e.gjlx + '" data-type="' + e.warn_type + '" data-jcdw="' + e.jcdw + '" data-time="' + e.time + '" data-project="' + e.project_name + '" data-level="' + e.warn_level + '" data-record="' + e.deal_record + '" data-id="' + e.unit_name + '" data-deal="' + e.is_deal + '" data-handle="' + e.handle_time + '" data-monitor="' + e.monitor_no + '" data-handle="' + e.handle_time + '" data-record="' + e.deal_record + '">' +
+											'<img class="imgUrl" src="../../img/jcyj_' + e.warn_level + '.png" onerror="errorImg(this)"/>' +
+											'<div class="titlelist"><span class="icon2-ul-mc">' + e.project_name + '</span>' +
+											'<span class="icon2-ul-sj icon2-ul-fontc">' + e.unit_name + '</span></div>' +
+											'<span class="icon2-ul-fu">' + e.monitor_no + '</span></div>' +
+											'<span class="icon2-ul-sj icon2-ul-fontc" style="display: inline-block;margin-top: 3px;">' + e.time + '</span>' +
+											'</div ></a></li>';
+									})
+
+								}
+								// 为了测试，延迟1秒加载
+								setTimeout(function() {
+									$('#tb').append(result);
+									//									tap();
+									// 每次数据加载完，必须重置
+									me.resetload();
+								}, 500);
+
+								requestData.page++;
+							},
+							error: function(xhr, type) {
+								console.log('数据请求失败!');
+								// 即使加载出错，也得重置
+								me.resetload();
+							}
+						});
+					}
+				});
+			};
+
+			window.onload = sljz;
+//点击每条详情事件
+			function tap(slef) {
+				//				var id = $(self).attr("data-id");
+				var name = $(slef).attr('data-id');
+				var handle = $(slef).attr('data-handle');
+				var monitor = $(slef).attr('data-monitor');
+				var deal = $(slef).attr('data-deal');
+				var record = $(slef).attr('data-record');
+				var level = $(slef).attr('data-level');
+				var time = $(slef).attr('data-time');
+				var project = $(slef).attr('data-project');
+				var jcdw = $(slef).attr('data-jcdw');
+				var type = $(slef).attr('data-type');
+				var gjlx = $(slef).attr('data-gjlx');
+				var deal_record = $(slef).attr('data-record');
+				var handle_time = $(slef).attr('data-handle');
+				$("#haha", parent.document).attr('data-id', name);
+				$("#haha", parent.document).attr('data-handle', handle);
+				$("#haha", parent.document).attr('data-monitor', monitor);
+				$("#haha", parent.document).attr('data-deal', deal);
+				$("#haha", parent.document).attr('data-record', record);
+				$("#haha", parent.document).attr('data-level', level);
+				$("#haha", parent.document).attr('data-time', time);
+				$("#haha", parent.document).attr('data-project', project);
+				$("#haha", parent.document).attr('data-jcdw', jcdw);
+				$("#haha", parent.document).attr('data-type', type);
+				$("#haha", parent.document).attr('data-gjlx', gjlx);
+				$("#haha", parent.document).trigger('click');
+			}
+			//隔行变色的表格
+			function table() {
+				var item = document.getElementById("tb");
+				var trs = item.getElementsByTagName("tr");
+				for(var i = 0; i < trs.length; i++) {
+					if(i % 2 == 0) {
+						trs[i].style.backgroundColor = "#F0F9FD";
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>
